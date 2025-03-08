@@ -6,7 +6,11 @@ import { useFormik } from 'formik'
 import { SelectOptions } from 'lib/types'
 import { CalculatorFields, Skills } from './types'
 import { calculateSkill, calculateSkillTime, calculateFistSkillTime, findOutBreakpoints, missingExpForLevel, skillEnumToValue } from './helpers'
-import { calculateAttackValue, findAttackValueIncrements, secondsToDate } from './helpers/functions'
+import {
+    calculateAttackValue,
+    findAttackValueIncrements,
+    secondsToDate
+} from './helpers/functions'
 import { calculateFistPercentageTime } from './helpers/fistSkill'
 
 type FormValues = {

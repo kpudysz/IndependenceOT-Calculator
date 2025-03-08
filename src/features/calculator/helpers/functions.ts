@@ -1,5 +1,5 @@
 import { Skills } from '../types'
-import { intervalToDuration } from 'date-fns'
+import { addMinutes, intervalToDuration } from 'date-fns'
 
 type SkillIncrements = {
     skill: number,
@@ -123,8 +123,4 @@ export const findAttackValueIncrements = (weaponAttack: number, skill: number, l
         }, { previousAttack: calculateAttackValue(weaponAttack, skill), increments: [] as Array<SkillIncrements>})
 
     return preparedArray.increments
-}
-
-export const calculateStamina = (currentStamina: string, goalStamina: string) => {
-
 }
