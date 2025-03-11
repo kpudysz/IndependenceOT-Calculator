@@ -5,12 +5,8 @@ import { skillOptions } from './config/options'
 import { useFormik } from 'formik'
 import { SelectOptions } from 'lib/types'
 import { CalculatorFields, Skills } from './types'
-import { calculateSkill, calculateSkillTime, calculateFistSkillTime, findOutBreakpoints, missingExpForLevel, skillEnumToValue } from './helpers'
-import {
-    calculateAttackValue, calculateOfflineTraining,
-    findAttackValueIncrements,
-    secondsToDate
-} from './helpers/functions'
+import { calculateSkill, calculateSkillTime, calculateFistSkillTime, skillEnumToValue } from './helpers'
+import { calculateOfflineTraining, secondsToDate } from './helpers/functions'
 import { calculateFistPercentageTime } from './helpers/fistSkill'
 
 type FormValues = {
@@ -31,15 +27,15 @@ type SearchedValues = {
     timeForSkill: string
 }
 
-export const Calculator: React.FunctionComponent = () => {
+export const BasicCalculator: React.FunctionComponent = () => {
     const [isCalculated, setIsCalculated] = useState(false)
     const [searchedValues, setSearchedValues] = useState<SearchedValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
         initialValues: {
             skillToCalculate: null,
-            currentSkill: null,
+            currentSkill: 10,
             percentToNext: 100,
-            desiredSkill: null
+            desiredSkill: 10
         },
         onSubmit: form => {
             if (!form.skillToCalculate || !form.currentSkill || !form.desiredSkill || !form.percentToNext) {
@@ -86,8 +82,8 @@ export const Calculator: React.FunctionComponent = () => {
     })
 
     return (
-        <Flex justifyContent="center" alignItems="center" height="100%">
-            <Flex height={isCalculated ? "800px" : "600px"} width="600px" borderRadius="10px" background="white" alignItems="center" flexDirection="column" padding="0 30px 0 30px">
+        <Flex justifyContent="center" alignItems="center" height="100%" color="#909198">
+            <Flex height={isCalculated ? "800px" : "600px"} width="600px" borderRadius="10px" background="#13141B" alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
                     Training Calculator
                 </Flex>

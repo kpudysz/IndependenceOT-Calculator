@@ -1,2 +1,2 @@
 export { ChooseCalculator } from './ChooseCalculator'
-export { AvailableCalculators } from './availableCalculators'
+export { AvailableCalculators } from './AvailableCalculators'

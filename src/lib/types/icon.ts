@@ -9,3 +9,7 @@ export type IconProps = {
     height?: number | string,
     fill?: string
 }
+
+export type IconColorProps = {
+    color?: string
+}

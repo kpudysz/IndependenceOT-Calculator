@@ -48,7 +48,7 @@ export const Select: React.FunctionComponent<SelectProps> = ({
     return (
         <FormControl isInvalid={isInvalid} isRequired={isRequired} cursor="pointer">
             {label && (
-                <FormLabel fontWeight="500" mb="8px" mt={mt} color={isDisabled ? 'gray' : 'black'}>
+                <FormLabel fontWeight="500" mb="8px" mt={mt} color={isDisabled ? 'gray' : '#909198'}>
                     {label}
                 </FormLabel>
             )}
@@ -78,7 +78,7 @@ export const Select: React.FunctionComponent<SelectProps> = ({
                         borderColor: !isMulti && !withoutBorderColor && typedValue?.value ? 'borderGreen' : 'gray',
                         width,
                         border: '1px solid',
-                        color: 'black',
+                        color: '#909198',
                         whiteSpace: 'nowrap',
                         maxWidth: '100%',
                         overflow: 'visible'
