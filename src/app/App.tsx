@@ -1,11 +1,11 @@
 import React from 'react'
-import { Calculator } from '../features'
+import { ChooseCalculator } from '../features'
 import { ChakraProvider, Flex, theme } from '@chakra-ui/react'
 
 export const App: React.FunctionComponent = () => (
-    <Flex height="100vh" width="auto" flexDirection="column" backgroundColor="lightgrey">
+    <Flex height="100vh" width="auto" flexDirection="column" backgroundColor="black">
         <ChakraProvider theme={theme}>
-            <Calculator/>
+            <ChooseCalculator/>
         </ChakraProvider>
     </Flex>
 )

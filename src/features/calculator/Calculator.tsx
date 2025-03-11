@@ -7,7 +7,7 @@ import { SelectOptions } from 'lib/types'
 import { CalculatorFields, Skills } from './types'
 import { calculateSkill, calculateSkillTime, calculateFistSkillTime, findOutBreakpoints, missingExpForLevel, skillEnumToValue } from './helpers'
 import {
-    calculateAttackValue,
+    calculateAttackValue, calculateOfflineTraining,
     findAttackValueIncrements,
     secondsToDate
 } from './helpers/functions'
@@ -27,6 +27,7 @@ type SearchedValues = {
     desiredSkill: number,
     rawSkill: number,
     percentage: string,
+    offlineTraining: string,
     timeForSkill: string
 }
 
@@ -46,9 +47,10 @@ export const Calculator: React.FunctionComponent = () => {
             }
 
             const meleeSkills = [Skills.MELEE, Skills.DISTANCE, Skills.MAGIC, Skills.SHIELDING, Skills.FISHING]
+            const calculatedSkill = calculateSkill(form.skillToCalculate.value, Number(form.currentSkill), Number(form.percentToNext), Number(form.desiredSkill))
+            const neededHits = Math.floor(calculatedSkill.neededHits)
 
             if (meleeSkills.includes(form.skillToCalculate.value)) {
-                const calculatedSkill = calculateSkill(form.skillToCalculate.value, Number(form.currentSkill), Number(form.percentToNext), Number(form.desiredSkill))
                 const timeForSkill = calculateSkillTime(form.skillToCalculate.value, Math.floor(calculatedSkill.neededHits))
 
                 setSearchedValues({
@@ -57,13 +59,13 @@ export const Calculator: React.FunctionComponent = () => {
                     currentSkill: form.currentSkill,
                     percentToNext: form.percentToNext,
                     percentage: calculatedSkill.percentage,
-                    rawSkill: Math.floor(calculatedSkill.neededHits),
+                    rawSkill: neededHits,
+                    offlineTraining: calculateOfflineTraining(neededHits),
                     timeForSkill
                 })
             }
 
             if (form.skillToCalculate.value === Skills.FIST) {
-                const calculatedSkill = calculateSkill(form.skillToCalculate.value, Number(form.currentSkill), Number(form.percentToNext), Number(form.desiredSkill))
                 const timeForSkill = calculateFistSkillTime(Number(form.currentSkill), form.percentToNext, form.desiredSkill)
                 const percentage = calculateFistPercentageTime(form.desiredSkill, timeForSkill)
 
@@ -72,8 +74,9 @@ export const Calculator: React.FunctionComponent = () => {
                     desiredSkill: form.desiredSkill,
                     currentSkill: form.currentSkill,
                     percentToNext: form.percentToNext,
-                    rawSkill: Math.floor(calculatedSkill.neededHits),
+                    rawSkill: neededHits,
                     timeForSkill: secondsToDate(timeForSkill),
+                    offlineTraining: calculateOfflineTraining(neededHits),
                     percentage
                 })
             }
@@ -109,6 +112,7 @@ export const Calculator: React.FunctionComponent = () => {
                         <Flex mt="40px">
                             With {searchedValues?.currentSkill} {skillEnumToValue(searchedValues?.skillToCalculate as Skills)} and {searchedValues?.percentToNext} percent to next level you will need {searchedValues?.rawSkill.toLocaleString()} hits to reach {searchedValues?.desiredSkill} skill.
                             It will take approximately {searchedValues?.timeForSkill}. You completed {searchedValues?.percentage} % of desired value.
+                            To reach this skill through offline training it will take {searchedValues?.offlineTraining}.
                         </Flex>
                     )}
                 </Flex>

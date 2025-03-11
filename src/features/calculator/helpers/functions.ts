@@ -124,3 +124,20 @@ export const findAttackValueIncrements = (weaponAttack: number, skill: number, l
 
     return preparedArray.increments
 }
+
+export const calculateCap = (level: number, withVenore: boolean) => {
+    const multiplier = withVenore ? 1.1 : 1
+    const baseCap = 390
+
+    return (baseCap + (level * 10)) * multiplier
+}
+
+export const calculateOfflineTraining = (requiredHits: number) => {
+    const adjustedHits = Math.ceil(requiredHits / 6) * 6
+
+    if (adjustedHits > 4320) {
+        return secondsToDate(adjustedHits / 3 * 60)
+    }
+
+    return secondsToDate(adjustedHits / 6 * 60)
+}
