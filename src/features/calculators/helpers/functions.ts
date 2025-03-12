@@ -1,4 +1,4 @@
-import { Skills } from '../types'
+import { Skills } from '../types/types'
 import { addMinutes, intervalToDuration } from 'date-fns'
 
 type SkillIncrements = {

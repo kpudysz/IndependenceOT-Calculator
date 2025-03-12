@@ -1,13 +1,9 @@
-import { Skills } from '../types'
+import { Skills } from '../types/types'
 
-export const skillOptions = [
+export const basicCalculatorOptions = [
     {
         label: 'Axe/Club/Sword Fighting',
         value: Skills.MELEE
-    },
-    {
-        label: 'Fist Fighting',
-        value: Skills.FIST
     },
     {
         label: 'Distance Fighting',
@@ -16,13 +12,5 @@ export const skillOptions = [
     {
         label: 'Shielding',
         value: Skills.SHIELDING
-    },
-    {
-        label: 'Magic Level',
-        value: Skills.MAGIC
-    },
-    {
-        label: 'Fishing',
-        value: Skills.FISHING
     }
 ]

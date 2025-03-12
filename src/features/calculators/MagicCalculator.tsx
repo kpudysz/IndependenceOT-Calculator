@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
+import { CalculatorFields, SearchedMagicCalculatorValues, Skills } from './types'
 import { useFormik } from 'formik'
-import { CalculatorFields, SearchedValues, Skills } from './types/types'
-import { calculateFistSkillTime, calculateSkill, skillEnumToValue } from './helpers'
-import { calculateOfflineTraining, secondsToDate } from './helpers/functions'
-import { calculateFistPercentageTime } from './helpers/fistSkill'
+import { calculateSkill, calculateSkillTime } from './helpers'
 import { Button, Flex } from '@chakra-ui/react'
 import { Input } from 'lib/components'
 
@@ -13,36 +11,34 @@ type FormValues = {
     desiredSkill: number | null;
 }
 
-export const FistCalculator: React.FunctionComponent = () => {
+export const MagicCalculator: React.FunctionComponent = () => {
     const [isCalculated, setIsCalculated] = useState(false)
-    const [searchedValues, setSearchedValues] = useState<SearchedValues>()
+    const [searchedValues, setSearchedValues] = useState<SearchedMagicCalculatorValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
         initialValues: {
-            currentSkill: 10,
+            currentSkill: 0,
             percentToNext: 100,
-            desiredSkill: 10
+            desiredSkill: 0
         },
         onSubmit: form => {
-            if (!form.currentSkill || !form.desiredSkill || !form.percentToNext) {
+            if ((!form.currentSkill && form.currentSkill !== 0) || !form.desiredSkill || !form.percentToNext) {
                 return
             }
 
-            const calculatedSkill = calculateSkill(Skills.FIST, Number(form.currentSkill), Number(form.percentToNext), Number(form.desiredSkill))
+            const calculatedSkill = calculateSkill(Skills.MAGIC, Number(form.currentSkill), Number(form.percentToNext), Number(form.desiredSkill))
             const neededHits = Math.floor(calculatedSkill.neededHits)
-            const timeForSkill = calculateFistSkillTime(Number(form.currentSkill), form.percentToNext, form.desiredSkill)
-            const percentage = calculateFistPercentageTime(form.desiredSkill, timeForSkill)
+            const timeForSkill = calculateSkillTime(Skills.MAGIC, Math.floor(calculatedSkill.neededHits))
 
             setSearchedValues({
-                skillToCalculate: Skills.FIST,
+                skillToCalculate: Skills.MAGIC,
                 desiredSkill: form.desiredSkill,
                 currentSkill: form.currentSkill,
                 percentToNext: form.percentToNext,
+                percentage: calculatedSkill.percentage,
                 rawSkill: neededHits,
-                timeForSkill: secondsToDate(timeForSkill),
-                offlineTraining: calculateOfflineTraining(neededHits),
-                percentage
+                manaPotions: Math.ceil(neededHits / 100),
+                timeForSkill
             })
-
             setIsCalculated(true)
         }
     })
@@ -51,7 +47,7 @@ export const FistCalculator: React.FunctionComponent = () => {
         <Flex justifyContent="center" alignItems="center" height="100%" color="#909198">
             <Flex height={isCalculated ? "680px" : "500px"} width="600px" borderRadius="10px" background="#13141B" alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
-                    Fist Calculator
+                    Magic Calculator
                 </Flex>
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
                     <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSKILL, value)} label={'Current Skill'} isNumeric controlledValue={values.currentSkill?.toString()} isClearable={false} />
@@ -87,16 +83,16 @@ export const FistCalculator: React.FunctionComponent = () => {
                     {isCalculated && (
                         <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center">
                             <Flex textAlign="center">
-                                With {searchedValues?.currentSkill} {skillEnumToValue(searchedValues?.skillToCalculate as Skills)} and {searchedValues?.percentToNext} percent to next level you will need {searchedValues?.rawSkill.toLocaleString()} hits to reach {searchedValues?.desiredSkill} skill.
+                                With magic level {searchedValues?.currentSkill} and {searchedValues?.percentToNext} percent to next level you will need to use {searchedValues?.rawSkill.toLocaleString()} mana to reach magic level {searchedValues?.desiredSkill}.
                             </Flex>
                             <Flex>
-                                To reach that skill it will take approximately {searchedValues?.timeForSkill}.
+                                To reach that magic by regeneration it will take approximately {searchedValues?.timeForSkill}.
                             </Flex>
                             <Flex>
-                                You currently have {searchedValues?.percentage} % of required hits.
+                                To reach that magic by potions it will require {searchedValues?.manaPotions} mana potions.
                             </Flex>
                             <Flex>
-                                To reach this skill just through offline training it will take {searchedValues?.offlineTraining}.
+                                You currently burned {searchedValues?.percentage} % of total required mana.
                             </Flex>
                         </Flex>
                     )}

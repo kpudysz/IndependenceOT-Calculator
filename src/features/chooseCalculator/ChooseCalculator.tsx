@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Flex } from '@chakra-ui/react'
-import { Tile } from 'lib/components'
-import { BasicCalculator, FistCalculator } from '../calculators'
+import { Back, Tile } from 'lib/components'
+import { BasicCalculator, FistCalculator, MagicCalculator } from '../calculators'
 import { availableCalculators, AvailableCalculators } from './AvailableCalculators'
 
 export const ChooseCalculator: React.FunctionComponent = () => {
@@ -9,8 +9,13 @@ export const ChooseCalculator: React.FunctionComponent = () => {
 
     return (
         <Flex width="100vw" margin="80px 80px" justifyContent="center" flexDirection="column" alignItems="center">
+            {activeCalculator && (
+                <Back onClick={() => setActiveCalculator(null)}/>
+            )}
             <Flex color="#909198" marginBottom="80px" fontSize="32px" fontWeight="bold">
-                IndependenceOT Calculator
+                <Flex>
+                    IndependenceOT Calculator
+                </Flex>
             </Flex>
             {!activeCalculator && (
                 <Flex flexWrap="wrap" maxWidth="900px" justifyContent="center" gap="50px" alignItems="center" >
@@ -30,6 +35,9 @@ export const ChooseCalculator: React.FunctionComponent = () => {
             )}
             {activeCalculator === AvailableCalculators.FIST && (
                 <FistCalculator/>
+            )}
+            {activeCalculator === AvailableCalculators.MAGIC && (
+                <MagicCalculator/>
             )}
         </Flex>
     )

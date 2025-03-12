@@ -89,6 +89,7 @@ export const Select: React.FunctionComponent<SelectProps> = ({
                         borderColor: 'gray',
                         borderRadius: '5px',
                         padding: 0,
+                        color: 'black',
                         position: 'absolute'
                     }),
                     option: (provided, { isSelected }) => ({

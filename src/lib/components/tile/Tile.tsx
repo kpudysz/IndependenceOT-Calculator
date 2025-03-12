@@ -24,7 +24,7 @@ export const Tile: React.FunctionComponent<TileProps> = ({ Icon, title, onClick 
             border={isHovered ? "1px solid #E5FF60" : "1px solid #FFA260"}
             padding="16px 0"
             transition="box-shadow 0.3s ease, transform 0.3s ease"
-            boxShadow={isHovered ? "0 8px 16px #E5FF60" : "none"} // ✅ Box shadow only on hover
+            boxShadow={isHovered ? "0 8px 16px #E5FF60" : "none"}
             transform={isHovered ? "translateY(-4px)" : "none"}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}

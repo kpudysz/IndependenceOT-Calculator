@@ -9,7 +9,8 @@ type CalculatedSkill = {
 export const calculateSkill = (skillType: Skills, currentSkill: number, percentToNext: number, desiredSkill: number): CalculatedSkill => {
     const nextLevelRequirement = calculateRawValue(skillType, currentSkill)
     const currentRawValue = nextLevelRequirement * (percentToNext / 100)
-    const fullLevelsValue = calculateNeededRawValue(skillType, 10, 0, currentSkill)
+    const startingSkill = skillType === Skills.MAGIC ? 0 : 10
+    const fullLevelsValue = calculateNeededRawValue(skillType, startingSkill, 0, currentSkill)
     const nextLevelProgressValue = nextLevelRequirement - currentRawValue
     const currentHits = fullLevelsValue + nextLevelProgressValue
     const hitsNeeded = desiredSkill === currentSkill + 1 ? currentRawValue : calculateNeededRawValue(skillType, currentSkill + 1, currentRawValue, desiredSkill)

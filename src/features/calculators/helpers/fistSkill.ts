@@ -1,4 +1,4 @@
-import { Skills } from '../types'
+import { Skills } from '../types/types'
 import { calculateRawValue } from './meleeSkill'
 
 const calculateFistSkill = (skillType: Skills, currentSkill: number, percentToNext: number): number => {
