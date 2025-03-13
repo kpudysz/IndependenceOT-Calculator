@@ -24,7 +24,10 @@ export const addMinutesToCurrentDate = (minutes: number) => addMinutes(Date.now(
 
 export const formatMinutesToStamina = (minutes: number) => {
     if (minutes < 60) {
-        return minutes
+        return {
+            hours: 0,
+            minutes
+        }
     }
 
     const hours = Math.floor(minutes / 60)

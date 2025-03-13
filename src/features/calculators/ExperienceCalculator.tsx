@@ -1,48 +1,41 @@
 import React, { useState } from 'react'
+import { CalculatorFields, ExperienceSearchedValues } from './types'
 import { useFormik } from 'formik'
-import { BasicSearchedValues, CalculatorFields, Skills } from './types'
-import { calculateFistSkillTime, calculateSkill, skillEnumToValue } from './helpers'
-import { calculateOfflineTraining, secondsToDate } from './helpers/functions'
-import { calculateFistPercentageTime } from './helpers/fistSkill'
+import { missingExpForLevel } from './helpers'
 import { Button, Flex } from '@chakra-ui/react'
 import { Input } from 'lib/components'
+import { calculateExperiencePercentage } from './helpers/experience'
 
 type FormValues = {
-    currentSkill: number | null;
+    currentLevel: number | null;
     percentToNext: number | null;
-    desiredSkill: number | null;
+    desiredLevel: number | null;
 }
 
-export const FistCalculator: React.FunctionComponent = () => {
+export const ExperienceCalculator: React.FunctionComponent = () => {
     const [isCalculated, setIsCalculated] = useState(false)
-    const [searchedValues, setSearchedValues] = useState<BasicSearchedValues>()
+    const [searchedValues, setSearchedValues] = useState<ExperienceSearchedValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
         initialValues: {
-            currentSkill: 10,
+            currentLevel: 1,
             percentToNext: 100,
-            desiredSkill: 10
+            desiredLevel: 1
         },
         onSubmit: form => {
-            if (!form.currentSkill || !form.desiredSkill || !form.percentToNext) {
+            if (!form.currentLevel || !form.desiredLevel || !form.percentToNext) {
                 return
             }
 
-            const calculatedSkill = calculateSkill(Skills.FIST, Number(form.currentSkill), Number(form.percentToNext), Number(form.desiredSkill))
-            const neededHits = Math.floor(calculatedSkill.neededHits)
-            const timeForSkill = calculateFistSkillTime(Number(form.currentSkill), form.percentToNext, form.desiredSkill)
-            const percentage = calculateFistPercentageTime(form.desiredSkill, timeForSkill)
+            const missingExperience = missingExpForLevel(Number(form.currentLevel), Number(form.percentToNext), Number(form.desiredLevel))
+            const percentage = calculateExperiencePercentage(Number(form.currentLevel), Number(form.percentToNext), Number(form.desiredLevel))
 
             setSearchedValues({
-                skillToCalculate: Skills.FIST,
-                desiredSkill: form.desiredSkill,
-                currentSkill: form.currentSkill,
+                missingExperience,
+                currentLevel: form.currentLevel,
                 percentToNext: form.percentToNext,
-                rawSkill: neededHits,
-                timeForSkill: secondsToDate(timeForSkill),
-                offlineTraining: calculateOfflineTraining(neededHits),
+                desiredLevel: form.desiredLevel,
                 percentage
             })
-
             setIsCalculated(true)
         }
     })
@@ -51,12 +44,12 @@ export const FistCalculator: React.FunctionComponent = () => {
         <Flex justifyContent="center" alignItems="center" height="100%" color="#909198">
             <Flex height={isCalculated ? "680px" : "500px"} width="600px" borderRadius="10px" background="#13141B" alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
-                    Fist Calculator
+                    Experience Calculator
                 </Flex>
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
-                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSKILL, value)} label={'Current Skill'} isNumeric controlledValue={values.currentSkill?.toString()} isClearable={false} />
+                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTLEVEL, value)} label={'Current Level'} isNumeric controlledValue={values.currentLevel?.toString()} isClearable={false} />
                     <Input onChange={value => setFieldValue(CalculatorFields.PERCENTTONEXT, value)} label={'Percent to Next Skill'} isNumeric controlledValue={values.percentToNext?.toString()} isClearable={false}/>
-                    <Input onChange={value => setFieldValue(CalculatorFields.DESIREDSKILL, value)} label={'Desired Skill'} isNumeric controlledValue={values.desiredSkill?.toString()} isClearable={false}/>
+                    <Input onChange={value => setFieldValue(CalculatorFields.DESIREDLEVEL, value)} label={'Desired Level'} isNumeric controlledValue={values.desiredLevel?.toString()} isClearable={false}/>
                     <Button
                         padding="8px 22px"
                         mt="20px"
@@ -87,16 +80,10 @@ export const FistCalculator: React.FunctionComponent = () => {
                     {isCalculated && (
                         <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center">
                             <Flex textAlign="center">
-                                With {searchedValues?.currentSkill} {skillEnumToValue(searchedValues?.skillToCalculate as Skills)} and {searchedValues?.percentToNext} percent to next level you will need {searchedValues?.rawSkill.toLocaleString()} hits to reach {searchedValues?.desiredSkill} skill.
+                                With level {searchedValues?.currentLevel} and {searchedValues?.percentToNext} percent to next level you need {searchedValues?.missingExperience.toLocaleString()} experience to reach level {searchedValues?.desiredLevel}.
                             </Flex>
                             <Flex>
-                                To reach that skill it will take approximately {searchedValues?.timeForSkill}.
-                            </Flex>
-                            <Flex>
-                                You currently have {searchedValues?.percentage} % of required hits.
-                            </Flex>
-                            <Flex>
-                                To reach this skill just through offline training it will take {searchedValues?.offlineTraining}.
+                                You currently have {searchedValues?.percentage} % of required experience.
                             </Flex>
                         </Flex>
                     )}

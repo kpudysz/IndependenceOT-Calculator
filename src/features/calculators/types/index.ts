@@ -1,2 +1,2 @@
 export { Skills, CalculatorFields } from './types'
-export type { SearchedValues, SearchedMagicCalculatorValues } from './types'
+export type { BasicSearchedValues, SearchedMagicCalculatorValues, ExperienceSearchedValues, CapacitySearchedValues, FishingSearchedValues, AttackSearchedValues, StaminaSearchedValues } from './types'

@@ -4,10 +4,8 @@ import { Input, Select } from 'lib/components'
 import { basicCalculatorOptions } from './config'
 import { useFormik } from 'formik'
 import { SelectOptions } from 'lib/types'
-import { CalculatorFields, SearchedValues, Skills } from './types/types'
-import { calculateSkill, calculateSkillTime, calculateFistSkillTime, skillEnumToValue } from './helpers'
-import { calculateOfflineTraining, secondsToDate } from './helpers/functions'
-import { calculateFistPercentageTime } from './helpers/fistSkill'
+import { CalculatorFields, BasicSearchedValues, Skills } from './types'
+import { calculateSkill, calculateSkillTime, skillEnumToValue, calculateOfflineTraining } from './helpers'
 
 type FormValues = {
     skillToCalculate: SelectOptions | null;
@@ -18,7 +16,7 @@ type FormValues = {
 
 export const BasicCalculator: React.FunctionComponent = () => {
     const [isCalculated, setIsCalculated] = useState(false)
-    const [searchedValues, setSearchedValues] = useState<SearchedValues>()
+    const [searchedValues, setSearchedValues] = useState<BasicSearchedValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
         initialValues: {
             skillToCalculate: null,
@@ -108,4 +106,3 @@ export const BasicCalculator: React.FunctionComponent = () => {
         </Flex>
     )
 }
-

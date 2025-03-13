@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
+import { CalculatorFields, FishingSearchedValues, Skills } from './types'
 import { useFormik } from 'formik'
-import { BasicSearchedValues, CalculatorFields, Skills } from './types'
-import { calculateFistSkillTime, calculateSkill, skillEnumToValue } from './helpers'
-import { calculateOfflineTraining, secondsToDate } from './helpers/functions'
-import { calculateFistPercentageTime } from './helpers/fistSkill'
+import { calculateSkill, calculateSkillTime } from './helpers'
 import { Button, Flex } from '@chakra-ui/react'
 import { Input } from 'lib/components'
 
@@ -13,9 +11,9 @@ type FormValues = {
     desiredSkill: number | null;
 }
 
-export const FistCalculator: React.FunctionComponent = () => {
+export const FishingCalculator: React.FunctionComponent = () => {
     const [isCalculated, setIsCalculated] = useState(false)
-    const [searchedValues, setSearchedValues] = useState<BasicSearchedValues>()
+    const [searchedValues, setSearchedValues] = useState<FishingSearchedValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
         initialValues: {
             currentSkill: 10,
@@ -27,36 +25,32 @@ export const FistCalculator: React.FunctionComponent = () => {
                 return
             }
 
-            const calculatedSkill = calculateSkill(Skills.FIST, Number(form.currentSkill), Number(form.percentToNext), Number(form.desiredSkill))
-            const neededHits = Math.floor(calculatedSkill.neededHits)
-            const timeForSkill = calculateFistSkillTime(Number(form.currentSkill), form.percentToNext, form.desiredSkill)
-            const percentage = calculateFistPercentageTime(form.desiredSkill, timeForSkill)
+            const calculatedSkill = calculateSkill(Skills.FISHING, Number(form.currentSkill), Number(form.percentToNext), Number(form.desiredSkill))
+            const neededTries = Math.floor(calculatedSkill.neededHits)
+            const timeForSkill = calculateSkillTime(Skills.FISHING, Math.floor(calculatedSkill.neededHits))
 
             setSearchedValues({
-                skillToCalculate: Skills.FIST,
                 desiredSkill: form.desiredSkill,
                 currentSkill: form.currentSkill,
                 percentToNext: form.percentToNext,
-                rawSkill: neededHits,
-                timeForSkill: secondsToDate(timeForSkill),
-                offlineTraining: calculateOfflineTraining(neededHits),
-                percentage
+                percentage: calculatedSkill.percentage,
+                neededTries,
+                timeForSkill
             })
-
             setIsCalculated(true)
         }
     })
 
     return (
         <Flex justifyContent="center" alignItems="center" height="100%" color="#909198">
-            <Flex height={isCalculated ? "680px" : "500px"} width="600px" borderRadius="10px" background="#13141B" alignItems="center" flexDirection="column" padding="0 30px 0 30px">
+            <Flex height={isCalculated ? "650px" : "500px"} width="600px" borderRadius="10px" background="#13141B" alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
-                    Fist Calculator
+                    Fishing Calculator
                 </Flex>
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
-                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSKILL, value)} label={'Current Skill'} isNumeric controlledValue={values.currentSkill?.toString()} isClearable={false} />
+                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSKILL, value)} label={'Current Fishing'} isNumeric controlledValue={values.currentSkill?.toString()} isClearable={false} />
                     <Input onChange={value => setFieldValue(CalculatorFields.PERCENTTONEXT, value)} label={'Percent to Next Skill'} isNumeric controlledValue={values.percentToNext?.toString()} isClearable={false}/>
-                    <Input onChange={value => setFieldValue(CalculatorFields.DESIREDSKILL, value)} label={'Desired Skill'} isNumeric controlledValue={values.desiredSkill?.toString()} isClearable={false}/>
+                    <Input onChange={value => setFieldValue(CalculatorFields.DESIREDSKILL, value)} label={'Desired Fishing'} isNumeric controlledValue={values.desiredSkill?.toString()} isClearable={false}/>
                     <Button
                         padding="8px 22px"
                         mt="20px"
@@ -87,16 +81,13 @@ export const FistCalculator: React.FunctionComponent = () => {
                     {isCalculated && (
                         <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center">
                             <Flex textAlign="center">
-                                With {searchedValues?.currentSkill} {skillEnumToValue(searchedValues?.skillToCalculate as Skills)} and {searchedValues?.percentToNext} percent to next level you will need {searchedValues?.rawSkill.toLocaleString()} hits to reach {searchedValues?.desiredSkill} skill.
+                                With {searchedValues?.currentSkill} fishing and {searchedValues?.percentToNext} percent to next level you need {searchedValues?.neededTries.toLocaleString()} tries to reach {searchedValues?.desiredSkill} fishing.
                             </Flex>
                             <Flex>
-                                To reach that skill it will take approximately {searchedValues?.timeForSkill}.
+                                To reach that fishing it will take approximately {searchedValues?.timeForSkill}.
                             </Flex>
                             <Flex>
-                                You currently have {searchedValues?.percentage} % of required hits.
-                            </Flex>
-                            <Flex>
-                                To reach this skill just through offline training it will take {searchedValues?.offlineTraining}.
+                                You currently have {searchedValues?.percentage} % of required tries.
                             </Flex>
                         </Flex>
                     )}

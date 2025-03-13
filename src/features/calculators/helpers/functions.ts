@@ -1,15 +1,5 @@
-import { Skills } from '../types/types'
-import { addMinutes, intervalToDuration } from 'date-fns'
-
-type SkillIncrements = {
-    skill: number,
-    attackValue: number
-}
-
-type ReduceSkillIncrement = {
-    previousAttack: number,
-    increments: Array<SkillIncrements>
-}
+import { Skills } from '../types'
+import { intervalToDuration } from 'date-fns'
 
 export const getRealLevel = (skillType: Skills, level: number) => {
     if (skillType === Skills.MAGIC) {
@@ -106,30 +96,12 @@ export const skillEnumToValue = (skillType: Skills) => {
     }
 }
 
-export const calculateAttackValue = (weaponAttack: number, skill: number) => (Math.floor(Math.floor((6 / 5) * weaponAttack) * ((skill + 4) / 28)))
+export const calculateCap = (level: number, withVenore: boolean, withScavenge: boolean) => {
+    const totalCap = 390 + (level * 10)
+    const venoreBonus = withVenore ? totalCap * 0.1 : 0
+    const scavengeBonus = withScavenge ? totalCap * 0.2 : 0
 
-export const findAttackValueIncrements = (weaponAttack: number, skill: number, limit: number) => {
-    const preparedArray = Array.from({ length: limit - skill }, (_, index) => skill + 1 + index)
-        .reduce<ReduceSkillIncrement>((acc, nextSkill) => {
-            const newAttack = calculateAttackValue(weaponAttack, nextSkill)
-            const lastAttack = acc.previousAttack
-
-            if (newAttack > lastAttack) {
-                return {previousAttack: newAttack, increments: [...acc.increments, { attackValue: newAttack, skill: nextSkill }]}
-            }
-
-            return acc
-
-        }, { previousAttack: calculateAttackValue(weaponAttack, skill), increments: [] as Array<SkillIncrements>})
-
-    return preparedArray.increments
-}
-
-export const calculateCap = (level: number, withVenore: boolean) => {
-    const multiplier = withVenore ? 1.1 : 1
-    const baseCap = 390
-
-    return (baseCap + (level * 10)) * multiplier
+    return totalCap + venoreBonus + scavengeBonus
 }
 
 export const calculateOfflineTraining = (requiredHits: number) => {

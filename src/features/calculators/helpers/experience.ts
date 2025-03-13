@@ -12,3 +12,13 @@ export const missingExpForLevel = (currentLevel: number, percentToNext: number, 
 
     return missingExpForLevel(currentLevel + 1, 100, desiredLevel, summedExperience)
 }
+
+export const calculateExperiencePercentage = (currentLevel: number, percentToNext: number, desiredLevel: number) => {
+    const currentLevelExperience = missingExpForLevel(1, 100, currentLevel)
+    const nextLevelExperience = missingExpForLevel(currentLevel, 100, currentLevel + 1)
+    const percentToNextExperience = missingExpForLevel(currentLevel, percentToNext, currentLevel + 1)
+    const totalExperience = currentLevelExperience + (nextLevelExperience - percentToNextExperience)
+    const desiredExperience = missingExpForLevel(1, 100, desiredLevel)
+
+    return (totalExperience / desiredExperience * 100).toFixed(2)
+}

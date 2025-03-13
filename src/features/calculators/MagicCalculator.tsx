@@ -89,7 +89,7 @@ export const MagicCalculator: React.FunctionComponent = () => {
                                 To reach that magic by regeneration it will take approximately {searchedValues?.timeForSkill}.
                             </Flex>
                             <Flex>
-                                To reach that magic by potions it will require {searchedValues?.manaPotions} mana potions.
+                                To reach that magic level by potions it will require {searchedValues?.manaPotions} mana potions.
                             </Flex>
                             <Flex>
                                 You currently burned {searchedValues?.percentage} % of total required mana.

@@ -1,7 +1,15 @@
 import React, { useState } from 'react'
 import { Flex } from '@chakra-ui/react'
 import { Back, Tile } from 'lib/components'
-import { BasicCalculator, FistCalculator, MagicCalculator } from '../calculators'
+import {
+    AttackValueCalculator,
+    BasicCalculator,
+    CapacityCalculator,
+    ExperienceCalculator,
+    FishingCalculator,
+    FistCalculator,
+    MagicCalculator, StaminaCalculator
+} from '../calculators'
 import { availableCalculators, AvailableCalculators } from './AvailableCalculators'
 
 export const ChooseCalculator: React.FunctionComponent = () => {
@@ -31,13 +39,27 @@ export const ChooseCalculator: React.FunctionComponent = () => {
             )}
             {activeCalculator === AvailableCalculators.BASIC && (
                 <BasicCalculator/>
-
             )}
             {activeCalculator === AvailableCalculators.FIST && (
                 <FistCalculator/>
             )}
             {activeCalculator === AvailableCalculators.MAGIC && (
                 <MagicCalculator/>
+            )}
+            {activeCalculator === AvailableCalculators.EXPERIENCE && (
+                <ExperienceCalculator/>
+            )}
+            {activeCalculator === AvailableCalculators.CAPACITY && (
+                <CapacityCalculator/>
+            )}
+            {activeCalculator === AvailableCalculators.FISHING && (
+                <FishingCalculator/>
+            )}
+            {activeCalculator === AvailableCalculators.ATTACKVALUE && (
+                <AttackValueCalculator/>
+            )}
+            {activeCalculator === AvailableCalculators.STAMINA && (
+                <StaminaCalculator/>
             )}
         </Flex>
     )
