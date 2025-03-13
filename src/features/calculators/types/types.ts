@@ -6,8 +6,7 @@ export enum Skills {
     DISTANCE = 'distance',
     SHIELDING = 'shielding',
     MAGIC = 'magic',
-    FISHING = 'fishing',
-    EXPERIENCE = 'experience'
+    FISHING = 'fishing'
 }
 
 export enum CalculatorFields {
@@ -18,7 +17,11 @@ export enum CalculatorFields {
     CURRENTLEVEL = 'currentLevel',
     DESIREDLEVEL = 'desiredLevel',
     LEVEL = 'level',
+    WITHCARLIN = 'withCarlin',
     WITHVENORE = 'withVenore',
+    WITHBOH = 'withBoh',
+    WITHHASTE = 'withHaste',
+    WITHMOUNT = 'withMount',
     WITHSCAVENGE = 'withScavenge',
     WEAPONATTACK = 'weaponAttack',
     SKILL = 'skill',
@@ -58,7 +61,7 @@ export type ExperienceSearchedValues = {
 
 export type CapacitySearchedValues = {
     level: string,
-    withVenore: boolean,
+    withCarlin: boolean,
     withScavenge: boolean,
     capacity: number
 }
@@ -89,4 +92,34 @@ export type StaminaSearchedValues = {
     goalStamina: string,
     requiredHours: RequiredHours,
     goalTime: string
+}
+
+export type SpeedSearchedValues = {
+    level: string,
+    withBoh: boolean,
+    withHaste: boolean,
+    withMount: boolean,
+    withVenore: boolean,
+    resolvedBreakpoints: ResolvedBreakpoints,
+}
+
+type SpeedBreakpoint = {
+    breakpointLevel: number,
+    missingSpeed: number,
+    currentSpeed: number,
+    missingLevel: number
+}
+
+export type ResolvedBreakpoints = {
+    drawbridge: SpeedBreakpoint,
+    floorMarbleCobble: SpeedBreakpoint,
+    dirtTown: SpeedBreakpoint,
+    rock: SpeedBreakpoint,
+    dirtFloorFast: SpeedBreakpoint,
+    grass: SpeedBreakpoint,
+    dirtFloorSlower: SpeedBreakpoint,
+    water: SpeedBreakpoint,
+    wheat: SpeedBreakpoint,
+    muddyFloor: SpeedBreakpoint,
+    speed: number
 }

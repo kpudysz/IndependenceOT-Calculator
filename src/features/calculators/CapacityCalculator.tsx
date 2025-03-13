@@ -7,7 +7,7 @@ import { calculateCap } from './helpers'
 
 type FormValues = {
     level: string,
-    withVenore: boolean,
+    withCarlin: boolean,
     withScavenge: boolean
 }
 
@@ -18,7 +18,7 @@ export const CapacityCalculator: React.FunctionComponent = () => {
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
         initialValues: {
             level: '1',
-            withVenore: false,
+            withCarlin: false,
             withScavenge: false
         },
         onSubmit: form => {
@@ -26,22 +26,22 @@ export const CapacityCalculator: React.FunctionComponent = () => {
                 return
             }
 
-            const capacity = Math.floor(calculateCap(Number(form.level), form.withVenore, form.withScavenge))
+            const capacity = Math.floor(calculateCap(Number(form.level), form.withCarlin, form.withScavenge))
 
             setSearchedValues({
                 level: form.level,
-                withVenore: form.withVenore,
+                withCarlin: form.withCarlin,
                 withScavenge: form.withScavenge,
                 capacity
             })
             setIsCalculated(true)
 
-            if (form.withScavenge && form.withVenore) {
+            if (form.withScavenge && form.withCarlin) {
                 return setBonusMessage('with scavenge charm and active venore world change')
             }
 
-            if (form.withVenore) {
-                return setBonusMessage('with active venore world change')
+            if (form.withCarlin) {
+                return setBonusMessage('with active carlin world change')
             }
 
             if (form.withScavenge) {
@@ -61,7 +61,7 @@ export const CapacityCalculator: React.FunctionComponent = () => {
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
                     <Input onChange={value => setFieldValue(CalculatorFields.LEVEL, value)} label={'Level'} isNumeric controlledValue={values.level} isClearable={false} />
                     <Checkbox isChecked={values.withScavenge} setIsChecked={value => setFieldValue(CalculatorFields.WITHSCAVENGE, value)} label="Scavenge charm"/>
-                    <Checkbox isChecked={values.withVenore} setIsChecked={value => setFieldValue(CalculatorFields.WITHVENORE, value)} label="Venore world change"/>
+                    <Checkbox isChecked={values.withCarlin} setIsChecked={value => setFieldValue(CalculatorFields.WITHCARLIN, value)} label="Carlin world change"/>
                     <Button
                         padding="8px 22px"
                         mt="20px"

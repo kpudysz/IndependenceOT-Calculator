@@ -8,7 +8,9 @@ import {
     ExperienceCalculator,
     FishingCalculator,
     FistCalculator,
-    MagicCalculator, StaminaCalculator
+    MagicCalculator,
+    SpeedCalculator,
+    StaminaCalculator
 } from '../calculators'
 import { availableCalculators, AvailableCalculators } from './AvailableCalculators'
 
@@ -16,7 +18,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
     const [activeCalculator, setActiveCalculator] = useState<AvailableCalculators | null>(null)
 
     return (
-        <Flex width="100vw" margin="80px 80px" justifyContent="center" flexDirection="column" alignItems="center">
+        <Flex width="100vw" margin="80px 80px" justifyContent="center" flexDirection="column" alignItems="center" overflow="auto">
             {activeCalculator && (
                 <Back onClick={() => setActiveCalculator(null)}/>
             )}
@@ -57,6 +59,9 @@ export const ChooseCalculator: React.FunctionComponent = () => {
             )}
             {activeCalculator === AvailableCalculators.ATTACKVALUE && (
                 <AttackValueCalculator/>
+            )}
+            {activeCalculator === AvailableCalculators.SPEEDBREAKPOINT && (
+                <SpeedCalculator/>
             )}
             {activeCalculator === AvailableCalculators.STAMINA && (
                 <StaminaCalculator/>
