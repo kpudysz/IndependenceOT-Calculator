@@ -2,6 +2,7 @@ import React, { JSX, useState } from 'react'
 import { Flex } from '@chakra-ui/react'
 import { AvailableCalculators } from 'features'
 import { IconColorProps } from 'lib/types'
+import { colors } from 'common'
 
 type TileProps = {
     title: AvailableCalculators,
@@ -19,7 +20,7 @@ export const Tile: React.FunctionComponent<TileProps> = ({ Icon, title, onClick 
             flexDirection="column"
             height="240px"
             width="240px"
-            background="#13141B"
+            background={colors.background}
             cursor="pointer"
             border={isHovered ? "1px solid #E5FF60" : "1px solid #FFA260"}
             padding="16px 0"
@@ -31,9 +32,9 @@ export const Tile: React.FunctionComponent<TileProps> = ({ Icon, title, onClick 
             onClick={() => onClick(title)}
         >
             <Flex>
-                <Icon color={isHovered ? "#E5FF60" : "#FFA260"}/>
+                <Icon color={isHovered ? colors.yellow : colors.orange}/>
             </Flex>
-            <Flex color={isHovered ? "#E5FF60" : "#FFA260"} fontWeight="bold" mt="50px" fontSize="20px">
+            <Flex color={isHovered ? colors.yellow : colors.orange} fontWeight="bold" mt="50px" fontSize="20px">
                 {title}
             </Flex>
         </Flex>

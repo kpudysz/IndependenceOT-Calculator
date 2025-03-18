@@ -5,6 +5,7 @@ import { findOutBreakpoints, resolveBonusText } from './helpers'
 import { Button, Flex, Image, Table, Td, Tr } from '@chakra-ui/react'
 import { Checkbox, Input } from 'lib/components'
 import { images } from 'assets'
+import { colors } from 'common'
 
 type FormValues = {
     level: string,
@@ -53,8 +54,8 @@ export const SpeedCalculator: React.FunctionComponent = () => {
     })
 
     return (
-        <Flex justifyContent="center" height="100%" color="#909198">
-            <Flex height={isCalculated ? "1400px" : "550px"} width="1200px" borderRadius="10px" background="#13141B" alignItems="center" flexDirection="column" padding="0 30px 0 30px">
+        <Flex justifyContent="center" height="100%" color={colors.text}>
+            <Flex height={isCalculated ? "1400px" : "550px"} width="1200px" borderRadius="10px" background={colors.background} alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
                     Speed Breakpoints Calculator
                 </Flex>
@@ -69,24 +70,24 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                         mt="20px"
                         borderRadius="4px"
                         border="1px solid"
-                        borderColor="#FFA260"
-                        background="#13141B"
+                        borderColor={colors.orange}
+                        background={colors.background}
                         _hover={{
-                            color: "#E5FF60",
-                            borderColor: "#E5FF60",
+                            color: colors.yellow,
+                            borderColor: colors.yellow,
                             transition: "box-shadow 0.3s ease, transform 0.3s ease",
                             boxShadow: "0 8px 16px #E5FF60",
                             transform: "translateY(-4px)"
                         }}
                         _active={{
-                            background: "#13141B",
+                            background: colors.background,
                             color: "lightgreen",
                             borderColor: "lightgreen",
                             transition: "box-shadow 0.3s ease, transform 0.3s ease",
                             boxShadow: "0 8px 16px lightgreen",
                             transform: "translateY(-4px)"
                         }}
-                        color="#FFA260"
+                        color={colors.orange}
                         onClick={() => handleSubmit()}
                     >
                         Calculate

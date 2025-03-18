@@ -11,8 +11,9 @@ import {
     MagicCalculator,
     SpeedCalculator,
     StaminaCalculator
-} from '../calculators'
+} from 'features/calculators'
 import { availableCalculators, AvailableCalculators } from './AvailableCalculators'
+import { colors } from 'common'
 
 export const ChooseCalculator: React.FunctionComponent = () => {
     const [activeCalculator, setActiveCalculator] = useState<AvailableCalculators | null>(null)
@@ -22,7 +23,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
             {activeCalculator && (
                 <Back onClick={() => setActiveCalculator(null)}/>
             )}
-            <Flex color="#909198" marginBottom="80px" fontSize="32px" fontWeight="bold">
+            <Flex color={colors.text} marginBottom="80px" fontSize="32px" fontWeight="bold">
                     IndependenceOT Calculator
             </Flex>
             {!activeCalculator && (
