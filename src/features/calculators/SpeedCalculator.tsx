@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { CalculatorFields, SpeedSearchedValues } from './types'
 import { useFormik } from 'formik'
 import { findOutBreakpoints, resolveBonusText } from './helpers'
-import { Button, Flex, Image } from '@chakra-ui/react'
+import { Button, Flex, Image, Table, Td, Tr } from '@chakra-ui/react'
 import { Checkbox, Input } from 'lib/components'
 import { images } from 'assets'
 
@@ -53,8 +53,8 @@ export const SpeedCalculator: React.FunctionComponent = () => {
     })
 
     return (
-        <Flex justifyContent="center" alignItems="center" height="100%" color="#909198" >
-            <Flex height={isCalculated ? "1100px" : "550px"} width="1200px" borderRadius="10px" background="#13141B" alignItems="center" flexDirection="column" padding="0 30px 0 30px">
+        <Flex justifyContent="center" height="100%" color="#909198">
+            <Flex height={isCalculated ? "1400px" : "550px"} width="1200px" borderRadius="10px" background="#13141B" alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
                     Speed Breakpoints Calculator
                 </Flex>
@@ -99,74 +99,203 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                             <Flex>
                                 Here are your speed breakpoints:
                             </Flex>
-                            <Flex>
-                                <Image src={images.drawbridge90}/>
-                                <Flex margin="10px 0 0 10px">
-                                    Current speed {searchedValues?.resolvedBreakpoints.drawbridge.currentSpeed} - level {searchedValues?.resolvedBreakpoints.drawbridge.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.drawbridge.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.drawbridge.missingLevel} levels)
-                                </Flex>
-                            </Flex>
-                            <Flex gap="10px">
-                                <Image src={images.town100}/>
-                                <Image src={images.marble100}/>
-                                <Image src={images.cobble100}/>
-                                <Image src={images.floor100}/>
-                                <Image src={images.temple100}/>
-                                <Flex mt="12px">
-                                    Current speed {searchedValues?.resolvedBreakpoints.floorMarbleCobble.currentSpeed} - level {searchedValues?.resolvedBreakpoints.floorMarbleCobble.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.floorMarbleCobble.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.floorMarbleCobble.missingLevel} levels)
-                                </Flex>
-                            </Flex>
-                            <Flex>
-                                <Image src={images.dirtTown110}/>
-                                <Flex margin="10px 0 0 10px">
-                                    Current speed {searchedValues?.resolvedBreakpoints.dirtTown.currentSpeed} - level {searchedValues?.resolvedBreakpoints.dirtTown.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.dirtTown.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.dirtTown.missingLevel} levels)
-                                </Flex>
-                            </Flex>
-                            <Flex>
-                                <Image src={images.rock120}/>
-                                <Flex margin="10px 0 0 10px">
-                                    Current speed {searchedValues?.resolvedBreakpoints.rock.currentSpeed} - level {searchedValues?.resolvedBreakpoints.rock.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.rock.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.rock.missingLevel} levels)
-                                </Flex>
-                            </Flex>
-                            <Flex>
-                                <Image src={images.dirtFloorFast130}/>
-                                <Flex margin="10px 0 0 10px">
-                                    Current speed {searchedValues?.resolvedBreakpoints.dirtFloorFast.currentSpeed} - level {searchedValues?.resolvedBreakpoints.dirtFloorFast.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.dirtFloorFast.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.dirtFloorFast.missingLevel} levels)
-                                </Flex>
-                            </Flex>
-                            <Flex>
-                                <Image src={images.grass150}/>
-                                <Flex margin="10px 0 0 10px">
-                                    Current speed {searchedValues?.resolvedBreakpoints.grass.currentSpeed} - level {searchedValues?.resolvedBreakpoints.grass.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.grass.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.grass.missingLevel} levels)
-                                </Flex>
-                            </Flex>
-                            <Flex gap="10px">
-                                <Image src={images.dirtFloorSlower160}/>
-                                <Image src={images.sand160}/>
-                                <Image src={images.snow160}/>
-                                <Flex mt="12px">
-                                    Current speed {searchedValues?.resolvedBreakpoints.dirtFloorSlower.currentSpeed} - level {searchedValues?.resolvedBreakpoints.dirtFloorSlower.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.dirtFloorSlower.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.dirtFloorSlower.missingLevel} levels)
-                                </Flex>
-                            </Flex>
-                            <Flex>
-                                <Image src={images.water170}/>
-                                <Flex margin="10px 0 0 10px">
-                                    Current speed {searchedValues?.resolvedBreakpoints.water.currentSpeed} - level {searchedValues?.resolvedBreakpoints.water.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.water.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.water.missingLevel} levels)
-                                </Flex>
-                            </Flex>
-                            <Flex>
-                                <Image src={images.wheat180}/>
-                                <Flex margin="10px 0 0 10px">
-                                    Current speed {searchedValues?.resolvedBreakpoints.wheat.currentSpeed} - level {searchedValues?.resolvedBreakpoints.wheat.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.wheat.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.wheat.missingLevel} levels)
-                                </Flex>
-                            </Flex>
-                            <Flex>
-                                <Image src={images.muddyFloor200}/>
-                                <Flex margin="10px 0 0 10px">
-                                    Current speed {searchedValues?.resolvedBreakpoints.muddyFloor.currentSpeed} - level {searchedValues?.resolvedBreakpoints.muddyFloor.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.muddyFloor.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.muddyFloor.missingLevel} levels)
-                                </Flex>
-                            </Flex>
+                            <Table>
+                                <Tr>
+                                    <Td>
+                                        Tile
+                                    </Td>
+                                    <Td>
+                                        Current speed
+                                    </Td>
+                                    <Td>
+                                        Current level
+                                    </Td>
+                                    <Td>
+                                        Missing speed
+                                    </Td>
+                                    <Td>
+                                        Missing levels
+                                    </Td>
+                                </Tr>
+                                <Tr>
+                                    <Td>
+                                        <Image src={images.drawbridge90}/>
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.drawbridge.currentSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.drawbridge.breakpointLevel}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.drawbridge.missingSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.drawbridge.missingLevel}
+                                    </Td>
+                                </Tr>
+                                <Tr>
+                                    <Td>
+                                        <Image src={images.dirtTown110}/>
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.dirtTown.currentSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.dirtTown.breakpointLevel}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.dirtTown.missingSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.dirtTown.missingLevel}
+                                    </Td>
+                                </Tr>
+                                <Tr>
+                                    <Td>
+                                        <Image src={images.rock120}/>
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.rock.currentSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.rock.breakpointLevel}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.rock.missingSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.rock.missingLevel}
+                                    </Td>
+                                </Tr>
+                                <Tr>
+                                    <Td>
+                                        <Image src={images.dirtFloorFast130}/>
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.dirtFloorFast.currentSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.dirtFloorFast.breakpointLevel}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.dirtFloorFast.missingSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.dirtFloorFast.missingLevel}
+                                    </Td>
+                                </Tr>
+                                <Tr>
+                                    <Td>
+                                        <Image src={images.grass150}/>
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.grass.currentSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.grass.breakpointLevel}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.grass.missingSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.grass.missingLevel}
+                                    </Td>
+                                </Tr>
+                                <Tr>
+                                    <Td>
+                                        <Image src={images.water170}/>
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.water.currentSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.water.breakpointLevel}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.water.missingSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.water.missingLevel}
+                                    </Td>
+                                </Tr>
+                                <Tr>
+                                    <Td>
+                                        <Image src={images.wheat180}/>
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.wheat.currentSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.wheat.breakpointLevel}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.wheat.missingSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.wheat.missingLevel}
+                                    </Td>
+                                </Tr>
+                                <Tr>
+                                    <Td>
+                                        <Image src={images.muddyFloor200}/>
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.muddyFloor.currentSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.muddyFloor.breakpointLevel}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.muddyFloor.missingSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.muddyFloor.missingLevel}
+                                    </Td>
+                                </Tr>
+                                <Tr>
+                                    <Td display="flex" gap="10px" >
+                                        <Image src={images.town100}/>
+                                        <Image src={images.marble100}/>
+                                        <Image src={images.cobble100}/>
+                                        <Image src={images.floor100}/>
+                                        <Image src={images.temple100}/>
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.floorMarbleCobble.currentSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.floorMarbleCobble.breakpointLevel}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.floorMarbleCobble.missingSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.floorMarbleCobble.missingLevel}
+                                    </Td>
+                                </Tr>
+                                <Tr>
+                                    <Td display="flex" gap="10px">
+                                        <Image src={images.dirtFloorSlower160}/>
+                                        <Image src={images.sand160}/>
+                                        <Image src={images.snow160}/>
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.dirtFloorSlower.currentSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.dirtFloorSlower.breakpointLevel}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.dirtFloorSlower.missingSpeed}
+                                    </Td>
+                                    <Td>
+                                        {searchedValues?.resolvedBreakpoints.dirtFloorSlower.missingLevel}
+                                    </Td>
+                                </Tr>
+                            </Table>
                         </Flex>
-                    )}
+                        )}
                 </Flex>
             </Flex>
         </Flex>

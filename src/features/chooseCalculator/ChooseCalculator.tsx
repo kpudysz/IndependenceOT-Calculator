@@ -18,14 +18,12 @@ export const ChooseCalculator: React.FunctionComponent = () => {
     const [activeCalculator, setActiveCalculator] = useState<AvailableCalculators | null>(null)
 
     return (
-        <Flex width="100vw" margin="80px 80px" justifyContent="center" flexDirection="column" alignItems="center" overflow="auto">
+        <Flex width="100vw" height="100vh" padding="80px 80px" justifyContent="center" flexDirection="column" alignItems="center" overflow="auto">
             {activeCalculator && (
                 <Back onClick={() => setActiveCalculator(null)}/>
             )}
             <Flex color="#909198" marginBottom="80px" fontSize="32px" fontWeight="bold">
-                <Flex>
                     IndependenceOT Calculator
-                </Flex>
             </Flex>
             {!activeCalculator && (
                 <Flex flexWrap="wrap" maxWidth="900px" justifyContent="center" gap="50px" alignItems="center" >

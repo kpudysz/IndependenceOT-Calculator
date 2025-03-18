@@ -53,7 +53,7 @@ export const CapacityCalculator: React.FunctionComponent = () => {
     })
 
     return (
-        <Flex justifyContent="center" alignItems="center" height="100%" color="#909198">
+        <Flex justifyContent="center" height="100%" color="#909198">
             <Flex height={isCalculated ? "550px" : "400px"} width="600px" borderRadius="10px" background="#13141B" alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
                     Capacity Calculator
