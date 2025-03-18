@@ -101,43 +101,69 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                             </Flex>
                             <Flex>
                                 <Image src={images.drawbridge90}/>
-                                : Current speed {searchedValues?.resolvedBreakpoints.drawbridge.currentSpeed} - level {searchedValues?.resolvedBreakpoints.drawbridge.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.drawbridge.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.drawbridge.missingLevel} levels)
+                                <Flex margin="10px 0 0 10px">
+                                    Current speed {searchedValues?.resolvedBreakpoints.drawbridge.currentSpeed} - level {searchedValues?.resolvedBreakpoints.drawbridge.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.drawbridge.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.drawbridge.missingLevel} levels)
+                                </Flex>
                             </Flex>
-                            <Flex>
+                            <Flex gap="10px">
                                 <Image src={images.town100}/>
                                 <Image src={images.marble100}/>
                                 <Image src={images.cobble100}/>
                                 <Image src={images.floor100}/>
                                 <Image src={images.temple100}/>
-                                : Current speed {searchedValues?.resolvedBreakpoints.floorMarbleCobble.currentSpeed} - level {searchedValues?.resolvedBreakpoints.floorMarbleCobble.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.floorMarbleCobble.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.floorMarbleCobble.missingLevel} levels)
+                                <Flex mt="12px">
+                                    Current speed {searchedValues?.resolvedBreakpoints.floorMarbleCobble.currentSpeed} - level {searchedValues?.resolvedBreakpoints.floorMarbleCobble.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.floorMarbleCobble.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.floorMarbleCobble.missingLevel} levels)
+                                </Flex>
                             </Flex>
                             <Flex>
                                 <Image src={images.dirtTown110}/>
-                                : Current speed {searchedValues?.resolvedBreakpoints.dirtTown.currentSpeed} - level {searchedValues?.resolvedBreakpoints.dirtTown.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.dirtTown.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.dirtTown.missingLevel} levels)
+                                <Flex margin="10px 0 0 10px">
+                                    Current speed {searchedValues?.resolvedBreakpoints.dirtTown.currentSpeed} - level {searchedValues?.resolvedBreakpoints.dirtTown.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.dirtTown.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.dirtTown.missingLevel} levels)
+                                </Flex>
                             </Flex>
                             <Flex>
-                                <Image src={images.rock120}/>: Current speed {searchedValues?.resolvedBreakpoints.rock.currentSpeed} - level {searchedValues?.resolvedBreakpoints.rock.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.rock.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.rock.missingLevel} levels)
+                                <Image src={images.rock120}/>
+                                <Flex margin="10px 0 0 10px">
+                                    Current speed {searchedValues?.resolvedBreakpoints.rock.currentSpeed} - level {searchedValues?.resolvedBreakpoints.rock.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.rock.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.rock.missingLevel} levels)
+                                </Flex>
                             </Flex>
                             <Flex>
-                                <Image src={images.dirtFloorFast130}/>: Current speed {searchedValues?.resolvedBreakpoints.dirtFloorFast.currentSpeed} - level {searchedValues?.resolvedBreakpoints.dirtFloorFast.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.dirtFloorFast.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.dirtFloorFast.missingLevel} levels)
+                                <Image src={images.dirtFloorFast130}/>
+                                <Flex margin="10px 0 0 10px">
+                                    Current speed {searchedValues?.resolvedBreakpoints.dirtFloorFast.currentSpeed} - level {searchedValues?.resolvedBreakpoints.dirtFloorFast.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.dirtFloorFast.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.dirtFloorFast.missingLevel} levels)
+                                </Flex>
                             </Flex>
                             <Flex>
-                                <Image src={images.grass150}/>: Current speed {searchedValues?.resolvedBreakpoints.grass.currentSpeed} - level {searchedValues?.resolvedBreakpoints.grass.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.grass.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.grass.missingLevel} levels)
+                                <Image src={images.grass150}/>
+                                <Flex margin="10px 0 0 10px">
+                                    Current speed {searchedValues?.resolvedBreakpoints.grass.currentSpeed} - level {searchedValues?.resolvedBreakpoints.grass.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.grass.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.grass.missingLevel} levels)
+                                </Flex>
                             </Flex>
-                            <Flex>
+                            <Flex gap="10px">
                                 <Image src={images.dirtFloorSlower160}/>
                                 <Image src={images.sand160}/>
                                 <Image src={images.snow160}/>
-                                : Current speed {searchedValues?.resolvedBreakpoints.dirtFloorSlower.currentSpeed} - level {searchedValues?.resolvedBreakpoints.dirtFloorSlower.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.dirtFloorSlower.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.dirtFloorSlower.missingLevel} levels)
+                                <Flex mt="12px">
+                                    Current speed {searchedValues?.resolvedBreakpoints.dirtFloorSlower.currentSpeed} - level {searchedValues?.resolvedBreakpoints.dirtFloorSlower.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.dirtFloorSlower.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.dirtFloorSlower.missingLevel} levels)
+                                </Flex>
                             </Flex>
                             <Flex>
-                                <Image src={images.water170}/>: Current speed {searchedValues?.resolvedBreakpoints.water.currentSpeed} - level {searchedValues?.resolvedBreakpoints.water.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.water.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.water.missingLevel} levels)
+                                <Image src={images.water170}/>
+                                <Flex margin="10px 0 0 10px">
+                                    Current speed {searchedValues?.resolvedBreakpoints.water.currentSpeed} - level {searchedValues?.resolvedBreakpoints.water.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.water.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.water.missingLevel} levels)
+                                </Flex>
                             </Flex>
                             <Flex>
-                                <Image src={images.wheat180}/>: Current speed {searchedValues?.resolvedBreakpoints.wheat.currentSpeed} - level {searchedValues?.resolvedBreakpoints.wheat.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.wheat.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.wheat.missingLevel} levels)
+                                <Image src={images.wheat180}/>
+                                <Flex margin="10px 0 0 10px">
+                                    Current speed {searchedValues?.resolvedBreakpoints.wheat.currentSpeed} - level {searchedValues?.resolvedBreakpoints.wheat.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.wheat.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.wheat.missingLevel} levels)
+                                </Flex>
                             </Flex>
                             <Flex>
-                                <Image src={images.muddyFloor200}/>: Current speed {searchedValues?.resolvedBreakpoints.muddyFloor.currentSpeed} - level {searchedValues?.resolvedBreakpoints.muddyFloor.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.muddyFloor.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.muddyFloor.missingLevel} levels)
+                                <Image src={images.muddyFloor200}/>
+                                <Flex margin="10px 0 0 10px">
+                                    Current speed {searchedValues?.resolvedBreakpoints.muddyFloor.currentSpeed} - level {searchedValues?.resolvedBreakpoints.muddyFloor.breakpointLevel} - Next breakpoint after {searchedValues?.resolvedBreakpoints.muddyFloor.missingSpeed} speed ({searchedValues?.resolvedBreakpoints.muddyFloor.missingLevel} levels)
+                                </Flex>
                             </Flex>
                         </Flex>
                     )}
