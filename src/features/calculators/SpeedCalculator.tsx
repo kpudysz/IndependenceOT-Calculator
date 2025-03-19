@@ -6,6 +6,7 @@ import { Button, Flex, Image, Table, Td, Tr } from '@chakra-ui/react'
 import { Checkbox, Input } from 'lib/components'
 import { images } from 'assets'
 import { colors } from 'common'
+import { useTranslation } from 'react-i18next'
 
 type FormValues = {
     level: string,
@@ -16,6 +17,7 @@ type FormValues = {
 }
 
 export const SpeedCalculator: React.FunctionComponent = () => {
+    const { t } = useTranslation('translation', { keyPrefix: 'speedBreakpoints' })
     const [isCalculated, setIsCalculated] = useState(false)
     const [searchedValues, setSearchedValues] = useState<SpeedSearchedValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
@@ -57,14 +59,14 @@ export const SpeedCalculator: React.FunctionComponent = () => {
         <Flex justifyContent="center" height="100%" color={colors.text}>
             <Flex height={isCalculated ? "1400px" : "550px"} width="1200px" borderRadius="10px" background={colors.background} alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
-                    Speed Breakpoints Calculator
+                    {t('speedBreakpointsCalculator')}
                 </Flex>
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
                     <Input onChange={value => setFieldValue(CalculatorFields.LEVEL, value)} label={'Level'} controlledValue={values.level} isClearable={false} />
-                    <Checkbox isChecked={values.withMount} label="Mount Bonus" setIsChecked={value => setFieldValue(CalculatorFields.WITHMOUNT, value)}/>
-                    <Checkbox isChecked={values.withVenore} label="Venore World Change" setIsChecked={value => setFieldValue(CalculatorFields.WITHVENORE, value)}/>
-                    <Checkbox isChecked={values.withBoh} label="Boots of Haste charm" setIsChecked={value => setFieldValue(CalculatorFields.WITHBOH, value)}/>
-                    <Checkbox isChecked={values.withHaste} label="Haste spell" setIsChecked={value => setFieldValue(CalculatorFields.WITHHASTE, value)}/>
+                    <Checkbox isChecked={values.withMount} label={t('mountBonus')} setIsChecked={value => setFieldValue(CalculatorFields.WITHMOUNT, value)}/>
+                    <Checkbox isChecked={values.withVenore} label={t('venoreWorldChange')} setIsChecked={value => setFieldValue(CalculatorFields.WITHVENORE, value)}/>
+                    <Checkbox isChecked={values.withBoh} label={t('bootsOfHasteCharm')} setIsChecked={value => setFieldValue(CalculatorFields.WITHBOH, value)}/>
+                    <Checkbox isChecked={values.withHaste} label={t('hasteSpell')} setIsChecked={value => setFieldValue(CalculatorFields.WITHHASTE, value)}/>
                     <Button
                         padding="8px 22px"
                         mt="20px"
@@ -90,32 +92,37 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                         color={colors.orange}
                         onClick={() => handleSubmit()}
                     >
-                        Calculate
+                        {t('calculate')}
                     </Button>
                     {isCalculated && (
                         <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center" textAlign="center">
                             <Flex>
-                                As level {searchedValues?.level} {withBonus ? 'with' : ''} {bonusText} you will have {searchedValues?.resolvedBreakpoints.speed} speed.
+                                {t('speedResult', {
+                                    level: searchedValues?.level,
+                                    withBonus: withBonus ? t('with') : '',
+                                    bonusText,
+                                    speed: searchedValues?.resolvedBreakpoints.speed
+                                })}
                             </Flex>
                             <Flex>
-                                Here are your speed breakpoints:
+                                {t('speedBreakpoints')}
                             </Flex>
                             <Table>
                                 <Tr>
                                     <Td>
-                                        Tile
+                                        {t('tile')}
                                     </Td>
                                     <Td>
-                                        Current speed
+                                        {t('currentSpeed')}
                                     </Td>
                                     <Td>
-                                        Current level
+                                        {t('currentLevel')}
                                     </Td>
                                     <Td>
-                                        Missing speed
+                                        {t('missingSpeed')}
                                     </Td>
                                     <Td>
-                                        Missing levels
+                                        {t('missingLevels')}
                                     </Td>
                                 </Tr>
                                 <Tr>

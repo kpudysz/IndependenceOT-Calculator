@@ -5,6 +5,7 @@ import { calculateAttackValue, findAttackValueIncrements } from './helpers'
 import { Button, Flex } from '@chakra-ui/react'
 import { Input } from 'lib/components'
 import { colors } from 'common'
+import { useTranslation } from 'react-i18next'
 
 type FormValues = {
     weaponAttack: string | null;
@@ -12,6 +13,7 @@ type FormValues = {
 }
 
 export const AttackValueCalculator: React.FunctionComponent = () => {
+    const { t } = useTranslation('translation', { keyPrefix: 'attackValue' })
     const [isCalculated, setIsCalculated] = useState(false)
     const [searchedValues, setSearchedValues] = useState<AttackSearchedValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
@@ -42,11 +44,11 @@ export const AttackValueCalculator: React.FunctionComponent = () => {
         <Flex justifyContent="center" height="100%" color={colors.text}>
             <Flex height={isCalculated ? "750px" : "400px"} width="600px" borderRadius="10px" background={colors.background} alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
-                    Attack Value Calculator
+                    {t('attackValueCalculator')}
                 </Flex>
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
-                    <Input onChange={value => setFieldValue(CalculatorFields.WEAPONATTACK, value)} label={'Weapon Attack'} isNumeric controlledValue={values.weaponAttack?.toString()} isClearable={false} />
-                    <Input onChange={value => setFieldValue(CalculatorFields.SKILL, value)} label={'Skill'} isNumeric controlledValue={values.skill?.toString()} isClearable={false}/>
+                    <Input onChange={value => setFieldValue(CalculatorFields.WEAPONATTACK, value)} label={t('weaponAttack')} isNumeric controlledValue={values.weaponAttack?.toString()} isClearable={false} />
+                    <Input onChange={value => setFieldValue(CalculatorFields.SKILL, value)} label={t('skill')} isNumeric controlledValue={values.skill?.toString()} isClearable={false}/>
                     <Button
                         padding="8px 22px"
                         mt="20px"
@@ -72,22 +74,26 @@ export const AttackValueCalculator: React.FunctionComponent = () => {
                         color={colors.orange}
                         onClick={() => handleSubmit()}
                     >
-                        Calculate
+                        {t('calculate')}
                     </Button>
                     {isCalculated && (
                         <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center">
                             <Flex textAlign="center">
-                                When using weapon that has {searchedValues?.weaponAttack} attack and {searchedValues?.skill} skill you get additional {searchedValues?.attackValue} attack value.
+                                {t('attackValueResult', {
+                                    weaponAttack: searchedValues?.weaponAttack,
+                                    skill: searchedValues?.skill,
+                                    attackValue: searchedValues?.attackValue
+                                })}
                             </Flex>
                             {searchedValues?.attackValueIncrements.length && (
                                 <Fragment>
                                     <Flex>
-                                        With that weapon here are the next skillups that will give you bonus attack value:
+                                        {t('nextSkillups')}
                                     </Flex>
                                     <Flex flexDirection="column" gap="12px">
                                         {searchedValues?.attackValueIncrements.map((item, index) => index < 10 ? (
                                             <Flex key={item.skill}>
-                                                Skill: {item.skill} - Attack Value {item.attackValue}
+                                                {t('skill')}: {item.skill} - {t('attackValue')} {item.attackValue}
                                             </Flex>
                                         ) : null)}
                                     </Flex>

@@ -14,7 +14,7 @@ export const missingExpForLevel = (currentLevel: number, percentToNext: number, 
 }
 
 export const calculateExperiencePercentage = (currentLevel: number, percentToNext: number, desiredLevel: number) => {
-    const currentLevelExperience = missingExpForLevel(1, 100, currentLevel)
+    const currentLevelExperience = missingExpForLevel(1, 100, currentLevel) || 0
     const nextLevelExperience = missingExpForLevel(currentLevel, 100, currentLevel + 1)
     const percentToNextExperience = missingExpForLevel(currentLevel, percentToNext, currentLevel + 1)
     const totalExperience = currentLevelExperience + (nextLevelExperience - percentToNextExperience)

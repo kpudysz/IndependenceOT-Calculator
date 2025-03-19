@@ -6,6 +6,7 @@ import { Button, Flex } from '@chakra-ui/react'
 import { Input } from 'lib/components'
 import { calculateExperiencePercentage } from './helpers/experience'
 import { colors } from 'common'
+import { useTranslation } from 'react-i18next'
 
 type FormValues = {
     currentLevel: number | null;
@@ -14,6 +15,7 @@ type FormValues = {
 }
 
 export const ExperienceCalculator: React.FunctionComponent = () => {
+    const { t } = useTranslation('translation', { keyPrefix: 'experience' })
     const [isCalculated, setIsCalculated] = useState(false)
     const [searchedValues, setSearchedValues] = useState<ExperienceSearchedValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
@@ -45,12 +47,12 @@ export const ExperienceCalculator: React.FunctionComponent = () => {
         <Flex justifyContent="center" height="100%" color={colors.text}>
             <Flex height={isCalculated ? "680px" : "500px"} width="600px" borderRadius="10px" background={colors.background} alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
-                    Experience Calculator
+                    {t('experienceCalculator')}
                 </Flex>
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
-                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTLEVEL, value)} label={'Current Level'} isNumeric controlledValue={values.currentLevel?.toString()} isClearable={false} />
-                    <Input onChange={value => setFieldValue(CalculatorFields.PERCENTTONEXT, value)} label={'Percent to Next Skill'} isNumeric controlledValue={values.percentToNext?.toString()} isClearable={false}/>
-                    <Input onChange={value => setFieldValue(CalculatorFields.DESIREDLEVEL, value)} label={'Desired Level'} isNumeric controlledValue={values.desiredLevel?.toString()} isClearable={false}/>
+                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTLEVEL, value)} label={t('currentLevel')} isNumeric controlledValue={values.currentLevel?.toString()} isClearable={false} />
+                    <Input onChange={value => setFieldValue(CalculatorFields.PERCENTTONEXT, value)} label={t('percentToNextLevel')} isNumeric controlledValue={values.percentToNext?.toString()} isClearable={false}/>
+                    <Input onChange={value => setFieldValue(CalculatorFields.DESIREDLEVEL, value)} label={t('desiredLevel')} isNumeric controlledValue={values.desiredLevel?.toString()} isClearable={false}/>
                     <Button
                         padding="8px 22px"
                         mt="20px"
@@ -76,15 +78,20 @@ export const ExperienceCalculator: React.FunctionComponent = () => {
                         color={colors.orange}
                         onClick={() => handleSubmit()}
                     >
-                        Calculate
+                        {t('calculate')}
                     </Button>
                     {isCalculated && (
                         <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center">
                             <Flex textAlign="center">
-                                With level {searchedValues?.currentLevel} and {searchedValues?.percentToNext} percent to next level you need {searchedValues?.missingExperience.toLocaleString()} experience to reach level {searchedValues?.desiredLevel}.
+                                {t('missingExperience', {
+                                    currentLevel: searchedValues?.currentLevel,
+                                    percentToNext: searchedValues?.percentToNext,
+                                    missingExperience: searchedValues?.missingExperience.toLocaleString(),
+                                    desiredLevel: searchedValues?.desiredLevel
+                                })}
                             </Flex>
                             <Flex>
-                                You currently have {searchedValues?.percentage} % of required experience.
+                                {t('percentage', { percentage: searchedValues?.percentage })}
                             </Flex>
                         </Flex>
                     )}

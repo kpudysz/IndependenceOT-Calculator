@@ -1,0 +1,95 @@
+{
+  "basic": {
+    "basicCalculator": "Basic Calculator",
+    "selectSkill": "Select Skill",
+    "select": "Select...",
+    "currentSkill": "Current Skill",
+    "percentToNextSkill": "Percent to Next Skill",
+    "desiredSkill": "Desired Skill",
+    "calculate": "Calculate",
+    "skillHits": "With {{currentSkill}} {{skillType}} and {{percentToNext}} percent to next level you will need {{rawSkill}} hits to reach {{desiredSkill}} skill.",
+    "timeForSkill": "To reach that skill it will take approximately {{timeForSkill}}.",
+    "percentage": "You currently have {{percentage}}% of required hits.",
+    "offlineTraining": "To reach this skill just through offline training it will take {{offlineTraining}}.",
+    "years": "years",
+    "months": "months",
+    "days": "days",
+    "hours": "hours",
+    "minutes": "minutes",
+    "seconds": "seconds"
+  },
+  "fist": {
+    "fistCalculator": "Fist Calculator"
+  },
+  "magic": {
+    "magicCalculator": "Magic Calculator",
+    "requiredMana": "With magic level {{currentSkill}} and {{percentToNext}} percent to next level you will need to use {{rawSkill}} mana to reach magic level {{desiredSkill}}.",
+    "regenerationTime": "To reach that magic level by regeneration it will take approximately {{timeForSkill}}.",
+    "potionsAmount": "To reach that magic level by potions it will require {{manaPotions}} mana potions.",
+    "percentage": "You currently burned {{percentage}}% of total required mana."
+  },
+  "experience": {
+    "experienceCalculator": "Experience Calculator",
+    "currentLevel": "Current Level",
+    "percentToNextLevel": "Percent to Next Level",
+    "desiredLevel": "Desired Level",
+    "calculate": "Calculate",
+    "missingExperience": "With level {{currentLevel}} and {{percentToNext}} percent to next level you need {{missingExperience}} experience to reach level {{desiredLevel}}.",
+    "percentage": "You currently have {{percentage}}% of required experience."
+  },
+  "capacity": {
+    "capacityCalculator": "Capacity Calculator",
+    "scavengeAndCarlin": "With scavenge charm and active Venore world change",
+    "onlyCarlin": "With active Carlin world change",
+    "onlyScavenge": "With active scavenge charm",
+    "level": "Level",
+    "scavengeCharm": "Scavenge charm",
+    "carlin": "Carlin world change",
+    "calculate": "Calculate",
+    "capacityResult": "At level {{level}} {{bonusMessage}} you will have {{capacity}} capacity."
+  },
+  "fishing": {
+    "fishingCalculator": "Fishing Calculator",
+    "currentFishing": "Current Fishing",
+    "percentToNextSkill": "Percent to Next Skill",
+    "desiredFishing": "Desired Fishing",
+    "calculate": "Calculate",
+    "fishingResult": "With {{currentSkill}} fishing and {{percentToNext}} percent to next fishing you need {{neededTries}} tries to reach {{desiredSkill}} fishing.",
+    "neededTime": "To reach that fishing it will take approximately {{timeForSkill}}.",
+    "percentage": "You currently have {{percentage}}% of required tries."
+  },
+  "attackValue": {
+    "attackValueCalculator": "Attack Value Calculator",
+    "weaponAttack": "Weapon Attack",
+    "skill": "Skill",
+    "calculate": "Calculate",
+    "attackValueResult": "When using weapon that has {{weaponAttack}} attack and {{skill}} skill you get additional {{attackValue}} attack value.",
+    "nextSkillups": "With that weapon here are the next skillups that will give you bonus attack value:",
+    "attackValue": "Attack Value"
+  },
+  "speedBreakpoints": {
+    "speedBreakpointsCalculator": "Speed Breakpoints Calculator",
+    "level": "Level",
+    "mountBonus": "Mount Bonus",
+    "venoreWorldChange": "Venore World Change",
+    "bootsOfHasteCharm": "Boots of Haste Charm",
+    "hasteSpell": "Haste Spell",
+    "calculate": "Calculate",
+    "speedResult": "As level {{level}} {{withBonus}} {{bonusText}} you will have {{speed}} speed.",
+    "speedBreakpoints": "Here are your speed breakpoints:",
+    "tile": "Tile",
+    "currentSpeed": "Current Speed",
+    "currentLevel": "Current Level",
+    "missingSpeed": "Missing Speed",
+    "missingLevels": "Missing Levels",
+    "with": "with"
+  },
+  "stamina": {
+    "staminaCalculator": "Stamina Calculator",
+    "currentStamina": "Current Stamina",
+    "desiredStamina": "Desired Stamina",
+    "calculate": "Calculate",
+    "staminaResult": "If you have {{currentStamina}} stamina and you want to have {{goalStamina}} stamina, you need to wait {{requiredHours}} hours and {{requiredMinutes}} minutes.",
+    "staminaGoal": "You will have desired stamina at {{goalTime}}."
+  }
+}

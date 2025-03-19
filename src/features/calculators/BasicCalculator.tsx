@@ -7,6 +7,7 @@ import { SelectOptions } from 'lib/types'
 import { CalculatorFields, BasicSearchedValues, Skills } from './types'
 import { calculateSkill, calculateSkillTime, skillEnumToValue, calculateOfflineTraining } from './helpers'
 import { colors } from 'common'
+import { useTranslation } from 'react-i18next'
 
 type FormValues = {
     skillToCalculate: SelectOptions | null;
@@ -16,6 +17,7 @@ type FormValues = {
 }
 
 export const BasicCalculator: React.FunctionComponent = () => {
+    const { t } = useTranslation('translation')
     const [isCalculated, setIsCalculated] = useState(false)
     const [searchedValues, setSearchedValues] = useState<BasicSearchedValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
@@ -32,7 +34,7 @@ export const BasicCalculator: React.FunctionComponent = () => {
 
             const calculatedSkill = calculateSkill(form.skillToCalculate.value, Number(form.currentSkill), Number(form.percentToNext), Number(form.desiredSkill))
             const neededHits = Math.floor(calculatedSkill.neededHits)
-            const timeForSkill = calculateSkillTime(form.skillToCalculate.value, Math.floor(calculatedSkill.neededHits))
+            const timeForSkill = calculateSkillTime(form.skillToCalculate.value, Math.floor(calculatedSkill.neededHits), t)
 
             setSearchedValues({
                 skillToCalculate: form.skillToCalculate.value,
@@ -41,7 +43,7 @@ export const BasicCalculator: React.FunctionComponent = () => {
                 percentToNext: form.percentToNext,
                 percentage: calculatedSkill.percentage,
                 rawSkill: neededHits,
-                offlineTraining: calculateOfflineTraining(neededHits),
+                offlineTraining: calculateOfflineTraining(neededHits, t),
                 timeForSkill
             })
             setIsCalculated(true)
@@ -52,13 +54,13 @@ export const BasicCalculator: React.FunctionComponent = () => {
         <Flex justifyContent="center" height="100%" color={colors.text}>
             <Flex height={isCalculated ? "750px" : "600px"} width="600px" borderRadius="10px" background={colors.background} alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
-                    Basic Calculator
+                    {t('basic.basicCalculator')}
                 </Flex>
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
-                    <Select options={basicCalculatorOptions} onChange={selectedOption => setFieldValue(CalculatorFields.SELECTSKILL, selectedOption)} label="Select Skill" isClearable={false}/>
-                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSKILL, value)} label={'Current Skill'} isNumeric controlledValue={values.currentSkill?.toString()} isClearable={false} />
-                    <Input onChange={value => setFieldValue(CalculatorFields.PERCENTTONEXT, value)} label={'Percent to Next Skill'} isNumeric controlledValue={values.percentToNext?.toString()} isClearable={false}/>
-                    <Input onChange={value => setFieldValue(CalculatorFields.DESIREDSKILL, value)} label={'Desired Skill'} isNumeric controlledValue={values.desiredSkill?.toString()} isClearable={false}/>
+                    <Select options={basicCalculatorOptions} onChange={selectedOption => setFieldValue(CalculatorFields.SELECTSKILL, selectedOption)} label={t('basic.selectSkill')} placeholder={t('basic.select')} isClearable={false}/>
+                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSKILL, value)} label={t('basic.currentSkill')} isNumeric controlledValue={values.currentSkill?.toString()} isClearable={false} />
+                    <Input onChange={value => setFieldValue(CalculatorFields.PERCENTTONEXT, value)} label={t('basic.percentToNextSkill')} isNumeric controlledValue={values.percentToNext?.toString()} isClearable={false}/>
+                    <Input onChange={value => setFieldValue(CalculatorFields.DESIREDSKILL, value)} label={t('basic.desiredSkill')} isNumeric controlledValue={values.desiredSkill?.toString()} isClearable={false}/>
                     <Button
                         padding="8px 22px"
                         mt="20px"
@@ -84,21 +86,27 @@ export const BasicCalculator: React.FunctionComponent = () => {
                         color={colors.orange}
                         onClick={() => handleSubmit()}
                     >
-                        Calculate
+                        {t('basic.calculate')}
                     </Button>
                     {isCalculated && (
                         <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center">
                             <Flex textAlign="center">
-                                With {searchedValues?.currentSkill} {skillEnumToValue(searchedValues?.skillToCalculate as Skills)} and {searchedValues?.percentToNext} percent to next level you will need {searchedValues?.rawSkill.toLocaleString()} hits to reach {searchedValues?.desiredSkill} skill.
+                                {t('basic.skillHits', {
+                                    currentSkill: searchedValues?.currentSkill,
+                                    skillType: skillEnumToValue(searchedValues?.skillToCalculate as Skills),
+                                    percentToNext: searchedValues?.percentToNext,
+                                    rawSkill: searchedValues?.rawSkill.toLocaleString(),
+                                    desiredSkill: searchedValues?.desiredSkill
+                                })}
                             </Flex>
                             <Flex>
-                                To reach that skill it will take approximately {searchedValues?.timeForSkill}.
+                                {t('basic.timeForSkill', { timeForSkill: searchedValues?.timeForSkill })}
                             </Flex>
                             <Flex>
-                                You currently have {searchedValues?.percentage} % of required hits.
+                                {t('basic.percentage', { percentage: searchedValues?.percentage })}
                             </Flex>
                             <Flex>
-                                To reach this skill just through offline training it will take {searchedValues?.offlineTraining}.
+                                {t('basic.offlineTraining', { offlineTraining: searchedValues?.offlineTraining })}
                             </Flex>
                         </Flex>
                     )}

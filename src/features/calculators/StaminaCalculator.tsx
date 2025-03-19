@@ -6,6 +6,7 @@ import { Input } from 'lib/components'
 import { format } from 'date-fns'
 import { addMinutesToCurrentDate, calculateStamina, formatMinutesToStamina } from './helpers'
 import { colors } from 'common'
+import { useTranslation } from 'react-i18next'
 
 type FormValues = {
     currentStamina: string,
@@ -13,6 +14,7 @@ type FormValues = {
 }
 
 export const StaminaCalculator: React.FunctionComponent = () => {
+    const { t } = useTranslation('translation', { keyPrefix: 'stamina' })
     const [isCalculated, setIsCalculated] = useState(false)
     const [searchedValues, setSearchedValues] = useState<StaminaSearchedValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
@@ -43,11 +45,11 @@ export const StaminaCalculator: React.FunctionComponent = () => {
         <Flex justifyContent="center" height="100%" color={colors.text}>
             <Flex height={isCalculated ? "500px" : "400px"} width="600px" borderRadius="10px" background={colors.background} alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
-                    Stamina Calculator
+                    {t('staminaCalculator')}
                 </Flex>
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
-                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSTAMINA, value)} label={'Current Stamina'} controlledValue={values.currentStamina} isClearable={false} />
-                    <Input onChange={value => setFieldValue(CalculatorFields.GOALSTAMINA, value)} label={'Desired Stamina'} controlledValue={values.goalStamina} isClearable={false}/>
+                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSTAMINA, value)} label={t('currentStamina')} controlledValue={values.currentStamina} isClearable={false} />
+                    <Input onChange={value => setFieldValue(CalculatorFields.GOALSTAMINA, value)} label={t('desiredStamina')} controlledValue={values.goalStamina} isClearable={false}/>
                     <Button
                         padding="8px 22px"
                         mt="20px"
@@ -73,15 +75,20 @@ export const StaminaCalculator: React.FunctionComponent = () => {
                         color={colors.orange}
                         onClick={() => handleSubmit()}
                     >
-                        Calculate
+                        {t('calculate')}
                     </Button>
                     {isCalculated && (
                         <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center" textAlign="center">
                             <Flex>
-                                If you have {searchedValues?.currentStamina} stamina and you want to have {searchedValues?.goalStamina} stamina, you need to wait {searchedValues?.requiredHours.hours} hours and {searchedValues?.requiredHours.minutes} minutes.
+                                {t('staminaResult', {
+                                    currentStamina: searchedValues?.currentStamina,
+                                    goalStamina: searchedValues?.goalStamina,
+                                    requiredHours: searchedValues?.requiredHours.hours,
+                                    requiredMinutes: searchedValues?.requiredHours.minutes
+                                })}
                             </Flex>
                             <Flex>
-                                You will have desired stamina at {searchedValues?.goalTime}.
+                                {t('staminaGoal', { goalTime: searchedValues?.goalTime })}
                             </Flex>
                         </Flex>
                     )}

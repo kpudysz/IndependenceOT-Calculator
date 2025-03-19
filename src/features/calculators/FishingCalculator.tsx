@@ -5,6 +5,7 @@ import { calculateSkill, calculateSkillTime } from './helpers'
 import { Button, Flex } from '@chakra-ui/react'
 import { Input } from 'lib/components'
 import { colors } from 'common'
+import { useTranslation } from 'react-i18next'
 
 type FormValues = {
     currentSkill: number | null;
@@ -13,6 +14,7 @@ type FormValues = {
 }
 
 export const FishingCalculator: React.FunctionComponent = () => {
+    const { t } = useTranslation('translation')
     const [isCalculated, setIsCalculated] = useState(false)
     const [searchedValues, setSearchedValues] = useState<FishingSearchedValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
@@ -28,7 +30,7 @@ export const FishingCalculator: React.FunctionComponent = () => {
 
             const calculatedSkill = calculateSkill(Skills.FISHING, Number(form.currentSkill), Number(form.percentToNext), Number(form.desiredSkill))
             const neededTries = Math.floor(calculatedSkill.neededHits)
-            const timeForSkill = calculateSkillTime(Skills.FISHING, Math.floor(calculatedSkill.neededHits))
+            const timeForSkill = calculateSkillTime(Skills.FISHING, Math.floor(calculatedSkill.neededHits), t)
 
             setSearchedValues({
                 desiredSkill: form.desiredSkill,
@@ -46,12 +48,12 @@ export const FishingCalculator: React.FunctionComponent = () => {
         <Flex justifyContent="center" height="100%" color={colors.text}>
             <Flex height={isCalculated ? "650px" : "500px"} width="600px" borderRadius="10px" background={colors.background} alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
-                    Fishing Calculator
+                    {t('fishing.fishingCalculator')}
                 </Flex>
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
-                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSKILL, value)} label={'Current Fishing'} isNumeric controlledValue={values.currentSkill?.toString()} isClearable={false} />
-                    <Input onChange={value => setFieldValue(CalculatorFields.PERCENTTONEXT, value)} label={'Percent to Next Skill'} isNumeric controlledValue={values.percentToNext?.toString()} isClearable={false}/>
-                    <Input onChange={value => setFieldValue(CalculatorFields.DESIREDSKILL, value)} label={'Desired Fishing'} isNumeric controlledValue={values.desiredSkill?.toString()} isClearable={false}/>
+                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSKILL, value)} label={t('fishing.currentFishing')} isNumeric controlledValue={values.currentSkill?.toString()} isClearable={false} />
+                    <Input onChange={value => setFieldValue(CalculatorFields.PERCENTTONEXT, value)} label={t('fishing.percentToNextSkill')} isNumeric controlledValue={values.percentToNext?.toString()} isClearable={false}/>
+                    <Input onChange={value => setFieldValue(CalculatorFields.DESIREDSKILL, value)} label={t('fishing.desiredFishing')} isNumeric controlledValue={values.desiredSkill?.toString()} isClearable={false}/>
                     <Button
                         padding="8px 22px"
                         mt="20px"
@@ -77,18 +79,23 @@ export const FishingCalculator: React.FunctionComponent = () => {
                         color={colors.orange}
                         onClick={() => handleSubmit()}
                     >
-                        Calculate
+                        {t('fishing.calculate')}
                     </Button>
                     {isCalculated && (
                         <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center">
                             <Flex textAlign="center">
-                                With {searchedValues?.currentSkill} fishing and {searchedValues?.percentToNext} percent to next level you need {searchedValues?.neededTries.toLocaleString()} tries to reach {searchedValues?.desiredSkill} fishing.
+                                {t('fishing.fishingResult', {
+                                    currentSkill: searchedValues?.currentSkill,
+                                    percentToNext: searchedValues?.percentToNext,
+                                    neededTries: searchedValues?.neededTries.toLocaleString(),
+                                    desiredSkill: searchedValues?.desiredSkill
+                                })}
                             </Flex>
                             <Flex>
-                                To reach that fishing it will take approximately {searchedValues?.timeForSkill}.
+                                {t('fishing.neededTime', { timeForSkill: searchedValues?.timeForSkill })}
                             </Flex>
                             <Flex>
-                                You currently have {searchedValues?.percentage} % of required tries.
+                                {t('fishing.percentage', { percentage: searchedValues?.percentage })}
                             </Flex>
                         </Flex>
                     )}

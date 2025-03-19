@@ -1,5 +1,6 @@
 import { Skills } from '../types'
 import { intervalToDuration } from 'date-fns'
+import { TFunction } from 'i18next'
 
 export const getRealLevel = (skillType: Skills, level: number) => {
     if (skillType === Skills.MAGIC) {
@@ -45,23 +46,23 @@ export const getSkillMultiplier = (skillType: Skills) => {
     }
 }
 
-export const calculateSkillTime = (skillType: Skills, rawSkill: number) => {
+export const calculateSkillTime = (skillType: Skills, rawSkill: number, t:  TFunction<'translation', undefined>) => {
     const secondsPerHit = getSkillTime(skillType)
     const overallSeconds = rawSkill * secondsPerHit
 
-    return secondsToDate(overallSeconds)
+    return secondsToDate(overallSeconds, t)
 }
 
-export const secondsToDate = (seconds: number) => {
+export const secondsToDate = (seconds: number, t:  TFunction<'translation', undefined>) => {
     const duration = intervalToDuration({ start: 0, end: seconds * 1000 })
 
     return [
-        duration.years ? `${duration.years} years` : '',
-        duration.months ? `${duration.months} months` : '',
-        duration.days ? `${duration.days} days` : '',
-        duration.hours ? `${duration.hours} hours`: '',
-        duration.minutes ? `${duration.minutes} minutes` : '',
-        duration.seconds ? `${duration.seconds} seconds` : ''
+        duration.years ? `${duration.years} ${t('basic.years')}` : '',
+        duration.months ? `${duration.months} ${t('basic.months')}` : '',
+        duration.days ? `${duration.days} ${t('basic.days')}` : '',
+        duration.hours ? `${duration.hours} ${t('basic.hours')}`: '',
+        duration.minutes ? `${duration.minutes} ${t('basic.minutes')}` : '',
+        duration.seconds ? `${duration.seconds} ${t('basic.seconds')}` : ''
     ].filter(Boolean).join(" ")
 }
 
@@ -104,12 +105,12 @@ export const calculateCap = (level: number, withVenore: boolean, withScavenge: b
     return totalCap + venoreBonus + scavengeBonus
 }
 
-export const calculateOfflineTraining = (requiredHits: number) => {
+export const calculateOfflineTraining = (requiredHits: number, t: TFunction<'translation', undefined>) => {
     const adjustedHits = Math.ceil(requiredHits / 6) * 6
 
     if (adjustedHits > 4320) {
-        return secondsToDate(adjustedHits / 3 * 60)
+        return secondsToDate(adjustedHits / 3 * 60, t)
     }
 
-    return secondsToDate(adjustedHits / 6 * 60)
+    return secondsToDate(adjustedHits / 6 * 60, t)
 }

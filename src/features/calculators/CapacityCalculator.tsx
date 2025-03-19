@@ -5,6 +5,7 @@ import { Button, Flex } from '@chakra-ui/react'
 import { Checkbox, Input } from 'lib/components'
 import { calculateCap } from './helpers'
 import { colors } from 'common'
+import { useTranslation } from 'react-i18next'
 
 type FormValues = {
     level: string,
@@ -13,6 +14,7 @@ type FormValues = {
 }
 
 export const CapacityCalculator: React.FunctionComponent = () => {
+    const { t } = useTranslation('translation', { keyPrefix: 'capacity' })
     const [isCalculated, setIsCalculated] = useState(false)
     const [searchedValues, setSearchedValues] = useState<CapacitySearchedValues>()
     const [bonusMessage, setBonusMessage] = useState('')
@@ -38,15 +40,15 @@ export const CapacityCalculator: React.FunctionComponent = () => {
             setIsCalculated(true)
 
             if (form.withScavenge && form.withCarlin) {
-                return setBonusMessage('with scavenge charm and active venore world change')
+                return setBonusMessage(t('scavengeAndCarlin'))
             }
 
             if (form.withCarlin) {
-                return setBonusMessage('with active carlin world change')
+                return setBonusMessage(t('onlyCarlin'))
             }
 
             if (form.withScavenge) {
-                return setBonusMessage('with scavenge charm')
+                return setBonusMessage(t('onlyScavenge'))
             }
 
             setBonusMessage('')
@@ -57,12 +59,12 @@ export const CapacityCalculator: React.FunctionComponent = () => {
         <Flex justifyContent="center" height="100%" color={colors.text}>
             <Flex height={isCalculated ? "550px" : "400px"} width="600px" borderRadius="10px" background={colors.background} alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
-                    Capacity Calculator
+                    {t('capacityCalculator')}
                 </Flex>
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
-                    <Input onChange={value => setFieldValue(CalculatorFields.LEVEL, value)} label={'Level'} isNumeric controlledValue={values.level} isClearable={false} />
-                    <Checkbox isChecked={values.withScavenge} setIsChecked={value => setFieldValue(CalculatorFields.WITHSCAVENGE, value)} label="Scavenge charm"/>
-                    <Checkbox isChecked={values.withCarlin} setIsChecked={value => setFieldValue(CalculatorFields.WITHCARLIN, value)} label="Carlin world change"/>
+                    <Input onChange={value => setFieldValue(CalculatorFields.LEVEL, value)} label={t('level')} isNumeric controlledValue={values.level} isClearable={false} />
+                    <Checkbox isChecked={values.withScavenge} setIsChecked={value => setFieldValue(CalculatorFields.WITHSCAVENGE, value)} label={t('scavengeCharm')}/>
+                    <Checkbox isChecked={values.withCarlin} setIsChecked={value => setFieldValue(CalculatorFields.WITHCARLIN, value)} label={t('carlin')}/>
                     <Button
                         padding="8px 22px"
                         mt="20px"
@@ -88,12 +90,16 @@ export const CapacityCalculator: React.FunctionComponent = () => {
                         color={colors.orange}
                         onClick={() => handleSubmit()}
                     >
-                        Calculate
+                        {t('calculate')}
                     </Button>
                     {isCalculated && (
                         <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center">
                             <Flex textAlign="center">
-                                At level {searchedValues?.level} {bonusMessage} you will have {searchedValues?.capacity} capacity.
+                                {t('capacityResult', {
+                                    level: searchedValues?.level,
+                                    bonusMessage,
+                                    capacity: searchedValues?.capacity
+                                })}
                             </Flex>
                         </Flex>
                     )}

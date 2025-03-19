@@ -1,0 +1,95 @@
+{
+  "basic": {
+    "basicCalculator": "Basic Calculator",
+    "selectSkill": "Wybierz Skill",
+    "select": "Wybierz...",
+    "currentSkill": "Obecny Skill",
+    "percentToNextSkill": "Procent do nastepnego",
+    "desiredSkill": "Pożądany Skill",
+    "calculate": "Oblicz",
+    "skillHits": "Z {{currentSkill}} {{skillType}} i {{percentToNext}} procent do następnego poziomu, potrzebujesz {{rawSkill}} uderzeń aby awansować do {{desiredSkill}} skilla.",
+    "timeForSkill": "Aby osiągnąć ten skill średnio zajmie Ci to {{timeForSkill}}.",
+    "percentage": "Obecnie masz {{percentage}} % wymaganych uderzeń.",
+    "offlineTraining": "Aby osiągnąć ten skill poprzez offline training zajmie Ci to {{offlineTraining}}.",
+    "years": "lat",
+    "months": "miesięcy",
+    "days": "dni",
+    "hours": "godzin",
+    "minutes": "minut",
+    "seconds": "sekund"
+  },
+  "fist": {
+    "fistCalculator": "Fist Calculator"
+  },
+  "magic": {
+    "magicCalculator": "Magic Calculator",
+    "requiredMana": "Z {{currentSkill}} magic levelem i {{percentToNext}} procent do następnego poziomu, potrzebujesz spalić {{rawSkill}} many aby osiągnąć {{desiredSkill}} magic level.",
+    "regenerationTime": "Aby osiągnąć ten magic level poprzez regenerację, będziesz potrzebował {{timeForSkill}}.",
+    "potionsAmount": "Aby osiągnąć ten magic level poprzez użycie potionów, będziesz potrzebował {{manaPotions}} mana potionów.",
+    "percentage": "Obecnie spaliłeś {{percentage}}% całej wymaganej many."
+  },
+  "experience": {
+    "experienceCalculator": "Experience Calculator",
+    "currentLevel": "Obecny Poziom",
+    "percentToNextLevel": "Procent do następnego poziomu",
+    "desiredLevel": "Pożądany Poziom",
+    "calculate": "Oblicz",
+    "missingExperience": "Z {{currentLevel}} poziomem i {{percentToNext}} procentami do następnego poziomu, potrzebujesz {{missingExperience}} doświadczenia aby osiągnąć poziom {{desiredLevel}}.",
+    "percentage": "Obecnie masz {{percentage}}% całego wymaganego doświadczenia."
+  },
+  "capacity": {
+    "capacityCalculator": "Capacity Calculator",
+    "scavengeAndCarlin": "z charmem scavenge i aktywnym Venore world change",
+    "onlyCarlin": "z aktywnym Carlin world change",
+    "onlyScavenge": "z aktywnym charmem scavenge",
+    "level": "Poziom",
+    "scavengeCharm": "Scavenge charm",
+    "carlin": "Carlin world change",
+    "calculate": "Oblicz",
+    "capacityResult": "Na {{level}} poziomie {{bonusMessage}} będziesz miał {{capacity}} capa."
+  },
+  "fishing": {
+    "fishingCalculator": "Fishing Calculator",
+    "currentFishing": "Obecny Fishing",
+    "percentToNextSkill": "Procent do następnego skilla",
+    "desiredFishing": "Pożądany Fishing",
+    "calculate": "Oblicz",
+    "fishingResult": "Z {{currentSkill}} fishingiem i {{percentToNext}} procent do następnego skilla, potrzebujesz {{neededTries}} prób aby osiągnąć {{desiredSkill}} fishing.",
+    "neededTime": "Aby osiągnąć taki fishing zajmie Ci to około {{timeForSkill}}.",
+    "percentage": "Obecnie masz {{percentage}}% wszystkich wymaganych prób."
+  },
+  "attackValue": {
+    "attackValueCalculator": "Attack Value Calculator",
+    "weaponAttack": "Atak broni",
+    "skill": "Skill",
+    "calculate": "Oblicz",
+    "attackValueResult": "Gdy używasz broni która ma {{weaponAttack}} ataku oraz masz {{skill}} skilla, dostajesz dodatkowe {{attackValue}} attack value.",
+    "nextSkillups": "Używając tej broni oto kolejne awanse które dadzą Ci dodatkowe attack value:",
+    "attackValue": "Attack Value"
+  },
+  "speedBreakpoints": {
+    "speedBreakpointsCalculator": "Speed Breakpoints Calculator",
+    "level": "Poziom",
+    "mountBonus": "Mount Bonus",
+    "venoreWorldChange": "Venore World Change",
+    "bootsOfHasteCharm": "Boots of Haste Charm",
+    "hasteSpell": "Haste Spell",
+    "calculate": "Oblicz",
+    "speedResult": "Na {{level}} poziomie {{withBonus}} {{bonusText}} będziesz miał {{speed}} prędkości.",
+    "speedBreakpoints": "Oto twoje breakpointy dla prędkości:",
+    "tile": "Kratka",
+    "currentSpeed": "Obecna Prędkość",
+    "currentLevel": "Obecny Poziom",
+    "missingSpeed": "Brakująca Prędkość",
+    "missingLevels": "Brakujące Poziomy",
+    "with": "z"
+  },
+  "stamina": {
+    "staminaCalculator": "Stamina Calculator",
+    "currentStamina": "Obecna Stamina",
+    "desiredStamina": "Pożądana Stamina",
+    "calculate": "Oblicz",
+    "staminaResult": "Jeżeli masz {{currentStamina}} staminy i chcesz mieć {{goalStamina}} staminy, potrzebujesz poczekać {{requiredHours}} godzin i {{requiredMinutes}} minut.",
+    "staminaGoal": "Będziesz miał pożądaną staminę {{goalTime}}."
+  }
+}
