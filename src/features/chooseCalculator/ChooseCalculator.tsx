@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Flex, Image } from '@chakra-ui/react'
+import i18n from 'lib/locale'
+import { images } from 'assets'
 import { Back, Tile } from 'lib/components'
+import { Languages, LocalStorageKeys } from 'lib/types'
 import {
     AttackValueCalculator,
     BasicCalculator,
@@ -13,9 +16,6 @@ import {
     StaminaCalculator
 } from 'features/calculators'
 import { availableCalculators, AvailableCalculators } from './AvailableCalculators'
-import { Languages, LocalStorageKeys } from 'lib/types'
-import i18n from 'lib/locale'
-import { images } from 'assets'
 
 export const ChooseCalculator: React.FunctionComponent = () => {
     const [activeCalculator, setActiveCalculator] = useState<AvailableCalculators | null>(null)
