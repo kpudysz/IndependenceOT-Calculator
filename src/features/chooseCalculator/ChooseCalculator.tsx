@@ -82,7 +82,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
                 <SpeedCalculator/>
             )}
             {activeCalculator === AvailableCalculators.STAMINA && (
-                <StaminaCalculator/>
+                <StaminaCalculator locale={activeLanguage}/>
             )}
         </Flex>
     )

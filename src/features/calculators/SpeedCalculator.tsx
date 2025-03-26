@@ -66,7 +66,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                     <Checkbox isChecked={values.withMount} label={t('mountBonus')} setIsChecked={value => setFieldValue(CalculatorFields.WITHMOUNT, value)}/>
                     <Checkbox isChecked={values.withVenore} label={t('venoreWorldChange')} setIsChecked={value => setFieldValue(CalculatorFields.WITHVENORE, value)}/>
                     <Checkbox isChecked={values.withBoh} label={t('bootsOfHasteCharm')} setIsChecked={value => setFieldValue(CalculatorFields.WITHBOH, value)}/>
-                    <Checkbox isChecked={values.withHaste} label={t('hasteSpell')} setIsChecked={value => setFieldValue(CalculatorFields.WITHHASTE, value)}/>
                     <Button
                         padding="8px 22px"
                         mt="20px"
@@ -121,9 +120,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                                     <Td>
                                         {t('missingSpeed')}
                                     </Td>
-                                    <Td>
-                                        {t('missingLevels')}
-                                    </Td>
                                 </Tr>
                                 <Tr>
                                     <Td>
@@ -137,9 +133,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                                     </Td>
                                     <Td>
                                         {searchedValues?.resolvedBreakpoints.drawbridge.missingSpeed}
-                                    </Td>
-                                    <Td>
-                                        {searchedValues?.resolvedBreakpoints.drawbridge.missingLevel}
                                     </Td>
                                 </Tr>
                                 <Tr>
@@ -155,9 +148,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                                     <Td>
                                         {searchedValues?.resolvedBreakpoints.dirtTown.missingSpeed}
                                     </Td>
-                                    <Td>
-                                        {searchedValues?.resolvedBreakpoints.dirtTown.missingLevel}
-                                    </Td>
                                 </Tr>
                                 <Tr>
                                     <Td>
@@ -171,9 +161,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                                     </Td>
                                     <Td>
                                         {searchedValues?.resolvedBreakpoints.rock.missingSpeed}
-                                    </Td>
-                                    <Td>
-                                        {searchedValues?.resolvedBreakpoints.rock.missingLevel}
                                     </Td>
                                 </Tr>
                                 <Tr>
@@ -189,9 +176,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                                     <Td>
                                         {searchedValues?.resolvedBreakpoints.dirtFloorFast.missingSpeed}
                                     </Td>
-                                    <Td>
-                                        {searchedValues?.resolvedBreakpoints.dirtFloorFast.missingLevel}
-                                    </Td>
                                 </Tr>
                                 <Tr>
                                     <Td>
@@ -205,9 +189,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                                     </Td>
                                     <Td>
                                         {searchedValues?.resolvedBreakpoints.grass.missingSpeed}
-                                    </Td>
-                                    <Td>
-                                        {searchedValues?.resolvedBreakpoints.grass.missingLevel}
                                     </Td>
                                 </Tr>
                                 <Tr>
@@ -223,9 +204,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                                     <Td>
                                         {searchedValues?.resolvedBreakpoints.water.missingSpeed}
                                     </Td>
-                                    <Td>
-                                        {searchedValues?.resolvedBreakpoints.water.missingLevel}
-                                    </Td>
                                 </Tr>
                                 <Tr>
                                     <Td>
@@ -240,9 +218,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                                     <Td>
                                         {searchedValues?.resolvedBreakpoints.wheat.missingSpeed}
                                     </Td>
-                                    <Td>
-                                        {searchedValues?.resolvedBreakpoints.wheat.missingLevel}
-                                    </Td>
                                 </Tr>
                                 <Tr>
                                     <Td>
@@ -256,9 +231,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                                     </Td>
                                     <Td>
                                         {searchedValues?.resolvedBreakpoints.muddyFloor.missingSpeed}
-                                    </Td>
-                                    <Td>
-                                        {searchedValues?.resolvedBreakpoints.muddyFloor.missingLevel}
                                     </Td>
                                 </Tr>
                                 <Tr>
@@ -278,9 +250,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                                     <Td>
                                         {searchedValues?.resolvedBreakpoints.floorMarbleCobble.missingSpeed}
                                     </Td>
-                                    <Td>
-                                        {searchedValues?.resolvedBreakpoints.floorMarbleCobble.missingLevel}
-                                    </Td>
                                 </Tr>
                                 <Tr>
                                     <Td display="flex" gap="10px">
@@ -296,9 +265,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                                     </Td>
                                     <Td>
                                         {searchedValues?.resolvedBreakpoints.dirtFloorSlower.missingSpeed}
-                                    </Td>
-                                    <Td>
-                                        {searchedValues?.resolvedBreakpoints.dirtFloorSlower.missingLevel}
                                     </Td>
                                 </Tr>
                             </Table>

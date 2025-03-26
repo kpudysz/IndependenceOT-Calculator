@@ -106,8 +106,7 @@ export type SpeedSearchedValues = {
 type SpeedBreakpoint = {
     breakpointLevel: number,
     missingSpeed: number,
-    currentSpeed: number,
-    missingLevel: number
+    currentSpeed: number
 }
 
 export type ResolvedBreakpoints = {

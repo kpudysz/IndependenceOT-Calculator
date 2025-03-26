@@ -4,16 +4,22 @@ import { useFormik } from 'formik'
 import { Button, Flex } from '@chakra-ui/react'
 import { Input } from 'lib/components'
 import { format } from 'date-fns'
+import { pl, enUS } from 'date-fns/locale'
 import { addMinutesToCurrentDate, calculateStamina, formatMinutesToStamina } from './helpers'
 import { colors } from 'common'
 import { useTranslation } from 'react-i18next'
+import { Languages } from '../../lib/types'
 
 type FormValues = {
     currentStamina: string,
     goalStamina: string
 }
 
-export const StaminaCalculator: React.FunctionComponent = () => {
+type StaminaCalculatorProps = {
+    locale: string
+}
+
+export const StaminaCalculator: React.FunctionComponent<StaminaCalculatorProps> = ({ locale }) => {
     const { t } = useTranslation('translation', { keyPrefix: 'stamina' })
     const [isCalculated, setIsCalculated] = useState(false)
     const [searchedValues, setSearchedValues] = useState<StaminaSearchedValues>()
@@ -29,7 +35,7 @@ export const StaminaCalculator: React.FunctionComponent = () => {
 
             const timeRequired = calculateStamina(form.currentStamina, form.goalStamina)
             const staminaFormat = formatMinutesToStamina(timeRequired)
-            const requiredDate = format(addMinutesToCurrentDate(timeRequired), 'HH:mm MMMM d, yyyy')
+            const requiredDate = format(addMinutesToCurrentDate(timeRequired), 'HH:mm MMMM d, yyyy', { locale: locale === Languages.En ? enUS : pl })
 
             setSearchedValues({
                 currentStamina: form.currentStamina,

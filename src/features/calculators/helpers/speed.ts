@@ -20,8 +20,7 @@ export const findOutBreakpoints = (level: number, speedModifiers: SpeedModifiers
     const withBoh = speedModifiers.withBoh ? 20 : 0
     const withMount = speedModifiers.withMount ? 10 : 0
     const withVenore = speedModifiers.withVenore ? 10 : 0
-    const withHaste = speedModifiers.withHaste ? 1.3 : 1
-    const summedModifiers = Math.floor((speed + withBoh + withMount + withVenore) * withHaste)
+    const summedModifiers = Math.floor(speed + withBoh + withMount + withVenore)
 
     return {
         drawbridge: findBreakpoint(drawbridge, summedModifiers),
@@ -47,8 +46,7 @@ const findBreakpoint = (breakpointArray: Array<number>, speed: number) => {
     return {
         currentSpeed: currentBreakpoint,
         breakpointLevel: breakpointIndex,
-        missingSpeed,
-        missingLevel: Math.ceil(missingSpeed / 2)
+        missingSpeed
     }
 }
 
