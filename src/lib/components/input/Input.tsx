@@ -20,7 +20,6 @@ import { Icons } from 'assets'
 
 export type InputProps = {
     label?: string
-    height?: string
     placeholder?: string
     isRequired?: boolean
     isDisabled?: boolean
@@ -50,7 +49,6 @@ export type InputProps = {
 
 export const Input: React.FunctionComponent<InputProps> = ({
     label,
-    height,
     leftIcon,
     rightIcon,
     onChange,

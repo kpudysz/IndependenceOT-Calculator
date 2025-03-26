@@ -15,7 +15,7 @@ export const Checkbox: React.FunctionComponent<CheckboxProps> = ({
     setIsChecked
 }) => (
     <Flex lineHeight="24px" cursor="pointer" alignItems="center" onClick={() => setIsChecked(!isChecked)} userSelect="none" mt="10px">
-        <Flex background={colors.background} border="1px solid #909198" borderRadius="15%" alignItems="center" justifyContent="center">
+        <Flex background={colors.background} border={`1px solid ${colors.text}`} borderRadius="15%" alignItems="center" justifyContent="center">
             <Icons.Clear fill={isChecked ? colors.yellow : colors.background}/>
         </Flex>
         <Flex marginLeft="10px" whiteSpace="nowrap" color={colors.text}>

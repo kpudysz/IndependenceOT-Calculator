@@ -1,8 +1,7 @@
 type SpeedModifiers = {
     withVenore: boolean,
     withMount: boolean,
-    withBoh: boolean,
-    withHaste: boolean
+    withBoh: boolean
 }
 
 export const findOutBreakpoints = (level: number, speedModifiers: SpeedModifiers) => {
@@ -51,11 +50,10 @@ const findBreakpoint = (breakpointArray: Array<number>, speed: number) => {
 }
 
 export const resolveBonusText = (speedModifiers: SpeedModifiers) => {
-    const { withVenore, withBoh, withHaste, withMount } = speedModifiers
+    const { withVenore, withBoh, withMount } = speedModifiers
     const venoreText = withVenore ? 'venore world change - ' : ''
     const bohText = withBoh ? 'boots of haste charm - ' : ''
     const mountText = withMount ? 'mount bonus - ' : ''
-    const hasteText = withHaste ? 'haste spell - ' : ''
 
-    return venoreText.concat(bohText).concat(mountText).concat(hasteText)
+    return venoreText.concat(bohText).concat(mountText)
 }

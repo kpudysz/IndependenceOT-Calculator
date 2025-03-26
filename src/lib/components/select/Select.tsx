@@ -1,6 +1,7 @@
 import React from 'react'
 import { Select as ChakraReactSelect } from 'chakra-react-select'
 import { FormControl, FormLabel } from '@chakra-ui/react'
+import { colors } from 'common'
 
 type SelectOptions = {
     label: string
@@ -48,7 +49,7 @@ export const Select: React.FunctionComponent<SelectProps> = ({
     return (
         <FormControl isInvalid={isInvalid} isRequired={isRequired} cursor="pointer">
             {label && (
-                <FormLabel fontWeight="500" mb="8px" mt={mt} color={isDisabled ? 'gray' : '#909198'}>
+                <FormLabel fontWeight="500" mb="8px" mt={mt} color={isDisabled ? 'gray' : colors.text}>
                     {label}
                 </FormLabel>
             )}
@@ -71,14 +72,14 @@ export const Select: React.FunctionComponent<SelectProps> = ({
                 chakraStyles={{
                     placeholder: provided => ({
                         ...provided,
-                        color: 'gray'
+                        color: colors.text
                     }),
                     control: provided => ({
                         ...provided,
                         borderColor: !isMulti && !withoutBorderColor && typedValue?.value ? 'borderGreen' : 'gray',
                         width,
                         border: '1px solid',
-                        color: '#909198',
+                        color: colors.text,
                         whiteSpace: 'nowrap',
                         maxWidth: '100%',
                         overflow: 'visible'

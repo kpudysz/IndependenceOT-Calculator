@@ -14,6 +14,8 @@ import temple100 from './temple100.png'
 import town100 from './town100.png'
 import water170 from './water170.png'
 import wheat180 from './wheat180.png'
+import background from './background.jpg'
+import rookgaardLogo from './rookgaardLogo.png'
 
 export {
     drawbridge90,
@@ -31,5 +33,7 @@ export {
     dirtFloorFast130,
     dirtTown110,
     dirtFloorSlower160,
-    cobble100
+    cobble100,
+    background,
+    rookgaardLogo
 }

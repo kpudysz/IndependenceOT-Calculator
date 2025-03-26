@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Flex } from '@chakra-ui/react'
+import { Flex, Image } from '@chakra-ui/react'
 import { Back, Tile } from 'lib/components'
 import {
     AttackValueCalculator,
@@ -13,9 +13,9 @@ import {
     StaminaCalculator
 } from 'features/calculators'
 import { availableCalculators, AvailableCalculators } from './AvailableCalculators'
-import { colors } from 'common'
 import { Languages, LocalStorageKeys } from 'lib/types'
 import i18n from 'lib/locale'
+import { images } from 'assets'
 
 export const ChooseCalculator: React.FunctionComponent = () => {
     const [activeCalculator, setActiveCalculator] = useState<AvailableCalculators | null>(null)
@@ -24,7 +24,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
     const languageToSet = activeLanguage === Languages.En ? Languages.Pl : Languages.En
 
     return (
-        <Flex width="100vw" height="100vh" padding="80px 80px" justifyContent="center" flexDirection="column" alignItems="center" overflow="auto" position="relative">
+        <Flex width="100vw" height="100vh" padding="80px 80px" justifyContent="center" flexDirection="column" alignItems="center" overflow="auto" position="relative" backgroundImage={images.background} backgroundSize="cover">
             {activeCalculator && (
                 <Back onClick={() => setActiveCalculator(null)}/>
             )}
@@ -32,8 +32,8 @@ export const ChooseCalculator: React.FunctionComponent = () => {
                 fontSize="50px"
                 position="absolute"
                 userSelect="none"
-                right="40px"
-                top="10px"
+                right="50px"
+                top="50px"
                 cursor="pointer"
                 onClick={() => {
                     localStorage.setItem(LocalStorageKeys.LANGUAGE, languageToSet)
@@ -42,9 +42,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
                 }}>
                 {activeLanguage === Languages.En ? '🇬🇧' : '🇵🇱'}
             </Flex>
-            <Flex color={colors.text} marginBottom="80px" fontSize="32px" fontWeight="bold">
-                    IndependenceOT Calculator
-            </Flex>
+            <Image src={images.rookgaardLogo}/>
             {!activeCalculator && (
                 <Flex flexWrap="wrap" maxWidth="900px" justifyContent="center" gap="50px" alignItems="center" >
                     {availableCalculators.map(calculatorTile => (

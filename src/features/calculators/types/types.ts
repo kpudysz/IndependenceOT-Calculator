@@ -97,7 +97,6 @@ export type StaminaSearchedValues = {
 export type SpeedSearchedValues = {
     level: string,
     withBoh: boolean,
-    withHaste: boolean,
     withMount: boolean,
     withVenore: boolean,
     resolvedBreakpoints: ResolvedBreakpoints,

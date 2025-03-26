@@ -58,7 +58,7 @@ export const BasicCalculator: React.FunctionComponent = () => {
                 </Flex>
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
                     <Select options={basicCalculatorOptions} onChange={selectedOption => setFieldValue(CalculatorFields.SELECTSKILL, selectedOption)} label={t('basic.selectSkill')} placeholder={t('basic.select')} isClearable={false}/>
-                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSKILL, value)} label={t('basic.currentSkill')} isNumeric controlledValue={values.currentSkill?.toString()} isClearable={false} />
+                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSKILL, value)} label={t('basic.currentSkill')} isNumeric controlledValue={values.currentSkill?.toString()} isClearable={false}/>
                     <Input onChange={value => setFieldValue(CalculatorFields.PERCENTTONEXT, value)} label={t('basic.percentToNextSkill')} isNumeric controlledValue={values.percentToNext?.toString()} isClearable={false}/>
                     <Input onChange={value => setFieldValue(CalculatorFields.DESIREDSKILL, value)} label={t('basic.desiredSkill')} isNumeric controlledValue={values.desiredSkill?.toString()} isClearable={false}/>
                     <Button

@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next'
 type FormValues = {
     level: string,
     withBoh: boolean,
-    withHaste: boolean,
     withMount: boolean,
     withVenore: boolean
 }
@@ -24,7 +23,6 @@ export const SpeedCalculator: React.FunctionComponent = () => {
         initialValues: {
             level: '1',
             withBoh: false,
-            withHaste: false,
             withMount: false,
             withVenore: false
         },
@@ -33,12 +31,11 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                 return
             }
 
-            const resolvedBreakpoints = findOutBreakpoints(Number(form.level), { withBoh: form.withBoh, withHaste: form.withHaste, withVenore: form.withVenore, withMount: form.withMount })
+            const resolvedBreakpoints = findOutBreakpoints(Number(form.level), { withBoh: form.withBoh, withVenore: form.withVenore, withMount: form.withMount })
 
             setSearchedValues({
                 level: form.level,
                 withBoh: form.withBoh,
-                withHaste: form.withHaste,
                 withVenore: form.withVenore,
                 withMount: form.withMount,
                 resolvedBreakpoints
@@ -47,9 +44,8 @@ export const SpeedCalculator: React.FunctionComponent = () => {
             setIsCalculated(true)
         }
     })
-    const withBonus = searchedValues?.withMount || searchedValues?.withVenore || searchedValues?.withBoh || searchedValues?.withHaste
+    const withBonus = searchedValues?.withMount || searchedValues?.withVenore || searchedValues?.withBoh
     const bonusText = resolveBonusText({
-        withHaste: Boolean(searchedValues?.withHaste),
         withMount: Boolean(searchedValues?.withMount),
         withVenore: Boolean(searchedValues?.withVenore),
         withBoh: Boolean(searchedValues?.withBoh)
@@ -57,7 +53,7 @@ export const SpeedCalculator: React.FunctionComponent = () => {
 
     return (
         <Flex justifyContent="center" height="100%" color={colors.text}>
-            <Flex height={isCalculated ? "1400px" : "550px"} width="1200px" borderRadius="10px" background={colors.background} alignItems="center" flexDirection="column" padding="0 30px 0 30px">
+            <Flex height={isCalculated ? "1350px" : "550px"} width="1200px" borderRadius="10px" background={colors.background} alignItems="center" flexDirection="column" padding="0 30px 0 30px">
                 <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
                     {t('speedBreakpointsCalculator')}
                 </Flex>

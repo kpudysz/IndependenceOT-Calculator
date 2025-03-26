@@ -1,6 +1,6 @@
 export const colors = {
     background: '#13141B',
-    text: '#909198',
+    text: '#FFFFFF',
     yellow: '#E5FF60',
     orange: '#FFA260'
 }
