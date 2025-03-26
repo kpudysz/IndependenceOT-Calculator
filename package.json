@@ -8,8 +8,6 @@
     "preview": "vite preview",
     "lint": "eslint --ext .ts,.tsx src",
     "tsc": "node node_modules/typescript/bin/tsc",
-    "docker-build": "docker build -t runio .",
-    "docker-run": "docker run -p 8080:8080 runio",
     "docker": "yarn docker-build && yarn docker-run",
     "precommit": "yarn lint && yarn tsc",
     "prepare": "rimraf .husky && husky install && husky add .husky/pre-commit \"yarn precommit\""
