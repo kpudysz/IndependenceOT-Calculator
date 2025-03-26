@@ -24,7 +24,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
     const languageToSet = activeLanguage === Languages.En ? Languages.Pl : Languages.En
 
     return (
-        <Flex width="100vw" height="100vh" padding="80px 80px" justifyContent="center" flexDirection="column" alignItems="center" overflow="auto" position="relative" backgroundImage={images.background} backgroundSize="cover">
+        <Flex width="100vw" height="100vh" padding="40px 80px" justifyContent="center" flexDirection="column" alignItems="center" overflow="auto" position="relative" backgroundImage={images.background} backgroundSize="cover">
             {activeCalculator && (
                 <Back onClick={() => setActiveCalculator(null)}/>
             )}
@@ -44,7 +44,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
             </Flex>
             <Image src={images.rookgaardLogo}/>
             {!activeCalculator && (
-                <Flex flexWrap="wrap" maxWidth="900px" justifyContent="center" gap="50px" alignItems="center" >
+                <Flex flexWrap="wrap" maxWidth="900px" justifyContent="center" gap="50px" alignItems="center">
                     {availableCalculators.map(calculatorTile => (
                         <Tile
                             title={calculatorTile.title}
