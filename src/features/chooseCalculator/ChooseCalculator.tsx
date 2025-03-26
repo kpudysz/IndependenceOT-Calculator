@@ -24,7 +24,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
     const languageToSet = activeLanguage === Languages.En ? Languages.Pl : Languages.En
 
     return (
-        <Flex width="100vw" height="100vh" padding="40px 80px" justifyContent="center" flexDirection="column" alignItems="center" overflow="auto" position="relative" backgroundImage={images.background} backgroundSize="cover">
+        <Flex width="100vw" minHeight="100%" padding="40px 80px" justifyContent="center" flexDirection="column" alignItems="center" overflow="auto" position="relative">
             {activeCalculator && (
                 <Back onClick={() => setActiveCalculator(null)}/>
             )}
