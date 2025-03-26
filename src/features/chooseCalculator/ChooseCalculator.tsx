@@ -28,20 +28,18 @@ export const ChooseCalculator: React.FunctionComponent = () => {
             {activeCalculator && (
                 <Back onClick={() => setActiveCalculator(null)}/>
             )}
-            <Flex
-                fontSize="50px"
+            <Image
                 position="absolute"
                 userSelect="none"
                 right="50px"
                 top="50px"
                 cursor="pointer"
+                src={activeLanguage === Languages.En ? images.unitedKingdom : images.poland}
                 onClick={() => {
                     localStorage.setItem(LocalStorageKeys.LANGUAGE, languageToSet)
                     setActiveLanguage(languageToSet)
                     i18n.changeLanguage(languageToSet)
-                }}>
-                {activeLanguage === Languages.En ? '🇬🇧' : '🇵🇱'}
-            </Flex>
+                }}/>
             <Image src={images.rookgaardLogo}/>
             {!activeCalculator && (
                 <Flex flexWrap="wrap" maxWidth="900px" justifyContent="center" gap="50px" alignItems="center">

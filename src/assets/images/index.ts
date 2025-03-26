@@ -1,3 +1,4 @@
+import poland from './poland.png'
 import rock120 from './rock120.png'
 import sand160 from './sand160.png'
 import snow160 from './snow160.png'
@@ -13,6 +14,7 @@ import background from './background.jpg'
 import dirtTown110 from './dirtTown110.png'
 import drawbridge90 from './drawbridge90.png'
 import rookgaardLogo from './rookgaardLogo.png'
+import unitedKingdom from './unitedKingdom.png'
 import muddyFloor200 from './muddyFloor200.png'
 import dirtFloorFast130 from './dirtFloorFast130.png'
 import dirtFloorSlower160 from './dirtFloorSlower160.png'
@@ -27,12 +29,14 @@ export {
     rock120,
     snow160,
     town100,
+    poland,
     water170,
     wheat180,
     temple100,
     dirtFloorFast130,
     dirtTown110,
     dirtFloorSlower160,
+    unitedKingdom,
     cobble100,
     background,
     rookgaardLogo
