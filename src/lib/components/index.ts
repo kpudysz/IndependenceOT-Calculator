@@ -1,6 +1,7 @@
 export { Select } from './select'
 export { Input } from './input'
 export { Icon } from './icon'
-export { Tile } from './tile'
+export { Tile, EmptyTile } from './tile'
 export { Back } from './back'
 export { Checkbox } from './checkbox'
+export { BasicButton } from './button'

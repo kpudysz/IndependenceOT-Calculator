@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Flex } from '@chakra-ui/react'
+import { Button, Flex, useMediaQuery } from '@chakra-ui/react'
 import { Icons } from 'assets'
 import { colors } from 'common'
 import { useTranslation } from 'react-i18next'
@@ -10,12 +10,12 @@ type BackProps = {
 
 export const Back: React.FunctionComponent<BackProps> = ({ onClick }) => {
     const { t } = useTranslation('translation')
+    const [isMobile] = useMediaQuery('(max-width: 768px)')
 
     return (
-        <Flex position="absolute" top="50px" left="50px" color={colors.text} cursor="pointer" onClick={onClick}>
+        <Flex position="absolute" top={isMobile ? "20px" : "50px"} left={isMobile ? "20px" : "50px"} color={colors.text} cursor="pointer" onClick={onClick}>
             <Button
-                padding="8px 22px"
-                mt="20px"
+                padding={isMobile ? 0 : "8px 22px"}
                 borderRadius="4px"
                 border="1px solid"
                 leftIcon={<Icons.ArrowLeft/>}
@@ -38,7 +38,7 @@ export const Back: React.FunctionComponent<BackProps> = ({ onClick }) => {
                 }}
                 color={colors.orange}
             >
-                {t('basic.back')}
+                {isMobile ? '' : t('basic.back')}
             </Button>
         </Flex>
     )

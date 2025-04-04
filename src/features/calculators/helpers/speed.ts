@@ -1,3 +1,5 @@
+import { images } from '../../../assets'
+
 type SpeedModifiers = {
     withVenore: boolean,
     withMount: boolean,
@@ -57,3 +59,16 @@ export const resolveBonusText = (speedModifiers: SpeedModifiers) => {
 
     return venoreText.concat(bohText).concat(mountText)
 }
+
+export const speedImages = [
+    { key: 'drawbridge', img: [images.drawbridge90] },
+    { key: 'dirtTown', img: [images.dirtTown110] },
+    { key: 'rock', img: [images.rock120] },
+    { key: 'dirtFloorFast', img: [images.dirtFloorFast130] },
+    { key: 'grass', img: [images.grass150] },
+    { key: 'water', img: [images.water170] },
+    { key: 'wheat', img: [images.wheat180] },
+    { key: 'muddyFloor', img: [images.muddyFloor200] },
+    { key: 'floorMarbleCobble', img: [images.town100, images.marble100, images.cobble100, images.floor100, images.temple100]},
+    { key: 'dirtFloorSlower', img: [ images.dirtFloorSlower160, images.sand160, images.snow160]}
+]

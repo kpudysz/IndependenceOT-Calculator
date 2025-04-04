@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { CalculatorFields, StaminaSearchedValues } from './types'
 import { useFormik } from 'formik'
-import { Button, Flex } from '@chakra-ui/react'
-import { Input } from 'lib/components'
+import { Flex, useMediaQuery } from '@chakra-ui/react'
+import { BasicButton, Input } from 'lib/components'
 import { format } from 'date-fns'
 import { pl, enUS } from 'date-fns/locale'
 import { addMinutesToCurrentDate, calculateStamina, formatMinutesToStamina } from './helpers'
 import { colors } from 'common'
 import { useTranslation } from 'react-i18next'
-import { Languages } from '../../lib/types'
+import { Languages } from 'lib/types'
 
 type FormValues = {
     currentStamina: string,
@@ -20,6 +20,7 @@ type StaminaCalculatorProps = {
 }
 
 export const StaminaCalculator: React.FunctionComponent<StaminaCalculatorProps> = ({ locale }) => {
+    const [isMobile] = useMediaQuery("(max-width: 768px)")
     const { t } = useTranslation('translation', { keyPrefix: 'stamina' })
     const [isCalculated, setIsCalculated] = useState(false)
     const [searchedValues, setSearchedValues] = useState<StaminaSearchedValues>()
@@ -49,40 +50,33 @@ export const StaminaCalculator: React.FunctionComponent<StaminaCalculatorProps> 
 
     return (
         <Flex justifyContent="center" height="100%" color={colors.text}>
-            <Flex height={isCalculated ? "500px" : "400px"} width="600px" borderRadius="10px" background={colors.background} alignItems="center" flexDirection="column" padding="0 30px 0 30px">
-                <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
+            <Flex
+                height={isMobile ? "auto" : isCalculated ? "500px" : "400px"}
+                width={isMobile ? "100%" : "600px"}
+                maxWidth="600px"
+                borderRadius="10px"
+                background={colors.background}
+                alignItems="center"
+                flexDirection="column"
+                padding={isMobile ? "10px" : "30px"}
+            >
+                <Flex fontSize={isMobile ? "28px" : "35px"} fontWeight={'bold'} mt="40px" textAlign="center">
                     {t('staminaCalculator')}
                 </Flex>
-                <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
-                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSTAMINA, value)} label={t('currentStamina')} controlledValue={values.currentStamina} isClearable={false} />
-                    <Input onChange={value => setFieldValue(CalculatorFields.GOALSTAMINA, value)} label={t('desiredStamina')} controlledValue={values.goalStamina} isClearable={false}/>
-                    <Button
-                        padding="8px 22px"
-                        mt="20px"
-                        borderRadius="4px"
-                        border="1px solid"
-                        borderColor={colors.orange}
-                        background={colors.background}
-                        _hover={{
-                            color: colors.yellow,
-                            borderColor: colors.yellow,
-                            transition: "box-shadow 0.3s ease, transform 0.3s ease",
-                            boxShadow: "0 8px 16px #E5FF60",
-                            transform: "translateY(-4px)"
-                        }}
-                        _active={{
-                            background: colors.background,
-                            color: "lightgreen",
-                            borderColor: "lightgreen",
-                            transition: "box-shadow 0.3s ease, transform 0.3s ease",
-                            boxShadow: "0 8px 16px lightgreen",
-                            transform: "translateY(-4px)"
-                        }}
-                        color={colors.orange}
-                        onClick={() => handleSubmit()}
-                    >
-                        {t('calculate')}
-                    </Button>
+                <Flex flexDirection="column" gap={isMobile ? "15px" : "20px"} mt="20px" width="100%">
+                    <Input
+                        onChange={value => setFieldValue(CalculatorFields.CURRENTSTAMINA, value)}
+                        label={t('currentStamina')}
+                        controlledValue={values.currentStamina}
+                        isClearable={false}
+                    />
+                    <Input
+                        onChange={value => setFieldValue(CalculatorFields.GOALSTAMINA, value)}
+                        label={t('desiredStamina')}
+                        controlledValue={values.goalStamina}
+                        isClearable={false}
+                    />
+                    <BasicButton onClick={() => handleSubmit()} text={t('calculate')}/>
                     {isCalculated && (
                         <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center" textAlign="center">
                             <Flex>

@@ -25,41 +25,41 @@ export enum AvailableCalculators {
     STAMINA = 'Stamina'
 }
 
-export const availableCalculators = [
+export const availableCalculators = (isMobile: boolean) => [
     {
         title: AvailableCalculators.BASIC,
-        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faShield} size="7x" color={color || colors.orange} />)
+        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faShield} size={isMobile ? "4x" : "7x"} color={color || colors.orange} />)
     },
     {
         title: AvailableCalculators.FIST,
-        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faHandFist} size="7x" color={color || colors.orange} />)
+        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faHandFist} size={isMobile ? "4x" : "7x"} color={color || colors.orange} />)
     },
     {
         title: AvailableCalculators.MAGIC,
-        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faWandSparkles} size="7x" color={color || colors.orange} />)
+        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faWandSparkles} size={isMobile ? "4x" : "7x"} color={color || colors.orange} />)
     },
     {
         title: AvailableCalculators.EXPERIENCE,
-        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faDragon} size="7x" color={color || colors.orange} />)
+        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faDragon} size={isMobile ? "4x" : "7x"} color={color || colors.orange} />)
     },
     {
         title: AvailableCalculators.CAPACITY,
-        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faBagShopping} size="7x" color={color || colors.orange} />)
+        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faBagShopping} size={isMobile ? "4x" : "7x"} color={color || colors.orange} />)
     },
     {
         title: AvailableCalculators.FISHING,
-        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faFishFins} size="7x" color={color || colors.orange} />)
+        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faFishFins} size={isMobile ? "4x" : "7x"} color={color || colors.orange} />)
     },
     {
         title: AvailableCalculators.ATTACKVALUE,
-        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faMeteor} size="7x" color={color || colors.orange} />)
+        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faMeteor} size={isMobile ? "4x" : "7x"} color={color || colors.orange} />)
     },
     {
         title: AvailableCalculators.SPEEDBREAKPOINT,
-        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faShoePrints} size="7x" color={color || colors.orange} />)
+        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faShoePrints} size={isMobile ? "4x" : "7x"} color={color || colors.orange} />)
     },
     {
         title: AvailableCalculators.STAMINA,
-        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faHourglass} size="7x" color={color || colors.orange} />)
+        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faHourglass} size={isMobile ? "4x" : "7x"} color={color || colors.orange} />)
     }
 ]

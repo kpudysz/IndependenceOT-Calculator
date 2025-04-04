@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { CalculatorFields, SearchedMagicCalculatorValues, Skills } from './types'
 import { useFormik } from 'formik'
 import { calculateSkill, calculateSkillTime } from './helpers'
-import { Button, Flex } from '@chakra-ui/react'
-import { Input } from 'lib/components'
+import { Flex, useMediaQuery } from '@chakra-ui/react'
+import { BasicButton, Input } from 'lib/components'
 import { colors } from 'common'
 import { useTranslation } from 'react-i18next'
 
@@ -14,6 +14,7 @@ type FormValues = {
 }
 
 export const MagicCalculator: React.FunctionComponent = () => {
+    const [isMobile] = useMediaQuery("(max-width: 768px)")
     const { t } = useTranslation('translation')
     const [isCalculated, setIsCalculated] = useState(false)
     const [searchedValues, setSearchedValues] = useState<SearchedMagicCalculatorValues>()
@@ -47,45 +48,50 @@ export const MagicCalculator: React.FunctionComponent = () => {
     })
 
     return (
-        <Flex justifyContent="center" height="100%" color={colors.text}>
-            <Flex height={isCalculated ? "680px" : "500px"} width="600px" borderRadius="10px" background={colors.background} alignItems="center" flexDirection="column" padding="0 30px 0 30px">
-                <Flex fontSize="35px" fontWeight={'bold'} mt="40px">
+        <Flex justifyContent="center" height="100%" color={colors.text} px={isMobile ? 4 : 0}>
+            <Flex
+                height={isMobile ? "auto" : isCalculated ? "680px" : "500px"}
+                width={isMobile ? "100%" : "600px"}
+                borderRadius="10px"
+                background={colors.background}
+                alignItems="center"
+                flexDirection="column"
+                padding={isMobile ? "20px" : "0 30px"}
+            >
+                <Flex
+                    fontSize={isMobile ? "24px" : "35px"}
+                    fontWeight="bold"
+                    mt={isMobile ? "20px" : "40px"}
+                    textAlign="center"
+                >
                     {t('magic.magicCalculator')}
                 </Flex>
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
-                    <Input onChange={value => setFieldValue(CalculatorFields.CURRENTSKILL, value)} label={t('basic.currentSkill')} isNumeric controlledValue={values.currentSkill?.toString()} isClearable={false} />
-                    <Input onChange={value => setFieldValue(CalculatorFields.PERCENTTONEXT, value)} label={t('basic.percentToNextSkill')} isNumeric controlledValue={values.percentToNext?.toString()} isClearable={false}/>
-                    <Input onChange={value => setFieldValue(CalculatorFields.DESIREDSKILL, value)} label={t('basic.desiredSkill')} isNumeric controlledValue={values.desiredSkill?.toString()} isClearable={false}/>
-                    <Button
-                        padding="8px 22px"
-                        mt="20px"
-                        borderRadius="4px"
-                        border="1px solid"
-                        borderColor={colors.orange}
-                        background={colors.background}
-                        _hover={{
-                            color: colors.yellow,
-                            borderColor: colors.yellow,
-                            transition: "box-shadow 0.3s ease, transform 0.3s ease",
-                            boxShadow: "0 8px 16px #E5FF60",
-                            transform: "translateY(-4px)"
-                        }}
-                        _active={{
-                            background: colors.background,
-                            color: "lightgreen",
-                            borderColor: "lightgreen",
-                            transition: "box-shadow 0.3s ease, transform 0.3s ease",
-                            boxShadow: "0 8px 16px lightgreen",
-                            transform: "translateY(-4px)"
-                        }}
-                        color={colors.orange}
-                        onClick={() => handleSubmit()}
-                    >
-                        {t('basic.calculate')}
-                    </Button>
+                    <Input
+                        onChange={value => setFieldValue(CalculatorFields.CURRENTSKILL, value)}
+                        label={t('basic.currentSkill')}
+                        isNumeric
+                        controlledValue={values.currentSkill?.toString()}
+                        isClearable={false}
+                    />
+                    <Input
+                        onChange={value => setFieldValue(CalculatorFields.PERCENTTONEXT, value)}
+                        label={t('basic.percentToNextSkill')}
+                        isNumeric
+                        controlledValue={values.percentToNext?.toString()}
+                        isClearable={false}
+                    />
+                    <Input
+                        onChange={value => setFieldValue(CalculatorFields.DESIREDSKILL, value)}
+                        label={t('basic.desiredSkill')}
+                        isNumeric
+                        controlledValue={values.desiredSkill?.toString()}
+                        isClearable={false}
+                    />
+                    <BasicButton onClick={() => handleSubmit()} text={t('basic.calculate')}/>
                     {isCalculated && (
-                        <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center">
-                            <Flex textAlign="center">
+                        <Flex mt="30px" flexDirection="column" gap="16px" alignItems="center" textAlign="center">
+                            <Flex>
                                 {t('magic.requiredMana', {
                                     currentSkill: searchedValues?.currentSkill,
                                     percentToNext: searchedValues?.percentToNext,
