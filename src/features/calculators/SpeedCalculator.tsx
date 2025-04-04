@@ -115,7 +115,7 @@ export const SpeedCalculator: React.FunctionComponent = () => {
                                     <Tr key={tile.key}>
                                         <Td display="flex" flexWrap="wrap" gap="10px">
                                             {tile.img.map((src, index) => (
-                                                <Image key={index} src={src} boxSize={isMobile ? "40px" : "60px"} />
+                                                <Image key={index} src={src} width={isMobile ? "40px" : "60px"} height="auto" />
                                             ))}
                                         </Td>
                                         <Td>{searchedValues?.resolvedBreakpoints[tile.key].currentSpeed}</Td>
