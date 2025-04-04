@@ -15,7 +15,7 @@ type FormValues = {
 }
 
 export const SpeedCalculator: React.FunctionComponent = () => {
-    const [isMobile] = useMediaQuery("(max-width: 768px)")
+    const [isMobile] = useMediaQuery("(max-width: 1080px)")
     const { t } = useTranslation('translation', { keyPrefix: 'speedBreakpoints' })
     const [isCalculated, setIsCalculated] = useState(false)
     const [searchedValues, setSearchedValues] = useState<SpeedSearchedValues>()
