@@ -22,9 +22,9 @@ export const FistCalculator: React.FunctionComponent = () => {
     const [searchedValues, setSearchedValues] = useState<BasicSearchedValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
         initialValues: {
-            currentSkill: 10,
+            currentSkill: 20,
             percentToNext: 100,
-            desiredSkill: 10
+            desiredSkill: 35
         },
         onSubmit: form => {
             if (!form.currentSkill || !form.desiredSkill || !form.percentToNext) {
@@ -120,4 +120,3 @@ export const FistCalculator: React.FunctionComponent = () => {
         </Flex>
     )
 }
-

@@ -1,4 +1,4 @@
-export { calculateSkillTime, skillEnumToValue, calculateCap, calculateOfflineTraining } from './functions'
+export { calculateSkillTime, skillEnumToValue, calculateCap, calculateOfflineTraining, calculateDeathPenalty } from './functions'
 export { calculateTime, calculateStamina, formatMinutesToStamina, addMinutesToCurrentDate } from './stamina'
 export { calculateAttackValue, findAttackValueIncrements } from './attackValue'
 export type { SkillIncrements } from './attackValue'

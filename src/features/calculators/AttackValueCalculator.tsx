@@ -20,7 +20,7 @@ export const AttackValueCalculator: React.FunctionComponent = () => {
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
         initialValues: {
             weaponAttack: '5',
-            skill: '10'
+            skill: '20'
         },
         onSubmit: form => {
             if (!form.weaponAttack || !form.skill) {

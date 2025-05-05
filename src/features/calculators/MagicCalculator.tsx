@@ -20,9 +20,9 @@ export const MagicCalculator: React.FunctionComponent = () => {
     const [searchedValues, setSearchedValues] = useState<SearchedMagicCalculatorValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
         initialValues: {
-            currentSkill: 0,
+            currentSkill: 5,
             percentToNext: 100,
-            desiredSkill: 0
+            desiredSkill: 6
         },
         onSubmit: form => {
             if ((!form.currentSkill && form.currentSkill !== 0) || !form.desiredSkill || !form.percentToNext) {

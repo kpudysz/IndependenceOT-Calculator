@@ -26,7 +26,7 @@ export const StaminaCalculator: React.FunctionComponent<StaminaCalculatorProps> 
     const [searchedValues, setSearchedValues] = useState<StaminaSearchedValues>()
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
         initialValues: {
-            currentStamina: '14:00',
+            currentStamina: '39:00',
             goalStamina: '42:00'
         },
         onSubmit: form => {

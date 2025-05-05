@@ -24,9 +24,9 @@ export const BasicCalculator: React.FunctionComponent = () => {
     const { values, setFieldValue, handleSubmit } = useFormik<FormValues>({
         initialValues: {
             skillToCalculate: null,
-            currentSkill: 10,
+            currentSkill: 20,
             percentToNext: 100,
-            desiredSkill: 10
+            desiredSkill: 25
         },
         onSubmit: form => {
             if (!form.skillToCalculate || !form.currentSkill || !form.desiredSkill || !form.percentToNext) {
@@ -65,7 +65,6 @@ export const BasicCalculator: React.FunctionComponent = () => {
                 <Flex fontSize={isMobile ? "24px" : "35px"} fontWeight="bold" mt="40px" textAlign="center">
                     {t('basic.basicCalculator')}
                 </Flex>
-
                 <Flex flexDirection="column" gap="20px" mt="20px" width="100%">
                     <Select
                         options={basicCalculatorOptions}

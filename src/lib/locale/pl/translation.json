@@ -92,5 +92,9 @@
     "calculate": "Oblicz",
     "staminaResult": "Jeżeli masz {{currentStamina}} staminy i chcesz mieć {{goalStamina}} staminy, potrzebujesz poczekać {{requiredHours}} godzin i {{requiredMinutes}} minut.",
     "staminaGoal": "Będziesz miał pożądaną staminę {{goalTime}}."
+  },
+  "deathPenalty": {
+    "deathPenaltyCalculator": "Death Penalty Calculator",
+    "deathPenaltyResult": "Jeżeli zginiesz na poziomie {{currentLevel}} to stracisz {{experienceLoss}} punktów doświadczenia. Będzie to {{percentage}}% całkowitego doświadczenia."
   }
 }

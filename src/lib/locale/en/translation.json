@@ -92,5 +92,9 @@
     "calculate": "Calculate",
     "staminaResult": "If you have {{currentStamina}} stamina and you want to have {{goalStamina}} stamina, you need to wait {{requiredHours}} hours and {{requiredMinutes}} minutes.",
     "staminaGoal": "You will have desired stamina at {{goalTime}}."
+  },
+  "deathPenalty": {
+    "deathPenaltyCalculator": "Death Penalty Calculator",
+    "deathPenaltyResult": "If you die on level {{currentLevel}} you will lose {{experienceLoss}} experience. It will be {{percentage}}% of your total experience."
   }
 }

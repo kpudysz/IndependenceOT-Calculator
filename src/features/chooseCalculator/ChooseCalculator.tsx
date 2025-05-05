@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { Flex, Image, useMediaQuery } from '@chakra-ui/react'
 import i18n from 'lib/locale'
 import { images } from 'assets'
-import { Back, Tile, EmptyTile } from 'lib/components'
+import { Back, EmptyTile, Tile } from 'lib/components'
 import { Languages, LocalStorageKeys } from 'lib/types'
 import {
     AttackValueCalculator,
     BasicCalculator,
-    CapacityCalculator,
+    CapacityCalculator, DeathPenaltyCalculator,
     ExperienceCalculator,
     FishingCalculator,
     FistCalculator,
@@ -75,9 +75,6 @@ export const ChooseCalculator: React.FunctionComponent = () => {
                             onClick={title => setActiveCalculator(title)}
                         />
                     ))}
-                    {isSmallMobile && (
-                        <EmptyTile/>
-                    )}
                 </Flex>
             )}
             {activeCalculator === AvailableCalculators.BASIC && <BasicCalculator />}
@@ -89,6 +86,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
             {activeCalculator === AvailableCalculators.ATTACKVALUE && <AttackValueCalculator />}
             {activeCalculator === AvailableCalculators.SPEEDBREAKPOINT && <SpeedCalculator />}
             {activeCalculator === AvailableCalculators.STAMINA && <StaminaCalculator locale={activeLanguage} />}
+            {activeCalculator === AvailableCalculators.DEATHPENALTY && <DeathPenaltyCalculator/>}
         </Flex>
     )
 }

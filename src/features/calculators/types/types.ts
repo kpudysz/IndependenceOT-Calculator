@@ -15,6 +15,7 @@ export enum CalculatorFields {
     PERCENTTONEXT = 'percentToNext',
     DESIREDSKILL = 'desiredSkill',
     CURRENTLEVEL = 'currentLevel',
+    CURRENTEXPERIENCE = 'currentExperience',
     DESIREDLEVEL = 'desiredLevel',
     LEVEL = 'level',
     WITHCARLIN = 'withCarlin',
@@ -38,6 +39,12 @@ export type BasicSearchedValues = {
     percentage: string,
     offlineTraining: string,
     timeForSkill: string
+}
+
+export type PenaltySearchedValues = {
+    currentLevel: number
+    experienceLoss: number,
+    percentage: string
 }
 
 export type SearchedMagicCalculatorValues = {

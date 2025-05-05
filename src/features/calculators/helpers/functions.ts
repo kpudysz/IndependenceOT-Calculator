@@ -1,6 +1,7 @@
 import { Skills } from '../types'
 import { intervalToDuration } from 'date-fns'
 import { TFunction } from 'i18next'
+import { calculateNeededExpForLevel } from './experience'
 
 export const getRealLevel = (skillType: Skills, level: number) => {
     if (skillType === Skills.MAGIC) {
@@ -114,3 +115,12 @@ export const calculateOfflineTraining = (requiredHits: number, t: TFunction<'tra
 
     return secondsToDate(adjustedHits / 6 * 60, t)
 }
+
+export const calculateDeathPenalty = (level: number) => {
+    if (level < 24) {
+        return calculateNeededExpForLevel(level) * 0.1
+    }
+
+    return ((level + 50) / 100) * 50 * (Math.pow(level, 2) - 5 * level + 8)
+}
+

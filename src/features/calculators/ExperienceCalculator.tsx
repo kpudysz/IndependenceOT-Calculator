@@ -23,7 +23,7 @@ export const ExperienceCalculator: React.FunctionComponent = () => {
         initialValues: {
             currentLevel: 1,
             percentToNext: 100,
-            desiredLevel: 1
+            desiredLevel: 99
         },
         onSubmit: form => {
             if (!form.currentLevel || !form.desiredLevel || !form.percentToNext) {

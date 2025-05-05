@@ -22,7 +22,7 @@ export const FishingCalculator: React.FunctionComponent = () => {
         initialValues: {
             currentSkill: 10,
             percentToNext: 100,
-            desiredSkill: 10
+            desiredSkill: 100
         },
         onSubmit: form => {
             if (!form.currentSkill || !form.desiredSkill || !form.percentToNext) {

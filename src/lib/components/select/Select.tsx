@@ -82,7 +82,7 @@ export const Select: React.FunctionComponent<SelectProps> = ({
                         color: colors.text,
                         whiteSpace: 'nowrap',
                         maxWidth: '100%',
-                        overflow: 'visible'
+                        overflow: 'auto'
                     }),
                     menuList: provided => ({
                         ...provided,

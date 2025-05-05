@@ -8,7 +8,8 @@ import {
     faMeteor,
     faShield,
     faShoePrints,
-    faWandSparkles
+    faWandSparkles,
+    faSkullCrossbones
 } from '@fortawesome/free-solid-svg-icons'
 import { IconColorProps } from 'lib/types'
 import { colors } from 'common'
@@ -22,7 +23,8 @@ export enum AvailableCalculators {
     FISHING = 'Fishing',
     ATTACKVALUE = 'Attack Value',
     SPEEDBREAKPOINT = 'Speed Breakpoints',
-    STAMINA = 'Stamina'
+    STAMINA = 'Stamina',
+    DEATHPENALTY = 'Death Pentalty'
 }
 
 export const availableCalculators = (isMobile: boolean) => [
@@ -61,5 +63,9 @@ export const availableCalculators = (isMobile: boolean) => [
     {
         title: AvailableCalculators.STAMINA,
         icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faHourglass} size={isMobile ? "4x" : "7x"} color={color || colors.orange} />)
+    },
+    {
+        title: AvailableCalculators.DEATHPENALTY,
+        icon: ({ color }: IconColorProps) => (<FontAwesomeIcon icon={faSkullCrossbones} size={isMobile ? "4x" : "7x"} color={color || colors.orange} />)
     }
 ]
