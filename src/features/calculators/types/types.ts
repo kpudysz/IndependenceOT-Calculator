@@ -115,6 +115,16 @@ type SpeedBreakpoint = {
     currentSpeed: number
 }
 
+export type Highscores = {
+    name: string,
+    lastDay: number,
+    lastWeek: number,
+    lastMonth: number,
+    lastDayColor: string,
+    lastWeekColor: string,
+    lastMonthColor: string
+}
+
 export type ResolvedBreakpoints = {
     drawbridge: SpeedBreakpoint,
     floorMarbleCobble: SpeedBreakpoint,
@@ -127,4 +137,11 @@ export type ResolvedBreakpoints = {
     wheat: SpeedBreakpoint,
     muddyFloor: SpeedBreakpoint,
     speed: number
+}
+
+export enum SortBy {
+    DAY = 'day',
+    WEEK = 'week',
+    MONTH = 'month',
+    NAME = 'name'
 }

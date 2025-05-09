@@ -123,4 +123,3 @@ export const calculateDeathPenalty = (level: number) => {
 
     return ((level + 50) / 100) * 50 * (Math.pow(level, 2) - 5 * level + 8)
 }
-

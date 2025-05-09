@@ -96,5 +96,15 @@
   "deathPenalty": {
     "deathPenaltyCalculator": "Death Penalty Calculator",
     "deathPenaltyResult": "If you die on level {{currentLevel}} you will lose {{experienceLoss}} experience. It will be {{percentage}}% of your total experience."
+  },
+  "progressMonitor": {
+    "progressMonitor": "Progress Monitor",
+    "number": "No.",
+    "name": "Name",
+    "loading": "Loading...",
+    "highscoresUpdate": "Highscores are updated every 2 hours. Last update {{updateDate}} ago.",
+    "lastDay": "Last 24 hours",
+    "lastWeek": "Last week",
+    "lastMonth": "Last month"
   }
 }

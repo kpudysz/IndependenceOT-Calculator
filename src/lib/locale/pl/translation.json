@@ -96,5 +96,15 @@
   "deathPenalty": {
     "deathPenaltyCalculator": "Death Penalty Calculator",
     "deathPenaltyResult": "Jeżeli zginiesz na poziomie {{currentLevel}} to stracisz {{experienceLoss}} punktów doświadczenia. Będzie to {{percentage}}% całkowitego doświadczenia."
+  },
+  "progressMonitor": {
+    "progressMonitor": "Progress Monitor",
+    "number": "Lp.",
+    "name": "Nazwa",
+    "loading": "Ładowanie...",
+    "highscoresUpdate": "Lista wyników jest aktualizowana co dwie godziny. Ostatnia aktualizacja {{updateDate}} temu.",
+    "lastDay": "Ostatnie 24 godziny",
+    "lastWeek": "Ostatni tydzień",
+    "lastMonth": "Ostatni miesiąc"
   }
 }

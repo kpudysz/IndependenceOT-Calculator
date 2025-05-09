@@ -7,11 +7,13 @@ import { Languages, LocalStorageKeys } from 'lib/types'
 import {
     AttackValueCalculator,
     BasicCalculator,
-    CapacityCalculator, DeathPenaltyCalculator,
+    CapacityCalculator,
+    DeathPenaltyCalculator,
     ExperienceCalculator,
     FishingCalculator,
     FistCalculator,
     MagicCalculator,
+    ProgressMonitor,
     SpeedCalculator,
     StaminaCalculator
 } from 'features/calculators'
@@ -75,6 +77,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
                             onClick={title => setActiveCalculator(title)}
                         />
                     ))}
+                    <EmptyTile/>
                 </Flex>
             )}
             {activeCalculator === AvailableCalculators.BASIC && <BasicCalculator />}
@@ -87,6 +90,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
             {activeCalculator === AvailableCalculators.SPEEDBREAKPOINT && <SpeedCalculator />}
             {activeCalculator === AvailableCalculators.STAMINA && <StaminaCalculator locale={activeLanguage} />}
             {activeCalculator === AvailableCalculators.DEATHPENALTY && <DeathPenaltyCalculator/>}
+            {activeCalculator === AvailableCalculators.PROGRESSMONITOR && <ProgressMonitor locale={activeLanguage}/> }
         </Flex>
     )
 }

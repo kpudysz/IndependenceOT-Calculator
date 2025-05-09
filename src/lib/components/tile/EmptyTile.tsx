@@ -18,7 +18,7 @@ export const EmptyTile: React.FunctionComponent = () => {
                 height={isMobile ? "120px" : "240px"}
                 width="100%"
                 background={colors.background}
-                mb="25px"
+                mb={isMobile ? '40px' : '32px'}
                 cursor="pointer"
                 border={"1px solid #FFA260"}
                 transition="box-shadow 0.3s ease, transform 0.3s ease"
