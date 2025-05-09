@@ -14,7 +14,7 @@ type ProgressMonitorProps = {
 
 export const ProgressMonitor: React.FunctionComponent<ProgressMonitorProps> = ({ locale }) => {
     const [highscores, setHighscores] = useState<Array<Highscores>>()
-    const [sortBy, setSortBy] = useState<SortBy>()
+    const [sortBy, setSortBy] = useState<SortBy>(SortBy.MONTH)
     const [lastUpdated, setLastUpdated] = useState<number>()
     const [isMobile] = useMediaQuery("(max-width: 768px)")
     const { t } = useTranslation('translation', { keyPrefix: 'progressMonitor' })
@@ -25,7 +25,7 @@ export const ProgressMonitor: React.FunctionComponent<ProgressMonitorProps> = ({
         const dateTo = getUnixTime(dateNow)
         const dateFrom = getUnixTime(subMonths(dateNow, 1))
 
-        fetch(`${ApiURL}/highscores?${dateFrom}&${dateTo}`)
+        fetch(`${ApiURL}/highscores?dateFrom=${dateFrom}&dateTo=${dateTo}`)
             .then(response => response.json() as Promise<Array<GetHighscoresResponse>>)
             .then(responseData => {
                 const preparedHighscores = prepareHighscores(responseData)
