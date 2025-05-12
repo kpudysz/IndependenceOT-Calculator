@@ -4,13 +4,13 @@ import { WikiMenu } from './WikiMenu'
 import { Flex, Box } from '@chakra-ui/react'
 import { colors } from 'common/constants'
 
-interface SidebarProps {
-  onSelect(key: WikiMenu): void;
-  selected: WikiMenu
+type SidebarProps = {
+  selected: WikiMenu,
+  onSelect(key: WikiMenu): void
 }
 
 export const WikiSidebar: React.FC<SidebarProps> = ({ onSelect, selected }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState<Array<Record<WikiMenu, Boolean>>>([])
+  const [isMenuOpen, setIsMenuOpen] = useState<Array<Record<WikiMenu, boolean>>>([])
 
   const handleToggle = (key: WikiMenu) => {
     setIsMenuOpen(prev => ({ ...prev, [key]: !prev[key] }))
