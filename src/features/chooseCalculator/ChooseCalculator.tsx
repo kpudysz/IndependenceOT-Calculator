@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { Flex, Image, useMediaQuery } from '@chakra-ui/react'
 import i18n from 'lib/locale'
 import { images } from 'assets'
-import { Back, EmptyTile, Tile } from 'lib/components'
+import { Back, Tile } from 'lib/components'
 import { Languages, LocalStorageKeys } from 'lib/types'
+import { Wiki } from 'features/wiki'
 import {
     AttackValueCalculator,
     BasicCalculator,
@@ -24,7 +25,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
     const lastLanguage = localStorage.getItem(LocalStorageKeys.LANGUAGE) ?? Languages.En
     const [activeLanguage, setActiveLanguage] = useState(lastLanguage)
     const languageToSet = activeLanguage === Languages.En ? Languages.Pl : Languages.En
-    const [isMobile, isSmallMobile] = useMediaQuery(["(max-width: 768px)", "(max-width: 520px)"])
+    const [isMobile] = useMediaQuery(["(max-width: 768px)"])
 
     return (
         <Flex
@@ -77,7 +78,6 @@ export const ChooseCalculator: React.FunctionComponent = () => {
                             onClick={title => setActiveCalculator(title)}
                         />
                     ))}
-                    <EmptyTile/>
                 </Flex>
             )}
             {activeCalculator === AvailableCalculators.BASIC && <BasicCalculator />}
@@ -91,6 +91,7 @@ export const ChooseCalculator: React.FunctionComponent = () => {
             {activeCalculator === AvailableCalculators.STAMINA && <StaminaCalculator locale={activeLanguage} />}
             {activeCalculator === AvailableCalculators.DEATHPENALTY && <DeathPenaltyCalculator/>}
             {activeCalculator === AvailableCalculators.PROGRESSMONITOR && <ProgressMonitor locale={activeLanguage}/> }
+            {activeCalculator === AvailableCalculators.WIKI && <Wiki/>}
         </Flex>
     )
 }
