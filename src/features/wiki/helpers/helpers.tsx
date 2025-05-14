@@ -2,10 +2,11 @@ import { Toastify } from "lib/types"
 import { WikiMenu } from "../components"
 import { useToast } from 'lib/hooks'
 import axios from "axios"
+import { ApiURL } from "common"
 
 export const sendSuggestion = async (content: string, source: WikiMenu, author?: string) => {
   const { setToast } = useToast()
-    const response = await axios.post('/wiki/send-suggestion', {
+    const response = await axios.post(`${ApiURL}/wiki/send-suggestion`, {
         headers: {
           'Content-Type': 'application/json'
         },
