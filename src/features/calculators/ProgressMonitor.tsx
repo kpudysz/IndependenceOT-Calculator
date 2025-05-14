@@ -7,6 +7,7 @@ import { ApiURL, colors } from 'common'
 import { prepareHighscores } from './helpers'
 import { Languages } from 'lib/types'
 import { enUS, pl } from 'date-fns/locale'
+import axios, { AxiosResponse } from 'axios'
 
 type ProgressMonitorProps = {
     locale: string
@@ -25,11 +26,10 @@ export const ProgressMonitor: React.FunctionComponent<ProgressMonitorProps> = ({
         const dateTo = getUnixTime(dateNow)
         const dateFrom = getUnixTime(subMonths(dateNow, 1))
 
-        fetch(`${ApiURL}/highscores?dateFrom=${dateFrom}&dateTo=${dateTo}`)
-            .then(response => response.json() as Promise<Array<GetHighscoresResponse>>)
-            .then(responseData => {
-                const preparedHighscores = prepareHighscores(responseData)
-                const recentDate = Math.max(...responseData.map(item => item.date))
+        axios.get(`${ApiURL}/highscores?dateFrom=${dateFrom}&dateTo=${dateTo}`)
+            .then((responseData: AxiosResponse<Array<GetHighscoresResponse>>) => {
+                const preparedHighscores = prepareHighscores(responseData.data)
+                const recentDate = Math.max(...responseData.data.map(item => item.date))
 
                 setHighscores(preparedHighscores)
                 setLastUpdated(recentDate)

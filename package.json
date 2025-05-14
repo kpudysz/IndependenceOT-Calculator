@@ -25,6 +25,7 @@
     "@emotion/styled": "11.11.0",
     "@emotion/react": "11.11.1",
     "terser": "5.39.0",
+    "react-toastify": "11.0.5",
     "chakra-react-select": "4.6.0",
     "quill": "2.0.3",
     "i18next": "24.2.3",

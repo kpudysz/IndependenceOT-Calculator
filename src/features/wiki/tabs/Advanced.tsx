@@ -1,5 +1,5 @@
 import React from 'react'
-import { SuggestChanges } from "../components"
+import { SuggestChanges, WikiMenu } from "../components"
 import { Box, Divider, Flex, Text } from "@chakra-ui/react"
 import { colors } from "common/constants"
 
@@ -23,7 +23,7 @@ export const Advanced: React.FC = () => (
           Example
         </Text>
         <Divider my={4} />
-        <SuggestChanges/>
+        <SuggestChanges source={WikiMenu.Advanced}/>
       </Box>
     </Flex>
   )

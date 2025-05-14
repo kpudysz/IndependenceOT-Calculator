@@ -1,7 +1,8 @@
 import React from 'react'
 import { Box, Divider, Flex, Text } from '@chakra-ui/react'
 import { colors } from 'common/constants'
-import { SuggestChanges } from '../components'
+import { SuggestChanges, WikiMenu } from '../components'
+import { sendSuggestion } from '../helpers'
 
 export const Crafting: React.FC = () => (
     <Flex justify="center" align="flex-start" w="100%" h="100%">
@@ -23,7 +24,7 @@ export const Crafting: React.FC = () => (
           Example
         </Text>
         <Divider my={4} />
-        <SuggestChanges/>
+        <SuggestChanges source={WikiMenu.Crafting} onSend={(content, source, author) => sendSuggestion(content, source, author)}/>
       </Box>
     </Flex>
   )
