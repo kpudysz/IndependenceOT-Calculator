@@ -5,7 +5,7 @@ import axios from "axios"
 
 export const sendSuggestion = async (content: string, source: WikiMenu, author?: string) => {
   const { setToast } = useToast()
-    const response = await axios.post('/api/send-suggestion', {
+    const response = await axios.post('/wiki/send-suggestion', {
         headers: {
           'Content-Type': 'application/json'
         },
