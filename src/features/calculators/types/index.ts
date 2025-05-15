@@ -10,6 +10,5 @@ export type {
     StaminaSearchedValues,
     ResolvedBreakpoints,
     SpeedSearchedValues,
-    PenaltySearchedValues,
-    Highscores
+    PenaltySearchedValues
 } from './types'

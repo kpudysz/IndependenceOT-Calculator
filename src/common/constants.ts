@@ -8,5 +8,3 @@ export const colors = {
     gray: '#9CA0A6',
     selected: '#20232A'
 }
-
-export const ApiURL = 'https://independencescraper.onrender.com'

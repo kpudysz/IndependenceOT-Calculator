@@ -103,8 +103,13 @@
     "name": "Nazwa",
     "loading": "Ładowanie...",
     "highscoresUpdate": "Lista wyników jest aktualizowana co dwie godziny. Ostatnia aktualizacja {{updateDate}} temu.",
-    "lastDay": "Ostatnie 24 godziny",
+    "lastDay": "Od 11 rano",
     "lastWeek": "Ostatni tydzień",
-    "lastMonth": "Ostatni miesiąc"
+    "lastMonth": "Ostatni miesiąc",
+    "level": "Poziom",
+    "estimatedNextMonth": "Poziom za miesiąc",
+    "estimatedThreeMonths": "Poziom za 3 miesiące",
+    "estimatedSixMonths": "Poziom za 6 miesięcy",
+    "estimatedNextYear": "Poziom za rok"
   }
 }

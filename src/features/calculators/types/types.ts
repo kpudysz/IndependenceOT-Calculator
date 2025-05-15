@@ -115,16 +115,6 @@ type SpeedBreakpoint = {
     currentSpeed: number
 }
 
-export type Highscores = {
-    name: string,
-    lastDay: number,
-    lastWeek: number,
-    lastMonth: number,
-    lastDayColor: string,
-    lastWeekColor: string,
-    lastMonthColor: string
-}
-
 export type ResolvedBreakpoints = {
     drawbridge: SpeedBreakpoint,
     floorMarbleCobble: SpeedBreakpoint,
@@ -140,8 +130,13 @@ export type ResolvedBreakpoints = {
 }
 
 export enum SortBy {
+    LEVEL = 'level',
+    NAME = 'name',
     DAY = 'day',
     WEEK = 'week',
     MONTH = 'month',
-    NAME = 'name'
+    NEXTMONTH = 'nextMonth',
+    NEXTTHREEMONTHS = 'NEXTTHREEMONTHS',
+    NEXTSIXMONTHS = 'NEXTSIXMONTHS',
+    NEXTYEAR = 'NEXTYEAR'
 }

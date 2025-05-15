@@ -1,22 +1,24 @@
-import { subDays, subWeeks, subMonths, getUnixTime } from 'date-fns'
+import { subDays, subWeeks, subMonths, getUnixTime, setHours, setMinutes, setSeconds, isBefore } from 'date-fns'
 import { GetHighscoresResponse } from '../types'
 import { colors } from 'common'
+import { calculateLevelFromExperience } from './experience'
 
 const calculateDifference = (filteredEntries: Array<GetHighscoresResponse>) => {
-    if (filteredEntries.length < 2) {
-        return 0
-    }
-
     const sorted = [...filteredEntries].sort((a, b) => a.date - b.date)
     const earliest = sorted[0]
     const latest = sorted[sorted.length - 1]
 
-    return Number(latest.experience) - Number(earliest.experience)
+    return {
+        expDiff: Number(latest.experience) - Number(earliest.experience),
+        experience: Number(latest.experience)
+    }
 }
 
 export const prepareHighscores = (highscores: Array<GetHighscoresResponse>) => {
     const now = new Date()
-    const previousDay = getUnixTime(subDays(now, 1))
+    const todayAt11AM = setSeconds(setMinutes(setHours(now, 11), 0), 0)
+    const referenceTime = isBefore(now, todayAt11AM) ? setSeconds(setMinutes(setHours(subDays(now, 1), 11), 0), 0) : todayAt11AM
+    const unixReferenceTime = getUnixTime(referenceTime)
     const previousWeek = getUnixTime(subWeeks(now, 1))
     const previousMonth = getUnixTime(subMonths(now, 1))
     const groupedPlayers = highscores.reduce((acc, entry) => ({
@@ -25,18 +27,33 @@ export const prepareHighscores = (highscores: Array<GetHighscoresResponse>) => {
         }), {} as Record<string, Array<GetHighscoresResponse>>)
 
     return Object.entries(groupedPlayers).map(([name, entries]) => {
-        const lastDayEntries = entries.filter(entry => entry.date >= previousDay)
+        const monthFactor = 4.285 // 30/7
+        const threeMonthFactor = 12.857 // 90/7
+        const sixMonthFactor = 25.714 // 180/7
+        const oneYearFactor = 52.142 // 365/7
+        const lastDayEntries = entries.filter(entry => entry.date >= unixReferenceTime)
         const lastWeekEntries = entries.filter(entry => entry.date >= previousWeek)
         const lastMonthEntries = entries.filter(entry => entry.date >= previousMonth)
-        const lastDay = calculateDifference(lastDayEntries)
-        const lastWeek = calculateDifference(lastWeekEntries)
-        const lastMonth = calculateDifference(lastMonthEntries)
+        const experience = calculateDifference(lastDayEntries).experience
+        const level = calculateLevelFromExperience(experience)
+        const lastDay = calculateDifference(lastDayEntries).expDiff
+        const lastWeek = calculateDifference(lastWeekEntries).expDiff
+        const lastMonth = calculateDifference(lastMonthEntries).expDiff
         const lastDayColor = determineColor(lastDay)
         const lastWeekColor = determineColor(lastWeek)
         const lastMonthColor = determineColor(lastMonth)
+        const estNextMonth = calculateLevelFromExperience(Math.ceil(lastWeek * monthFactor) + experience)
+        const estNextThreeMonth = calculateLevelFromExperience(Math.ceil(lastWeek * threeMonthFactor) + experience)
+        const estNextSixMonth = calculateLevelFromExperience(Math.ceil(lastWeek * sixMonthFactor) + experience)
+        const estNextYear = calculateLevelFromExperience(Math.ceil(lastWeek * oneYearFactor) + experience)
 
         return {
             name,
+            level,
+            estNextMonth,
+            estNextThreeMonth,
+            estNextSixMonth,
+            estNextYear,
             lastDay,
             lastWeek,
             lastMonth,
@@ -59,4 +76,8 @@ export const determineColor = (experience: number) => {
     }
 
     return colors.text
+}
+
+export const fetchHighscores = () => {
+
 }

@@ -103,8 +103,14 @@
     "name": "Name",
     "loading": "Loading...",
     "highscoresUpdate": "Highscores are updated every 2 hours. Last update {{updateDate}} ago.",
-    "lastDay": "Last 24 hours",
+    "lastDay": "From 11 AM",
     "lastWeek": "Last week",
-    "lastMonth": "Last month"
+    "lastMonth": "Last month",
+    "level": "Level",
+    "estimatedNextMonth": "Est. 1 month",
+    "estimatedThreeMonths": "Est. 3 months",
+    "estimatedSixMonths": "Est. 6 months",
+    "estimatedNextYear": "Est. 1 year"
+
   }
 }

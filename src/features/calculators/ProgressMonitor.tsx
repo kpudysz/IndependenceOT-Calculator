@@ -1,67 +1,76 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import { Box, Flex, Table, Tbody, Td, Thead, Tr, useMediaQuery } from '@chakra-ui/react'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import { colors } from 'common'
 import { formatDistanceToNow, fromUnixTime, getUnixTime, subMonths } from 'date-fns'
-import { GetHighscoresResponse, Highscores, SortBy } from './types'
-import { Flex, Table, Tbody, Td, Thead, Tr, useMediaQuery } from '@chakra-ui/react'
-import { useTranslation } from 'react-i18next'
-import { ApiURL, colors } from 'common'
-import { prepareHighscores } from './helpers'
-import { Languages } from 'lib/types'
 import { enUS, pl } from 'date-fns/locale'
-import axios, { AxiosResponse } from 'axios'
+import { Languages } from 'lib/types'
+import React, { Fragment, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { prepareHighscores } from './helpers'
+import { GetHighscoresResponse, SortBy } from './types'
 
 type ProgressMonitorProps = {
     locale: string
 }
 
 export const ProgressMonitor: React.FunctionComponent<ProgressMonitorProps> = ({ locale }) => {
-    const [highscores, setHighscores] = useState<Array<Highscores>>()
     const [sortBy, setSortBy] = useState<SortBy>(SortBy.MONTH)
-    const [lastUpdated, setLastUpdated] = useState<number>()
     const [isMobile] = useMediaQuery("(max-width: 768px)")
     const { t } = useTranslation('translation', { keyPrefix: 'progressMonitor' })
+    const { isPending, data } = useQuery({
+        queryKey: ['progressMonitor'],
+        queryFn: async () => {
+            const dateNow = new Date()
+            const dateTo = getUnixTime(dateNow)
+            const dateFrom = getUnixTime(subMonths(dateNow, 1))
+            const response = await axios.get(`/highscores?dateFrom=${dateFrom}&dateTo=${dateTo}`)
+            const preparedHighscores = prepareHighscores(response.data as Array<GetHighscoresResponse>)
+            const recentDate = Math.max(...(response.data as Array<GetHighscoresResponse>).map(item => item.date))
 
-    useEffect(() => {
-        const dateNow = new Date()
+            return {
+                highscores: preparedHighscores,
+                lastUpdated: recentDate
+            }
+        }
+    })
 
-        const dateTo = getUnixTime(dateNow)
-        const dateFrom = getUnixTime(subMonths(dateNow, 1))
-
-        axios.get(`${ApiURL}/highscores?dateFrom=${dateFrom}&dateTo=${dateTo}`)
-            .then((responseData: AxiosResponse<Array<GetHighscoresResponse>>) => {
-                const preparedHighscores = prepareHighscores(responseData.data)
-                const recentDate = Math.max(...responseData.data.map(item => item.date))
-
-                setHighscores(preparedHighscores)
-                setLastUpdated(recentDate)
-            })
-    }, [])
-
-    useEffect(() => {
-        if (!sortBy || !highscores) {
-            return
+    const sortedHighscores = useMemo(() => {
+        if (!data?.highscores) {
+            return []
         }
 
-        const sortedHighscores = [...highscores].sort((a, b) => {
+        return [...data.highscores].sort((a, b) => {
             switch (sortBy) {
+                case SortBy.LEVEL:
+                    return b.level - a.level
                 case SortBy.NAME:
                     return a.name.localeCompare(b.name)
                 case SortBy.DAY:
                     return b.lastDay - a.lastDay
                 case SortBy.WEEK:
                     return b.lastWeek - a.lastWeek
+                case SortBy.NEXTMONTH:
+                    return b.estNextMonth - a.estNextMonth
+                case SortBy.NEXTTHREEMONTHS:
+                    return b.estNextThreeMonth - a.estNextThreeMonth
+                case SortBy.NEXTSIXMONTHS:
+                    return b.estNextSixMonth - a.estNextSixMonth
+                case SortBy.NEXTYEAR:
+                    return b.estNextYear - a.estNextYear
                 default:
                 case SortBy.MONTH:
                     return b.lastMonth - a.lastMonth
             }
         })
-        setHighscores(sortedHighscores)
-    }, [sortBy])
+    }, [data?.highscores, sortBy])
 
     return (
-        <Flex justifyContent="center" height="100%" color={colors.text} px={isMobile ? 4 : 0}>
+        <Flex justifyContent="center" height="100%" color={colors.text} overflowX="auto" width="100vw">
             <Flex
                 height="auto"
-                width={isMobile ? "100%" : "850px"}
+                width="100%"
+                maxWidth="1350px"
                 borderRadius="10px"
                 background={colors.background}
                 alignItems="center"
@@ -76,50 +85,72 @@ export const ProgressMonitor: React.FunctionComponent<ProgressMonitorProps> = ({
                 >
                     {t('progressMonitor')}
                 </Flex>
-                {highscores && lastUpdated && (
+                {data?.highscores && !isPending && (
                     <Fragment>
                         <Flex textAlign="center" margin="15px 0 20px">
-                            {t('highscoresUpdate', { updateDate: formatDistanceToNow(fromUnixTime(lastUpdated || 0), { locale: locale === Languages.En ? enUS : pl }) })}
+                            {t('highscoresUpdate', { updateDate: formatDistanceToNow(fromUnixTime(data.lastUpdated || 0), { locale: locale === Languages.En ? enUS : pl }) })}
                         </Flex>
-                        <Table fontSize={isMobile ? "sm" : "md"} variant="simple" width="100%">
-                            <Thead>
-                                <Tr>
-                                    <Td>{t('number')}</Td>
-                                    <Td onClick={() => setSortBy(SortBy.NAME)} cursor="pointer" color={sortBy === SortBy.NAME ? colors.yellow : colors.text}>{t('name')}</Td>
-                                    <Td onClick={() => setSortBy(SortBy.DAY)} cursor="pointer" color={sortBy === SortBy.DAY ? colors.yellow : colors.text}>{t('lastDay')}</Td>
-                                    <Td onClick={() => setSortBy(SortBy.WEEK)} cursor="pointer" color={sortBy === SortBy.WEEK ? colors.yellow : colors.text}>{t('lastWeek')}</Td>
-                                    <Td onClick={() => setSortBy(SortBy.MONTH)} cursor="pointer" color={sortBy === SortBy.MONTH ? colors.yellow : colors.text}>{t('lastMonth')}</Td>
-                                </Tr>
-                            </Thead>
-                            <Tbody>
-                            {highscores?.map((player, index) => (
-                                <Tr key={player.name}>
-                                    <Td>
-                                        {index + 1}
-                                    </Td>
-                                    <Td>
-                                        {player.name}
-                                    </Td>
-                                    <Td color={player.lastDayColor}>
-                                        {player.lastDay > 0 ? '+' : ''}{player.lastDay.toLocaleString()}
-                                    </Td>
-                                    <Td color={player.lastWeekColor}>
-                                        {player.lastWeek > 0 ? '+' : ''}{player.lastWeek.toLocaleString()}
-                                    </Td>
-                                    <Td color={player.lastMonthColor}>
-                                        {player.lastMonth > 0 ? '+' : ''}{player.lastMonth.toLocaleString()}
-                                    </Td>
-                                </Tr>
-                            ))}
-                            </Tbody>
-                        </Table>
+                        <Box width="100%" overflow="auto" style={{ WebkitOverflowScrolling: 'touch' }}>
+                            <Table fontSize={isMobile ? "sm" : "md"} variant="simple" width="100%">
+                                <Thead>
+                                    <Tr>
+                                        <Td>{t('number')}</Td>
+                                        <Td onClick={() => setSortBy(SortBy.LEVEL)} cursor="pointer" color={sortBy === SortBy.LEVEL ? colors.yellow : colors.text}>{t('level')}</Td>
+                                        <Td onClick={() => setSortBy(SortBy.NAME)} cursor="pointer" color={sortBy === SortBy.NAME ? colors.yellow : colors.text}>{t('name')}</Td>
+                                        <Td onClick={() => setSortBy(SortBy.DAY)} cursor="pointer" color={sortBy === SortBy.DAY ? colors.yellow : colors.text}>{t('lastDay')}</Td>
+                                        <Td onClick={() => setSortBy(SortBy.WEEK)} cursor="pointer" color={sortBy === SortBy.WEEK ? colors.yellow : colors.text}>{t('lastWeek')}</Td>
+                                        <Td onClick={() => setSortBy(SortBy.MONTH)} cursor="pointer" color={sortBy === SortBy.MONTH ? colors.yellow : colors.text}>{t('lastMonth')}</Td>
+                                        <Td onClick={() => setSortBy(SortBy.NEXTMONTH)} cursor="pointer" color={sortBy === SortBy.NEXTMONTH ? colors.yellow : colors.text}>{t('estimatedNextMonth')}</Td>
+                                        <Td onClick={() => setSortBy(SortBy.NEXTTHREEMONTHS)} cursor="pointer" color={sortBy === SortBy.NEXTTHREEMONTHS ? colors.yellow : colors.text}>{t('estimatedThreeMonths')}</Td>
+                                        <Td onClick={() => setSortBy(SortBy.NEXTSIXMONTHS)} cursor="pointer" color={sortBy === SortBy.NEXTSIXMONTHS ? colors.yellow : colors.text}>{t('estimatedSixMonths')}</Td>
+                                        <Td onClick={() => setSortBy(SortBy.NEXTYEAR)} cursor="pointer" color={sortBy === SortBy.NEXTYEAR ? colors.yellow : colors.text}>{t('estimatedNextYear')}</Td>
+                                    </Tr>
+                                </Thead>
+                                <Tbody>
+                                    {sortedHighscores.map((player, index) => (
+                                        <Tr key={player.name}>
+                                            <Td>
+                                                {index + 1}
+                                            </Td>
+                                            <Td>
+                                                {player.level}
+                                            </Td>
+                                            <Td>
+                                                {player.name}
+                                            </Td>
+                                            <Td color={player.lastDayColor}>
+                                                {player.lastDay > 0 ? '+' : ''}{player.lastDay.toLocaleString()}
+                                            </Td>
+                                            <Td color={player.lastWeekColor}>
+                                                {player.lastWeek > 0 ? '+' : ''}{player.lastWeek.toLocaleString()}
+                                            </Td>
+                                            <Td color={player.lastMonthColor}>
+                                                {player.lastMonth > 0 ? '+' : ''}{player.lastMonth.toLocaleString()}
+                                            </Td>
+                                            <Td>
+                                                {player.estNextMonth}
+                                            </Td>
+                                            <Td>
+                                                {player.estNextThreeMonth}
+                                            </Td>
+                                            <Td>
+                                                {player.estNextSixMonth}
+                                            </Td>
+                                            <Td>
+                                                {player.estNextYear}
+                                            </Td>
+                                        </Tr>
+                                    ))}
+                                </Tbody>
+                            </Table>
+                        </Box>
                     </Fragment>
                 )}
-                {(!highscores || !lastUpdated) && (
+                {isPending && (
                     <Flex mt="20px">
                         {t('loading')}
                     </Flex>
-                ) }
+                )}
             </Flex>
         </Flex>
     )

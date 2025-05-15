@@ -1,1 +1,1 @@
-export { colors, ApiURL } from './constants'
+export { colors } from './constants'
