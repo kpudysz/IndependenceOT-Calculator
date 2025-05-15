@@ -65,7 +65,8 @@ export const SuggestChanges: React.FC<SuggestChangesProps> = ({ source, onSend }
         </Flex>
       </Flex>
       <Collapse in={isOpen} animateOpacity>
-      <Input onChange={value => setAuthor(value)} controlledValue={author} label="Your nickname"/>
+      <Divider my={2}/>
+      <Input onChange={value => setAuthor(value)} controlledValue={author} label="Your nickname" isClearable={false}/>
         <Divider my={2} />
         <Box
           ref={quillRef}

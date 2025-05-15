@@ -6,18 +6,18 @@ import { ApiURL } from "common"
 
 export const sendSuggestion = async (content: string, source: WikiMenu, author?: string) => {
   const { setToast } = useToast()
-    const response = await axios.post(`${ApiURL}/wiki/send-suggestion`, {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: {
+    const request = await axios.post(`${ApiURL}/wiki/send-suggestion`, {
           content,
           source,
           author
-        }
+        },
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            }
       })
 
-      if (response.status === 200) {
+      if (request.status === 201 || request.status === 200) {
         return setToast({
           text: 'Suggestions sent successfully, after confirmation they will be added to the wiki',
           type: Toastify.Success
