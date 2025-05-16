@@ -132,6 +132,7 @@ export type ResolvedBreakpoints = {
 export enum SortBy {
     LEVEL = 'level',
     NAME = 'name',
+    YESTERDAY = 'yesterday',
     DAY = 'day',
     WEEK = 'week',
     MONTH = 'month',

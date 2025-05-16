@@ -46,6 +46,8 @@ export const ProgressMonitor: React.FunctionComponent<ProgressMonitorProps> = ({
                     return b.level - a.level
                 case SortBy.NAME:
                     return a.name.localeCompare(b.name)
+                case SortBy.YESTERDAY:
+                    return b.yesterday - a.yesterday
                 case SortBy.DAY:
                     return b.lastDay - a.lastDay
                 case SortBy.WEEK:
@@ -97,6 +99,7 @@ export const ProgressMonitor: React.FunctionComponent<ProgressMonitorProps> = ({
                                         <Td>{t('number')}</Td>
                                         <Td onClick={() => setSortBy(SortBy.LEVEL)} cursor="pointer" color={sortBy === SortBy.LEVEL ? colors.yellow : colors.text}>{t('level')}</Td>
                                         <Td onClick={() => setSortBy(SortBy.NAME)} cursor="pointer" color={sortBy === SortBy.NAME ? colors.yellow : colors.text}>{t('name')}</Td>
+                                        <Td onClick={() => setSortBy(SortBy.YESTERDAY)} cursor="pointer" color={sortBy === SortBy.YESTERDAY ? colors.yellow : colors.text}>{t('yesterday')}</Td>
                                         <Td onClick={() => setSortBy(SortBy.DAY)} cursor="pointer" color={sortBy === SortBy.DAY ? colors.yellow : colors.text}>{t('lastDay')}</Td>
                                         <Td onClick={() => setSortBy(SortBy.WEEK)} cursor="pointer" color={sortBy === SortBy.WEEK ? colors.yellow : colors.text}>{t('lastWeek')}</Td>
                                         <Td onClick={() => setSortBy(SortBy.MONTH)} cursor="pointer" color={sortBy === SortBy.MONTH ? colors.yellow : colors.text}>{t('lastMonth')}</Td>
@@ -117,6 +120,9 @@ export const ProgressMonitor: React.FunctionComponent<ProgressMonitorProps> = ({
                                             </Td>
                                             <Td>
                                                 {player.name}
+                                            </Td>
+                                            <Td color={player.yesterdayColor}>
+                                                {player.yesterday > 0 ? '+' : ''}{player.yesterday.toLocaleString()}
                                             </Td>
                                             <Td color={player.lastDayColor}>
                                                 {player.lastDay > 0 ? '+' : ''}{player.lastDay.toLocaleString()}

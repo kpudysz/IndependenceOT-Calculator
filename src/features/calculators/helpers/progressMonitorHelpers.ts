@@ -18,7 +18,9 @@ export const prepareHighscores = (highscores: Array<GetHighscoresResponse>) => {
     const now = new Date()
     const todayAt11AM = setSeconds(setMinutes(setHours(now, 11), 0), 0)
     const referenceTime = isBefore(now, todayAt11AM) ? setSeconds(setMinutes(setHours(subDays(now, 1), 11), 0), 0) : todayAt11AM
+    const yesterday11AM = subDays(referenceTime, 1)
     const unixReferenceTime = getUnixTime(referenceTime)
+    const unixYesterday11AM = getUnixTime(yesterday11AM)
     const previousDay = getUnixTime(subDays(now, 1))
     const previousWeek = getUnixTime(subWeeks(now, 1))
     const previousMonth = getUnixTime(subMonths(now, 1))
@@ -32,15 +34,18 @@ export const prepareHighscores = (highscores: Array<GetHighscoresResponse>) => {
         const threeMonthFactor = 12.857 // 90/7
         const sixMonthFactor = 25.714 // 180/7
         const oneYearFactor = 52.142 // 365/7
-        const elevenAMEntries = entries.filter(entry => entry.date >= unixReferenceTime)
+        const today = entries.filter(entry => entry.date >= unixReferenceTime)
         const lastDayEntries = entries.filter(entry => entry.date >= previousDay)
         const lastWeekEntries = entries.filter(entry => entry.date >= previousWeek)
         const lastMonthEntries = entries.filter(entry => entry.date >= previousMonth)
+        const yesterdayEntries = entries.filter(entry => entry.date >= unixYesterday11AM && entry.date <= unixReferenceTime)
         const experience = calculateDifference(lastDayEntries).experience
         const level = calculateLevelFromExperience(experience)
-        const lastDay = calculateDifference(elevenAMEntries).expDiff
+        const lastDay = calculateDifference(today).expDiff
+        const yesterday = calculateDifference(yesterdayEntries).expDiff
         const lastWeek = calculateDifference(lastWeekEntries).expDiff
         const lastMonth = calculateDifference(lastMonthEntries).expDiff
+        const yesterdayColor = determineColor(yesterday)
         const lastDayColor = determineColor(lastDay)
         const lastWeekColor = determineColor(lastWeek)
         const lastMonthColor = determineColor(lastMonth)
@@ -57,8 +62,10 @@ export const prepareHighscores = (highscores: Array<GetHighscoresResponse>) => {
             estNextSixMonth,
             estNextYear,
             lastDay,
+            yesterday,
             lastWeek,
             lastMonth,
+            yesterdayColor,
             lastDayColor,
             lastWeekColor,
             lastMonthColor
