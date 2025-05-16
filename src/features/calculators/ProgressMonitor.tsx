@@ -1,6 +1,6 @@
 import { Box, Flex, Table, Tbody, Td, Thead, Tr, useMediaQuery } from '@chakra-ui/react'
 import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { colors } from 'common'
 import { formatDistanceToNow, fromUnixTime, getUnixTime, subMonths } from 'date-fns'
 import { enUS, pl } from 'date-fns/locale'
@@ -24,9 +24,9 @@ export const ProgressMonitor: React.FunctionComponent<ProgressMonitorProps> = ({
             const dateNow = new Date()
             const dateTo = getUnixTime(dateNow)
             const dateFrom = getUnixTime(subMonths(dateNow, 1))
-            const response = await axios.get(`/highscores?dateFrom=${dateFrom}&dateTo=${dateTo}`)
-            const preparedHighscores = prepareHighscores(response.data as Array<GetHighscoresResponse>)
-            const recentDate = Math.max(...(response.data as Array<GetHighscoresResponse>).map(item => item.date))
+            const response: AxiosResponse<Array<GetHighscoresResponse>> = await axios.get(`/highscores?dateFrom=${dateFrom}&dateTo=${dateTo}`)
+            const preparedHighscores = prepareHighscores(response.data)
+            const recentDate = Math.max(...response.data.map(item => item.date))
 
             return {
                 highscores: preparedHighscores,
@@ -63,7 +63,7 @@ export const ProgressMonitor: React.FunctionComponent<ProgressMonitorProps> = ({
                     return b.lastMonth - a.lastMonth
             }
         })
-    }, [data?.highscores, sortBy])
+    }, [data, sortBy])
 
     return (
         <Flex justifyContent="center" height="100%" color={colors.text} overflowX="auto" width="100vw">
@@ -85,7 +85,7 @@ export const ProgressMonitor: React.FunctionComponent<ProgressMonitorProps> = ({
                 >
                     {t('progressMonitor')}
                 </Flex>
-                {data?.highscores && !isPending && (
+                {data?.highscores && (
                     <Fragment>
                         <Flex textAlign="center" margin="15px 0 20px">
                             {t('highscoresUpdate', { updateDate: formatDistanceToNow(fromUnixTime(data.lastUpdated || 0), { locale: locale === Languages.En ? enUS : pl }) })}

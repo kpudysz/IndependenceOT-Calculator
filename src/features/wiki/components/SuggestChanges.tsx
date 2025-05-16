@@ -84,9 +84,9 @@ export const SuggestChanges: React.FC<SuggestChangesProps> = ({ source, isLoadin
         </Flex>
       </Flex>
       <Collapse in={isOpen} animateOpacity>
-        <Divider my={2} />
+        <Divider my={2} mb="15px" />
         <Input onChange={value => setAuthor(value)} controlledValue={author} label="Your nickname" isClearable={false} />
-        <Divider my={2} />
+        <Divider my={2} margin="15px 0 15px" />
         <Box
           ref={quillRef}
           id="suggest-changes-quill"

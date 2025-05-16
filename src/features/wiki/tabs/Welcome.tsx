@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Text } from '@chakra-ui/react'
+import { Box, Divider, Flex, Link, Text } from '@chakra-ui/react'
 import { colors } from 'common/constants'
 import React from 'react'
 import { SuggestChanges, WikiMenu } from '../components'
@@ -20,12 +20,24 @@ export const Welcome: React.FC = () => {
         p={8}
         boxShadow="md"
       >
-        <Flex fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
+        <Text fontSize="4xl" fontWeight="bold" mb={10} textAlign="center">
           Welcome
-        </Flex>
-        <Text mb={4}>
-          Example
         </Text>
+        <Text margin="20px 0 20px" fontSize="2xl" fontWeight="bold">
+          Rookgaard Independence Wiki
+        </Text>
+        <Text fontSize="lg">
+          This wiki is a community-driven project to document the game on <Link color={colors.orange} href="https://rookgaard.live">Rookgaard Independence</Link>.
+        </Text>
+        <Text fontSize="lg" mt="10px">
+          If you are new player, we recommend you to check out Getting Started and Basics section to know the most important things about the game.
+        </Text>
+        <Text fontSize="lg" mt="10px">
+          We are open minded and trying our best to provide accurate and up-to-date information about the game.
+          If you ever feel like something is outdated or can be put in better words, don't hesitate to use Suggest Changes at the bottom of the page or reach me on discord.
+          For best player experience we recommend you to join local community on <Link color={colors.orange} href={"https://discord.com/invite/AeEFxZje5J"}>Discord</Link>.
+        </Text>
+        <Text fontSize="lg" mt="10px">Guntrip</Text>
         <Divider my={4} />
         <SuggestChanges
           source={WikiMenu.Welcome}

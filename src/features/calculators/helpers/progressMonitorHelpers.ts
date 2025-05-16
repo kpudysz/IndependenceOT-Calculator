@@ -1,6 +1,6 @@
-import { subDays, subWeeks, subMonths, getUnixTime, setHours, setMinutes, setSeconds, isBefore } from 'date-fns'
-import { GetHighscoresResponse } from '../types'
 import { colors } from 'common'
+import { getUnixTime, isBefore, setHours, setMinutes, setSeconds, subDays, subMonths, subWeeks } from 'date-fns'
+import { GetHighscoresResponse } from '../types'
 import { calculateLevelFromExperience } from './experience'
 
 const calculateDifference = (filteredEntries: Array<GetHighscoresResponse>) => {
@@ -9,8 +9,8 @@ const calculateDifference = (filteredEntries: Array<GetHighscoresResponse>) => {
     const latest = sorted[sorted.length - 1]
 
     return {
-        expDiff: Number(latest.experience) - Number(earliest.experience),
-        experience: Number(latest.experience)
+        expDiff: Number(latest?.experience) - Number(earliest?.experience) || 0,
+        experience: Number(latest?.experience)
     }
 }
 
@@ -19,24 +19,26 @@ export const prepareHighscores = (highscores: Array<GetHighscoresResponse>) => {
     const todayAt11AM = setSeconds(setMinutes(setHours(now, 11), 0), 0)
     const referenceTime = isBefore(now, todayAt11AM) ? setSeconds(setMinutes(setHours(subDays(now, 1), 11), 0), 0) : todayAt11AM
     const unixReferenceTime = getUnixTime(referenceTime)
+    const previousDay = getUnixTime(subDays(now, 1))
     const previousWeek = getUnixTime(subWeeks(now, 1))
     const previousMonth = getUnixTime(subMonths(now, 1))
     const groupedPlayers = highscores.reduce((acc, entry) => ({
-            ...acc,
-            [entry.name]: [...(acc[entry.name] ?? []), entry]
-        }), {} as Record<string, Array<GetHighscoresResponse>>)
+        ...acc,
+        [entry.name]: [...(acc[entry.name] ?? []), entry]
+    }), {} as Record<string, Array<GetHighscoresResponse>>)
 
     return Object.entries(groupedPlayers).map(([name, entries]) => {
         const monthFactor = 4.285 // 30/7
         const threeMonthFactor = 12.857 // 90/7
         const sixMonthFactor = 25.714 // 180/7
         const oneYearFactor = 52.142 // 365/7
-        const lastDayEntries = entries.filter(entry => entry.date >= unixReferenceTime)
+        const elevenAMEntries = entries.filter(entry => entry.date >= unixReferenceTime)
+        const lastDayEntries = entries.filter(entry => entry.date >= previousDay)
         const lastWeekEntries = entries.filter(entry => entry.date >= previousWeek)
         const lastMonthEntries = entries.filter(entry => entry.date >= previousMonth)
         const experience = calculateDifference(lastDayEntries).experience
         const level = calculateLevelFromExperience(experience)
-        const lastDay = calculateDifference(lastDayEntries).expDiff
+        const lastDay = calculateDifference(elevenAMEntries).expDiff
         const lastWeek = calculateDifference(lastWeekEntries).expDiff
         const lastMonth = calculateDifference(lastMonthEntries).expDiff
         const lastDayColor = determineColor(lastDay)
@@ -63,7 +65,6 @@ export const prepareHighscores = (highscores: Array<GetHighscoresResponse>) => {
         }
     })
         .filter(player => player.lastDay || player.lastWeek || player.lastMonth)
-        .sort((a, b) => b.lastMonth - a.lastMonth)
 }
 
 export const determineColor = (experience: number) => {
