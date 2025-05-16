@@ -12,14 +12,14 @@ export const GettingStarted: React.FC = () => {
       <Box
         border="1px solid #9CA0A6"
         borderRadius="lg"
-        maxW="900px"
+        width={{ base: '100%', md: '90%', lg: '900px' }}
+        maxWidth="900px"
         color={colors.text}
-        minW="800px"
-        w="100%"
         bg={colors.background}
-        p={8}
+        p={{ base: 2, md: 6, lg: 8 }}
         boxShadow="md"
-        fontSize="lg"
+        fontSize={{ base: 'md', md: 'lg' }}
+        overflowX="auto"
       >
         <Text fontSize="4xl" fontWeight="bold" mb={10} textAlign="center">
           Getting Started
