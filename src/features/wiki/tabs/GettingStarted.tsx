@@ -42,6 +42,12 @@ export const GettingStarted: React.FC = () => {
           One of the differences on IndependenceOT is that you actually need light source when exploring the caves.
           Make sure you carry some torches with you. Later on there are better light sources available.
         </Text>
+        <Text mt="10px">
+          There is option to loot items automatically called autoloot.
+          To use it you need to right click on the item that you want to collect and choose "Add to autoloot".
+          Whenever a monster drops selected item it will automatically appear in your inventory, if you don't have capacity you will see read warning on your screen.
+          To learn more about autoloot check out section Autoloot.
+        </Text>
         <Divider my={4} />
         <Text mt="20px">
           After that there are various options on what to do next.
@@ -73,7 +79,7 @@ export const GettingStarted: React.FC = () => {
           After that gold is mainly used to trade with players to get items that you might need.
         </Text>
         <Text mt="20px">
-            Currently best gold making way is to help high level players and collect some things that they need. Some things are always sought after so don't throw them away.
+          Currently best gold making way is to help high level players and collect some things that they need. Some things are always sought after so don't throw them away.
         </Text>
         <UnorderedList>
           <ListItem>Collecting Brass Helmet/Brass Shields - usually 500gp/each</ListItem>
@@ -85,8 +91,34 @@ export const GettingStarted: React.FC = () => {
           <ListItem>Hunting bosses</ListItem>
         </UnorderedList>
         <Text mt="20px">
-          To read more about exploring new areas, check out section World Changes
+          To read more about exploring new areas, check out section World Changes. These areas are easy to find and offer a lot of new content.
         </Text>
+        <Text mt="20px">
+          Players after a bit of time choose their own way of gameplay, so here is the list what people usually focus on:
+        </Text>
+        <UnorderedList>
+          <ListItem>
+            Hunting Bosses
+          </ListItem>
+          <ListItem>
+            Leveling
+          </ListItem>
+          <ListItem>
+            Playing as pacifist - leveling without killing any monsters
+          </ListItem>
+          <ListItem>
+            Fishing
+          </ListItem>
+          <ListItem>
+            Completing as much bestiary as possible
+          </ListItem>
+          <ListItem>
+            Completing achievements
+          </ListItem>
+          <ListItem>
+            Finding and solving mysteries
+          </ListItem>
+        </UnorderedList>
         <Divider my={4} />
         <SuggestChanges
           source={WikiMenu.GettingStarted}

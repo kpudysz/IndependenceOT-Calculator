@@ -19,12 +19,25 @@ export const Commands: React.FC = () => {
         bg={colors.background}
         p={8}
         boxShadow="md"
+        fontSize="lg"
       >
-        <Flex fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
+        <Text fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
           Commands
-        </Flex>
+        </Text>
         <Text mb={4}>
-          Example
+          !time - command which shows your total time spend in game.
+        </Text>
+        <Text mb={4}>
+          !autoloot (add,show,clear) for example !autoloot add, gold coin. For more info check section Autoloot.
+        </Text>
+        <Text mb={4}>
+          !online - show information about current number of online players.
+        </Text>
+        <Text mb={4}>
+          !uptime - shows how long the server has been online.
+        </Text>
+        <Text mb={4}>
+          /pos - shows your current position, might be sometimes useful when reporting a bug.
         </Text>
         <Divider my={4} />
         <SuggestChanges

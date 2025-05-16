@@ -19,7 +19,7 @@ const queryClient = new QueryClient({
 })
 
 export const App: React.FunctionComponent = () => (
-    <Flex minHeight="100vh" width="auto" flexDirection="column" backgroundImage={images.background} backgroundSize="cover">
+    <Flex minHeight="100vh" width="auto" flexDirection="column" backgroundImage={images.background} backgroundSize="contain">
         <ToastContainer />
         <ChakraProvider theme={theme}>
             <QueryClientProvider client={queryClient}>
