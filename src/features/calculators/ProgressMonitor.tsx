@@ -68,7 +68,7 @@ export const ProgressMonitor: React.FunctionComponent<ProgressMonitorProps> = ({
     }, [data, sortBy])
 
     return (
-        <Flex justifyContent="center" height="100%" color={colors.text} overflowX="auto" width="100vw">
+        <Flex justifyContent="center" height="100%" color={colors.text} width="100vw">
             <Flex
                 height="auto"
                 width="100%"

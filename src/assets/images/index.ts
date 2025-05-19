@@ -18,6 +18,7 @@ import unitedKingdom from './unitedKingdom.png'
 import muddyFloor200 from './muddyFloor200.png'
 import dirtFloorFast130 from './dirtFloorFast130.png'
 import dirtFloorSlower160 from './dirtFloorSlower160.png'
+import achievementBook from './achievementBook.jpg'
 
 export {
     drawbridge90,
@@ -39,5 +40,6 @@ export {
     unitedKingdom,
     cobble100,
     background,
-    rookgaardLogo
+    rookgaardLogo,
+    achievementBook
 }

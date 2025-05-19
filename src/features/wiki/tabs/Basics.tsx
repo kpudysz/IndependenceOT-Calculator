@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Text } from "@chakra-ui/react"
+import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react"
 import { colors } from "common/constants"
 import React from 'react'
 import { SuggestChanges, WikiMenu } from "../components"
@@ -27,18 +27,19 @@ export const Basics: React.FC = () => {
         <Text mb={4} fontSize="2xl">
           Choosing your first charm
         </Text>
-        <Text mt="20px">
+        <Flex mt="20px" justifyContent="flex-start">
+          <Image src="https://tibiopedia.pl/images/static/monsters/war_wolf.gif" mr="10px" />
           Most people pick Wolf Whispering as their first charm.
           Wolf whispering gives high boost to damage and therefore is often picked as the first charm.
           You can get your first charm around level 20-25 if you decide to kill various creatures evenly.
           It allows you to tame a wolf that will help you fight enemies on your journey.
           For more information about charms check out section Charms.
-        </Text>
+        </Flex>
         <Text mt="20px" fontSize="2xl">
           New mechanics
         </Text>
         <Text mt="20px">
-          There are many new mechanics added - Auto loot, fishing, herbalism, collecting branches, new cooking recipes, woodcutting, mining, skinning, planting vegetables, watering fruits, alchemy, crafting items, reaping, making rum, opening world changes and probably many others.
+          There are many new mechanics added - Auto loot, fishing, herbalism, collecting branches, new cooking recipes, woodcutting, mining, skinning, planting vegetables, watering fruits, alchemy, crafting items, reaping, making rum, opening world changes and others.
         </Text>
         <Text mt="20px">
           Each of these have their specific section, and while it might be overwhelming at first it's just a bonus content that still fits to entire rookgaard theme.
@@ -49,15 +50,21 @@ export const Basics: React.FC = () => {
         <Text mt="20px" fontSize="2xl">
           Getting your first mount
         </Text>
-        <Text mt="20px">
+        <Flex mt="20px" alignItems="center">
+          <Image src="https://tibiopedia.pl/images/static/mounts/rented_horse.gif" mr="10px" />
           The easiest way to get your first mount it to rent a horse from a Seymour.
           Renting a horse lasts for 24 hours, and costs 500gp.
-        </Text>
-        <Text mt="20px">
+        </Flex>
+        <Flex mt="20px" alignItems="center">
+          <Image src="https://tibiopedia.pl/images/static/mounts/rapid_boar.gif" mr="10px" />
           Easiest permanent mount to acquire is Rapid Boar.
-          You can get it by giving Horatio, 100 Rabbit foot (Requires skinning knife) for Hunting Horn.
-          After that activate Pig World Change, try to meet The Hog and catch him by using Hunting Horn.
-        </Text>
+        </Flex>
+        <Flex alignItems="center">
+          You can get it by giving Horatio 100 <Image src="https://tibiopedia.pl/images/static/items/rabbits_foot.gif" /> Rabbit's Foot for <Image src="https://tibiopedia.pl/images/static/items/hunting_horn.gif" p="0 6px" /> Hunting Horn.
+        </Flex>
+        <Flex alignItems="center">
+          After that activate Pig World Change, meet <Image src="https://tibiopedia.pl/images/static/monsters/boar.gif" p="0 6px" /> The Hog and catch him by using <Image src="https://tibiopedia.pl/images/static/items/hunting_horn.gif" p="0 6px" /> Hunting Horn.
+        </Flex>
         <Divider my={4} />
         <SuggestChanges
           source={WikiMenu.Basics}

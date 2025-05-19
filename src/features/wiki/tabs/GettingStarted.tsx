@@ -1,4 +1,5 @@
-import { Box, Divider, Flex, ListItem, Text, UnorderedList } from "@chakra-ui/react"
+import { Box, Divider, Flex, Image, ListItem, Text, UnorderedList } from "@chakra-ui/react"
+import { images } from "assets"
 import { colors } from "common/constants"
 import React from 'react'
 import { SuggestChanges, WikiMenu } from "../components"
@@ -31,23 +32,30 @@ export const GettingStarted: React.FC = () => {
           We recommend that you get following items:
         </Text>
         <UnorderedList>
-          <ListItem>Legion Helmet</ListItem>
-          <ListItem>Chain Armor</ListItem>
-          <ListItem>Studded Legs</ListItem>
-          <ListItem>Leather Boots</ListItem>
-          <ListItem>Copper Shield</ListItem>
-          <ListItem>Katana - Mace - Hatchet up to your choice</ListItem>
+          <ListItem display="flex" alignItems="center"><Image src="https://tibiopedia.pl/images/static/items/legion_helmet.gif" />Legion Helmet</ListItem>
+          <ListItem display="flex" alignItems="center"><Image src="https://tibiopedia.pl/images/static/items/chain_armor.gif" />Chain Armor</ListItem>
+          <ListItem display="flex" alignItems="center"><Image src="https://tibiopedia.pl/images/static/items/studded_legs.gif" />Studded Legs</ListItem>
+          <ListItem display="flex" alignItems="center"><Image src="https://tibiopedia.pl/images/static/items/leather_boots.gif" />Leather Boots</ListItem>
+          <ListItem display="flex" alignItems="center"><Image src="https://tibiopedia.pl/images/static/items/copper_shield.gif" />Copper Shield</ListItem>
+          <ListItem display="flex" alignItems="center">
+            Weapon of your choice -
+            <Image src="https://tibiopedia.pl/images/static/items/katana.gif" /> Katana
+            <Image src="https://tibiopedia.pl/images/static/items/mace.gif" /> Mace
+            <Image src="https://tibiopedia.pl/images/static/items/hatchet.gif" /> Hatchet
+          </ListItem>
         </UnorderedList>
-        <Text mt="10px">
+        <Flex mt="10px" alignItems="flex-start">
+          <Image src="https://tibiopedia.pl/images/static/items/torch.gif" mr="10px" />
           One of the differences on IndependenceOT is that you actually need light source when exploring the caves.
           Make sure you carry some torches with you. Later on there are better light sources available.
-        </Text>
-        <Text mt="10px">
-          There is option to loot items automatically called autoloot.
-          To use it you need to right click on the item that you want to collect and choose "Add to autoloot".
-          Whenever a monster drops selected item it will automatically appear in your inventory, if you don't have capacity you will see read warning on your screen.
+        </Flex>
+        <Flex mt="10px" alignItems="flex-start">
+          <Image src="https://tibiopedia.pl/images/static/items/gold_pouch.gif" mr="10px" />
+          There is option to loot items automatically by using autoloot.
+          To use it you need to right click on the item that you want to collect and choose "Add to autoloot" from the menu.
+          Whenever a monster drops selected item it will automatically appear in your inventory and if you don't have capacity you will see red warning on your screen.
           To learn more about autoloot check out section Autoloot.
-        </Text>
+        </Flex>
         <Divider my={4} />
         <Text mt="20px">
           After that there are various options on what to do next.
@@ -61,42 +69,75 @@ export const GettingStarted: React.FC = () => {
           Since offline training is only available by using bed and skills are important early in the game, it is recommended to buy one as fast as possible.
           Cheapest houses cost from 20k to even 120k gold.
         </Text>
-        <Text>
-          Another reason is because there are many tools that will help you along the way.
+        <Flex mt="20px" alignItems="flex-start">
+          <Image src="https://tibiopedia.pl/images/static/items/skinning_knife.gif" mr="10px" />
           Skinning knife is often the next purchase since it allows you to skin killed creatures and obtain creature products from them (similar to obsidian knife).
-          It's worth to mention that it's possible to skin way more creatures than normally, and you can skin spiders, deers, orcs, trolls and many others.
+          It's worth to mention that it's possible to skin way more creatures than normally since you can skin spiders, deers, orcs, trolls and many others.
           Creature products are either used for addons or you can sell them to Tom, in order to activate certain world changes the following day.
           Skinning knife costs 50k and you can buy it from Stephan near the wasp tower.
-        </Text>
-        <Text mt="20px">
-          The last items that players try to buy quickly are Bestiary Book (can be bought from Stephan) and Achievement Book (can be bought from Vascalir).
-          Bestiary Book contains a record of all creatures/bosses that you killed and how many have you killed.
-          Achievement Book contains a record of all achievements that you have completed and which achievements are possible to get.
+        </Flex>
+        <Flex mt="20px" alignItems="flex-start">
+          <Image src="https://tibiopedia.pl/images/static/items/unholy_book.gif" mr="10px" />
+          Another type of item that players try to buy quickly is Bestiary Book.
+          Bestiary Book contains a record of all creatures and bosses that you killed and the amount.
+          Bestiary Book costs 10k and can be purchased from Stephan.
+        </Flex>
+        <Flex mt="20px" alignItems="flex-start">
+          <Image src={images.achievementBook} mr="10px" />
+          Achievement Book contains a record of all achievements that you have completed and what achievements are possible to get.
           Some achievements are secret, and cannot be seen unless you get them.
-          Bestiary Book costs 10k and Achievement Book is quite cheap priced at 1234gp.
-        </Text>
+          Achievement Book costs 1234gp and can be purchased from Vascalir.
+        </Flex>
         <Text mt="20px">
           After that gold is mainly used to trade with players to get items that you might need.
         </Text>
         <Text mt="20px">
           Currently best gold making way is to help high level players and collect some things that they need. Some things are always sought after so don't throw them away.
         </Text>
-        <UnorderedList>
-          <ListItem>Collecting Brass Helmet/Brass Shields - usually 500gp/each</ListItem>
-          <ListItem>Collecting Honeycombs - usually 400gp/each</ListItem>
-          <ListItem>Fishing, selling rare fish - usually 50gp/each</ListItem>
-          <ListItem>Mining iron ore(300-350gp/each), coal(40-50gp/each) or selling it to NPC for 250gp/20gp</ListItem>
-          <ListItem>Crafting rum from sugar cane</ListItem>
-          <ListItem>Delivering letters from NPC Haste to NPC's (50gp/letter)</ListItem>
-          <ListItem>Hunting bosses</ListItem>
+        <UnorderedList mt="10px" gap="8px" display="flex" flexDirection="column">
+          <ListItem display="flex" alignItems="center">
+            <Image src="https://tibiopedia.pl/images/static/items/brass_helmet.gif" mr="10px" />
+            Brass Helmet /
+            <Image src="https://tibiopedia.pl/images/static/items/brass_shield.gif" mr="10px" />
+            Brass Shield - usually 500gp/each
+          </ListItem>
+          <ListItem display="flex" alignItems="center">
+            <Image src="https://tibiopedia.pl/images/static/items/honeycomb.gif" mr="10px" />
+            Honeycomb - usually 400gp/each</ListItem>
+          <ListItem display="flex" alignItems="center">
+            <Image src="https://tibiopedia.pl/images/static/items/northern_pike.gif" />
+            <Image src="https://tibiopedia.pl/images/static/items/green_perch.gif" />
+            <Image src="https://tibiopedia.pl/images/static/items/rainbow_trout.gif" pr="10px" />
+            Fishing, selling rare fish - usually 50gp/each
+          </ListItem>
+          <ListItem display="flex" alignItems="center">
+            <Image src="https://tibiopedia.pl/images/static/items/iron_ore.gif" mr="10px" />
+            Mining iron ore 300-350gp/each
+            <Image src="https://tibiopedia.pl/images/static/items/coal.gif" mr="10px" ml="10px" />
+            coal 40-50gp/each
+          </ListItem>
+          <ListItem display="flex" alignItems="center">
+            <Image src="https://tibiopedia.pl/images/static/items/bunch_of_sugar_cane.gif" mr="10px" />
+            Crafting rum from sugar cane or selling it to players</ListItem>
+          <ListItem display="flex" alignItems="center">
+            <Image src="https://tibiopedia.pl/images/static/items/stamped_letter.gif" mr="10px" />
+            Delivering letters from NPC Haste to NPC's (50gp/letter)</ListItem>
+          <ListItem display="flex" alignItems="center">
+            <Image src="https://tibiopedia.pl/images/static/monsters/rotworm.gif" mr="10px" />
+            Hunting bosses
+          </ListItem>
         </UnorderedList>
-        <Text mt="20px">
+        <Flex mt="20px" alignItems="center">
           To read more about exploring new areas, check out section World Changes. These areas are easy to find and offer a lot of new content.
-        </Text>
+        </Flex>
+        <Flex mt="20px" alignItems="center">
+          Always remember to carry few
+          <Image src="https://tibiopedia.pl/images/static/items/small_health_potion.gif" mr="5px" /> small health potions with you to avoid deaths.
+        </Flex>
         <Text mt="20px">
           Players after a bit of time choose their own way of gameplay, so here is the list what people usually focus on:
         </Text>
-        <UnorderedList>
+        <UnorderedList mt="10px" gap="5px" display="flex" flexDirection="column">
           <ListItem>
             Hunting Bosses
           </ListItem>

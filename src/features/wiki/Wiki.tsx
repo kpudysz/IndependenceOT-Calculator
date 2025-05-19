@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import { WikiSidebar } from './components/WikiSidebar'
 import { Flex } from '@chakra-ui/react'
+import React, { useState } from 'react'
 import { WikiMenu } from './components/WikiMenu'
+import { WikiSidebar } from './components/WikiSidebar'
+import { Basics, Bestiary, Bosses, Charms, Commands, Cooking, Crafting, Fishing, GettingStarted, Herbalism, Mining, PlantingVegetables, Skinning, WorldChanges } from './tabs'
 import { Welcome } from './tabs/Welcome'
-import { Advanced, Basics, Commands, Crafting, GettingStarted, Bestiary, Charms, Cooking, Fishing, Herbalism, Mining, PlantingVegetables, Skinning, WorldChanges } from './tabs'
 
 export const Wiki: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<WikiMenu>(WikiMenu.Welcome)
@@ -15,7 +15,6 @@ export const Wiki: React.FC = () => {
         {selectedTab === WikiMenu.Welcome && <Welcome />}
         {selectedTab === WikiMenu.GettingStarted && <GettingStarted />}
         {selectedTab === WikiMenu.Basics && <Basics />}
-        {selectedTab === WikiMenu.Advanced && <Advanced />}
         {selectedTab === WikiMenu.Commands && <Commands />}
         {selectedTab === WikiMenu.Crafting && <Crafting />}
         {selectedTab === WikiMenu.Bestiary && <Bestiary />}
@@ -27,6 +26,7 @@ export const Wiki: React.FC = () => {
         {selectedTab === WikiMenu.PlantingVegetables && <PlantingVegetables />}
         {selectedTab === WikiMenu.Cooking && <Cooking />}
         {selectedTab === WikiMenu.WorldChanges && <WorldChanges />}
+        {selectedTab === WikiMenu.Bosses && <Bosses />}
       </Flex>
     </Flex>
   )

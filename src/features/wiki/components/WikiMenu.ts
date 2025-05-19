@@ -2,7 +2,6 @@ export enum WikiMenu {
   Welcome = 'Welcome',
   GettingStarted = 'Getting Started',
   Basics = 'Basics',
-  Advanced = 'Advanced',
   Commands = 'Commands',
   Mechanics = 'Mechanics',
   Crafting = 'Crafting',
@@ -17,4 +16,5 @@ export enum WikiMenu {
   PlantingVegetables = 'Planting Vegetables',
   Cooking = 'Cooking',
   WorldChanges = 'World Changes',
+  Bosses = 'Bosses'
 }

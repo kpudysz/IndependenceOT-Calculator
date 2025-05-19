@@ -4,10 +4,10 @@ export const wikiMenuData = [
   { key: WikiMenu.Welcome, label: 'Welcome' },
   { key: WikiMenu.GettingStarted, label: 'Getting Started' },
   { key: WikiMenu.Basics, label: 'Basics' },
-  { key: WikiMenu.Advanced, label: 'Advanced' },
   { key: WikiMenu.Commands, label: 'Commands' },
-  { key: WikiMenu.Crafting, label: 'Crafting' },
   { key: WikiMenu.Bestiary, label: 'Bestiary' },
+  { key: WikiMenu.Bosses, label: 'Bosses' },
+  { key: WikiMenu.Crafting, label: 'Crafting' },
   {
     key: WikiMenu.Mechanics,
     label: 'Mechanics',

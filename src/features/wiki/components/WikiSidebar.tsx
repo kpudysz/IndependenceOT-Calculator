@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { wikiMenuData } from './wikiMenuData'
-import { WikiMenu } from './WikiMenu'
-import { Flex, Box } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 import { colors } from 'common/constants'
+import React, { useState } from 'react'
+import { WikiMenu } from './WikiMenu'
+import { wikiMenuData } from './wikiMenuData'
 
 type SidebarProps = {
   selected: WikiMenu,
@@ -22,14 +22,13 @@ export const WikiSidebar: React.FC<SidebarProps> = ({ onSelect, selected }) => {
       direction="column"
       bg={colors.background}
       color={colors.text}
-      height="650px"
+      height="100%"
       borderRadius="6px"
     >
       <Box as="ul" listStyleType="none" w="100%">
         {wikiMenuData.map(item => {
           const isOpen = isMenuOpen[item.key] || false
           const isSelected = selected === item.key
-
           const isAnyChildSelected = item.children?.some(child => child.key === selected)
 
           return (
