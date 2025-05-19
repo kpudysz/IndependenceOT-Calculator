@@ -1,9 +1,10 @@
-import { Clear } from './Clear'
-import { QuestionmarkCircle } from './QuestionmarkCircle'
 import { ArrowLeft } from './ArrowLeft'
+import { Clear } from './Clear'
+import { Poland } from './Poland'
+import { QuestionmarkCircle } from './QuestionmarkCircle'
+import { UnitedKingdom } from './UnitedKingdom'
 
 export {
-    Clear,
-    QuestionmarkCircle,
-    ArrowLeft
+    ArrowLeft, Clear, Poland, QuestionmarkCircle, UnitedKingdom
 }
+

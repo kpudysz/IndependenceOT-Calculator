@@ -19,7 +19,14 @@ const queryClient = new QueryClient({
 })
 
 export const App: React.FunctionComponent = () => (
-    <Flex minHeight="100vh" width="auto" flexDirection="column" backgroundImage={images.background} backgroundSize="contain">
+    <Flex
+        background={`linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(${images.background}) no-repeat center top`}
+        backgroundSize="cover"
+        backgroundAttachment="fixed"
+        minHeight="100vh"
+        width="auto"
+        flexDirection="column"
+    >
         <ToastContainer />
         <ChakraProvider theme={theme}>
             <QueryClientProvider client={queryClient}>

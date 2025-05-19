@@ -1,10 +1,5 @@
-import React, { useState } from 'react'
 import { Flex, Image, useMediaQuery } from '@chakra-ui/react'
-import i18n from 'lib/locale'
-import { images } from 'assets'
-import { Back, Tile } from 'lib/components'
-import { Languages, LocalStorageKeys } from 'lib/types'
-import { Wiki } from 'features/wiki'
+import { Icons, images } from 'assets'
 import {
     AttackValueCalculator,
     BasicCalculator,
@@ -18,6 +13,11 @@ import {
     SpeedCalculator,
     StaminaCalculator
 } from 'features/calculators'
+import { Wiki } from 'features/wiki'
+import { Back, Tile } from 'lib/components'
+import i18n from 'lib/locale'
+import { Languages, LocalStorageKeys } from 'lib/types'
+import React, { useState } from 'react'
 import { availableCalculators, AvailableCalculators } from './AvailableCalculators'
 
 export const ChooseCalculator: React.FunctionComponent = () => {
@@ -41,20 +41,20 @@ export const ChooseCalculator: React.FunctionComponent = () => {
             {activeCalculator && (
                 <Back onClick={() => setActiveCalculator(null)} />
             )}
-            <Image
+            <Flex
                 position="absolute"
                 userSelect="none"
                 right={isMobile ? "20px" : "50px"}
                 top={isMobile ? "20px" : "50px"}
                 cursor="pointer"
                 boxSize={isMobile ? "32px" : "48px"}
-                src={activeLanguage === Languages.En ? images.unitedKingdom : images.poland}
                 onClick={() => {
                     localStorage.setItem(LocalStorageKeys.LANGUAGE, languageToSet)
                     setActiveLanguage(languageToSet)
                     i18n.changeLanguage(languageToSet)
-                }}
-            />
+                }}>
+                {activeLanguage === Languages.En ? <Icons.UnitedKingdom size={40} /> : <Icons.Poland size={40} />}
+            </Flex>
             <Image
                 src={images.rookgaardLogo}
                 height={isMobile ? "120px" : 'auto'}
@@ -89,9 +89,9 @@ export const ChooseCalculator: React.FunctionComponent = () => {
             {activeCalculator === AvailableCalculators.ATTACKVALUE && <AttackValueCalculator />}
             {activeCalculator === AvailableCalculators.SPEEDBREAKPOINT && <SpeedCalculator />}
             {activeCalculator === AvailableCalculators.STAMINA && <StaminaCalculator locale={activeLanguage} />}
-            {activeCalculator === AvailableCalculators.DEATHPENALTY && <DeathPenaltyCalculator/>}
-            {activeCalculator === AvailableCalculators.PROGRESSMONITOR && <ProgressMonitor locale={activeLanguage}/> }
-            {activeCalculator === AvailableCalculators.WIKI && <Wiki/>}
+            {activeCalculator === AvailableCalculators.DEATHPENALTY && <DeathPenaltyCalculator />}
+            {activeCalculator === AvailableCalculators.PROGRESSMONITOR && <ProgressMonitor locale={activeLanguage} />}
+            {activeCalculator === AvailableCalculators.WIKI && <Wiki />}
         </Flex>
     )
 }
