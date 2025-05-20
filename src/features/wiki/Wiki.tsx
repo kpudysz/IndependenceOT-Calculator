@@ -9,7 +9,7 @@ export const Wiki: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<WikiMenu>(WikiMenu.Welcome)
 
   return (
-    <Flex w="100vw" minH="100vh" justifyContent="center">
+    <Flex minW="100vw" minH="100vh" justifyContent="center">
       <WikiSidebar selected={selectedTab} onSelect={setSelectedTab} />
       <Flex pl={{ base: 4, md: 12 }} pr={{ base: 2, md: 8 }}>
         {selectedTab === WikiMenu.Welcome && <Welcome />}

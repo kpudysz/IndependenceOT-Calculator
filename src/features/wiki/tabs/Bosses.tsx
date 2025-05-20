@@ -1,7 +1,8 @@
 import { Box, Divider, Flex, Image, Table, Tbody, Td, Text, Thead, Tr } from '@chakra-ui/react'
 import { colors } from 'common/constants'
-import { bossesData, SuggestChanges, WikiMenu } from 'features/wiki/components'
+import { SuggestChanges, WikiMenu } from 'features/wiki/components'
 import React from 'react'
+import { bossesData } from '../data'
 import { useSendSuggestion } from '../hooks'
 
 export const Bosses: React.FunctionComponent = () => {
@@ -13,13 +14,11 @@ export const Bosses: React.FunctionComponent = () => {
 				border="1px solid #9CA0A6"
 				borderRadius="lg"
 				width={{ base: '100%', md: '90%', lg: '900px' }}
-				maxWidth="900px"
 				color={colors.text}
 				bg={colors.background}
 				p={{ base: 2, md: 6, lg: 8 }}
 				boxShadow="md"
 				fontSize={{ base: 'md', md: 'lg' }}
-				overflowX="auto"
 			>
 				<Text fontSize="4xl" fontWeight="bold" mb={10} textAlign="center">
 					Bosses

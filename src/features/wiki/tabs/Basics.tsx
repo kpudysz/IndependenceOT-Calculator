@@ -27,7 +27,7 @@ export const Basics: React.FC = () => {
         <Text mb={4} fontSize="2xl">
           Choosing your first charm
         </Text>
-        <Flex mt="20px" justifyContent="flex-start">
+        <Flex mt="20px" alignItems="center">
           <Image src="https://tibiopedia.pl/images/static/monsters/war_wolf.gif" mr="10px" />
           Most people pick Wolf Whispering as their first charm.
           Wolf whispering gives high boost to damage and therefore is often picked as the first charm.

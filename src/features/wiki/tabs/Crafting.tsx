@@ -1,11 +1,19 @@
-import { Box, Divider, Flex, Text } from '@chakra-ui/react'
+import { Box, Collapse, Divider, Flex, Image, Table, Tbody, Td, Text, Tr } from '@chakra-ui/react'
 import { colors } from 'common/constants'
-import React from 'react'
-import { SuggestChanges, WikiMenu } from '../components'
+import { anvilData, brewingData, fletchingData, forgeData, magicData, woodworkData } from 'features/wiki/data'
+import { CollapseTile } from 'lib/components'
+import React, { useState } from 'react'
+import { CraftingTableHeader, SuggestChanges, WikiMenu } from '../components'
 import { useSendSuggestion } from '../hooks'
 
 export const Crafting: React.FC = () => {
   const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
+  const [isAnvilOpen, setIsAnvilOpen] = useState(false)
+  const [isForgeOpen, setIsForgeOpen] = useState(false)
+  const [isBrewingOpen, setIsBrewingOpen] = useState(false)
+  const [isWoodworkOpen, setIsWoodworkOpen] = useState(false)
+  const [isMagicOpen, setIsMagicOpen] = useState(false)
+  const [isFletchingOpen, setIsFletchingOpen] = useState(false)
 
   return (
     <Flex justify="center" align="flex-start" w="100%" h="100%">
@@ -25,8 +33,203 @@ export const Crafting: React.FC = () => {
           Crafting
         </Flex>
         <Text mb={4}>
-          Example
+          You can craft various items if you have required ingredients and find specific crafting station.
         </Text>
+        <Flex gap="10px" flexDirection="column">
+          <CollapseTile title="Anvil" isOpen={isAnvilOpen} setIsOpen={setIsAnvilOpen} />
+          <Collapse in={isAnvilOpen}>
+            <Table>
+              <CraftingTableHeader withCrafting />
+              <Tbody>
+                {anvilData.map((item, index) => (
+                  <Tr key={`${index}-${item.name}`}>
+                    <Td>
+                      <Flex alignItems="center">
+                        <Image src={item.image} mr="10px" />
+                        <Text>
+                          {item.name}
+                        </Text>
+                      </Flex>
+                    </Td>
+                    <Td>{item.level}</Td>
+                    <Td>{item.chance}</Td>
+                    <Td>{item.ingredients.map((ingredient, index) => (
+                      <Flex alignItems="center" mb="5px" key={`${index}-${ingredient.name}`}>
+                        <Image src={ingredient.image} mr="10px" />
+                        <Text mr="5px">
+                          {ingredient.count}
+                        </Text>
+                        <Text>
+                          {ingredient.name}
+                        </Text>
+                      </Flex>
+                    ))}</Td>
+                  </Tr>
+                ))}
+              </Tbody>
+            </Table>
+          </Collapse>
+          <CollapseTile title="Forge" isOpen={isForgeOpen} setIsOpen={setIsForgeOpen} />
+          <Collapse in={isForgeOpen}>
+            <Table>
+              <CraftingTableHeader />
+              <Tbody>
+                {forgeData.map((item, index) => (
+                  <Tr key={`${index}-${item.name}`}>
+                    <Td>
+                      <Flex alignItems="center">
+                        <Image src={item.image} mr="10px" />
+                        <Text>
+                          {item.name}
+                        </Text>
+                      </Flex>
+                    </Td>
+                    <Td>{item.level}</Td>
+                    <Td>{item.ingredients.map((ingredient, index) => (
+                      <Flex alignItems="center" mb="5px" key={`${index}-${ingredient.name}`}>
+                        <Image src={ingredient.image} mr="10px" />
+                        <Text mr="5px">
+                          {ingredient.count}
+                        </Text>
+                        <Text>
+                          {ingredient.name}
+                        </Text>
+                      </Flex>
+                    ))}</Td>
+                  </Tr>
+                ))}
+              </Tbody>
+            </Table>
+          </Collapse>
+          <CollapseTile title="Brewing" isOpen={isBrewingOpen} setIsOpen={setIsBrewingOpen} />
+          <Collapse in={isBrewingOpen}>
+            <Table>
+              <CraftingTableHeader />
+              <Tbody>
+                {brewingData.map((item, index) => (
+                  <Tr key={`${index}-${item.name}`}>
+                    <Td>
+                      <Flex alignItems="center">
+                        <Image src={item.image} mr="10px" />
+                        <Text>
+                          {item.name}
+                        </Text>
+                      </Flex>
+                    </Td>
+                    <Td>{item.level}</Td>
+                    <Td>{item.ingredients.map((ingredient, index) => (
+                      <Flex alignItems="center" mb="5px" key={`${index}-${ingredient.name}`}>
+                        <Image src={ingredient.image} mr="10px" />
+                        <Text mr="5px">
+                          {ingredient.count}
+                        </Text>
+                        <Text>
+                          {ingredient.name}
+                        </Text>
+                      </Flex>
+                    ))}</Td>
+                  </Tr>
+                ))}
+              </Tbody>
+            </Table>
+          </Collapse>
+          <CollapseTile title="Woodwork" isOpen={isWoodworkOpen} setIsOpen={setIsWoodworkOpen} />
+          <Collapse in={isWoodworkOpen}>
+            <Table>
+              <CraftingTableHeader />
+              <Tbody>
+                {woodworkData.map((item, index) => (
+                  <Tr key={`${index}-${item.name}`}>
+                    <Td>
+                      <Flex alignItems="center">
+                        <Image src={item.image} mr="10px" />
+                        <Text>
+                          {item.name}
+                        </Text>
+                      </Flex>
+                    </Td>
+                    <Td>{item.level}</Td>
+                    <Td>{item.ingredients.map((ingredient, index) => (
+                      <Flex alignItems="center" mb="5px" key={`${index}-${ingredient.name}`}>
+                        <Image src={ingredient.image} mr="10px" />
+                        <Text mr="5px">
+                          {ingredient.count}
+                        </Text>
+                        <Text>
+                          {ingredient.name}
+                        </Text>
+                      </Flex>
+                    ))}</Td>
+                  </Tr>
+                ))}
+              </Tbody>
+            </Table>
+          </Collapse>
+          <CollapseTile title="Magic" isOpen={isMagicOpen} setIsOpen={setIsMagicOpen} />
+          <Collapse in={isMagicOpen}>
+            <Table>
+              <CraftingTableHeader />
+              <Tbody>
+                {magicData.map((item, index) => (
+                  <Tr key={`${index}-${item.name}`}>
+                    <Td>
+                      <Flex alignItems="center">
+                        <Image src={item.image} mr="10px" />
+                        <Text>
+                          {item.name}
+                        </Text>
+                      </Flex>
+                    </Td>
+                    <Td>{item.level}</Td>
+                    <Td>{item.ingredients.map((ingredient, index) => (
+                      <Flex alignItems="center" mb="5px" key={`${index}-${ingredient.name}`}>
+                        <Image src={ingredient.image} mr="10px" />
+                        <Text mr="5px">
+                          {ingredient.count}
+                        </Text>
+                        <Text>
+                          {ingredient.name}
+                        </Text>
+                      </Flex>
+                    ))}</Td>
+                  </Tr>
+                ))}
+              </Tbody>
+            </Table>
+          </Collapse>
+          <CollapseTile title="Fletching" isOpen={isFletchingOpen} setIsOpen={setIsFletchingOpen} />
+          <Collapse in={isFletchingOpen}>
+            <Table>
+              <CraftingTableHeader />
+              <Tbody>
+                {fletchingData.map((item, index) => (
+                  <Tr key={`${index}-${item.name}`}>
+                    <Td>
+                      <Flex alignItems="center">
+                        <Image src={item.image} mr="10px" />
+                        <Text>
+                          {item.name}
+                        </Text>
+                      </Flex>
+                    </Td>
+                    <Td>{item.level}</Td>
+                    <Td>{item.ingredients.map((ingredient, index) => (
+                      <Flex alignItems="center" mb="5px" key={`${index}-${ingredient.name}`}>
+                        <Image src={ingredient.image} mr="10px" />
+                        <Text mr="5px">
+                          {ingredient.count}
+                        </Text>
+                        <Text>
+                          {ingredient.name}
+                        </Text>
+                      </Flex>
+                    ))}</Td>
+                  </Tr>
+                ))}
+              </Tbody>
+            </Table>
+          </Collapse>
+        </Flex>
         <Divider my={4} />
         <SuggestChanges
           source={WikiMenu.Crafting}
