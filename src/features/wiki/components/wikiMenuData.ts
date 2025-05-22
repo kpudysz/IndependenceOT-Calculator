@@ -8,11 +8,14 @@ export const wikiMenuData = [
   { key: WikiMenu.Bestiary, label: 'Bestiary' },
   { key: WikiMenu.Bosses, label: 'Bosses' },
   { key: WikiMenu.Crafting, label: 'Crafting' },
+  { key: WikiMenu.LightSources, label: 'Light Sources' },
+  { key: WikiMenu.Magic, label: 'Magic' },
   {
     key: WikiMenu.Mechanics,
     label: 'Mechanics',
     children: [
       { key: WikiMenu.Charms, label: 'Charms' },
+      { key: WikiMenu.Pickholes, label: 'Pickholes' },
       { key: WikiMenu.Fishing, label: 'Fishing' },
       { key: WikiMenu.Herbalism, label: 'Herbalism' },
       { key: WikiMenu.Mining, label: 'Mining' },

@@ -1,3 +1,5 @@
+import { images } from "assets"
+
 export const fletchingData = [
 	{
 		name: '100 Arrows',
@@ -16,7 +18,7 @@ export const fletchingData = [
 			},
 			{
 				name: 'Steel Ingot',
-				image: 'https://tibiopedia.pl/images/static/items/steel_ingot.gif',
+				image: images.steelIngot,
 				count: '1'
 			}
 		]
@@ -72,7 +74,7 @@ export const fletchingData = [
 			},
 			{
 				name: 'Steel Ingot',
-				image: 'https://tibiopedia.pl/images/static/items/steel_ingot.gif',
+				image: images.steelIngot,
 				count: '1'
 			}
 		]

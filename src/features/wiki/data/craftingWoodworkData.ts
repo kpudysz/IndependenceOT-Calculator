@@ -1,3 +1,5 @@
+import { images } from "assets"
+
 export const woodworkData = [
 	{
 		name: 'Small White Pillow',
@@ -13,7 +15,7 @@ export const woodworkData = [
 	},
 	{
 		name: 'Round White Pillow',
-		image: 'https://tibiopedia.pl/images/static/items/round_white_pillow.gif',
+		image: images.roundWhitePillow,
 		level: '1',
 		ingredients: [
 			{
@@ -25,7 +27,7 @@ export const woodworkData = [
 	},
 	{
 		name: 'White Pillow',
-		image: 'https://tibiopedia.pl/images/static/items/white_pillow.gif',
+		image: images.whitePillow,
 		level: '2',
 		ingredients: [
 			{
@@ -59,12 +61,12 @@ export const woodworkData = [
 	},
 	{
 		name: 'Orange Cushioned Chair',
-		image: 'https://tibiopedia.pl/images/static/items/orange_cushioned_chair.gif',
+		image: images.orangeCushionedChair,
 		level: '3',
 		ingredients: [
 			{
 				name: 'Orange Pillow',
-				image: 'https://tibiopedia.pl/images/static/items/orange_pillow.gif',
+				image: images.orangePillow,
 				count: '2'
 			},
 			{
@@ -81,7 +83,7 @@ export const woodworkData = [
 	},
 	{
 		name: 'Yellow Cushioned Chair',
-		image: 'https://tibiopedia.pl/images/static/items/yellow_cushioned_chair.gif',
+		image: images.yellowCushionedChair,
 		level: '3',
 		ingredients: [
 			{
@@ -125,7 +127,7 @@ export const woodworkData = [
 	},
 	{
 		name: 'Blue Cushioned Chair',
-		image: 'https://tibiopedia.pl/images/static/items/blue_cushioned_chair.gif',
+		image: images.blueCushionedChair,
 		level: '3',
 		ingredients: [
 			{
@@ -147,12 +149,12 @@ export const woodworkData = [
 	},
 	{
 		name: 'Purple Cushioned Chair',
-		image: 'https://tibiopedia.pl/images/static/items/purple_cushioned_chair.gif',
+		image: images.purpleCushionedChair,
 		level: '3',
 		ingredients: [
 			{
 				name: 'Purple Pillow',
-				image: 'https://tibiopedia.pl/images/static/items/purple_pillow.gif',
+				image: images.purplePillow,
 				count: '2'
 			},
 			{
@@ -169,7 +171,7 @@ export const woodworkData = [
 	},
 	{
 		name: 'Red Sofa Chair',
-		image: 'https://tibiopedia.pl/images/static/items/red_sofa_chair.gif',
+		image: images.redSofaChair,
 		level: '4',
 		ingredients: [
 			{
@@ -191,12 +193,12 @@ export const woodworkData = [
 	},
 	{
 		name: 'Orange Sofa Chair',
-		image: 'https://tibiopedia.pl/images/static/items/orange_sofa_chair.gif',
+		image: images.orangeSofaChair,
 		level: '4',
 		ingredients: [
 			{
 				name: 'Orange Pillow',
-				image: 'https://tibiopedia.pl/images/static/items/orange_pillow.gif',
+				image: images.orangePillow,
 				count: '4'
 			},
 			{
@@ -213,7 +215,7 @@ export const woodworkData = [
 	},
 	{
 		name: 'Yellow Sofa Chair',
-		image: 'https://tibiopedia.pl/images/static/items/yellow_sofa_chair.gif',
+		image: images.yellowSofaChair,
 		level: '4',
 		ingredients: [
 			{
@@ -235,7 +237,7 @@ export const woodworkData = [
 	},
 	{
 		name: 'Green Sofa Chair',
-		image: 'https://tibiopedia.pl/images/static/items/green_sofa_chair.gif',
+		image: images.greenSofaChair,
 		level: '4',
 		ingredients: [
 			{
@@ -257,7 +259,7 @@ export const woodworkData = [
 	},
 	{
 		name: 'Blue Sofa Chair',
-		image: 'https://tibiopedia.pl/images/static/items/blue_sofa_chair.gif',
+		image: images.blueSofaChair,
 		level: '4',
 		ingredients: [
 			{
@@ -279,12 +281,12 @@ export const woodworkData = [
 	},
 	{
 		name: 'Purple Sofa Chair',
-		image: 'https://tibiopedia.pl/images/static/items/purple_sofa_chair.gif',
+		image: images.purpleSofaChair,
 		level: '4',
 		ingredients: [
 			{
 				name: 'Purple Pillow',
-				image: 'https://tibiopedia.pl/images/static/items/purple_pillow.gif',
+				image: images.purplePillow,
 				count: '4'
 			},
 			{

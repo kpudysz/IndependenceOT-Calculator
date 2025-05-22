@@ -84,8 +84,8 @@ export const bossesData = [
 		],
 		rare: [
 			{
-				name: '-',
-				image: undefined
+				name: 'Cookie',
+				image: 'https://tibiopedia.pl/images/static/items/cookie.gif'
 			}
 		],
 		veryRare: [
@@ -222,6 +222,10 @@ export const bossesData = [
 			{
 				name: 'Star Ring',
 				image: 'https://tibiopedia.pl/images/static/items/star_ring.gif'
+			},
+			{
+				name: 'Small Ruby',
+				image: 'https://tibiopedia.pl/images/static/items/small_ruby.gif'
 			}
 		],
 		rare: [
@@ -351,14 +355,14 @@ export const bossesData = [
 		location: 'Unknown, probably ice island',
 		common: [
 			{
-				name: '?',
-				image: undefined
+				name: 'Snowball',
+				image: 'https://tibiopedia.pl/images/static/items/snowball.gif'
 			}
 		],
 		rare: [
 			{
-				name: '?',
-				image: undefined
+				name: 'Wolf Tooth Chain',
+				image: 'https://tibiopedia.pl/images/static/items/wolf_tooth_chain.gif'
 			}
 		],
 		veryRare: [

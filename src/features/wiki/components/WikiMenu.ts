@@ -1,4 +1,6 @@
 export enum WikiMenu {
+  Magic = 'Magic',
+  LightSources = 'Light Sources',
   Welcome = 'Welcome',
   GettingStarted = 'Getting Started',
   Basics = 'Basics',
@@ -16,5 +18,6 @@ export enum WikiMenu {
   PlantingVegetables = 'Planting Vegetables',
   Cooking = 'Cooking',
   WorldChanges = 'World Changes',
-  Bosses = 'Bosses'
+  Bosses = 'Bosses',
+  Pickholes = 'Pickholes'
 }

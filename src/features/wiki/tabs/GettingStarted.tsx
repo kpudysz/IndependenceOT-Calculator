@@ -133,6 +133,8 @@ export const GettingStarted: React.FC = () => {
         <Flex mt="20px" alignItems="center">
           Always remember to carry few
           <Image src="https://tibiopedia.pl/images/static/items/small_health_potion.gif" mr="5px" /> small health potions with you to avoid deaths.
+          Dallheim on northern bridge can heal you back to 65 hp and also removes status effects for example poison.
+          Cipfried in temple is also very useful since he can heal you back to 180hp and remove status effects.
         </Flex>
         <Text mt="20px">
           Players after a bit of time choose their own way of gameplay, so here is the list what people usually focus on:

@@ -1,3 +1,5 @@
+import { images } from "assets"
+
 export const magicData = [
 	{
 		name: 'Magic Light Wand',
@@ -6,7 +8,7 @@ export const magicData = [
 		ingredients: [
 			{
 				name: 'Used Magic Light Wand',
-				image: 'https://tibiopedia.pl/images/static/items/magic_light_wand.gif',
+				image: images.usedMagicLightWand,
 				count: '1'
 			},
 			{

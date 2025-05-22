@@ -2,7 +2,25 @@ import { Flex } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { WikiMenu } from './components/WikiMenu'
 import { WikiSidebar } from './components/WikiSidebar'
-import { Basics, Bestiary, Bosses, Charms, Commands, Cooking, Crafting, Fishing, GettingStarted, Herbalism, Mining, PlantingVegetables, Skinning, WorldChanges } from './tabs'
+import {
+  Basics,
+  Bestiary,
+  Bosses,
+  Charms,
+  Commands,
+  Cooking,
+  Crafting,
+  Fishing,
+  GettingStarted,
+  Herbalism,
+  LightSources,
+  Magic,
+  Mining,
+  Pickholes,
+  PlantingVegetables,
+  Skinning,
+  WorldChanges
+} from './tabs'
 import { Welcome } from './tabs/Welcome'
 
 export const Wiki: React.FC = () => {
@@ -27,6 +45,9 @@ export const Wiki: React.FC = () => {
         {selectedTab === WikiMenu.Cooking && <Cooking />}
         {selectedTab === WikiMenu.WorldChanges && <WorldChanges />}
         {selectedTab === WikiMenu.Bosses && <Bosses />}
+        {selectedTab === WikiMenu.LightSources && <LightSources />}
+        {selectedTab === WikiMenu.Magic && <Magic />}
+        {selectedTab === WikiMenu.Pickholes && <Pickholes />}
       </Flex>
     </Flex>
   )

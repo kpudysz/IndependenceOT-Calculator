@@ -1,7 +1,9 @@
+import { images } from "assets"
+
 export const forgeData = [
 	{
 		name: 'Brass Ingot',
-		image: 'https://tibiopedia.pl/images/static/items/brass_ingot.gif',
+		image: images.brassIngot,
 		level: '20',
 		ingredients: [
 			{
@@ -18,7 +20,7 @@ export const forgeData = [
 	},
 	{
 		name: 'Brass Ingot',
-		image: 'https://tibiopedia.pl/images/static/items/brass_ingot.gif',
+		image: images.brassIngot,
 		level: '20',
 		ingredients: [
 			{
@@ -35,12 +37,12 @@ export const forgeData = [
 	},
 	{
 		name: 'Steel Ingot',
-		image: 'https://tibiopedia.pl/images/static/items/steel_ingot.gif',
+		image: images.steelIngot,
 		level: '20',
 		ingredients: [
 			{
 				name: 'Piece of Iron',
-				image: 'https://tibiopedia.pl/images/static/items/piece_of_iron.gif',
+				image: images.pieceOfIron,
 				count: '1'
 			},
 			{
@@ -52,7 +54,7 @@ export const forgeData = [
 	},
 	{
 		name: 'Steel Ingot',
-		image: 'https://tibiopedia.pl/images/static/items/steel_ingot.gif',
+		image: images.steelIngot,
 		level: '20',
 		ingredients: [
 			{
@@ -74,7 +76,7 @@ export const forgeData = [
 		ingredients: [
 			{
 				name: 'Brass Ingot',
-				image: 'https://tibiopedia.pl/images/static/items/brass_ingot.gif',
+				image: images.brassIngot,
 				count: '1200'
 			}
 		]
@@ -86,7 +88,7 @@ export const forgeData = [
 		ingredients: [
 			{
 				name: 'Brass Ingot',
-				image: 'https://tibiopedia.pl/images/static/items/brass_ingot.gif',
+				image: images.brassIngot,
 				count: '800'
 			}
 		]
@@ -98,7 +100,7 @@ export const forgeData = [
 		ingredients: [
 			{
 				name: 'Steel Ingot',
-				image: 'https://tibiopedia.pl/images/static/items/steel_ingot.gif',
+				image: images.steelIngot,
 				count: '1000'
 			}
 		]
@@ -110,7 +112,7 @@ export const forgeData = [
 		ingredients: [
 			{
 				name: 'Steel Ingot',
-				image: 'https://tibiopedia.pl/images/static/items/steel_ingot.gif',
+				image: images.steelIngot,
 				count: '1000'
 			}
 		]
@@ -122,7 +124,7 @@ export const forgeData = [
 		ingredients: [
 			{
 				name: 'Steel Ingot',
-				image: 'https://tibiopedia.pl/images/static/items/steel_ingot.gif',
+				image: images.steelIngot,
 				count: '1000'
 			}
 		]
@@ -134,7 +136,7 @@ export const forgeData = [
 		ingredients: [
 			{
 				name: 'Steel Ingot',
-				image: 'https://tibiopedia.pl/images/static/items/steel_ingot.gif',
+				image: images.steelIngot,
 				count: '1'
 			},
 			{

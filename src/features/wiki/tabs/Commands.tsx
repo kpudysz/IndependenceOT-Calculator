@@ -27,10 +27,22 @@ export const Commands: React.FC = () => {
           Commands
         </Text>
         <Text mb={4}>
+          !loot - enables/disables loot information on the middle of the screen.
+        </Text>
+        <Text mb={4}>
           !time - command which shows your total time spend in game.
         </Text>
         <Text mb={4}>
-          !autoloot (add,show,clear) for example !autoloot add, gold coin. For more info check section Autoloot.
+          !autoloot add, "itemname" - for example !autoloot add, gold coin. Adds selected item to your autoloot list.
+        </Text>
+        <Text mb={4}>
+          !autoloot remove, "itemname" - for example !autoloot remove, gold coin. Removes selected item from your autoloot list.
+        </Text>
+        <Text mb={4}>
+          !autoloot show - shows list of items that are on your autoloot list.
+        </Text>
+        <Text mb={4}>
+          !autoloot clear - clears your autoloot list.
         </Text>
         <Text mb={4}>
           !online - show information about current number of online players.

@@ -17,6 +17,29 @@ import muddyFloor200 from './muddyFloor200.png'
 import dirtFloorFast130 from './dirtFloorFast130.png'
 import dirtFloorSlower160 from './dirtFloorSlower160.png'
 import achievementBook from './achievementBook.jpg'
+import blueCushionedChair from './blueCushionedChair.jpg'
+import blueSofaChair from './blueSofaChair.jpg'
+import brassIngot from './brassIngot.jpg'
+import greenSofaChair from './greenSofaChair.jpg'
+import orangeCushionedChair from './orangeCushionedChair.jpg'
+import orangePillow from './orangePillow.jpg'
+import orangeSofaChair from './orangeSofaChair.jpg'
+import purpleCushionedChair from './purpleCushionedChair.jpg'
+import purplePillow from './purplePillow.jpg'
+import purpleSofaChair from './purpleSofaChair.jpg'
+import redSofaChair from './redSofaChair.jpg'
+import roundWhitePillow from './roundWhitePillow.jpg'
+import steelIngot from './steelIngot.jpg'
+import usedMagicLightWand from './usedMagicLightWand.jpg'
+import whitePillow from './whitePillow.jpg'
+import yellowCushionedChair from './yellowCushionedChair.jpg'
+import yellowSofaChair from './yellowSofaChair.jpg'
+import pieceOfIron from './pieceOfIron.jpg'
+import blueSparkles from './blueSparkles.gif'
+import manualFishing from './manualFishing.gif'
+import netFishing from './netFishing.gif'
+import garbageFishing from './garbageFishing.gif'
+import skinning from './skinning.gif'
 
 export {
     drawbridge90,
@@ -37,5 +60,28 @@ export {
     cobble100,
     background,
     rookgaardLogo,
-    achievementBook
+    achievementBook,
+    blueCushionedChair,
+    blueSofaChair,
+    brassIngot,
+    greenSofaChair,
+    orangeCushionedChair,
+    orangePillow,
+    orangeSofaChair,
+    purpleCushionedChair,
+    purplePillow,
+    purpleSofaChair,
+    redSofaChair,
+    roundWhitePillow,
+    steelIngot,
+    usedMagicLightWand,
+    whitePillow,
+    yellowCushionedChair,
+    yellowSofaChair,
+    pieceOfIron,
+    blueSparkles,
+    manualFishing,
+    netFishing,
+    garbageFishing,
+    skinning
 }

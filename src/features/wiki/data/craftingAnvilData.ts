@@ -1,3 +1,5 @@
+import { images } from "assets"
+
 export const anvilData = [
 	{
 		name: 'Jagged Sword',
@@ -7,7 +9,7 @@ export const anvilData = [
 		ingredients: [
 			{
 				name: 'Steel Ingot',
-				image: 'https://tibiopedia.pl/images/static/items/steel_ingot.gif',
+				image: images.steelIngot,
 				count: '5'
 			},
 			{
@@ -25,7 +27,7 @@ export const anvilData = [
 		ingredients: [
 			{
 				name: 'Steel Ingot',
-				image: 'https://tibiopedia.pl/images/static/items/steel_ingot.gif',
+				image: images.steelIngot,
 				count: '5'
 			},
 			{
@@ -43,7 +45,7 @@ export const anvilData = [
 		ingredients: [
 			{
 				name: 'Steel Ingot',
-				image: 'https://tibiopedia.pl/images/static/items/steel_ingot.gif',
+				image: images.steelIngot,
 				count: '5'
 			},
 			{

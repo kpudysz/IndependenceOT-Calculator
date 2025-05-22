@@ -47,6 +47,12 @@ export const Basics: React.FC = () => {
           Feel free to explore them at your own pace.
           For example you can collect flowers, gain 5 experience from it and gain ingredient for alchemy that you can sell to NPC.
         </Text>
+        <Text mt="20px">
+          Fist fighting was changed and now is also viable.
+          You get additional bonus of 0,04s attack speed for each skill level above 10.
+          This bonus is capped at one attack per second (35 fist fighting).
+          If you want to use fist fighting it is recommended to start with normal weapon then switching to fist fighting at higher level due to low attack value.
+        </Text>
         <Text mt="20px" fontSize="2xl">
           Getting your first mount
         </Text>

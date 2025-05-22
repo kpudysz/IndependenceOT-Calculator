@@ -205,7 +205,7 @@ export const Welcome: React.FC = () => {
           height="auto"
         />
         <Text mb={4}>
-          There are warnings about the Spike Sword Seekers cult, who have established a hideout in the island’s north.
+          There are warnings about the Spike Sword Seekers cult, who have established a hideout in the island's north.
           They are obsessed with solving the spike sword mystery and are rumored to go to extreme lengths to prove their "humility" and obtain it.
         </Text>
         <Image src="https://i.imgur.com/IcazOR9.png" mb="20px"
