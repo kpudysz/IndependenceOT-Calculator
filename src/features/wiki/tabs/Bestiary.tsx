@@ -48,7 +48,6 @@ export const Bestiary: React.FC = () => {
     })
   }, [calculatedBestiary, sortBy])
 
-
   return (
     <Flex justify="center" align="flex-start" w="100%" h="100%">
       <Box

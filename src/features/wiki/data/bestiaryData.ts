@@ -145,7 +145,7 @@ export const bestiaryData = [
 		difficulty: 2
 	},
 	{
-		name: 'Wasps',
+		name: 'Wasp',
 		image: 'https://tibiopedia.pl/images/static/monsters/wasp.gif',
 		difficulty: 2
 	},
