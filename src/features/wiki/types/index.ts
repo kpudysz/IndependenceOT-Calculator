@@ -1,0 +1,1 @@
+export { SortByBestiary } from './types'

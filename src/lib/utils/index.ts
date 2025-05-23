@@ -1,3 +1,5 @@
+import { capitalizeWords } from './capitalizeWords'
 import * as regexes from './regexes'
 
-export { regexes }
+export { capitalizeWords, regexes }
+

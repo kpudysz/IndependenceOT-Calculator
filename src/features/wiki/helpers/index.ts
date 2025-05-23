@@ -1,0 +1,1 @@
+export { parseCreatureData } from './parseCreatureData'

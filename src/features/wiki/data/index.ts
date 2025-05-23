@@ -5,4 +5,4 @@ export { fletchingData } from './craftingFletchingData'
 export { forgeData } from './craftingForgeData'
 export { magicData } from './craftingMagicData'
 export { woodworkData } from './craftingWoodworkData'
-
+export { bestiaryData } from './bestiaryData'
