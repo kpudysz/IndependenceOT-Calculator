@@ -10,11 +10,6 @@ export const bestiaryData = [
 		difficulty: 1
 	},
 	{
-		name: 'Cave Rat',
-		image: 'https://tibiopedia.pl/images/static/monsters/cave_rat.gif',
-		difficulty: 1
-	},
-	{
 		name: 'Chicken',
 		image: 'https://tibiopedia.pl/images/static/monsters/chicken.gif',
 		difficulty: 1
@@ -122,6 +117,11 @@ export const bestiaryData = [
 	{
 		name: 'Orc Spearman',
 		image: 'https://tibiopedia.pl/images/static/monsters/orc_spearman.gif',
+		difficulty: 2
+	},
+	{
+		name: 'Cave Rat',
+		image: 'https://tibiopedia.pl/images/static/monsters/cave_rat.gif',
 		difficulty: 2
 	},
 	{
