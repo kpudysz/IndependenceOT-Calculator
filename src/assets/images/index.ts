@@ -40,6 +40,11 @@ import manualFishing from './manualFishing.gif'
 import netFishing from './netFishing.gif'
 import garbageFishing from './garbageFishing.gif'
 import skinning from './skinning.gif'
+import growingVegetables from './growingVegetables.gif'
+import herbalism from './herbalism.gif'
+import mining from './mining.gif'
+import rum from './rum.gif'
+import wateringFruits from './wateringFruits.gif'
 
 export {
     drawbridge90,
@@ -83,5 +88,10 @@ export {
     manualFishing,
     netFishing,
     garbageFishing,
-    skinning
+    skinning,
+    growingVegetables,
+    herbalism,
+    mining,
+    rum,
+    wateringFruits
 }
