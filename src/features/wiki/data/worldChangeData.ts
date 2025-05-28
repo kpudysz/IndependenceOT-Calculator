@@ -3,9 +3,9 @@ export const worldChangeData = [
 		name: 'Deer',
 		image: 'https://tibiopedia.pl/images/static/monsters/deer.gif',
 		requirement: '50 Antlers',
-		requirementImage: 'https://tibiopedia.pl/images/static/items/antler.gif',
+		requirementImage: 'https://tibiopedia.pl/images/static/items/antlers.gif',
 		description: 'Increases amount of spawned deer',
-		bookDescription: '?'
+		place: 'Everywhere'
 	},
 	{
 		name: 'Bear Cave',
@@ -13,7 +13,7 @@ export const worldChangeData = [
 		requirement: '80 Bear Paw',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/bear_paw.gif',
 		description: 'Opens passage to Bear Cave',
-		bookDescription: '?'
+		place: 'Bear Cave - east side of the island'
 	},
 	{
 		name: 'Burning Library',
@@ -21,7 +21,7 @@ export const worldChangeData = [
 		requirement: '150 Bunch of Troll Hair',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/bunch_of_troll_hair.gif',
 		description: 'Opens Burning Library',
-		bookDescription: '?'
+		place: 'Facc trolls cave, west from blind orc entrance'
 	},
 	{
 		name: 'The Nest',
@@ -29,7 +29,7 @@ export const worldChangeData = [
 		requirement: '100 Carrion Worm Fang',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/carrion_worm_fang.gif',
 		description: 'Opens The Nest',
-		bookDescription: '?'
+		place: 'In bug cave north from town'
 	},
 	{
 		name: 'Chicken',
@@ -37,7 +37,7 @@ export const worldChangeData = [
 		requirement: '100 Chicken Feather',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/chicken_feather.gif',
 		description: 'Increases amount of spawned chickens',
-		bookDescription: '?'
+		place: 'In town at NPC Billy farm'
 	},
 	{
 		name: 'Deeper Ice Island',
@@ -45,7 +45,7 @@ export const worldChangeData = [
 		requirement: '100 Frosty Ear of a Troll',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/frosty_ear_of_a_troll.gif',
 		description: 'Opens deeper parts of Ice Island',
-		bookDescription: '?'
+		place: 'North-West from town at the beach'
 	},
 	{
 		name: 'Goblin Hideout',
@@ -53,7 +53,7 @@ export const worldChangeData = [
 		requirement: '150 Goblin Ear',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/goblin_ear.gif',
 		description: 'Opens Goblin Hideout',
-		bookDescription: '?'
+		place: 'North-East from town at wolf cave'
 	},
 	{
 		name: 'The Apiary',
@@ -61,7 +61,7 @@ export const worldChangeData = [
 		requirement: '80 Honeycomb',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/honeycomb.gif',
 		description: 'Opens The Apiary',
-		bookDescription: '?'
+		place: 'West from town at bear cave'
 	},
 	{
 		name: 'Rotworm Caves',
@@ -69,7 +69,7 @@ export const worldChangeData = [
 		requirement: '120 Lump of Dirt',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/lump_of_dirt.gif',
 		description: 'Opens Rotworm Caves',
-		bookDescription: '?'
+		place: 'At Katana Quest, south corridor'
 	},
 	{
 		name: 'Minotaur Horn',
@@ -77,7 +77,7 @@ export const worldChangeData = [
 		requirement: '120 Minotaur Horn',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/minotaur_horn.gif',
 		description: 'Opens Minotaur Horn',
-		bookDescription: '?'
+		place: 'Between Mino Hell and Bear Room'
 	},
 	{
 		name: 'Mino Loop',
@@ -85,7 +85,7 @@ export const worldChangeData = [
 		requirement: '100 Minotaur Leather',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/minotaur_leather.gif',
 		description: 'Opens Mino Loop',
-		bookDescription: '?'
+		place: 'Behind door at Mino Hell'
 	},
 	{
 		name: `Kraknaknork's Lair`,
@@ -93,7 +93,7 @@ export const worldChangeData = [
 		requirement: '150 Orc Leather',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/orc_leather.gif',
 		description: 'Opens Orc Fortress',
-		bookDescription: '?'
+		place: 'West from town at Orc Fortress'
 	},
 	{
 		name: 'Orc Underground City',
@@ -101,7 +101,7 @@ export const worldChangeData = [
 		requirement: '100 Orc Tooth',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/orc_tooth.gif',
 		description: 'Opens Orc Underground City',
-		bookDescription: '?'
+		place: 'Hidden entrance below Orc Fortress'
 	},
 	{
 		name: 'Skeleton Crypt',
@@ -109,7 +109,7 @@ export const worldChangeData = [
 		requirement: '250 Pelvis Bone',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/pelvis_bone.gif',
 		description: 'Opens Skeleton Crypt',
-		bookDescription: '?'
+		place: 'East from town'
 	},
 	{
 		name: 'Pig',
@@ -117,7 +117,7 @@ export const worldChangeData = [
 		requirement: '50 Pig Foot',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/pig_foot.gif',
 		description: 'Increases amount of spawned pigs',
-		bookDescription: '?'
+		place: 'City right below NPC Willy'
 	},
 	{
 		name: 'Poison Loop',
@@ -125,7 +125,7 @@ export const worldChangeData = [
 		requirement: '150 Poison Spider Shell',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/poison_spider_shell.gif',
 		description: 'Opens Poison Loop',
-		bookDescription: '?'
+		place: 'At the end of Poison Spider Cave'
 	},
 	{
 		name: 'Eradicated Lair',
@@ -133,7 +133,7 @@ export const worldChangeData = [
 		requirement: '200 Spider Fangs',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/spider_fangs.gif',
 		description: 'Opens Eradicated Lair',
-		bookDescription: '?'
+		place: 'Below Poison Spider Cave, west from Troll Tower'
 	},
 	{
 		name: 'Wolf',
@@ -141,7 +141,7 @@ export const worldChangeData = [
 		requirement: '100 Wolf Paw',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/wolf_paw.gif',
 		description: 'Allows taming wolves without charm',
-		bookDescription: '?'
+		place: 'Everywhere'
 	},
 	{
 		name: 'Sheep',
@@ -149,7 +149,7 @@ export const worldChangeData = [
 		requirement: '80 Wool',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/wool.gif',
 		description: 'Increases amount of spawned sheep',
-		bookDescription: '?'
+		place: 'City right below NPC Willy'
 	}
 ]
 
@@ -158,61 +158,71 @@ export const otherWorldChangeData = [
 		name: 'Thais',
 		requirement: '10000 Fish',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/fish.gif',
-		description: 'Increases health regeneration by 1 hp/12s'
+		description: 'Increases health regeneration by 1 hp/12s',
+		place: 'East from town, near fishing nets'
 	},
 	{
 		name: 'Carlin',
 		requirement: '10000 Fish',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/fish.gif',
-		description: 'Increases your capacity by 10%'
+		description: 'Increases your capacity by 10%',
+		place: 'East from town, near fishing nets'
 	},
 	{
 		name: 'Venore',
 		requirement: '10000 Fish',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/fish.gif',
-		description: 'Increases your character speed by 10'
+		description: 'Increases your character speed by 10',
+		place: 'East from town, near fishing nets'
 	},
 	{
 		name: 'Horse Stables',
 		requirement: '20 Bunch of Wheat',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/bunch_of_wheat.gif',
-		description: 'Allows to rent a horse from Seymour for 500gp'
+		description: 'Allows to rent a horse from Seymour for 500gp',
+		place: 'West from NPC Lily'
 	},
 	{
 		name: 'Quarantine',
-		requirement: '-',
+		requirement: 'None - Random',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/medicine_pouch.gif',
-		description: `Randomly chooses NPC's that will be put to quarantine. NPC's during this time period cannot be interacted with`
+		description: `Randomly chooses NPC's that will be put to quarantine. NPC's during this time period cannot be interacted with`,
+		place: 'Everywhere'
 	},
 	{
 		name: 'Ice Island',
-		requirement: '-',
+		requirement: 'None - Random',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/ice_cube.gif',
-		description: 'Opens Ice Island, happens randomly every 7-10 days'
+		description: 'Opens Ice Island, happens randomly every 7-10 days',
+		place: 'North-west from town at the beach'
 	},
 	{
 		name: 'Billy',
 		requirement: 'Sell more fruits than vegetables',
-		requirementImage: 'https://tibiopedia.pl/images/static/items/apple.gif',
-		description: 'Increases experience gain by 10%, decreases loot chance by -20%'
+		requirementImage: 'https://tibiopedia.pl/images/static/items/red_apple.gif',
+		description: 'Increases experience gain by 10%, decreases loot chance by -20%',
+		place: 'City Farm'
 	},
 	{
 		name: 'Willy',
 		requirement: 'Sell more vegetables than fruits',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/cucumber.gif',
-		description: 'Decreases experience gain by 10%, increases loot chance by 20%'
+		description: 'Decreases experience gain by 10%, increases loot chance by 20%',
+		place: 'City Farm'
 	},
 	{
 		name: 'Dwarven Domination',
 		requirement: 'Destroy more Spider Eggs/Webs than structures at the mine',
 		requirementImage: 'https://tibiopedia.pl/images/static/items/pick.gif',
-		description: 'Removes possibility of withdrawing gold from bank, you have to pay 100gp to pass the bridge'
+		description: 'Removes possibility of withdrawing gold from bank, you have to pay 100gp to pass the bridge',
+		place: 'Eradicated Lair, Catacombs, Dwarven Mines'
 	},
 	{
 		name: 'Rapid Respawn',
 		requirement: 'Throw overall 100k gold to the well',
-		requirementImage: 'https://tibiopedia.pl/images/static/items/wand_of_inferno.gif',
-		description: 'Doubles the respawn rate of all monsters'
+		requirementImage: 'https://tibiopedia.pl/images/static/items/crystal_coin.gif',
+		description: 'Doubles the respawn rate of all monsters',
+		place: 'Middle of the town'
 	}
 
 ]
