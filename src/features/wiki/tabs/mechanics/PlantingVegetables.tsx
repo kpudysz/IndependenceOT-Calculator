@@ -13,14 +13,14 @@ export const PlantingVegetables: React.FC = () => {
       <Box
         border="1px solid #9CA0A6"
         borderRadius="lg"
-        maxW="900px"
+        width={{ base: '100%', md: '90%', lg: '900px' }}
+        maxWidth="900px"
         color={colors.text}
-        minW="800px"
-        w="100%"
         bg={colors.background}
-        p={8}
+        p={{ base: 2, md: 6, lg: 8 }}
         boxShadow="md"
-        fontSize="lg"
+        fontSize={{ base: 'md', md: 'lg' }}
+        overflowX="auto"
       >
         <Flex fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
           Planting Vegetables
@@ -53,7 +53,6 @@ export const PlantingVegetables: React.FC = () => {
           Fertilizer has roughly 30% chance of success. If it succeeds growth will speed up to the next stage.
         </Text>
         <Text mb={2}>Planted vegetables have three stages, when they are planted, growing and when they are ready to be harvested.</Text>
-        <Text mb={4}>When vegetables are ready you will gain 5-25 XP and 1-5 of the vegetable that you have planted.</Text>
         <Text mb={4}>Vegetables can be eaten or sold to NPC Willy at a price of 10 gp/each.</Text>
         <Flex justifyContent="center">
           <Image src={images.growingVegetables} />

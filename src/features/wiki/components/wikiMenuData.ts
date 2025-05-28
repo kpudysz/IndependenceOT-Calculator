@@ -10,6 +10,8 @@ export const wikiMenuData = [
   { key: WikiMenu.Crafting, label: 'Crafting' },
   { key: WikiMenu.LightSources, label: 'Light Sources' },
   { key: WikiMenu.Magic, label: 'Magic' },
+  { key: WikiMenu.WorldChanges, label: 'World Changes' },
+  { key: WikiMenu.Achievements, label: 'Achievements' },
   {
     key: WikiMenu.Mechanics,
     label: 'Mechanics',
@@ -22,7 +24,16 @@ export const wikiMenuData = [
       { key: WikiMenu.Skinning, label: 'Skinning' },
       { key: WikiMenu.PlantingVegetables, label: 'Planting Vegetables' },
       { key: WikiMenu.Cooking, label: 'Cooking' },
-      { key: WikiMenu.WorldChanges, label: 'World Changes' }
+      { key: WikiMenu.GrowingFruits, label: 'Growing Fruits' },
+      { key: WikiMenu.MakingRum, label: 'Making Rum' }
+    ]
+  },
+  {
+    key: WikiMenu.Cosmetics,
+    label: 'Cosmetics',
+    children: [
+      { key: WikiMenu.Outfits, label: 'Outfits' },
+      { key: WikiMenu.Mounts, label: 'Mounts' }
     ]
   }
 ]

@@ -6,6 +6,7 @@ export enum WikiMenu {
   Basics = 'Basics',
   Commands = 'Commands',
   Mechanics = 'Mechanics',
+  Cosmetics = 'Cosmetics',
   Crafting = 'Crafting',
   Library = 'Library',
   AutoLoot = 'Auto loot',
@@ -16,8 +17,13 @@ export enum WikiMenu {
   Mining = 'Mining',
   Skinning = 'Skinning',
   PlantingVegetables = 'Planting Vegetables',
+  GrowingFruits = 'Growing Fruits',
+  MakingRum = 'Making Rum',
   Cooking = 'Cooking',
   WorldChanges = 'World Changes',
   Bosses = 'Bosses',
-  Pickholes = 'Pickholes'
+  Pickholes = 'Pickholes',
+  Outfits = 'Outfits',
+  Mounts = 'Mounts',
+  Achievements = 'Achievements'
 }

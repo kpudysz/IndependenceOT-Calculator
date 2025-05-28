@@ -1,8 +1,10 @@
 import { Flex } from '@chakra-ui/react'
+import { GrowingFruits, MakingRum } from 'features/wiki/tabs/mechanics'
 import React, { useState } from 'react'
 import { WikiMenu } from './components/WikiMenu'
 import { WikiSidebar } from './components/WikiSidebar'
 import {
+  Achievements,
   Basics,
   Bestiary,
   Bosses,
@@ -16,6 +18,8 @@ import {
   LightSources,
   Magic,
   Mining,
+  Mounts,
+  Outfits,
   Pickholes,
   PlantingVegetables,
   Skinning,
@@ -48,6 +52,11 @@ export const Wiki: React.FC = () => {
         {selectedTab === WikiMenu.LightSources && <LightSources />}
         {selectedTab === WikiMenu.Magic && <Magic />}
         {selectedTab === WikiMenu.Pickholes && <Pickholes />}
+        {selectedTab === WikiMenu.GrowingFruits && <GrowingFruits />}
+        {selectedTab === WikiMenu.MakingRum && <MakingRum />}
+        {selectedTab === WikiMenu.Achievements && <Achievements />}
+        {selectedTab === WikiMenu.Mounts && <Mounts />}
+        {selectedTab === WikiMenu.Outfits && <Outfits />}
       </Flex>
     </Flex>
   )
