@@ -1,11 +1,29 @@
-import { Box, Divider, Flex, Text } from "@chakra-ui/react"
+import { Box, Collapse, Divider, Flex, Image, Text, Tooltip } from "@chakra-ui/react"
+import { faFileContract } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { colors } from "common/constants"
-import React from 'react'
-import { useSendSuggestion } from '../../hooks'
 import { SuggestChanges, WikiMenu } from "features/wiki/components"
+import { outfitsData } from "features/wiki/data"
+import { CollapseTile } from "lib/components"
+import { capitalizeWords } from 'lib/utils'
+import React, { Fragment, useState } from 'react'
+import { useSendSuggestion } from '../../hooks'
+
+const initialState: Record<string, boolean> = {
+	citizen: false,
+	mage: false,
+	noble: false,
+	summoner: false,
+	warrior: false,
+	druid: false,
+	afflicted: false,
+	lupine: false,
+	ranger: false
+}
 
 export const Outfits: React.FC = () => {
 	const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
+	const [isOutfitOpen, setIsOutfitOpen] = useState(initialState)
 
 	return (
 		<Flex justify="center" align="flex-start" w="100%" h="100%">
@@ -24,9 +42,51 @@ export const Outfits: React.FC = () => {
 				<Text fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
 					Outfits
 				</Text>
-				<Text mb={4} fontSize="2xl">
-					Outfits are coming soon...
-				</Text>
+				<Flex flexDirection="column" gap="15px">
+					{outfitsData.map(outfit => (
+						<Fragment key={outfit.name}>
+							<CollapseTile
+								isOpen={isOutfitOpen[outfit.name]}
+								setIsOpen={() => setIsOutfitOpen(prevState => ({ ...prevState, [outfit.name]: !prevState[outfit.name] }))}
+								title={capitalizeWords(outfit.name) || ''}
+							/>
+							<Collapse in={isOutfitOpen[outfit.name]}>
+								{outfit.baseOutfit && outfit.baseOutfitFemale && outfit.description && (
+									<Flex alignItems="center" mb={5}>
+										<Image src={outfit.baseOutfit} />
+										<Image src={outfit.baseOutfitFemale} mr={5} />
+										<Text mt={2}>
+											{outfit.description}
+										</Text>
+									</Flex>
+								)}
+								{outfit.descriptionFirst && outfit.femaleFirst && outfit.firstAddon && (
+									<Flex alignItems="center" mb={5}>
+										<Image src={outfit.firstAddon} />
+										<Image src={outfit.femaleFirst} mr={5} />
+										<Text mt={2}>
+											{outfit.descriptionFirst}
+										</Text>
+									</Flex>
+								)}
+								{outfit.descriptionSecond && outfit.femaleSecond && outfit.secondAddon && (
+									<Flex alignItems="center" mb={5}>
+										<Image src={outfit.secondAddon} />
+										<Image src={outfit.femaleSecond} mr={5} />
+										<Text mt={2}>
+											{outfit.descriptionSecond}
+										</Text>
+									</Flex>
+								)}
+							</Collapse>
+						</Fragment>
+					))}
+				</Flex>
+				<Flex justifyContent="flex-end" mt={8}>
+					<Tooltip label="Created by Zosix" fontSize="md" hasArrow>
+						<FontAwesomeIcon icon={faFileContract} />
+					</Tooltip>
+				</Flex>
 				<Divider my={4} />
 				<SuggestChanges
 					source={WikiMenu.Outfits}
@@ -35,7 +95,7 @@ export const Outfits: React.FC = () => {
 					isError={isError}
 					onSend={(content, source, author) => sendSuggestion({ content, source, author })}
 				/>
-			</Box>
-		</Flex>
+			</Box >
+		</Flex >
 	)
 }

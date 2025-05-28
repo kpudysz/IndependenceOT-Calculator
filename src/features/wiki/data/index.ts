@@ -1,3 +1,4 @@
+export { bestiaryData } from './bestiaryData'
 export { bossesData } from './bossesData'
 export { anvilData } from './craftingAnvilData'
 export { brewingData } from './craftingBrewingData'
@@ -5,4 +6,6 @@ export { fletchingData } from './craftingFletchingData'
 export { forgeData } from './craftingForgeData'
 export { magicData } from './craftingMagicData'
 export { woodworkData } from './craftingWoodworkData'
-export { bestiaryData } from './bestiaryData'
+export { mountsData } from './mountsData'
+export { outfitsData } from './outfitsData'
+
