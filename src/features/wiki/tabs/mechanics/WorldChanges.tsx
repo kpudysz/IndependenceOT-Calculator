@@ -28,7 +28,7 @@ export const WorldChanges: React.FC = () => {
           World Changes are events that will take place until the next server save.
         </Text>
         <Text mb={4}>
-          Most of world changes are triggered by players. Current progress towards unlocking most of the event can be checked at Seymour's book, above the city library.
+          Most of world changes are triggered by players. Current progress towards unlocking world changes can be checked at Seymour's book, above the city library.
         </Text>
         <Divider my={4} />
         <SuggestChanges

@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Text } from '@chakra-ui/react'
+import { Box, Divider, Flex, Image, Text } from '@chakra-ui/react'
 import { colors } from 'common/constants'
 import { SuggestChanges, WikiMenu } from "features/wiki/components"
 import React from 'react'
@@ -19,13 +19,40 @@ export const Cooking: React.FC = () => {
         bg={colors.background}
         p={8}
         boxShadow="md"
+        fontSize="lg"
       >
         <Flex fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
           Cooking
         </Flex>
         <Text mb={4}>
-          Example
+          There are four additional recipes added. Two types of pastry and two types of cheese.
+          Pastry can be created in the same way as you make bread but require achievement that you get after making a lot of bread.
+          After gaining achievement you will have 2% chance to make one of the new pastry.
         </Text>
+        <Text mb={4}>
+          You can find how to make new cheese types in the city library along with the recipe.
+        </Text>
+        <Text mb={4}>
+          Here is the list of the new recipes:
+        </Text>
+        <Flex flexDirection="column" gap={2}>
+          <Flex alignItems="center">
+            <Image src="https://tibiopedia.pl/images/static/items/brown_bread.gif" mr={2} />
+            Brown Bread
+          </Flex>
+          <Flex alignItems="center">
+            <Image src="https://tibiopedia.pl/images/static/items/roll.gif" mr={2} />
+            Roll
+          </Flex>
+          <Flex alignItems="center">
+            <Image src="https://tibiopedia.pl/images/static/items/rat_cheese.gif" mr={2} />
+            Cheddar Cheese
+          </Flex>
+          <Flex alignItems="center">
+            <Image src="https://tibiopedia.pl/images/static/items/soft_cheese.gif" mr={2} />
+            Camembert Cheese
+          </Flex>
+        </Flex>
         <Divider my={4} />
         <SuggestChanges
           source={WikiMenu.Cooking}
