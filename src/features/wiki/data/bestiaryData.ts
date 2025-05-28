@@ -202,7 +202,7 @@ export const bestiaryData = [
 	{
 		name: 'White Shade',
 		image: 'https://tibiopedia.pl/images/static/monsters/white_shade.gif',
-		difficulty: 5
+		difficulty: 20
 	},
 	{
 		name: 'Winter Wolf',

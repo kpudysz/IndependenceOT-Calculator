@@ -122,7 +122,7 @@ export const Bestiary: React.FC = () => {
           <CollapseTile isOpen={isExtremeOpen} setIsOpen={setIsExtremeOpen} title="Extreme" />
           <Collapse in={isExtremeOpen}>
             <UnorderedList gap="8px" display="flex" flexDirection="column" border={`1px solid ${colors.text}`} ml="0" padding="15px 0 15px 15px">
-              {bestiaryData.filter(monster => monster.difficulty > 5).map(monster => (
+              {bestiaryData.filter(monster => monster.difficulty > 5 && !hiddenMonsters.includes(monster.name)).map(monster => (
                 <ListItem key={monster.name} display="flex" alignItems="center">
                   <Image src={monster.image} mr="10px" />
                   <Text>

@@ -19,12 +19,16 @@ export const WorldChanges: React.FC = () => {
         bg={colors.background}
         p={8}
         boxShadow="md"
+        fontSize="lg"
       >
         <Flex fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
           World Changes
         </Flex>
         <Text mb={4}>
-          Example
+          World Changes are events that will take place until the next server save.
+        </Text>
+        <Text mb={4}>
+          Most of world changes are triggered by players. Current progress towards unlocking most of the event can be checked at Seymour's book, above the city library.
         </Text>
         <Divider my={4} />
         <SuggestChanges
