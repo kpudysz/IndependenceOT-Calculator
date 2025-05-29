@@ -24,6 +24,5 @@ export enum WikiMenu {
   Bosses = 'Bosses',
   Pickholes = 'Pickholes',
   Outfits = 'Outfits',
-  Mounts = 'Mounts',
-  Achievements = 'Achievements'
+  Mounts = 'Mounts'
 }

@@ -1,22 +1,14 @@
 import { Box, Button, Collapse, Divider, Flex, Image, ListItem, Table, Tbody, Td, Text, Textarea, Th, Thead, Tr, UnorderedList } from '@chakra-ui/react'
 import { colors } from 'common/constants'
 import { bestiaryData } from 'features/wiki/data'
-import { parseCreatureData } from 'features/wiki/helpers'
-import { SortByBestiary } from 'features/wiki/types'
+import { calculateTimeTillCharm, parseCreatureData } from 'features/wiki/helpers'
+import { CreatureInformation, SortByBestiary } from 'features/wiki/types'
 import { CollapseTile } from 'lib/components'
+import { formatTime } from 'lib/utils'
 import { capitalizeWords } from 'lib/utils/capitalizeWords'
 import React, { Fragment, useMemo, useState } from 'react'
 import { SuggestChanges, WikiMenu } from '../components'
 import { useSendSuggestion } from '../hooks'
-
-type CreatureInformation = {
-  name: string,
-  missingKills: number,
-  points: number,
-  difficulty: number,
-  effortPoints: number
-}
-type CalculatedBestiary = Array<CreatureInformation>
 
 export const Bestiary: React.FC = () => {
   const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
@@ -26,7 +18,7 @@ export const Bestiary: React.FC = () => {
   const [isExtremeOpen, setIsExtremeOpen] = useState(false)
   const hiddenMonsters = ['White Shade', 'Dragon Hatchling', 'Slime', 'Gazer']
   const [textAreaValue, setTextAreaValue] = useState('')
-  const [calculatedBestiary, setCalculatedBestiary] = useState<CalculatedBestiary>()
+  const [calculatedBestiary, setCalculatedBestiary] = useState<Array<CreatureInformation>>()
   const [sortBy, setSortBy] = useState<SortByBestiary>(SortByBestiary.EFFORTPOINTS)
   const sortedBestiary = useMemo(() => {
     if (!calculatedBestiary) {
@@ -37,10 +29,14 @@ export const Bestiary: React.FC = () => {
       switch (sortBy) {
         case SortByBestiary.DIFFICULTY:
           return a?.difficulty - b?.difficulty
+        case SortByBestiary.POINTS:
+          return a?.points - b?.points
         case SortByBestiary.NAME:
           return a.name.localeCompare(b.name)
         case SortByBestiary.MISSINGKILLS:
           return a.missingKills - b.missingKills
+        case SortByBestiary.TTF:
+          return (a?.effortPoints * a?.points) - (b?.effortPoints * b?.points)
         default:
         case SortByBestiary.EFFORTPOINTS:
           return a.effortPoints - b.effortPoints
@@ -83,7 +79,7 @@ export const Bestiary: React.FC = () => {
           <CollapseTile isOpen={isEasyOpen} setIsOpen={setIsEasyOpen} title="Easy" />
           <Collapse in={isEasyOpen}>
             <UnorderedList gap="8px" display="flex" flexDirection="column" border={`1px solid ${colors.text}`} ml="0" padding="15px 0 15px 15px">
-              {bestiaryData.filter(monster => monster.difficulty === 1).map(monster => (
+              {bestiaryData.filter(monster => monster.difficulty <= 15 && !hiddenMonsters.includes(monster.name)).map(monster => (
                 <ListItem key={monster.name} display="flex" alignItems="center">
                   <Image src={monster.image} mr="10px" />
                   <Text>
@@ -96,7 +92,7 @@ export const Bestiary: React.FC = () => {
           <CollapseTile isOpen={isMediumOpen} setIsOpen={setIsMediumOpen} title="Medium" />
           <Collapse in={isMediumOpen}>
             <UnorderedList gap="8px" display="flex" flexDirection="column" border={`1px solid ${colors.text}`} ml="0" padding="15px 0 15px 15px">
-              {bestiaryData.filter(monster => monster.difficulty === 2 && !hiddenMonsters.includes(monster.name)).map(monster => (
+              {bestiaryData.filter(monster => monster.difficulty > 15 && monster.difficulty <= 30 && !hiddenMonsters.includes(monster.name)).map(monster => (
                 <ListItem key={monster.name} display="flex" alignItems="center">
                   <Image src={monster.image} mr="10px" />
                   <Text>
@@ -109,7 +105,7 @@ export const Bestiary: React.FC = () => {
           <CollapseTile isOpen={isHardOpen} setIsOpen={setIsHardOpen} title="Hard" />
           <Collapse in={isHardOpen}>
             <UnorderedList gap="8px" display="flex" flexDirection="column" border={`1px solid ${colors.text}`} ml="0" padding="15px 0 15px 15px">
-              {bestiaryData.filter(monster => monster.difficulty === 5 && !hiddenMonsters.includes(monster.name)).map(monster => (
+              {bestiaryData.filter(monster => monster.difficulty > 30 && monster.difficulty <= 60 && !hiddenMonsters.includes(monster.name)).map(monster => (
                 <ListItem key={monster.name} display="flex" alignItems="center">
                   <Image src={monster.image} mr="10px" />
                   <Text>
@@ -122,7 +118,7 @@ export const Bestiary: React.FC = () => {
           <CollapseTile isOpen={isExtremeOpen} setIsOpen={setIsExtremeOpen} title="Extreme" />
           <Collapse in={isExtremeOpen}>
             <UnorderedList gap="8px" display="flex" flexDirection="column" border={`1px solid ${colors.text}`} ml="0" padding="15px 0 15px 15px">
-              {bestiaryData.filter(monster => monster.difficulty > 5 && !hiddenMonsters.includes(monster.name)).map(monster => (
+              {bestiaryData.filter(monster => monster.difficulty > 60 && !hiddenMonsters.includes(monster.name)).map(monster => (
                 <ListItem key={monster.name} display="flex" alignItems="center">
                   <Image src={monster.image} mr="10px" />
                   <Text>
@@ -146,16 +142,28 @@ export const Bestiary: React.FC = () => {
         {Boolean(sortedBestiary.length) && (
           <Fragment>
             <Text mb={4} mt={4}>
-              We recommend to use effort points to decide which creature to hunt, the lower the better.
+              Minutes per 100 kills reflects how many creatures you are able to kill as high level character. Times were measured without rapid respawn.
+            </Text>
+            <Text mb={4}>
+              TPC - "Time Per Charm" reflects how much time it will take to get one charm point.
+              If you are wondering which charm to complete we recommend following lowest TPC.
+            </Text>
+            <Text mb={4}>
+              TTF - "Time To Finish" reflects how much time it will take to finish specific bestiary.
+            </Text>
+            <Text mb={4}>
+              Predicted time until your next charm based on TPC: {calculateTimeTillCharm(sortedBestiary, sortedBestiary[0].charmPoints)}. ({sortedBestiary[0].charmPoints} charm points)
             </Text>
             <Table>
               <Thead>
                 <Tr>
                   <Th>Image</Th>
                   <Th onClick={() => setSortBy(SortByBestiary.NAME)} cursor="pointer" color={sortBy === SortByBestiary.NAME ? colors.yellow : colors.text}>Name</Th>
+                  <Th onClick={() => setSortBy(SortByBestiary.POINTS)} cursor="pointer" color={sortBy === SortByBestiary.POINTS ? colors.yellow : colors.text}>Points</Th>
                   <Th onClick={() => setSortBy(SortByBestiary.MISSINGKILLS)} cursor="pointer" color={sortBy === SortByBestiary.MISSINGKILLS ? colors.yellow : colors.text}>Missing Kills</Th>
-                  <Th onClick={() => setSortBy(SortByBestiary.DIFFICULTY)} cursor="pointer" color={sortBy === SortByBestiary.DIFFICULTY ? colors.yellow : colors.text}>Difficulty Factor</Th>
-                  <Th onClick={() => setSortBy(SortByBestiary.EFFORTPOINTS)} cursor="pointer" color={sortBy === SortByBestiary.EFFORTPOINTS ? colors.yellow : colors.text}>Effort Points</Th>
+                  <Th onClick={() => setSortBy(SortByBestiary.DIFFICULTY)} cursor="pointer" color={sortBy === SortByBestiary.DIFFICULTY ? colors.yellow : colors.text}>Minutes per 100 kills</Th>
+                  <Th onClick={() => setSortBy(SortByBestiary.EFFORTPOINTS)} cursor="pointer" color={sortBy === SortByBestiary.EFFORTPOINTS ? colors.yellow : colors.text}>TPC</Th>
+                  <Th onClick={() => setSortBy(SortByBestiary.TTF)} cursor="pointer" color={sortBy === SortByBestiary.TTF ? colors.yellow : colors.text}>TTF</Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -165,9 +173,11 @@ export const Bestiary: React.FC = () => {
                       <Image src={bestiaryData.find(monster => monster.name.toLowerCase() === creature?.name)?.image} />
                     </Td>
                     <Td>{capitalizeWords(creature?.name)}</Td>
+                    <Td>{creature?.points}</Td>
                     <Td>{creature?.missingKills}</Td>
                     <Td>{creature?.difficulty}</Td>
-                    <Td>{creature?.effortPoints}</Td>
+                    <Td>{formatTime(creature?.effortPoints)}</Td>
+                    <Td>{formatTime(creature?.effortPoints * creature?.points)}</Td>
                   </Tr>
                 ))}
               </Tbody>

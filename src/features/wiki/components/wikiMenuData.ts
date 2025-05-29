@@ -11,7 +11,6 @@ export const wikiMenuData = [
   { key: WikiMenu.LightSources, label: 'Light Sources' },
   { key: WikiMenu.Magic, label: 'Magic' },
   { key: WikiMenu.WorldChanges, label: 'World Changes' },
-  { key: WikiMenu.Achievements, label: 'Achievements' },
   {
     key: WikiMenu.Mechanics,
     label: 'Mechanics',

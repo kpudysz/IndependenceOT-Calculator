@@ -1,4 +1,5 @@
 import { bestiaryData } from "features/wiki/data"
+import { remainingCharmPoints } from "features/wiki/helpers/remainingCharmPoints"
 import { regexes } from "lib/utils"
 
 export const parseCreatureData = (data: string) => {
@@ -8,6 +9,8 @@ export const parseCreatureData = (data: string) => {
 			data.split('\n').findIndex(line => line.startsWith('Known Creatures')),
 			data.split('\n').findIndex(line => line.startsWith('Known Bosses'))
 		)
+
+	const charmPoints = remainingCharmPoints(data)
 
 	return creatureSection
 		.filter(line => regexes.killCountRegex.test(line))
@@ -20,6 +23,7 @@ export const parseCreatureData = (data: string) => {
 					missingKills: 666,
 					points: 666,
 					difficulty: 666,
+					charmPoints: 666,
 					effortPoints: 666
 				}
 			}
@@ -36,7 +40,8 @@ export const parseCreatureData = (data: string) => {
 				missingKills,
 				points,
 				difficulty,
-				effortPoints: Math.round((difficulty * missingKills) / points)
+				charmPoints,
+				effortPoints: Math.round((difficulty * missingKills) / 100 / points)
 			}
 		})
 		.filter(Boolean)
