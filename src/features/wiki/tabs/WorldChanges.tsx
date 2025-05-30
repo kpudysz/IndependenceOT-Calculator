@@ -1,12 +1,17 @@
 import { Box, Divider, Flex, Image, Table, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react'
 import { colors } from 'common/constants'
-import { SuggestChanges, WikiMenu } from "features/wiki/components"
+import { WikiMenu } from 'features/wiki'
+import { SuggestChanges } from "features/wiki/components"
 import { otherWorldChangeData, worldChangeData } from 'features/wiki/data/worldChangeData'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSendSuggestion } from '../hooks'
 
 export const WorldChanges: React.FC = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'wiki.worldChange' })
   const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
+  const worldChange = worldChangeData()
+  const otherWorldChange = otherWorldChangeData()
 
   return (
     <Flex justify="center" align="flex-start" w="100%" h="100%" px={{ base: 2, md: 0 }}>
@@ -23,35 +28,35 @@ export const WorldChanges: React.FC = () => {
         overflowX="hidden"
       >
         <Flex fontSize={{ base: '2xl', md: '4xl' }} fontWeight="bold" mb={8} justifyContent="center" textAlign="center">
-          World Changes
+          {t('worldChanges')}
         </Flex>
         <Text mb={4}>
-          World Changes are events that will take place until the next server save.
+          {t('worldChangesOne')}
         </Text>
         <Text mb={4}>
-          Most of world changes are triggered by players. Current progress towards unlocking world changes can be checked at Seymour's book, above the city library.
+          {t('worldChangesTwo')}
         </Text>
         <Text mb={4}>
-          After all players sell enough creature products to NPC Tom, world change will take place after server save and will last for 24 hours.
+          {t('worldChangesThree')}
         </Text>
         <Text mb={4}>
-          If all players don't sell enough creature products the progress will be kept until enough is gathered.
+          {t('worldChangesFour')}
         </Text>
         <Text mb={4}>
-          Below you can find list of world changes that are happening after you sell specific creature products to NPC Tom:
+          {t('worldChangesFive')}
         </Text>
         <Box overflowX="auto">
           <Table>
             <Thead>
               <Tr>
-                <Th>Name</Th>
-                <Th>Requirement</Th>
-                <Th>Description</Th>
-                <Th>Place</Th>
+                <Th>{t('name')}</Th>
+                <Th>{t('requirement')}</Th>
+                <Th>{t('description')}</Th>
+                <Th>{t('place')}</Th>
               </Tr>
             </Thead>
             <Tbody>
-              {worldChangeData.map(worldChange => (
+              {worldChange.map(worldChange => (
                 <Tr key={worldChange.name}>
                   <Td>
                     <Flex alignItems="center">
@@ -77,20 +82,20 @@ export const WorldChanges: React.FC = () => {
           </Table>
         </Box>
         <Text mt={6} mb={4}>
-          There are also other world changes that are triggered by other means:
+          {t('otherMeans')}
         </Text>
         <Box overflowX="auto">
           <Table>
             <Thead>
               <Tr>
-                <Th>Name</Th>
-                <Th>Requirement</Th>
-                <Th>Description</Th>
-                <Th>Place</Th>
+                <Th>{t('name')}</Th>
+                <Th>{t('requirement')}</Th>
+                <Th>{t('description')}</Th>
+                <Th>{t('place')}</Th>
               </Tr>
             </Thead>
             <Tbody>
-              {otherWorldChangeData.map(worldChange => (
+              {otherWorldChange.map(worldChange => (
                 <Tr key={worldChange.name}>
                   <Td>
                     <Text>

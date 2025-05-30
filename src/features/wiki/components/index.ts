@@ -1,5 +1,5 @@
 export { CraftingTableHeader } from './CraftingTableHeader'
 export { SuggestChanges } from './SuggestChanges'
-export { WikiMenu } from './WikiMenu'
-export { wikiMenuData } from './wikiMenuData'
+export { wikiMenuConfig } from './wikiMenuConfig'
 export { WikiSidebar } from './WikiSidebar'
+

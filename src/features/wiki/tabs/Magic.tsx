@@ -1,10 +1,13 @@
 import { Box, Divider, Flex, Image, ListItem, Table, Tbody, Td, Text, Thead, Tr, UnorderedList } from '@chakra-ui/react'
 import { colors } from 'common'
-import { SuggestChanges, WikiMenu } from 'features/wiki/components'
+import { WikiMenu } from 'features/wiki'
+import { SuggestChanges } from 'features/wiki/components'
 import { useSendSuggestion } from 'features/wiki/hooks'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 export const Magic: React.FunctionComponent = () => {
+	const { t } = useTranslation('translation', { keyPrefix: 'wiki.magic' })
 	const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
 	const magicTable = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -22,14 +25,14 @@ export const Magic: React.FunctionComponent = () => {
 				fontSize={{ base: 'md', md: 'lg' }}
 			>
 				<Text fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }} fontWeight="bold" mb={6} textAlign="center">
-					Magic
+					{t('magic')}
 				</Text>
 				<Text mb={4}>
-					To learn magic you first have to reach magic level 1.
+					{t('magicOne')}
 				</Text>
 				<Flex mb={4} alignItems="center" flexWrap="wrap">
 					<Text as="span" mr={1}>
-						The only way to reach it is by using
+						{t('magicTwo')}
 					</Text>
 					<Image
 						src="https://tibiopedia.pl/images/static/items/wand_of_vortex.gif"
@@ -38,10 +41,10 @@ export const Magic: React.FunctionComponent = () => {
 						alt="Wand of Vortex"
 					/>
 					<Text mr={1}>
-						magic wand.
+						{t('magicThree')}
 					</Text>
 					<Text>
-						It is a very rare drop from
+						{t('magicFour')}
 					</Text>
 					<Image
 						src="https://tibiopedia.pl/images/static/monsters/kraknaknork.gif"
@@ -52,7 +55,7 @@ export const Magic: React.FunctionComponent = () => {
 					<Text as="span">Kraknaknork.</Text>
 				</Flex>
 				<Text mb={2}>
-					There are three spells available:
+					{t('magicFive')}
 				</Text>
 				<UnorderedList>
 					<ListItem>Light - Utevo Lux</ListItem>
@@ -60,20 +63,20 @@ export const Magic: React.FunctionComponent = () => {
 					<ListItem>Levitate - Exani Hur</ListItem>
 				</UnorderedList>
 				<Text mb={4} mt={4}>
-					You can learn them at temple roof from blackboard near Asralius.
+					{t('magicSix')}
 				</Text>
 				<Text mb={4}>
-					Magic Wand is also very powerful weapon because it has high average damage.
-					Wand deals energy damage and its damage depends on your magic level.
-					Wand requires 1 mana per hit.
+					{t('magicSeven')}
+					{t('magicEight')}
+					{t('magicNine')}
 				</Text>
 				<Table>
 					<Thead>
 						<Tr>
-							<Td>Magic Level</Td>
-							<Td>Lowest Damage</Td>
-							<Td>Average Damage</Td>
-							<Td>Highest Damage</Td>
+							<Td>{t('magicLevel')}</Td>
+							<Td>{t('lowestDamage')}</Td>
+							<Td>{t('averageDamage')}</Td>
+							<Td>{t('highestDamage')}</Td>
 						</Tr>
 					</Thead>
 					<Tbody>

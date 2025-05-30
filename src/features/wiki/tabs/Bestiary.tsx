@@ -1,16 +1,18 @@
 import { Box, Button, Collapse, Divider, Flex, Image, ListItem, Table, Tbody, Td, Text, Textarea, Th, Thead, Tr, UnorderedList } from '@chakra-ui/react'
 import { colors } from 'common/constants'
+import { CreatureInformation, SortByBestiary, WikiMenu } from 'features/wiki'
 import { bestiaryData } from 'features/wiki/data'
 import { calculateTimeTillCharm, parseCreatureData } from 'features/wiki/helpers'
-import { CreatureInformation, SortByBestiary } from 'features/wiki/types'
 import { CollapseTile } from 'lib/components'
 import { formatTime } from 'lib/utils'
 import { capitalizeWords } from 'lib/utils/capitalizeWords'
 import React, { Fragment, useMemo, useState } from 'react'
-import { SuggestChanges, WikiMenu } from '../components'
+import { useTranslation } from 'react-i18next'
+import { SuggestChanges } from '../components'
 import { useSendSuggestion } from '../hooks'
 
 export const Bestiary: React.FC = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'wiki.bestiary' })
   const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
   const [isEasyOpen, setIsEasyOpen] = useState(false)
   const [isMediumOpen, setIsMediumOpen] = useState(false)
@@ -59,24 +61,28 @@ export const Bestiary: React.FC = () => {
         overflowX="auto"
       >
         <Text fontSize="4xl" fontWeight="bold" mb={10} textAlign="center">
-          Bestiary
+          {t('bestiary')}
         </Text>
         <Text mb={4}>
-          Bestiary works a little bit different on IndependenceOT.
+          {t('bestiaryOne')}
         </Text>
         <UnorderedList margin={"20px 0 20px"} display="flex" flexDirection="column" gap="6px">
-          <ListItem>By killing 100 monsters you get 1 charm point.</ListItem>
-          <ListItem>By killing 1000 monsters you get 2 charm points.</ListItem>
-          <ListItem>By killing 10000 monsters you get 3 charm points and so on.</ListItem>
+          <ListItem>{t('bestiaryTwo')}</ListItem>
+          <ListItem>{t('bestiaryThree')}</ListItem>
+          <ListItem>{t('bestiaryFour')}</ListItem>
         </UnorderedList>
-        The amount of points that you get is cumulative therefore if you kill for example 1000 trolls you will have 3 points(1 + 2).
-        After reaching 50 points you can get one of seven charms from Stephan.
-        <Text mb={4} mt={4}>Currently there are 49 monsters in bestiary, some of them are still unknown.</Text>
+        <Text>
+          {t('bestiaryFive')}
+          {t('bestiarySix')}
+        </Text>
+        <Text mb={4} mt={4}>
+          {t('bestiarySeven')}
+        </Text>
         <Text margin="20px 0 20px">
-          Here is the known list of monsters split into categories of how hard it is to reach high amount of kills:
+          {t('bestiaryEight')}
         </Text>
         <Flex flexDirection="column" gap="15px">
-          <CollapseTile isOpen={isEasyOpen} setIsOpen={setIsEasyOpen} title="Easy" />
+          <CollapseTile isOpen={isEasyOpen} setIsOpen={setIsEasyOpen} title={t('easy')} />
           <Collapse in={isEasyOpen}>
             <UnorderedList gap="8px" display="flex" flexDirection="column" border={`1px solid ${colors.text}`} ml="0" padding="15px 0 15px 15px">
               {bestiaryData.filter(monster => monster.difficulty <= 15 && !hiddenMonsters.includes(monster.name)).map(monster => (
@@ -89,7 +95,7 @@ export const Bestiary: React.FC = () => {
               ))}
             </UnorderedList>
           </Collapse>
-          <CollapseTile isOpen={isMediumOpen} setIsOpen={setIsMediumOpen} title="Medium" />
+          <CollapseTile isOpen={isMediumOpen} setIsOpen={setIsMediumOpen} title={t('medium')} />
           <Collapse in={isMediumOpen}>
             <UnorderedList gap="8px" display="flex" flexDirection="column" border={`1px solid ${colors.text}`} ml="0" padding="15px 0 15px 15px">
               {bestiaryData.filter(monster => monster.difficulty > 15 && monster.difficulty <= 30 && !hiddenMonsters.includes(monster.name)).map(monster => (
@@ -102,7 +108,7 @@ export const Bestiary: React.FC = () => {
               ))}
             </UnorderedList>
           </Collapse>
-          <CollapseTile isOpen={isHardOpen} setIsOpen={setIsHardOpen} title="Hard" />
+          <CollapseTile isOpen={isHardOpen} setIsOpen={setIsHardOpen} title={t('hard')} />
           <Collapse in={isHardOpen}>
             <UnorderedList gap="8px" display="flex" flexDirection="column" border={`1px solid ${colors.text}`} ml="0" padding="15px 0 15px 15px">
               {bestiaryData.filter(monster => monster.difficulty > 30 && monster.difficulty <= 60 && !hiddenMonsters.includes(monster.name)).map(monster => (
@@ -115,7 +121,7 @@ export const Bestiary: React.FC = () => {
               ))}
             </UnorderedList>
           </Collapse>
-          <CollapseTile isOpen={isExtremeOpen} setIsOpen={setIsExtremeOpen} title="Extreme" />
+          <CollapseTile isOpen={isExtremeOpen} setIsOpen={setIsExtremeOpen} title={t('extreme')} />
           <Collapse in={isExtremeOpen}>
             <UnorderedList gap="8px" display="flex" flexDirection="column" border={`1px solid ${colors.text}`} ml="0" padding="15px 0 15px 15px">
               {bestiaryData.filter(monster => monster.difficulty > 60 && !hiddenMonsters.includes(monster.name)).map(monster => (
@@ -130,10 +136,10 @@ export const Bestiary: React.FC = () => {
           </Collapse>
         </Flex>
         <Text mb={2} mt={4}>
-          If you need help with choosing which creature to hunt next in order to get maximum amount of bestiary points paste entire Bestiary below.
+          {t('bestiaryNine')}
         </Text>
         <Text mb={2}>
-          It should start with "You have collected X Charm Points." And end with "Your pet is XXX. (1234 XP) or with one of the bosses."
+          {t('bestiaryTen')}
         </Text>
         <Textarea onChange={event => setTextAreaValue(event.target.value)} value={textAreaValue} mb={4} />
         <Button colorScheme="orange" size="md" onClick={() => setCalculatedBestiary(parseCreatureData(textAreaValue))} mb={6}>
@@ -142,28 +148,27 @@ export const Bestiary: React.FC = () => {
         {Boolean(sortedBestiary.length) && (
           <Fragment>
             <Text mb={4} mt={4}>
-              Minutes per 100 kills reflects how many creatures you are able to kill as high level character. Times were measured without rapid respawn.
+              {t('minutesPerHundred')}
             </Text>
             <Text mb={4}>
-              TPC - "Time Per Charm" reflects how much time it will take to get one charm point.
-              If you are wondering which charm to complete we recommend following lowest TPC.
+              {t('tpcDescription')}
             </Text>
             <Text mb={4}>
-              TTF - "Time To Finish" reflects how much time it will take to finish specific bestiary.
+              {t('ttfDescription')}
             </Text>
             <Text mb={4}>
-              Predicted time until your next charm based on TPC: {calculateTimeTillCharm(sortedBestiary, sortedBestiary[0].charmPoints)}. ({sortedBestiary[0].charmPoints} charm points)
+              {t('predictedTime')} {calculateTimeTillCharm(sortedBestiary, sortedBestiary[0].charmPoints)}. ({sortedBestiary[0].charmPoints} {t('charmPoints')})
             </Text>
             <Table>
               <Thead>
                 <Tr>
-                  <Th>Image</Th>
-                  <Th onClick={() => setSortBy(SortByBestiary.NAME)} cursor="pointer" color={sortBy === SortByBestiary.NAME ? colors.yellow : colors.text}>Name</Th>
-                  <Th onClick={() => setSortBy(SortByBestiary.POINTS)} cursor="pointer" color={sortBy === SortByBestiary.POINTS ? colors.yellow : colors.text}>Points</Th>
-                  <Th onClick={() => setSortBy(SortByBestiary.MISSINGKILLS)} cursor="pointer" color={sortBy === SortByBestiary.MISSINGKILLS ? colors.yellow : colors.text}>Missing Kills</Th>
-                  <Th onClick={() => setSortBy(SortByBestiary.DIFFICULTY)} cursor="pointer" color={sortBy === SortByBestiary.DIFFICULTY ? colors.yellow : colors.text}>Minutes per 100 kills</Th>
-                  <Th onClick={() => setSortBy(SortByBestiary.EFFORTPOINTS)} cursor="pointer" color={sortBy === SortByBestiary.EFFORTPOINTS ? colors.yellow : colors.text}>TPC</Th>
-                  <Th onClick={() => setSortBy(SortByBestiary.TTF)} cursor="pointer" color={sortBy === SortByBestiary.TTF ? colors.yellow : colors.text}>TTF</Th>
+                  <Th>{t('image')}</Th>
+                  <Th onClick={() => setSortBy(SortByBestiary.NAME)} cursor="pointer" color={sortBy === SortByBestiary.NAME ? colors.yellow : colors.text}>{t('name')}</Th>
+                  <Th onClick={() => setSortBy(SortByBestiary.POINTS)} cursor="pointer" color={sortBy === SortByBestiary.POINTS ? colors.yellow : colors.text}>{t('points')}</Th>
+                  <Th onClick={() => setSortBy(SortByBestiary.MISSINGKILLS)} cursor="pointer" color={sortBy === SortByBestiary.MISSINGKILLS ? colors.yellow : colors.text}>{t('missingKills')}</Th>
+                  <Th onClick={() => setSortBy(SortByBestiary.DIFFICULTY)} cursor="pointer" color={sortBy === SortByBestiary.DIFFICULTY ? colors.yellow : colors.text}>{t('difficulty')}</Th>
+                  <Th onClick={() => setSortBy(SortByBestiary.EFFORTPOINTS)} cursor="pointer" color={sortBy === SortByBestiary.EFFORTPOINTS ? colors.yellow : colors.text}>{t('tpc')}</Th>
+                  <Th onClick={() => setSortBy(SortByBestiary.TTF)} cursor="pointer" color={sortBy === SortByBestiary.TTF ? colors.yellow : colors.text}>{t('ttf')}</Th>
                 </Tr>
               </Thead>
               <Tbody>

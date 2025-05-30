@@ -1,10 +1,13 @@
 import { Box, Divider, Flex, Text } from '@chakra-ui/react'
 import { colors } from 'common/constants'
-import { SuggestChanges, WikiMenu } from 'features/wiki/components'
+import { SuggestChanges } from 'features/wiki/components'
 import { useSendSuggestion } from 'features/wiki/hooks'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { WikiMenu } from 'features/wiki'
 
 export const Pickholes: React.FC = () => {
+	const { t } = useTranslation('translation', { keyPrefix: 'wiki.pickholes' })
 	const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
 
 	return (
@@ -21,23 +24,17 @@ export const Pickholes: React.FC = () => {
 				fontSize={["md", "lg"]}
 			>
 				<Flex fontSize={["2xl", "3xl", "4xl"]} fontWeight="bold" mb={[6, 8, 10]} justifyContent="center">
-					Pickholes
+					{t('pickholes')}
 				</Flex>
-				<Text mb={4}>There are three types of pickholes.</Text>
+				<Text mb={4}>{t('pickholesOne')}</Text>
 				<Text mb={6}>
-					Standard - These work the same as always: you use a pick and it reveals a pickhole for 5 minutes.
-					After that, the hole disappears and you have to use your pick again.
+					{t('pickholesTwo')}
 				</Text>
 				<Text mb={6}>
-					Automatic - These holes open by themselves at a random time after the server save.
-					Picks are not necessary. They open on their own between 30 minutes and 23 hours after the save.
-					This type is mostly used for bonus rooms.
+					{t('pickholesThree')}
 				</Text>
 				<Text mb={6}>
-					Fragile - These have a 20% chance of being revealed. If successful, the pickhole is revealed for 5 minutes.
-					If failed, you'll see a "poof" and the pickhole is locked until the next server save.
-					These are tricky because if someone else tried and failed, it won't show any indication.
-					Fragile pickholes are usually for bonus or secret rooms.
+					{t('pickholesFour')}
 				</Text>
 				<Divider my={4} />
 				<SuggestChanges

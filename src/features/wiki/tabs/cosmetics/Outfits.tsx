@@ -2,11 +2,13 @@ import { Box, Collapse, Divider, Flex, Image, Text, Tooltip } from "@chakra-ui/r
 import { faFileContract } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { colors } from "common/constants"
-import { SuggestChanges, WikiMenu } from "features/wiki/components"
+import { WikiMenu } from "features/wiki"
+import { SuggestChanges } from "features/wiki/components"
 import { outfitsData } from "features/wiki/data"
 import { CollapseTile } from "lib/components"
 import { capitalizeWords } from 'lib/utils'
 import React, { Fragment, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSendSuggestion } from '../../hooks'
 
 const initialState: Record<string, boolean> = {
@@ -22,8 +24,10 @@ const initialState: Record<string, boolean> = {
 }
 
 export const Outfits: React.FC = () => {
+	const { t } = useTranslation('translation', { keyPrefix: 'wiki' })
 	const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
 	const [isOutfitOpen, setIsOutfitOpen] = useState(initialState)
+	const outfits = outfitsData()
 
 	return (
 		<Flex justify="center" align="flex-start" w="100%" h="100%">
@@ -40,10 +44,10 @@ export const Outfits: React.FC = () => {
 				overflowX="auto"
 			>
 				<Text fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
-					Outfits
+					{t('outfits.outfits')}
 				</Text>
 				<Flex flexDirection="column" gap="15px">
-					{outfitsData.map(outfit => (
+					{outfits.map(outfit => (
 						<Fragment key={outfit.name}>
 							<CollapseTile
 								isOpen={isOutfitOpen[outfit.name]}
@@ -83,7 +87,7 @@ export const Outfits: React.FC = () => {
 					))}
 				</Flex>
 				<Flex justifyContent="flex-end" mt={8}>
-					<Tooltip label="Created by Zosix" fontSize="md" hasArrow>
+					<Tooltip label={t('outfits.createdBy')} fontSize="md" hasArrow>
 						<FontAwesomeIcon icon={faFileContract} />
 					</Tooltip>
 				</Flex>

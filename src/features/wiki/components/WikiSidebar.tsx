@@ -1,8 +1,8 @@
 import { Box, Flex } from '@chakra-ui/react'
 import { colors } from 'common/constants'
 import React, { useState } from 'react'
-import { WikiMenu } from './WikiMenu'
-import { wikiMenuData } from './wikiMenuData'
+import { WikiMenu } from '../types'
+import { wikiMenuConfig } from './wikiMenuConfig'
 
 type SidebarProps = {
   selected: WikiMenu,
@@ -16,6 +16,8 @@ export const WikiSidebar: React.FC<SidebarProps> = ({ onSelect, selected }) => {
     setIsMenuOpen(prev => ({ ...prev, [key]: !prev[key] }))
   }
 
+  const wikiMenu = wikiMenuConfig()
+
   return (
     <Flex
       width="240px"
@@ -26,7 +28,7 @@ export const WikiSidebar: React.FC<SidebarProps> = ({ onSelect, selected }) => {
       borderRadius="6px"
     >
       <Box as="ul" listStyleType="none" w="100%">
-        {wikiMenuData.map(item => {
+        {wikiMenu.map(item => {
           const isOpen = isMenuOpen[item.key] || false
           const isSelected = selected === item.key
           const isAnyChildSelected = item.children?.some(child => child.key === selected)

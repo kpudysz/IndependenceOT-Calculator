@@ -23,7 +23,7 @@ export const parseCreatureData = (data: string) => {
 					missingKills: 666,
 					points: 666,
 					difficulty: 666,
-					charmPoints: 666,
+					charmPoints,
 					effortPoints: 666
 				}
 			}

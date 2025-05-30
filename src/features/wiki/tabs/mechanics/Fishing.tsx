@@ -3,11 +3,14 @@ import { faFileContract } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { images } from 'assets'
 import { colors } from 'common/constants'
-import { SuggestChanges, WikiMenu } from "features/wiki/components"
+import { SuggestChanges } from "features/wiki/components"
 import React from 'react'
 import { useSendSuggestion } from '../../hooks'
+import { WikiMenu } from 'features/wiki'
+import { useTranslation } from 'react-i18next'
 
 export const Fishing: React.FC = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'wiki.fishing' })
   const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
 
   return (
@@ -24,76 +27,76 @@ export const Fishing: React.FC = () => {
         fontSize={["md", "lg"]}
       >
         <Flex fontSize={["2xl", "3xl", "4xl"]} fontWeight="bold" mb={[6, 8, 10]} justifyContent="center">
-          Fishing
+          {t('fishing')}
         </Flex>
         <Text mb={4}>
-          During fishing you may catch 4 types of fish, one standard and three rare.
+          {t('fishingOne')}
         </Text>
         <Text mb={4}>
-          Catching standard fish will give you +1 experience, catching rare fish will give you +10 experience.
-          Rare fish are usually bought by players for 50gp/each or can be sold to Lily for 15gp/each.
+          {t('fishingTwo')}
+          {t('fishingThree')}
         </Text>
         <Text mb={2}>
-          Rare fish are also often used to exchange them for premium stickers from Frosch/Jeronimo NPC.
-          These stickers are used to obtain mounts or nobleman addon.
+          {t('fishingFour')}
+          {t('fishingFive')}
         </Text>
         <Text mb={4}>
-          Here is the list of available fish:
+          {t('fishingSix')}
         </Text>
         <Flex mb={2} alignItems="center">
           <Image src="https://tibiopedia.pl/images/static/items/fish.gif" mr={2} />
-          <Text>Fish - Standard fish, can be thrown into barrel for world changes or sold to Jeronimo for 1gp/each</Text>
+          <Text>{t('fishDescription')}</Text>
         </Flex>
         <Flex mb={2} alignItems="center">
           <Image src="https://tibiopedia.pl/images/static/items/northern_pike.gif" mr={2} />
-          <Text>Northern Pike - Rare fish used for crafting mana potions</Text>
+          <Text>{t('northernPikeDescription')}</Text>
         </Flex>
         <Flex mb={2} alignItems="center">
           <Image src="https://tibiopedia.pl/images/static/items/green_perch.gif" mr={2} />
-          <Text>Green Perch - Rare fish used for crafting health potions </Text>
+          <Text>{t('greenPerchDescription')}</Text>
         </Flex>
         <Flex mb={4} alignItems="center">
           <Image src="https://tibiopedia.pl/images/static/items/rainbow_trout.gif" mr={2} />
-          <Text>Rainbow Trout - Rare fish used for crafting antidote potions</Text>
+          <Text>{t('rainbowTroutDescription')}</Text>
         </Flex>
         <Text mb={4}>
-          Catching standard fish will give you +1 experience, catching rare fish will give you +10 experience.
+          {t('fishingSeven')}
         </Text>
         <Text mb={6} fontSize={["2xl", "3xl", "4xl"]}>
-          Standard Fishing:
+          {t('standardFishing')}
         </Text>
         <Text mb={4}>
-          Requires Fishing rod and worms, works the same way as usually.
+          {t('standardFishingOne')}
         </Text>
         <Image mb={4} src={images.manualFishing} />
         <Text mb={4}>
-          To achieve best results, you can do Net and Standard fishing simultaneously.
+          {t('standardFishingTwo')}
         </Text>
         <Text mb={4}>
-          When you are fishing in a standard way your chance to get rare fishes greatly increases.
+          {t('standardFishingThree')}
         </Text>
         <Text mb={6} fontSize={["2xl", "3xl", "4xl"]}>
-          Net Fishing:
+          {t('netFishing')}
         </Text>
         <Text mb={4}>
-          To do it, you don't need any items simply go to east shore of Rookgaard and click on the fishing net.
+          {t('netFishingOne')}
         </Text>
         <Image mb={4} src={images.netFishing} />
         <Text mb={2}>
-          You will be fishing automatically for one minute.
-          Once you finish you can repeat a process as many times as you want.
+          {t('netFishingTwo')}
+          {t('netFishingThree')}
         </Text>
         <Text mb={6} fontSize={["2xl", "3xl", "4xl"]}>
-          Garbage Fishing:
+          {t('garbageFishing')}
         </Text>
         <Text mb={4}>
-          This type of fishing only requires fishing rod.
+          {t('garbageFishingOne')}
         </Text>
         <Image mb={4} src={images.garbageFishing} />
         <Text mb={4}>
-          Waters of Rookgaard getting flooded with all kind of garbage.
-          They spawn randomly across the waters - use your fishing rod on floating garbage to collect it.
-          By keeping waters clean and collecting garbage, you have a chance to fish out following items:
+          {t('garbageFishingTwo')}
+          {t('garbageFishingThree')}
+          {t('garbageFishingFour')}
         </Text>
         <UnorderedList mb={6}>
           <ListItem>Gold</ListItem>
@@ -120,14 +123,16 @@ export const Fishing: React.FC = () => {
           <ListItem>Knife</ListItem>
           <ListItem>Fish</ListItem>
           <ListItem>Rubish</ListItem>
-          <ListItem>Create products (inc. White deer antlers)</ListItem>
+          <ListItem>White deer antlers</ListItem>
+          <ListItem>Creature products</ListItem>
           <ListItem>Light shovel</ListItem>
           <ListItem>Silver amulets</ListItem>
           <ListItem>Bronze amulets</ListItem>
           <ListItem>Wooden planks</ListItem>
+          <ListItem>Wolf tooth chain</ListItem>
         </UnorderedList>
         <Flex justifyContent="flex-end">
-          <Tooltip label="Created by Land Conquistador" fontSize="md" hasArrow>
+          <Tooltip label={t('createdBy')} fontSize="md" hasArrow>
             <FontAwesomeIcon icon={faFileContract} />
           </Tooltip>
         </Flex>

@@ -1,11 +1,14 @@
 import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react"
 import { images } from "assets"
 import { colors } from "common"
-import { SuggestChanges, WikiMenu } from "features/wiki/components"
+import { SuggestChanges } from "features/wiki/components"
 import { useSendSuggestion } from "features/wiki/hooks"
+import { WikiMenu } from "features/wiki"
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 export const GrowingFruits: React.FC = () => {
+	const { t } = useTranslation('translation', { keyPrefix: 'wiki.growingFruits' })
 	const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
 
 	return (

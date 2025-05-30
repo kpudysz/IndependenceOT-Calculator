@@ -1,12 +1,16 @@
 import { Box, Divider, Flex, Image, Table, Tbody, Td, Text, Thead, Tr } from '@chakra-ui/react'
 import { colors } from 'common/constants'
-import { SuggestChanges, WikiMenu } from 'features/wiki/components'
+import { WikiMenu } from 'features/wiki'
+import { SuggestChanges } from 'features/wiki/components'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { bossesData } from '../data'
 import { useSendSuggestion } from '../hooks'
 
 export const Bosses: React.FunctionComponent = () => {
+	const { t } = useTranslation('translation', { keyPrefix: 'wiki.bosses' })
 	const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
+	const bosses = bossesData()
 
 	return (
 		<Flex justify="center" align="flex-start" w="100%" h="100%">
@@ -21,28 +25,26 @@ export const Bosses: React.FunctionComponent = () => {
 				fontSize={{ base: 'md', md: 'lg' }}
 			>
 				<Text fontSize="4xl" fontWeight="bold" mb={10} textAlign="center">
-					Bosses
+					{t('bosses')}
 				</Text>
 				<Text mb={4}>
-					At the start of each server save, a script determines which bosses will spawn that day and at what time.
-					The process is randomized, and there's a high chance that specific bosses won't appear at all during that day.
-					Typically, only one boss spawns per server save, but there's a small chance the same boss may appear twice during a single server save.
+					{t('bossesDescription')}
 				</Text>
 				<Text mb={4}>
-					There are 17 bosses overall. Some are still unknown until this day.
+					{t('bossesCount')}
 				</Text>
 				<Table>
 					<Thead>
 						<Tr>
-							<Td>Name</Td>
-							<Td>Location</Td>
-							<Td>Common</Td>
-							<Td>Rare</Td>
-							<Td>Very rare</Td>
+							<Td>{t('name')}</Td>
+							<Td>{t('location')}</Td>
+							<Td>{t('common')}</Td>
+							<Td>{t('rare')}</Td>
+							<Td>{t('veryRare')}</Td>
 						</Tr>
 					</Thead>
 					<Tbody>
-						{bossesData.map(boss => (
+						{bosses.map(boss => (
 							<Tr key={boss.name}>
 								<Td>
 									<Flex alignItems="center">

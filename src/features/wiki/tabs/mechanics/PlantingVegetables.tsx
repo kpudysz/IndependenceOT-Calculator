@@ -1,11 +1,14 @@
 import { Box, Divider, Flex, Image, Text } from '@chakra-ui/react'
 import { images } from 'assets'
 import { colors } from 'common/constants'
-import { SuggestChanges, WikiMenu } from "features/wiki/components"
+import { WikiMenu } from 'features/wiki'
+import { SuggestChanges } from "features/wiki/components"
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSendSuggestion } from '../../hooks'
 
 export const PlantingVegetables: React.FC = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'wiki.plantingVegetables' })
   const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
 
   return (
@@ -23,37 +26,37 @@ export const PlantingVegetables: React.FC = () => {
         overflowX="auto"
       >
         <Flex fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
-          Planting Vegetables
+          {t('plantingVegetables')}
         </Flex>
         <Text mb={2}>
-          You can plant all vegetables whenever fields are empty.
+          {t('plantingVegetablesOne')}
         </Text>
         <Flex mb={2} flexWrap="wrap" alignItems="center">
           <Text>
-            To plant vegetable you will need a
-          </Text>
-          <Text>
-            hoe and a vegetable of your choice.
+            {t('plantingVegetablesTwo')}
           </Text>
         </Flex>
         <Text mb={2}>
-          You can purchase hoe from Willy for 800 gp.
+          {t('plantingVegetablesThree')}
         </Text>
         <Text mb={2}>
-          Put vegetable on empty field then click on the hoe and select "use with", then select vegetable.
+          {t('plantingVegetablesFour')}
         </Text>
         <Text mb={6}>
-          Vegetable will start growing and you will be able to gather it after 6 hours.
+          {t('plantingVegetablesFive')}
         </Text>
         <Flex mb={2} alignItems="center">
-          There is a way to speed up growth process by using fertilizer
-          bone meal on growing vegetable.
+          {t('plantingVegetablesSix')}
         </Flex>
         <Text mb={2}>
-          Fertilizer has roughly 30% chance of success. If it succeeds growth will speed up to the next stage.
+          {t('plantingVegetablesSeven')}
         </Text>
-        <Text mb={2}>Planted vegetables have three stages, when they are planted, growing and when they are ready to be harvested.</Text>
-        <Text mb={4}>Vegetables can be eaten or sold to NPC Willy at a price of 10 gp/each.</Text>
+        <Text mb={2}>
+          {t('plantingVegetablesEight')}
+        </Text>
+        <Text mb={4}>
+          {t('plantingVegetablesNine')}
+        </Text>
         <Flex justifyContent="center">
           <Image src={images.growingVegetables} />
         </Flex>

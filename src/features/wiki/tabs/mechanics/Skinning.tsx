@@ -3,11 +3,14 @@ import { faFileContract } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { images } from 'assets'
 import { colors } from 'common/constants'
-import { SuggestChanges, WikiMenu } from "features/wiki/components"
+import { WikiMenu } from 'features/wiki'
+import { SuggestChanges } from "features/wiki/components"
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSendSuggestion } from '../../hooks'
 
 export const Skinning: React.FC = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'wiki.skinning' })
   const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
 
   return (
@@ -24,22 +27,22 @@ export const Skinning: React.FC = () => {
         fontSize={{ base: 'md', md: 'lg' }}
       >
         <Flex fontSize={{ base: '2xl', md: '4xl' }} fontWeight="bold" mb={6} justifyContent="center" textAlign="center">
-          Skinning
+          {t('skinning')}
         </Flex>
         <Text mb={4}>
-          In order to skin creatures you need to purchase skinning knife from Stephan for 50,000 gold.
+          {t('skinningOne')}
         </Text>
         <Text mb={4}>
-          Skinning allows you to obtain additional creature products from monsters.
+          {t('skinningTwo')}
         </Text>
         <Text mb={4}>
-          Most creatures are skinnable. Creature products can be sold to Tom to trigger certain world changes.
+          {t('skinningThree')}
         </Text>
         <Flex justifyContent="center">
           <Image src={images.skinning} mb={4} />
         </Flex>
         <Flex justifyContent="flex-end">
-          <Tooltip label="Created by Land Conquistador" fontSize="md" hasArrow>
+          <Tooltip label={t('createdBy')} fontSize="md" hasArrow>
             <FontAwesomeIcon icon={faFileContract} />
           </Tooltip>
         </Flex>

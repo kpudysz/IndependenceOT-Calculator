@@ -1,12 +1,15 @@
 import { Box, Collapse, Divider, Flex, Image, Table, Tbody, Td, Text, Tr } from '@chakra-ui/react'
 import { colors } from 'common/constants'
+import { WikiMenu } from 'features/wiki'
 import { anvilData, brewingData, fletchingData, forgeData, magicData, woodworkData } from 'features/wiki/data'
 import { CollapseTile } from 'lib/components'
 import React, { useState } from 'react'
-import { CraftingTableHeader, SuggestChanges, WikiMenu } from '../components'
+import { useTranslation } from 'react-i18next'
+import { CraftingTableHeader, SuggestChanges } from '../components'
 import { useSendSuggestion } from '../hooks'
 
 export const Crafting: React.FC = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'wiki.crafting' })
   const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
   const [isAnvilOpen, setIsAnvilOpen] = useState(false)
   const [isForgeOpen, setIsForgeOpen] = useState(false)

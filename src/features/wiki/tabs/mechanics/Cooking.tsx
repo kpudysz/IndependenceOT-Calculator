@@ -1,10 +1,13 @@
 import { Box, Divider, Flex, Image, Text } from '@chakra-ui/react'
 import { colors } from 'common/constants'
-import { SuggestChanges, WikiMenu } from "features/wiki/components"
+import { SuggestChanges } from "features/wiki/components"
 import React from 'react'
 import { useSendSuggestion } from '../../hooks'
+import { WikiMenu } from 'features/wiki'
+import { useTranslation } from 'react-i18next'
 
 export const Cooking: React.FC = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'wiki.cooking' })
   const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
 
   return (
@@ -22,18 +25,18 @@ export const Cooking: React.FC = () => {
         overflowX="auto"
       >
         <Flex fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
-          Cooking
+          {t('cooking')}
         </Flex>
         <Text mb={4}>
-          There are four additional recipes added. Two types of pastry and two types of cheese.
-          Pastry can be created in the same way as you make bread but require achievement that you get after making a lot of bread.
-          After gaining achievement you will have 2% chance to make one of the new pastry.
+          {t('cookingOne')}
+          {t('cookingTwo')}
+          {t('cookingThree')}
         </Text>
         <Text mb={4}>
-          You can find how to make new cheese types in the city library along with the recipe.
+          {t('cookingFour')}
         </Text>
         <Text mb={4}>
-          Here is the list of the new recipes:
+          {t('cookingFive')}
         </Text>
         <Flex flexDirection="column" gap={2}>
           <Flex alignItems="center">

@@ -3,10 +3,13 @@ import { faFileContract } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { colors } from "common/constants"
 import React from 'react'
-import { SuggestChanges, WikiMenu } from "../components"
+import { SuggestChanges } from "../components"
 import { useSendSuggestion } from '../hooks'
+import { WikiMenu } from "features/wiki"
+import { useTranslation } from "react-i18next"
 
 export const Commands: React.FC = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'wiki.commands' })
   const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
 
   return (
@@ -24,73 +27,73 @@ export const Commands: React.FC = () => {
         overflowX="auto"
       >
         <Text fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
-          Commands
+          {t('commands')}
         </Text>
         <Text mb={4}>
-          !loot - enables/disables loot information on the middle of the screen.
+          !loot - {t('loot')}
         </Text>
         <Text mb={4}>
-          !time - command which shows your total time spend in game.
+          !time - {t('time')}
         </Text>
         <Text mb={4}>
-          !autoloot add, "itemname" - for example !autoloot add, gold coin. Adds selected item to your autoloot list.
+          !autoloot add, "itemname" - {t('autolootAdd')}
         </Text>
         <Text mb={4}>
-          !autoloot remove, "itemname" - for example !autoloot remove, gold coin. Removes selected item from your autoloot list.
+          !autoloot remove, "itemname" - {t('autolootRemove')}
         </Text>
         <Text mb={4}>
-          !autoloot show - shows list of items that are on your autoloot list.
+          !autoloot show - {t('autolootShow')}
         </Text>
         <Text mb={4}>
-          !autoloot clear - clears your autoloot list.
+          !autoloot clear - {t('autolootClear')}
         </Text>
         <Text mb={4}>
-          !online - show information about current number of online players.
+          !online - {t('online')}
         </Text>
         <Text mb={4}>
-          !uptime - shows how long the server has been online.
+          !uptime - {t('uptime')}
         </Text>
         <Text mb={4}>
-          !pos or /pos - shows your current position, might be sometimes useful when reporting a bug.
+          !pos or /pos - {t('pos')}
         </Text>
         <Text mb={4}>
-          !serverinfo - command used to check server rates
+          !serverinfo - {t('serverinfo')}
         </Text>
         <Text mb={6}>
-          !kills - command used to check unjustified kills
+          !kills - {t('kills')}
         </Text>
         <Text fontSize="3xl" mb={4}>
-          House Commands
+          {t('houseCommands')}
         </Text>
         <Text mb={4}>
-          Use these commands in front of the house door:
+          {t('houseCommandsDescription')}
         </Text>
         <Text mb={4}>
-          !buyhouse - command used to purchase empty house
+          !buyhouse - {t('buyhouse')}
         </Text>
         <Text mb={4}>
-          !sellhouse - command used to sell house to another player
+          !sellhouse - {t('sellhouse')}
         </Text>
         <Text mb={4}>
-          !leavehouse - command used to leave house
+          !leavehouse - {t('leavehouse')}
         </Text>
         <Text mb={4}>
-          aleta grav - used to set players that can open doors that you are in front of, that person must have permission to enter the house or it won't work.
+          aleta grav - {t('aletaGrav')}
         </Text>
         <Text fontSize="3xl" mb={4}>
-          Use these commands inside your house:
+          {t('houseCommandsInside')}
         </Text>
         <Text mb={4}>
-          aleta sio - used to set players that can enter the house
+          aleta sio - {t('aletaSio')}
         </Text>
         <Text mb={4}>
-          aleta som - used to set players that are subowners of your house, they will have permissions to invite other players to your house
+          aleta som - {t('aletaSom')}
         </Text>
         <Text mb={8}>
-          alana sio "nickname" - used to kick player name from your house. It can be used on yourself when you get stuck as well as other players, or to leave your house quicker.
+          alana sio "nickname" - {t('alanaSio')}
         </Text>
         <Flex justifyContent="flex-end">
-          <Tooltip label="Created by Mdrake and Zosix" fontSize="md" hasArrow>
+          <Tooltip label={t('createdBy')} fontSize="md" hasArrow>
             <FontAwesomeIcon icon={faFileContract} />
           </Tooltip>
         </Flex>

@@ -1,11 +1,14 @@
 import { Box, Divider, Flex, Image, Text } from '@chakra-ui/react'
 import { images } from 'assets'
 import { colors } from 'common/constants'
-import { SuggestChanges, WikiMenu } from "features/wiki/components"
+import { SuggestChanges } from "features/wiki/components"
 import React from 'react'
 import { useSendSuggestion } from '../../hooks'
+import { WikiMenu } from 'features/wiki'
+import { useTranslation } from 'react-i18next'
 
 export const Herbalism: React.FC = () => {
+  const { t } = useTranslation('translation', { keyPrefix: 'wiki.herbalism' })
   const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
 
   return (
@@ -23,23 +26,23 @@ export const Herbalism: React.FC = () => {
         overflowX="auto"
       >
         <Flex fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
-          Herbalism
+          {t('herbalism')}
         </Flex>
         <Flex mb={4} alignItems="center">
-          You can gather
+          {t('herbalismOne')}
           <Image src="https://tibiopedia.pl/images/static/items/moon_flower.gif" />
-          moon flowers and
+          {t('herbalismTwo')}
           <Image src="https://tibiopedia.pl/images/static/items/heaven_blossom.gif" />
-          heaven blossoms from the ground.
+          {t('herbalismThree')}
         </Flex>
         <Text mb={4}>
-          To gather flower right click it. For each gathered flower you will gain one flower in your inventory and 5 experience.
+          {t('herbalismFour')}
         </Text>
         <Text mb={4}>
-          Flowers will respawn in the same spot after 60 minutes.
+          {t('herbalismFive')}
         </Text>
         <Text mb={4}>
-          You can use these flowers for crafting potions or sell them to players/NPCs.
+          {t('herbalismSix')}
         </Text>
         <Flex justifyContent="center">
           <Image src={images.herbalism} />

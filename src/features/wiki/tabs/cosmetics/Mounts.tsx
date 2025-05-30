@@ -2,13 +2,17 @@ import { Box, Divider, Flex, Image, Table, Tbody, Td, Text, Thead, Tooltip, Tr }
 import { faFileContract } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { colors } from "common/constants"
-import { SuggestChanges, WikiMenu } from "features/wiki/components"
+import { SuggestChanges } from "features/wiki/components"
 import { mountsData } from "features/wiki/data"
 import React from 'react'
 import { useSendSuggestion } from '../../hooks'
+import { WikiMenu } from '../../types'
+import { useTranslation } from "react-i18next"
 
 export const Mounts: React.FC = () => {
 	const { mutate: sendSuggestion, isLoading, isSuccess, isError } = useSendSuggestion()
+	const { t } = useTranslation('translation', { keyPrefix: 'wiki' })
+	const mounts = mountsData()
 
 	return (
 		<Flex justify="center" align="flex-start" w="100%" h="100%">
@@ -25,17 +29,17 @@ export const Mounts: React.FC = () => {
 				overflowX="auto"
 			>
 				<Text fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
-					Mounts
+					{t('mounts.mounts')}
 				</Text>
 				<Table>
 					<Thead>
 						<Tr>
-							<Td>Name</Td>
-							<Td>Description</Td>
+							<Td>{t('common.name')}</Td>
+							<Td>{t('common.description')}</Td>
 						</Tr>
 					</Thead>
 					<Tbody>
-						{mountsData.map(mount => (
+						{mounts.map(mount => (
 							<Tr key={mount.name}>
 								<Td>
 									<Flex alignItems="center">
@@ -51,7 +55,7 @@ export const Mounts: React.FC = () => {
 					</Tbody>
 				</Table>
 				<Flex justifyContent="flex-end" mt={8}>
-					<Tooltip label="Created by Zosix" fontSize="md" hasArrow>
+					<Tooltip label={t('mounts.createdBy')} fontSize="md" hasArrow>
 						<FontAwesomeIcon icon={faFileContract} />
 					</Tooltip>
 				</Flex>

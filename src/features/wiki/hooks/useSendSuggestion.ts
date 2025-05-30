@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query'
 import axios from 'lib/api/axios'
-import { WikiMenu } from '../components'
+import { WikiMenu } from '../types'
 
 export const useSendSuggestion = () => {
   const mutation = useMutation({

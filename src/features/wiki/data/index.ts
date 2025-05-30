@@ -8,4 +8,3 @@ export { magicData } from './craftingMagicData'
 export { woodworkData } from './craftingWoodworkData'
 export { mountsData } from './mountsData'
 export { outfitsData } from './outfitsData'
-

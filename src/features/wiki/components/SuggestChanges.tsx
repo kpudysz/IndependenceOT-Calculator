@@ -7,7 +7,8 @@ import Quill from 'quill'
 import 'quill/dist/quill.snow.css'
 import React, { useEffect, useRef, useState } from 'react'
 import 'styles/quill.css'
-import { WikiMenu } from './WikiMenu'
+import { useTranslation } from 'react-i18next'
+import { WikiMenu } from '../types'
 
 type SuggestChangesProps = {
   source: WikiMenu,
@@ -18,6 +19,7 @@ type SuggestChangesProps = {
 }
 
 export const SuggestChanges: React.FC<SuggestChangesProps> = ({ source, isLoading, isSuccess, isError, onSend }) => {
+  const { t } = useTranslation('translation', { keyPrefix: 'wiki' })
   const [isOpen, setIsOpen] = useState(false)
   const quillRef = useRef<HTMLDivElement>(null)
   const [quill, setQuill] = useState<Quill | null>(null)
@@ -54,14 +56,14 @@ export const SuggestChanges: React.FC<SuggestChangesProps> = ({ source, isLoadin
     if (isSuccess) {
       quill?.setText('')
       setToast({
-        text: 'Suggestion sent successfully for review. Soon it will appear on the page.',
+        text: t('common.suggestionSuccess'),
         type: Toastify.Success
       })
     }
 
     if (isError) {
       setToast({
-        text: 'Something went wrong. If you sent images try to make them smaller and try again.',
+        text: t('common.suggestionError'),
         type: Toastify.Error
       })
     }
@@ -77,7 +79,7 @@ export const SuggestChanges: React.FC<SuggestChangesProps> = ({ source, isLoadin
     <Box mt={4} w="100%">
       <Flex align="center" cursor="pointer" onClick={() => setIsOpen(prevState => !prevState)}>
         <Text fontWeight="semibold" fontSize="lg" userSelect="none" mb="15px">
-          Suggest changes
+          {t('common.suggestChanges')}
         </Text>
         <Flex ml="auto" transform={isOpen ? 'rotate(270deg)' : 'rotate(90deg)'}>
           ▶
@@ -85,7 +87,7 @@ export const SuggestChanges: React.FC<SuggestChangesProps> = ({ source, isLoadin
       </Flex>
       <Collapse in={isOpen} animateOpacity>
         <Divider my={2} mb="15px" />
-        <Input onChange={value => setAuthor(value)} controlledValue={author} label="Your nickname" isClearable={false} />
+        <Input onChange={value => setAuthor(value)} controlledValue={author} label={t('common.yourNickname')} isClearable={false} />
         <Divider my={2} margin="15px 0 15px" />
         <Box
           ref={quillRef}
@@ -98,7 +100,7 @@ export const SuggestChanges: React.FC<SuggestChangesProps> = ({ source, isLoadin
           mb={2}
         />
         <Button colorScheme="orange" size="md" onClick={handleSend} mt={2} isLoading={isLoading}>
-          Send
+          {t('common.send')}
         </Button>
       </Collapse>
     </Box>

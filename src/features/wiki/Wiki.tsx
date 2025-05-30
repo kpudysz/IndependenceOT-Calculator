@@ -1,7 +1,6 @@
 import { Flex } from '@chakra-ui/react'
 import { GrowingFruits, MakingRum } from 'features/wiki/tabs/mechanics'
 import React, { useState } from 'react'
-import { WikiMenu } from './components/WikiMenu'
 import { WikiSidebar } from './components/WikiSidebar'
 import {
   Basics,
@@ -25,6 +24,7 @@ import {
   WorldChanges
 } from './tabs'
 import { Welcome } from './tabs/Welcome'
+import { WikiMenu } from './types'
 
 export const Wiki: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<WikiMenu>(WikiMenu.Welcome)
