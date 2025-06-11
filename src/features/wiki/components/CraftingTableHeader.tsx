@@ -11,13 +11,21 @@ export const CraftingTableHeader: React.FunctionComponent<CraftingTableHeaderPro
 
 	return (
 		<Thead>
-			<Tr>
-				<Th>{t('common.name')}</Th>
-				<Th>{t('crafting.requiredLevel')}</Th>
+			<Tr wordBreak="break-word">
+				<Th minWidth="30px" px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
+					{t('common.name')}
+				</Th>
+				<Th minWidth="30px" px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
+					{t('crafting.requiredLevel')}
+				</Th>
 				{withCrafting && (
-					<Th>{t('crafting.craftingChance')}</Th>
+					<Th minWidth="30px" px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
+						{t('crafting.craftingChance')}
+					</Th>
 				)}
-				<Th>{t('crafting.ingredients')}</Th>
+				<Th minWidth="30px" px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
+					{t('crafting.ingredients')}
+				</Th>
 			</Tr>
 		</Thead>
 	)

@@ -48,17 +48,17 @@ export const WorldChanges: React.FC = () => {
         <Box overflowX="auto">
           <Table>
             <Thead>
-              <Tr>
-                <Th>{t('name')}</Th>
-                <Th>{t('requirement')}</Th>
-                <Th>{t('description')}</Th>
-                <Th>{t('place')}</Th>
+              <Tr wordBreak="break-word">
+                <Th px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('name')}</Th>
+                <Th px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('requirement')}</Th>
+                <Th px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('description')}</Th>
+                <Th px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('place')}</Th>
               </Tr>
             </Thead>
             <Tbody>
               {worldChange.map(worldChange => (
-                <Tr key={worldChange.name}>
-                  <Td>
+                <Tr key={worldChange.name} wordBreak="break-word">
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
                     <Flex alignItems="center">
                       <Image src={worldChange.image} mr={2} />
                       <Text>
@@ -66,7 +66,7 @@ export const WorldChanges: React.FC = () => {
                       </Text>
                     </Flex>
                   </Td>
-                  <Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
                     <Flex alignItems="center">
                       <Image src={worldChange.requirementImage} mr={2} />
                       <Text>
@@ -74,8 +74,8 @@ export const WorldChanges: React.FC = () => {
                       </Text>
                     </Flex>
                   </Td>
-                  <Td>{worldChange.description}</Td>
-                  <Td>{worldChange.place}</Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{worldChange.description}</Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{worldChange.place}</Td>
                 </Tr>
               ))}
             </Tbody>
@@ -87,22 +87,22 @@ export const WorldChanges: React.FC = () => {
         <Box overflowX="auto">
           <Table>
             <Thead>
-              <Tr>
-                <Th>{t('name')}</Th>
-                <Th>{t('requirement')}</Th>
-                <Th>{t('description')}</Th>
-                <Th>{t('place')}</Th>
+              <Tr wordBreak="break-word">
+                <Th px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('name')}</Th>
+                <Th px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('requirement')}</Th>
+                <Th px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('description')}</Th>
+                <Th px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('place')}</Th>
               </Tr>
             </Thead>
             <Tbody>
               {otherWorldChange.map(worldChange => (
-                <Tr key={worldChange.name}>
-                  <Td>
+                <Tr key={worldChange.name} wordBreak="break-word">
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
                     <Text>
                       {worldChange.name}
                     </Text>
                   </Td>
-                  <Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
                     <Flex alignItems="center">
                       <Image src={worldChange.requirementImage} mr={2} />
                       <Text>
@@ -110,8 +110,8 @@ export const WorldChanges: React.FC = () => {
                       </Text>
                     </Flex>
                   </Td>
-                  <Td>{worldChange.description}</Td>
-                  <Td>{worldChange.place}</Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{worldChange.description}</Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{worldChange.place}</Td>
                 </Tr>
               ))}
             </Tbody>

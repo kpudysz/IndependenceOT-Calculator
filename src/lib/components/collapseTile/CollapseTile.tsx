@@ -9,12 +9,12 @@ type CollapseTileProps = {
 }
 
 export const CollapseTile: React.FunctionComponent<CollapseTileProps> = ({ isOpen, setIsOpen, title }) => (
-	<Flex onClick={() => setIsOpen(prevState => !prevState)} cursor="pointer" width="100%" border={`1px solid ${colors.text}`} borderRadius="lg" p="10px" alignItems="center">
-		<Text>
-			<Flex fontSize="10px" transform={isOpen ? 'rotate(90deg)' : undefined} mr="15px">
+	<Flex onClick={() => setIsOpen(prevState => !prevState)} cursor="pointer" p={{ base: 2, sm: 3, md: 6 }} overflowX="auto" width="100%" border={`1px solid ${colors.text}`} borderRadius="lg" alignItems="center">
+		<Flex>
+			<Text fontSize="10px" transform={isOpen ? 'rotate(90deg)' : undefined} mr="15px">
 				▶
-			</Flex>
-		</Text>
+			</Text>
+		</Flex>
 		<Text>
 			{title}
 		</Text>

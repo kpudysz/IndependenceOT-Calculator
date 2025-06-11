@@ -1,11 +1,11 @@
 import { Box, Divider, Flex, Image, Text } from '@chakra-ui/react'
 import { images } from 'assets'
 import { colors } from 'common/constants'
+import { WikiMenu } from 'features/wiki'
 import { SuggestChanges } from "features/wiki/components"
 import React from 'react'
-import { useSendSuggestion } from '../../hooks'
-import { WikiMenu } from 'features/wiki'
 import { useTranslation } from 'react-i18next'
+import { useSendSuggestion } from '../../hooks'
 
 export const Herbalism: React.FC = () => {
   const { t } = useTranslation('translation', { keyPrefix: 'wiki.herbalism' })
@@ -28,12 +28,17 @@ export const Herbalism: React.FC = () => {
         <Flex fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
           {t('herbalism')}
         </Flex>
-        <Flex mb={4} alignItems="center">
-          {t('herbalismOne')}
+        <Flex
+          mb={4}
+          alignItems="center"
+          flexWrap="wrap"
+          gap={2}
+        >
+          <Text as="span">{t('herbalismOne')}</Text>
           <Image src="https://tibiopedia.pl/images/static/items/moon_flower.gif" />
-          {t('herbalismTwo')}
+          <Text as="span">{t('herbalismTwo')}</Text>
           <Image src="https://tibiopedia.pl/images/static/items/heaven_blossom.gif" />
-          {t('herbalismThree')}
+          <Text as="span">{t('herbalismThree')}</Text>
         </Flex>
         <Text mb={4}>
           {t('herbalismFour')}

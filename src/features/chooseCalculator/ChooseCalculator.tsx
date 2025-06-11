@@ -31,11 +31,10 @@ export const ChooseCalculator: React.FunctionComponent = () => {
         <Flex
             width="100vw"
             minHeight="100%"
-            padding={isMobile ? "20px" : "40px 80px"}
+            padding={isMobile ? "0 0 20px 0" : "40px 80px"}
             justifyContent="center"
             flexDirection="column"
             alignItems="center"
-            overflow="auto"
             position="relative"
         >
             {activeCalculator && (

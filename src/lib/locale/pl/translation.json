@@ -438,10 +438,8 @@
       "mounts": "Zdobycie pierwszego wierzchowca",
       "mountsOne": "Najłatwiejszy sposób na pierwszy wierzchowiec to wynajęcie konia od Seymoura. Wynajem trwa 24 godziny i kosztuje 500 gp.",
       "mountsTwo": "Najłatwiejszy stały wierzchowiec do zdobycia to Rapid Boar.",
-      "mountsThree": "Możesz go zdobyć, oddając Horatio 100",
-      "mountsFour": "Rabbit's foot za",
-      "mountsFive": "Następnie aktywuj Pig World Change, spotkaj",
-      "mountsSix": "The Hog i złap go używając"
+      "mountsThree": "Możesz go zdobyć, oddając Horatio 100 Rabbit's foot za Hunting Horn.",
+      "mountsFour": "Następnie aktywuj Pig World Change, spotkaj The Hog i złap go używając Hunting Horn."
     },
     "bestiary": {
       "bestiary": "Bestiariusz",

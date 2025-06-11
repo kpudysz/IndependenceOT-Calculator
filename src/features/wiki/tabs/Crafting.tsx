@@ -33,44 +33,42 @@ export const Crafting: React.FC = () => {
         overflowX="auto"
       >
         <Flex fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
-          Crafting
+          {t('crafting')}
         </Flex>
         <Text mb={4}>
-          You can craft various items if you have required ingredients and find specific crafting station.
+          {t('craftingDescription')}
         </Text>
         <Flex gap="10px" flexDirection="column">
           <CollapseTile title="Anvil" isOpen={isAnvilOpen} setIsOpen={setIsAnvilOpen} />
-          <Collapse in={isAnvilOpen}>
-            <Table>
-              <CraftingTableHeader withCrafting />
-              <Tbody>
-                {anvilData.map((item, index) => (
-                  <Tr key={`${index}-${item.name}`}>
-                    <Td>
-                      <Flex alignItems="center">
-                        <Image src={item.image} mr="10px" />
-                        <Text>
-                          {item.name}
-                        </Text>
-                      </Flex>
-                    </Td>
-                    <Td>{item.level}</Td>
-                    <Td>{item.chance}</Td>
-                    <Td>{item.ingredients.map((ingredient, index) => (
-                      <Flex alignItems="center" mb="5px" key={`${index}-${ingredient.name}`}>
-                        <Image src={ingredient.image} mr="10px" />
-                        <Text mr="5px">
-                          {ingredient.count}
-                        </Text>
-                        <Text>
-                          {ingredient.name}
-                        </Text>
-                      </Flex>
-                    ))}</Td>
-                  </Tr>
-                ))}
-              </Tbody>
-            </Table>
+          <Collapse in={isAnvilOpen} animateOpacity>
+            <Box overflowX="auto" width="100%">
+              <Table width="100%">
+                <CraftingTableHeader withCrafting />
+                <Tbody>
+                  {anvilData.map((item, index) => (
+                    <Tr key={`${index}-${item.name}`} wordBreak="break-word" px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
+                      <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
+                        <Flex alignItems="center">
+                          <Image src={item.image} mr="10px" />
+                          <Text>{item.name}</Text>
+                        </Flex>
+                      </Td>
+                      <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{item.level}</Td>
+                      <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{item.chance}</Td>
+                      <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
+                        {item.ingredients.map((ingredient, i) => (
+                          <Flex key={`${i}-${ingredient.name}`} alignItems="center" mb="5px" wrap="wrap">
+                            <Image src={ingredient.image} mr="8px" />
+                            <Text mr="5px">{ingredient.count}</Text>
+                            <Text>{ingredient.name}</Text>
+                          </Flex>
+                        ))}
+                      </Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
+            </Box>
           </Collapse>
           <CollapseTile title="Forge" isOpen={isForgeOpen} setIsOpen={setIsForgeOpen} />
           <Collapse in={isForgeOpen}>
@@ -78,8 +76,8 @@ export const Crafting: React.FC = () => {
               <CraftingTableHeader />
               <Tbody>
                 {forgeData.map((item, index) => (
-                  <Tr key={`${index}-${item.name}`}>
-                    <Td>
+                  <Tr key={`${index}-${item.name}`} wordBreak="break-word" px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
                       <Flex alignItems="center">
                         <Image src={item.image} mr="10px" />
                         <Text>
@@ -87,8 +85,8 @@ export const Crafting: React.FC = () => {
                         </Text>
                       </Flex>
                     </Td>
-                    <Td>{item.level}</Td>
-                    <Td>{item.ingredients.map((ingredient, index) => (
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{item.level}</Td>
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{item.ingredients.map((ingredient, index) => (
                       <Flex alignItems="center" mb="5px" key={`${index}-${ingredient.name}`}>
                         <Image src={ingredient.image} mr="10px" />
                         <Text mr="5px">
@@ -110,8 +108,8 @@ export const Crafting: React.FC = () => {
               <CraftingTableHeader />
               <Tbody>
                 {brewingData.map((item, index) => (
-                  <Tr key={`${index}-${item.name}`}>
-                    <Td>
+                  <Tr key={`${index}-${item.name}`} wordBreak="break-word" px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
                       <Flex alignItems="center">
                         <Image src={item.image} mr="10px" />
                         <Text>
@@ -119,8 +117,8 @@ export const Crafting: React.FC = () => {
                         </Text>
                       </Flex>
                     </Td>
-                    <Td>{item.level}</Td>
-                    <Td>{item.ingredients.map((ingredient, index) => (
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{item.level}</Td>
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{item.ingredients.map((ingredient, index) => (
                       <Flex alignItems="center" mb="5px" key={`${index}-${ingredient.name}`}>
                         <Image src={ingredient.image} mr="10px" />
                         <Text mr="5px">
@@ -142,8 +140,8 @@ export const Crafting: React.FC = () => {
               <CraftingTableHeader />
               <Tbody>
                 {woodworkData.map((item, index) => (
-                  <Tr key={`${index}-${item.name}`}>
-                    <Td>
+                  <Tr key={`${index}-${item.name}`} wordBreak="break-word" px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
                       <Flex alignItems="center">
                         <Image src={item.image} mr="10px" />
                         <Text>
@@ -151,8 +149,8 @@ export const Crafting: React.FC = () => {
                         </Text>
                       </Flex>
                     </Td>
-                    <Td>{item.level}</Td>
-                    <Td>{item.ingredients.map((ingredient, index) => (
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{item.level}</Td>
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{item.ingredients.map((ingredient, index) => (
                       <Flex alignItems="center" mb="5px" key={`${index}-${ingredient.name}`}>
                         <Image src={ingredient.image} mr="10px" />
                         <Text mr="5px">
@@ -174,8 +172,8 @@ export const Crafting: React.FC = () => {
               <CraftingTableHeader />
               <Tbody>
                 {magicData.map((item, index) => (
-                  <Tr key={`${index}-${item.name}`}>
-                    <Td>
+                  <Tr key={`${index}-${item.name}`} wordBreak="break-word" px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
                       <Flex alignItems="center">
                         <Image src={item.image} mr="10px" />
                         <Text>
@@ -183,8 +181,8 @@ export const Crafting: React.FC = () => {
                         </Text>
                       </Flex>
                     </Td>
-                    <Td>{item.level}</Td>
-                    <Td>{item.ingredients.map((ingredient, index) => (
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{item.level}</Td>
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{item.ingredients.map((ingredient, index) => (
                       <Flex alignItems="center" mb="5px" key={`${index}-${ingredient.name}`}>
                         <Image src={ingredient.image} mr="10px" />
                         <Text mr="5px">
@@ -206,8 +204,8 @@ export const Crafting: React.FC = () => {
               <CraftingTableHeader />
               <Tbody>
                 {fletchingData.map((item, index) => (
-                  <Tr key={`${index}-${item.name}`}>
-                    <Td>
+                  <Tr key={`${index}-${item.name}`} wordBreak="break-word" px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>
                       <Flex alignItems="center">
                         <Image src={item.image} mr="10px" />
                         <Text>
@@ -215,8 +213,8 @@ export const Crafting: React.FC = () => {
                         </Text>
                       </Flex>
                     </Td>
-                    <Td>{item.level}</Td>
-                    <Td>{item.ingredients.map((ingredient, index) => (
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{item.level}</Td>
+                    <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{item.ingredients.map((ingredient, index) => (
                       <Flex alignItems="center" mb="5px" key={`${index}-${ingredient.name}`}>
                         <Image src={ingredient.image} mr="10px" />
                         <Text mr="5px">

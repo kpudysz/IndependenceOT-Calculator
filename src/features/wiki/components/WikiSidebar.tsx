@@ -20,7 +20,8 @@ export const WikiSidebar: React.FC<SidebarProps> = ({ onSelect, selected }) => {
 
   return (
     <Flex
-      width="240px"
+      maxWidth="240px"
+      ml="10px"
       direction="column"
       bg={colors.background}
       color={colors.text}

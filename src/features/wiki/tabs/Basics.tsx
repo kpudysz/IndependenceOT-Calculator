@@ -57,19 +57,11 @@ export const Basics: React.FC = () => {
           <Image src="https://tibiopedia.pl/images/static/mounts/rapid_boar.gif" mr="10px" />
           {t('mountsTwo')}
         </Flex>
-        <Flex alignItems="center">
+        <Flex alignItems="center" mt="20px">
           {t('mountsThree')}
-          <Image src="https://tibiopedia.pl/images/static/items/rabbits_foot.gif" />
-          {t('mountsFour')}
-          <Image src="https://tibiopedia.pl/images/static/items/hunting_horn.gif" p="0 6px" />
-          Hunting Horn.
         </Flex>
-        <Flex alignItems="center">
-          {t('mountsFive')}
-          <Image src="https://tibiopedia.pl/images/static/monsters/boar.gif" p="0 6px" />
-          {t('mountsSix')}
-          <Image src="https://tibiopedia.pl/images/static/items/hunting_horn.gif" p="0 6px" />
-          Hunting Horn.
+        <Flex alignItems="center" mt="20px">
+          {t('mountsFour')}
         </Flex>
         <Divider my={4} />
         <SuggestChanges

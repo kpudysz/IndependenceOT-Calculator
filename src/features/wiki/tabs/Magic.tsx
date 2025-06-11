@@ -22,72 +22,64 @@ export const Magic: React.FunctionComponent = () => {
 				bg={colors.background}
 				p={{ base: 4, md: 6, lg: 8 }}
 				boxShadow="md"
-				fontSize={{ base: 'md', md: 'lg' }}
+				fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}
 			>
 				<Text fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }} fontWeight="bold" mb={6} textAlign="center">
 					{t('magic')}
 				</Text>
-				<Text mb={4}>
-					{t('magicOne')}
-				</Text>
-				<Flex mb={4} alignItems="center" flexWrap="wrap">
-					<Text as="span" mr={1}>
-						{t('magicTwo')}
-					</Text>
+				<Text mb={4}>{t('magicOne')}</Text>
+				<Flex
+					mb={4}
+					alignItems="center"
+					flexWrap="wrap"
+					gap={2}
+					fontSize={{ base: 'sm', md: 'md' }}
+				>
+					<Text as="span">{t('magicTwo')}</Text>
 					<Image
 						src="https://tibiopedia.pl/images/static/items/wand_of_vortex.gif"
 						boxSize="24px"
-						mx={1}
 						alt="Wand of Vortex"
 					/>
-					<Text mr={1}>
-						{t('magicThree')}
-					</Text>
-					<Text>
-						{t('magicFour')}
-					</Text>
+					<Text as="span">{t('magicThree')}</Text>
+					<Text as="span">{t('magicFour')}</Text>
 					<Image
 						src="https://tibiopedia.pl/images/static/monsters/kraknaknork.gif"
 						boxSize="24px"
-						mx={1}
 						alt="Kraknaknork"
 					/>
 					<Text as="span">Kraknaknork.</Text>
 				</Flex>
-				<Text mb={2}>
-					{t('magicFive')}
-				</Text>
-				<UnorderedList>
+				<Text mb={2}>{t('magicFive')}</Text>
+				<UnorderedList spacing={2}>
 					<ListItem>Light - Utevo Lux</ListItem>
 					<ListItem>Find Person - Exiva</ListItem>
 					<ListItem>Levitate - Exani Hur</ListItem>
 				</UnorderedList>
-				<Text mb={4} mt={4}>
-					{t('magicSix')}
-				</Text>
-				<Text mb={4}>
-					{t('magicDescription')}
-				</Text>
-				<Table>
-					<Thead>
-						<Tr>
-							<Td>{t('magicLevel')}</Td>
-							<Td>{t('lowestDamage')}</Td>
-							<Td>{t('averageDamage')}</Td>
-							<Td>{t('highestDamage')}</Td>
-						</Tr>
-					</Thead>
-					<Tbody>
-						{magicTable.map(level => (
-							<Tr key={level}>
-								<Td>{level}</Td>
-								<Td>{level * 4 + 8}</Td>
-								<Td>{level * 6 + 8}</Td>
-								<Td>{level * 8 + 8}</Td>
+				<Text mb={4} mt={4}>{t('magicSix')}</Text>
+				<Text mb={4}>{t('magicDescription')}</Text>
+				<Box overflowX="auto">
+					<Table>
+						<Thead>
+							<Tr wordBreak="break-word">
+								<Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('magicLevel')}</Td>
+								<Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('lowestDamage')}</Td>
+								<Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('averageDamage')}</Td>
+								<Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('highestDamage')}</Td>
 							</Tr>
-						))}
-					</Tbody>
-				</Table>
+						</Thead>
+						<Tbody>
+							{magicTable.map(level => (
+								<Tr key={level} wordBreak="break-word">
+									<Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{level}</Td>
+									<Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{level * 4 + 8}</Td>
+									<Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{level * 6 + 8}</Td>
+									<Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{level * 8 + 8}</Td>
+								</Tr>
+							))}
+						</Tbody>
+					</Table>
+				</Box>
 				<Divider my={4} />
 				<SuggestChanges
 					source={WikiMenu.Magic}

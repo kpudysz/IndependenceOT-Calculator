@@ -90,31 +90,31 @@ export const Charms: React.FC = () => {
             </Text>
             <Table>
               <Thead>
-                <Tr>
-                  <Th>{t('looks')}</Th>
-                  <Th>{t('name')}</Th>
-                  <Th>{t('experienceNeeded')}</Th>
-                  <Th>{t('outfit')}</Th>
+                <Tr wordBreak="break-word">
+                  <Th px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('looks')}</Th>
+                  <Th px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('name')}</Th>
+                  <Th px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('experienceNeeded')}</Th>
+                  <Th px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>{t('outfit')}</Th>
                 </Tr>
               </Thead>
               <Tbody>
-                <Tr>
-                  <Td><Image src="https://tibiopedia.pl/images/static/monsters/war_wolf.gif" /></Td>
-                  <Td>Zephyr</Td>
-                  <Td>0</Td>
-                  <Td><Image src="https://outfit-images.ots.me/animatedOutfits1099/animoutfit.php?id=899&addons=0&head=0&body=38&legs=123&feet=0" /></Td>
+                <Tr wordBreak="break-word">
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}><Image src="https://tibiopedia.pl/images/static/monsters/war_wolf.gif" /></Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>Zephyr</Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>0</Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}><Image src="https://outfit-images.ots.me/animatedOutfits1099/animoutfit.php?id=899&addons=0&head=0&body=38&legs=123&feet=0" /></Td>
                 </Tr>
-                <Tr>
-                  <Td><Image src="https://tibiopedia.pl/images/static/monsters/ghost_wolf.gif" /></Td>
-                  <Td>Specter</Td>
-                  <Td>100,000</Td>
-                  <Td><Image src="https://outfit-images.ots.me/animatedOutfits1099/animoutfit.php?id=899&addons=1&head=0&body=38&legs=123&feet=0" /></Td>
+                <Tr wordBreak="break-word">
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}><Image src="https://tibiopedia.pl/images/static/monsters/ghost_wolf.gif" /></Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>Specter</Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>100,000</Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}><Image src="https://outfit-images.ots.me/animatedOutfits1099/animoutfit.php?id=899&addons=1&head=0&body=38&legs=123&feet=0" /></Td>
                 </Tr>
-                <Tr>
-                  <Td><Image src="https://tibiopedia.pl/images/static/monsters/gloom_wolf.gif" /></Td>
-                  <Td>Dyster</Td>
-                  <Td>1,000,000</Td>
-                  <Td><Image src="https://outfit-images.ots.me/animatedOutfits1099/animoutfit.php?id=899&addons=3&head=0&body=38&legs=123&feet=0" /></Td>
+                <Tr wordBreak="break-word">
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}><Image src="https://tibiopedia.pl/images/static/monsters/gloom_wolf.gif" /></Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>Dyster</Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}>1,000,000</Td>
+                  <Td px={{ base: 1, md: 5 }} py={{ base: 2, md: 4 }}><Image src="https://outfit-images.ots.me/animatedOutfits1099/animoutfit.php?id=899&addons=3&head=0&body=38&legs=123&feet=0" /></Td>
                 </Tr>
               </Tbody>
             </Table>
@@ -142,7 +142,7 @@ export const Charms: React.FC = () => {
             <Text mb={4}>
               {t('wolfWhisperingEleven')}
             </Text>
-            <Flex alignItems="center" justifyContent="flex-start" mb={6}>
+            <Flex alignItems="center" justifyContent="flex-start" mb={6} maxW="600px" flexWrap="wrap">
               <Image src="https://tibiopedia.pl/images/static/items/skull.gif" m="0 10px 0 5px" />
               <Text>
                 Skull

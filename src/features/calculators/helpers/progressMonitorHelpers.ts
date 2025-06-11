@@ -30,10 +30,6 @@ export const prepareHighscores = (highscores: Array<GetHighscoresResponse>) => {
     }), {} as Record<string, Array<GetHighscoresResponse>>)
 
     return Object.entries(groupedPlayers).map(([name, entries]) => {
-        const monthFactor = 4.285 // 30/7
-        const threeMonthFactor = 12.857 // 90/7
-        const sixMonthFactor = 25.714 // 180/7
-        const oneYearFactor = 52.142 // 365/7
         const today = entries.filter(entry => entry.date >= unixReferenceTime)
         const lastDayEntries = entries.filter(entry => entry.date >= previousDay)
         const lastWeekEntries = entries.filter(entry => entry.date >= previousWeek)
@@ -49,10 +45,10 @@ export const prepareHighscores = (highscores: Array<GetHighscoresResponse>) => {
         const lastDayColor = determineColor(lastDay)
         const lastWeekColor = determineColor(lastWeek)
         const lastMonthColor = determineColor(lastMonth)
-        const estNextMonth = calculateLevelFromExperience(Math.ceil(lastWeek * monthFactor) + experience)
-        const estNextThreeMonth = calculateLevelFromExperience(Math.ceil(lastWeek * threeMonthFactor) + experience)
-        const estNextSixMonth = calculateLevelFromExperience(Math.ceil(lastWeek * sixMonthFactor) + experience)
-        const estNextYear = calculateLevelFromExperience(Math.ceil(lastWeek * oneYearFactor) + experience)
+        const estNextMonth = calculateLevelFromExperience(lastMonth + experience)
+        const estNextThreeMonth = calculateLevelFromExperience(Math.ceil(lastMonth * 3) + experience)
+        const estNextSixMonth = calculateLevelFromExperience(Math.ceil(lastMonth * 6) + experience)
+        const estNextYear = calculateLevelFromExperience(Math.ceil(lastMonth * 12) + experience)
 
         return {
             name,

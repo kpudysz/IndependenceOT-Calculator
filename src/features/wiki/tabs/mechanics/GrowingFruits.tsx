@@ -1,9 +1,9 @@
 import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react"
 import { images } from "assets"
 import { colors } from "common"
+import { WikiMenu } from "features/wiki"
 import { SuggestChanges } from "features/wiki/components"
 import { useSendSuggestion } from "features/wiki/hooks"
-import { WikiMenu } from "features/wiki"
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -35,12 +35,12 @@ export const GrowingFruits: React.FC = () => {
 				<Text mb={4}>
 					{t('fruitsDescription')}
 				</Text>
-				<Flex mb={4} alignItems="center">
-					<Text>
+				<Flex mb={4} alignItems="center" flexWrap="wrap" gap={2}>
+					<Text as="span">
 						{t('fruitsTwo')}
 					</Text>
-					<Image src="https://tibiopedia.pl/images/static/items/bone_meal.gif" mr={1} ml={1} />
-					<Text>
+					<Image src="https://tibiopedia.pl/images/static/items/bone_meal.gif" />
+					<Text as="span">
 						{t('fruitsThree')}
 					</Text>
 				</Flex>

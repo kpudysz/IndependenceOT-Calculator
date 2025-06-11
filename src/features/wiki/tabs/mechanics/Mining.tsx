@@ -34,12 +34,18 @@ export const Mining: React.FC = () => {
         <Text mb={4}>
           {t('miningTwo')}
         </Text>
-        <Flex mb={4} alignItems="center">
-          {t('miningThree')}
-          <Image src="https://tibiopedia.pl/images/static/items/iron_ore.gif" ml={1} />
-          {t('miningFour')}
-          <Image src="https://tibiopedia.pl/images/static/items/coal.gif" ml={2} mr={2} />
-          {t('miningFive')}
+        <Flex mb={4} alignItems="center" flexWrap="wrap" gap={2}>
+          <Text as="span">
+            {t('miningThree')}
+          </Text>
+          <Image src="https://tibiopedia.pl/images/static/items/iron_ore.gif" />
+          <Text as="span">
+            {t('miningFour')}
+          </Text>
+          <Image src="https://tibiopedia.pl/images/static/items/coal.gif" />
+          <Text as="span">
+            {t('miningFive')}
+          </Text>
         </Flex>
         <Text mb={4}>
           {t('miningSix')}

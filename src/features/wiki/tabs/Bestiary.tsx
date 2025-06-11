@@ -176,12 +176,24 @@ export const Bestiary: React.FC = () => {
                     <Td>
                       <Image src={bestiaryData.find(monster => monster.name.toLowerCase() === creature?.name)?.image} />
                     </Td>
-                    <Td>{capitalizeWords(creature?.name)}</Td>
-                    <Td>{creature?.points}</Td>
-                    <Td>{creature?.missingKills}</Td>
-                    <Td>{creature?.difficulty}</Td>
-                    <Td>{formatTime(creature?.effortPoints)}</Td>
-                    <Td>{formatTime(creature?.effortPoints * creature?.points)}</Td>
+                    <Td>
+                      {capitalizeWords(creature?.name)}
+                    </Td>
+                    <Td>
+                        {creature?.points}
+                    </Td>
+                    <Td>
+                        {creature?.missingKills}
+                    </Td>
+                    <Td>
+                        {creature?.difficulty}
+                    </Td>
+                    <Td>
+                        {formatTime(creature?.effortPoints)}
+                    </Td>
+                    <Td>
+                        {formatTime(creature?.effortPoints * creature?.points)}
+                    </Td>
                   </Tr>
                 ))}
               </Tbody>
