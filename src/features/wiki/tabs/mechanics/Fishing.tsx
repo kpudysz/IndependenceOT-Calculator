@@ -33,15 +33,13 @@ export const Fishing: React.FC = () => {
           {t('fishingOne')}
         </Text>
         <Text mb={4}>
-          {t('fishingTwo')}
-          {t('fishingThree')}
+          {t('fishingDescription')}
         </Text>
         <Text mb={2}>
-          {t('fishingFour')}
-          {t('fishingFive')}
+          {t('fishingDescriptionTwo')}
         </Text>
         <Text mb={4}>
-          {t('fishingSix')}
+          {t('fishingTwo')}
         </Text>
         <Flex mb={2} alignItems="center">
           <Image src="https://tibiopedia.pl/images/static/items/fish.gif" mr={2} />
@@ -73,27 +71,24 @@ export const Fishing: React.FC = () => {
           {t('standardFishingThree')}
         </Text>
         <Text mb={6} fontSize={["2xl", "3xl", "4xl"]}>
-          {t('netFishing')}
+          {t('netFishingHeader')}
         </Text>
         <Text mb={4}>
-          {t('netFishingOne')}
+          {t('netFishing')}
         </Text>
         <Image mb={4} src={images.netFishing} />
         <Text mb={2}>
-          {t('netFishingTwo')}
-          {t('netFishingThree')}
+          {t('netFishingDescription')}
         </Text>
         <Text mb={6} fontSize={["2xl", "3xl", "4xl"]}>
-          {t('garbageFishing')}
+          {t('garbageFishingHeader')}
         </Text>
         <Text mb={4}>
-          {t('garbageFishingOne')}
+          {t('garbageFishing')}
         </Text>
         <Image mb={4} src={images.garbageFishing} />
         <Text mb={4}>
-          {t('garbageFishingTwo')}
-          {t('garbageFishingThree')}
-          {t('garbageFishingFour')}
+          {t('garbageFishingDescription')}
         </Text>
         <UnorderedList mb={6}>
           <ListItem>Gold</ListItem>

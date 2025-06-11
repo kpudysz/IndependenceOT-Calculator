@@ -72,14 +72,13 @@ export const Bestiary: React.FC = () => {
           <ListItem>{t('bestiaryFour')}</ListItem>
         </UnorderedList>
         <Text>
-          {t('bestiaryFive')}
-          {t('bestiarySix')}
+          {t('bestiaryDescription')}
         </Text>
         <Text mb={4} mt={4}>
-          {t('bestiarySeven')}
+          {t('bestiaryFive')}
         </Text>
         <Text margin="20px 0 20px">
-          {t('bestiaryEight')}
+          {t('bestiarySix')}
         </Text>
         <Flex flexDirection="column" gap="15px">
           <CollapseTile isOpen={isEasyOpen} setIsOpen={setIsEasyOpen} title={t('easy')} />
@@ -136,14 +135,14 @@ export const Bestiary: React.FC = () => {
           </Collapse>
         </Flex>
         <Text mb={2} mt={4}>
-          {t('bestiaryNine')}
+          {t('bestiarySeven')}
         </Text>
         <Text mb={2}>
-          {t('bestiaryTen')}
+          {t('bestiaryEight')}
         </Text>
         <Textarea onChange={event => setTextAreaValue(event.target.value)} value={textAreaValue} mb={4} />
         <Button colorScheme="orange" size="md" onClick={() => setCalculatedBestiary(parseCreatureData(textAreaValue))} mb={6}>
-          Send
+          {t('send')}
         </Button>
         {Boolean(sortedBestiary.length) && (
           <Fragment>

@@ -73,7 +73,9 @@ export const Charms: React.FC = () => {
           </Collapse>
           <CollapseTile title="Wolf Whispering" isOpen={isWolfOpen} setIsOpen={setIsWolfOpen} />
           <Collapse in={isWolfOpen}>
-            <Text mb={4} mt={4}>{t('wolfWhisperingOne')}</Text>
+            <Text mb={4} mt={4}>
+              {t('wolfWhisperingOne')}
+            </Text>
             <Flex mb={2} alignItems="center">
               <Image src="https://tibiopedia.pl/images/static/items/wolf_paw.gif" mr="10px" />
               {t('wolfWhisperingTwo')}
@@ -84,9 +86,7 @@ export const Charms: React.FC = () => {
             </Flex>
             <Text mb={4}>{t('wolfWhisperingFour')}</Text>
             <Text mb={4}>
-              {t('wolfWhisperingFive')}
-              {t('wolfWhisperingSix')}
-              {t('wolfWhisperingSeven')}
+              {t('wolfWhisperingDescription')}
             </Text>
             <Table>
               <Thead>
@@ -119,28 +119,28 @@ export const Charms: React.FC = () => {
               </Tbody>
             </Table>
             <Text mt={4} mb={2}>
+              {t('wolfWhisperingFive')}
+            </Text>
+            <Text mb={2}>
+              {t('wolfWhisperingSix')}
+            </Text>
+            <Text mb={2}>
+              {t('wolfWhisperingSeven')}
+            </Text>
+            <Text mb={2}>
               {t('wolfWhisperingEight')}
             </Text>
             <Text mb={2}>
               {t('wolfWhisperingNine')}
             </Text>
-            <Text mb={2}>
-              {t('wolfWhisperingTen')}
-            </Text>
-            <Text mb={2}>
-              {t('wolfWhisperingEleven')}
-            </Text>
-            <Text mb={2}>
-              {t('wolfWhisperingTwelve')}
-            </Text>
             <Flex mb={2} alignItems="center">
               <Image src="https://tibiopedia.pl/images/static/items/bone_meal.gif" mr="10px" />
               <Text>
-                {t('wolfWhisperingThirteen')}
+                {t('wolfWhisperingTen')}
               </Text>
             </Flex>
             <Text mb={4}>
-              {t('wolfWhisperingFourteen')}
+              {t('wolfWhisperingEleven')}
             </Text>
             <Flex alignItems="center" justifyContent="flex-start" mb={6}>
               <Image src="https://tibiopedia.pl/images/static/items/skull.gif" m="0 10px 0 5px" />

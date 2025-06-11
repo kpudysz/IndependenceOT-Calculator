@@ -87,7 +87,7 @@ export const bestiaryData = [
 	{
 		name: 'Frost Troll',
 		image: 'https://tibiopedia.pl/images/static/monsters/frost_troll.gif',
-		difficulty: 15
+		difficulty: 12
 	},
 	{
 		name: 'Goblin',
@@ -142,7 +142,7 @@ export const bestiaryData = [
 	{
 		name: 'Troll Guard',
 		image: 'https://tibiopedia.pl/images/static/monsters/troll_guard.gif',
-		difficulty: 40
+		difficulty: 16
 	},
 	{
 		name: 'Wasp',
@@ -197,7 +197,7 @@ export const bestiaryData = [
 	{
 		name: 'Polar Bear',
 		image: 'https://tibiopedia.pl/images/static/monsters/polar_bear.gif',
-		difficulty: 50
+		difficulty: 37
 	},
 	{
 		name: 'White Shade',
@@ -207,12 +207,12 @@ export const bestiaryData = [
 	{
 		name: 'Winter Wolf',
 		image: 'https://tibiopedia.pl/images/static/monsters/winter_wolf.gif',
-		difficulty: 40
+		difficulty: 34
 	},
 	{
 		name: 'Silver Rabbit',
 		image: 'https://tibiopedia.pl/images/static/monsters/silver_rabbit.gif',
-		difficulty: 30
+		difficulty: 21
 	},
 	{
 		name: 'Hyaena',

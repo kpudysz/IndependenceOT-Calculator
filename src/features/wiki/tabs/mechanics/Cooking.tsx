@@ -25,18 +25,16 @@ export const Cooking: React.FC = () => {
         overflowX="auto"
       >
         <Flex fontSize="4xl" fontWeight="bold" mb={10} justifyContent="center">
-          {t('cooking')}
+          {t('cookingHeader')}
         </Flex>
         <Text mb={4}>
+          {t('cookingDescription')}
+        </Text>
+        <Text mb={4}>
           {t('cookingOne')}
+        </Text>
+        <Text mb={4}>
           {t('cookingTwo')}
-          {t('cookingThree')}
-        </Text>
-        <Text mb={4}>
-          {t('cookingFour')}
-        </Text>
-        <Text mb={4}>
-          {t('cookingFive')}
         </Text>
         <Flex flexDirection="column" gap={2}>
           <Flex alignItems="center">

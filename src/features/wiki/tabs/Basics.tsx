@@ -28,33 +28,23 @@ export const Basics: React.FC = () => {
           {t('basics')}
         </Text>
         <Text mb={4} fontSize="2xl">
-          {t('basicsCharm')}
+          {t('basicsCharmHeader')}
         </Text>
         <Flex mt="20px" alignItems="center">
           <Image src="https://tibiopedia.pl/images/static/monsters/war_wolf.gif" mr="10px" />
-          {t('basicsCharmOne')}
-          {t('basicsCharmTwo')}
-          {t('basicsCharmThree')}
-          {t('basicsCharmFour')}
-          {t('basicsCharmFive')}
+          {t('basicsCharmDescription')}
         </Flex>
         <Text mt="20px" fontSize="2xl">
-          {t('basicsMechanics')}
+          {t('basicsMechanicsHeader')}
         </Text>
         <Text mt="20px">
-          {t('basicsMechanicsOne')}
+          {t('basicsMechanicsDescription')}
         </Text>
         <Text mt="20px">
-          {t('basicsMechanicsTwo')}
-          {t('basicsMechanicsThree')}
-          {t('basicsMechanicsFour')}
-          {t('basicsMechanicsFive')}
+          {t('basicsMechanicsContinuation')}
         </Text>
         <Text mt="20px">
-          {t('basicsMechanicsSix')}
-          {t('basicsMechanicsSeven')}
-          {t('basicsMechanicsEight')}
-          {t('basicsMechanicsNine')}
+          {t('basicsMechanicsContinuationTwo')}
         </Text>
         <Text mt="20px" fontSize="2xl">
           {t('mounts')}

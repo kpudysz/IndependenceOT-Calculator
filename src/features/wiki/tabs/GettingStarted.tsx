@@ -29,10 +29,7 @@ export const GettingStarted: React.FC = () => {
           {t('gettingStarted')}
         </Text>
         <Text mb={4}>
-          {t('gettingStartedOne')}
-          {t('gettingStartedTwo')}
-          {t('gettingStartedThree')}
-          {t('gettingStartedFour')}
+          {t('gettingStartedDescription')}
         </Text>
         <UnorderedList>
           <ListItem display="flex" alignItems="center"><Image src="https://tibiopedia.pl/images/static/items/legion_helmet.gif" />Legion Helmet</ListItem>
@@ -41,7 +38,7 @@ export const GettingStarted: React.FC = () => {
           <ListItem display="flex" alignItems="center"><Image src="https://tibiopedia.pl/images/static/items/leather_boots.gif" />Leather Boots</ListItem>
           <ListItem display="flex" alignItems="center"><Image src="https://tibiopedia.pl/images/static/items/copper_shield.gif" />Copper Shield</ListItem>
           <ListItem display="flex" alignItems="center">
-            {t('gettingStartedFive')}
+            {t('weaponOfChoice')}
             <Image src="https://tibiopedia.pl/images/static/items/katana.gif" /> Katana
             <Image src="https://tibiopedia.pl/images/static/items/mace.gif" /> Mace
             <Image src="https://tibiopedia.pl/images/static/items/hatchet.gif" /> Hatchet
@@ -53,42 +50,29 @@ export const GettingStarted: React.FC = () => {
         </Flex>
         <Flex mt="10px" alignItems="flex-start">
           <Image src="https://tibiopedia.pl/images/static/items/gold_pouch.gif" mr="10px" />
-          {t('autolootOne')}
-          {t('autolootTwo')}
-          {t('autolootThree')}
-          {t('autolootFour')}
+          {t('autolootDescription')}
         </Flex>
         <Divider my={4} />
         <Text mt="20px">
           {t('options')}
-          {t('mostPlayers')}
         </Text>
         <Text mt="20px" fontSize={"xl"}>
-          {t('earningGold')}
+          {t('earningGoldHeader')}
         </Text>
         <Text mt="20px">
-          {t('earningGoldOne')}
-          {t('earningGoldTwo')}
-          {t('earningGoldThree')}
+          {t('earningGoldDescription')}
         </Text>
         <Flex mt="20px" alignItems="flex-start">
           <Image src="https://tibiopedia.pl/images/static/items/skinning_knife.gif" mr="10px" />
-          {t('skinningKnifeOne')}
-          {t('skinningKnifeTwo')}
-          {t('skinningKnifeThree')}
-          {t('skinningKnifeFour')}
+          {t('skinningKnifeDescription')}
         </Flex>
         <Flex mt="20px" alignItems="flex-start">
           <Image src="https://tibiopedia.pl/images/static/items/unholy_book.gif" mr="10px" />
-          {t('bestiaryBookOne')}
-          {t('bestiaryBookTwo')}
-          {t('bestiaryBookThree')}
+          {t('bestiaryBookDescription')}
         </Flex>
         <Flex mt="20px" alignItems="flex-start">
           <Image src={images.achievementBook} mr="10px" />
-          {t('achievementBookOne')}
-          {t('achievementBookTwo')}
-          {t('achievementBookThree')}
+          {t('achievementBookDescription')}
         </Flex>
         <Text mt="20px">
           {t('goldMakingOne')}
@@ -134,9 +118,7 @@ export const GettingStarted: React.FC = () => {
         </Flex>
         <Flex mt="20px" alignItems="center">
           <Image src="https://tibiopedia.pl/images/static/items/small_health_potion.gif" mr="5px" />
-          {t('healingOne')}
-          {t('healingTwo')}
-          {t('healingThree')}
+          {t('healingDescription')}
         </Flex>
         <Text mt="20px">
           {t('ownPath')}

@@ -66,9 +66,7 @@ export const Magic: React.FunctionComponent = () => {
 					{t('magicSix')}
 				</Text>
 				<Text mb={4}>
-					{t('magicSeven')}
-					{t('magicEight')}
-					{t('magicNine')}
+					{t('magicDescription')}
 				</Text>
 				<Table>
 					<Thead>

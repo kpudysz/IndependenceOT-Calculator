@@ -44,12 +44,10 @@ export const MakingRum: React.FC = () => {
 					<Image src={images.rum} />
 				</Flex>
 				<Text mb={4} mt={4}>
-					{t('rumFive')}
-					{t('rumSix')}
+					{t('rumDescription')}
 				</Text>
 				<Text mb={4}>
-					{t('rumSeven')}
-					{t('rumEight')}
+					{t('rumDescriptionContinuation')}
 				</Text>
 				<Divider my={4} />
 				<SuggestChanges
