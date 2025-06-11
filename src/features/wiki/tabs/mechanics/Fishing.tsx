@@ -59,9 +59,6 @@ export const Fishing: React.FC = () => {
           <Image src="https://tibiopedia.pl/images/static/items/rainbow_trout.gif" mr={2} />
           <Text>{t('rainbowTroutDescription')}</Text>
         </Flex>
-        <Text mb={4}>
-          {t('fishingSeven')}
-        </Text>
         <Text mb={6} fontSize={["2xl", "3xl", "4xl"]}>
           {t('standardFishing')}
         </Text>

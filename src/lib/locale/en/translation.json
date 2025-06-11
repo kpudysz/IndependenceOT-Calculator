@@ -359,7 +359,6 @@
       "northernPikeDescription": "Northern Pike - Rare fish used for crafting mana potions",
       "greenPerchDescription": "Green Perch - Rare fish used for crafting health potions",
       "rainbowTroutDescription": "Rainbow Trout - Rare fish used for crafting antidote potions",
-      "fishingSeven": "Catching standard fish will give you +1 experience, catching rare fish will give you +10 experience.",
       "standardFishing": "Standard Fishing:",
       "standardFishingOne": "Requires Fishing rod and worms, works the same way as usually.",
       "standardFishingTwo": "To achieve best results, you can do Net and Standard fishing simultaneously.",
@@ -616,7 +615,7 @@
       "requiredLevel": "Required Level",
       "craftingChance": "Crafting Chance",
       "ingredients": "Ingredients",
-      "Crafting": "Crafting",
+      "crafting": "Crafting",
       "craftingDescription": "You can craft various items if you have required ingredients and find specific crafting station."
     }
   }
