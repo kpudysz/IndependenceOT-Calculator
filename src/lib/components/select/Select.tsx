@@ -1,7 +1,7 @@
-import React from 'react'
-import { Select as ChakraReactSelect } from 'chakra-react-select'
 import { FormControl, FormLabel } from '@chakra-ui/react'
+import { Select as ChakraReactSelect } from 'chakra-react-select'
 import { colors } from 'common'
+import React from 'react'
 
 type SelectOptions = {
     label: string
@@ -121,7 +121,7 @@ export const Select: React.FunctionComponent<SelectProps> = ({
                     }),
                     singleValue: provided => ({
                         ...provided,
-                        overflow: 'auto'
+                        overflow: 'visible'
                     })
                 }}
             />

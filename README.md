@@ -57,6 +57,6 @@ Calculators are tools that help players calculate various aspects of the game.
 - Death Penalty Calculator - Used to calculate how much experience you will lose when you die at specific level. [Source](https://tibia.fandom.com/wiki/Death)
 
 ## Potential Improvements
-1. Either add react-router or tanstack-start to make navigation between pages more user-friendly and make it possible to send specific URL instead of entire road of clicks like wiki -> mechanics -> charms.
+1. Add react-router to make navigation between pages more user-friendly and make it possible to send specific URL instead of entire road of clicks like wiki -> mechanics -> charms.
 
 2. Implement better error handling - currently if incorrect information is submitted by the user nothing will happen. Since users are quite aware about what data they should submit it is low priority to implement, but still this could be added for better UX.
