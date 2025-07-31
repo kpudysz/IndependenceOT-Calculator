@@ -45,8 +45,8 @@ export const bossesData = () => {
 			],
 			veryRare: [
 				{
-					name: '?',
-					image: undefined
+					name: 'Steel Axe',
+					image: 'https://tibiopedia.pl/images/static/items/steel_axe.gif'
 				}
 			]
 		},
@@ -179,14 +179,14 @@ export const bossesData = () => {
 			location: t('undeadCavebear'),
 			common: [
 				{
-					name: 'Health Potion',
-					image: 'https://tibiopedia.pl/images/static/items/health_potion.gif'
+					name: 'Maxilla',
+					image: 'https://tibiopedia.pl/images/static/items/maxilla.gif'
 				}
 			],
 			rare: [
 				{
-					name: '?',
-					image: undefined
+					name: 'Health Potion',
+					image: 'https://tibiopedia.pl/images/static/items/health_potion.gif'
 				}
 			],
 			veryRare: [
