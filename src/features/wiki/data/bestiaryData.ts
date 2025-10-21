@@ -228,5 +228,35 @@ export const bestiaryData = [
 		name: 'Insect Swarm',
 		image: 'https://tibiopedia.pl/images/static/monsters/insect_swarm.gif',
 		difficulty: 6666
+	},
+	{
+		name: 'Crab',
+		image: 'https://tibiopedia.pl/images/static/monsters/crab.gif',
+		difficulty: 150
+	},
+	{
+		name: 'Crocodile',
+		image: 'https://tibiopedia.pl/images/static/monsters/crocodile.gif',
+		difficulty: 1800
+	},
+	{
+		name: 'Slug',
+		image: 'https://tibiopedia.pl/images/static/monsters/slug.gif',
+		difficulty: 5000
+	},
+	{
+		name: 'War Wolf',
+		image: 'https://tibiopedia.pl/images/static/monsters/war_wolf.gif',
+		difficulty: 120
+	},
+	{
+		name: 'Ghost Wolf',
+		image: 'https://tibiopedia.pl/images/static/monsters/ghost_wolf.gif',
+		difficulty: 240
+	},
+	{
+		name: 'Gloom Wolf',
+		image: 'https://tibiopedia.pl/images/static/monsters/gloom_wolf.gif',
+		difficulty: 500
 	}
 ]

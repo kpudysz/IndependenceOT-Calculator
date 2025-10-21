@@ -7,9 +7,14 @@ export const woodworkData = [
 		level: '1',
 		ingredients: [
 			{
+				name: 'Spool of Yarn',
+				image: 'https://tibiopedia.pl/images/static/items/spool_of_yarn.gif',
+				count: '1'
+			},
+			{
 				name: 'Chicken Feather',
 				image: 'https://tibiopedia.pl/images/static/items/chicken_feather.gif',
-				count: '20'
+				count: '5'
 			}
 		]
 	},
@@ -19,9 +24,14 @@ export const woodworkData = [
 		level: '1',
 		ingredients: [
 			{
+				name: 'Spool of Yarn',
+				image: 'https://tibiopedia.pl/images/static/items/spool_of_yarn.gif',
+				count: '1'
+			},
+			{
 				name: 'Chicken Feather',
 				image: 'https://tibiopedia.pl/images/static/items/chicken_feather.gif',
-				count: '25'
+				count: '8'
 			}
 		]
 	},
@@ -31,9 +41,26 @@ export const woodworkData = [
 		level: '2',
 		ingredients: [
 			{
+				name: 'Spool of Yarn',
+				image: 'https://tibiopedia.pl/images/static/items/spool_of_yarn.gif',
+				count: '1'
+			},
+			{
 				name: 'Chicken Feather',
 				image: 'https://tibiopedia.pl/images/static/items/chicken_feather.gif',
-				count: '40'
+				count: '10'
+			}
+		]
+	},
+	{
+		name: 'White Tapestry',
+		image: 'https://tibiopedia.pl/images/static/items/white_tapestry.gif',
+		level: '1',
+		ingredients: [
+			{
+				name: 'Spool of Yarn',
+				image: 'https://tibiopedia.pl/images/static/items/spool_of_yarn.gif',
+				count: '10'
 			}
 		]
 	},

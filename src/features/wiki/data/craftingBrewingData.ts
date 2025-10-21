@@ -59,8 +59,8 @@ export const brewingData = [
 				count: '1'
 			},
 			{
-				name: 'Swamp Grass',
-				image: 'https://tibiopedia.pl/images/static/items/swamp_grass.gif',
+				name: 'Troll Green',
+				image: 'https://tibiopedia.pl/images/static/items/troll_green.gif',
 				count: '1'
 			}
 		]

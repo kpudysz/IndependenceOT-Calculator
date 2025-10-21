@@ -18,6 +18,7 @@ export const Bestiary: React.FC = () => {
   const [isMediumOpen, setIsMediumOpen] = useState(false)
   const [isHardOpen, setIsHardOpen] = useState(false)
   const [isExtremeOpen, setIsExtremeOpen] = useState(false)
+  const [isNightmareOpen, setIsNightmareOpen] = useState(false)
   const hiddenMonsters = ['White Shade', 'Dragon Hatchling', 'Slime', 'Gazer']
   const [textAreaValue, setTextAreaValue] = useState('')
   const [calculatedBestiary, setCalculatedBestiary] = useState<Array<CreatureInformation>>()
@@ -123,7 +124,20 @@ export const Bestiary: React.FC = () => {
           <CollapseTile isOpen={isExtremeOpen} setIsOpen={setIsExtremeOpen} title={t('extreme')} />
           <Collapse in={isExtremeOpen}>
             <UnorderedList gap="8px" display="flex" flexDirection="column" border={`1px solid ${colors.text}`} ml="0" padding="15px 0 15px 15px">
-              {bestiaryData.filter(monster => monster.difficulty > 60 && !hiddenMonsters.includes(monster.name)).map(monster => (
+              {bestiaryData.filter(monster => monster.difficulty > 60 && monster.difficulty <= 100 && !hiddenMonsters.includes(monster.name)).map(monster => (
+                <ListItem key={monster.name} display="flex" alignItems="center">
+                  <Image src={monster.image} mr="10px" />
+                  <Text>
+                    {monster.name}
+                  </Text>
+                </ListItem>
+              ))}
+            </UnorderedList>
+          </Collapse>
+          <CollapseTile isOpen={isNightmareOpen} setIsOpen={setIsNightmareOpen} title={t('nightmare')} />
+          <Collapse in={isNightmareOpen}>
+            <UnorderedList gap="8px" display="flex" flexDirection="column" border={`1px solid ${colors.text}`} ml="0" padding="15px 0 15px 15px">
+              {bestiaryData.filter(monster => monster.difficulty > 100 && !hiddenMonsters.includes(monster.name)).map(monster => (
                 <ListItem key={monster.name} display="flex" alignItems="center">
                   <Image src={monster.image} mr="10px" />
                   <Text>

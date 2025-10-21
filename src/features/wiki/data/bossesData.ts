@@ -301,6 +301,10 @@ export const bossesData = () => {
 				{
 					name: 'Jagged Sword',
 					image: 'https://tibiopedia.pl/images/static/items/jagged_sword.gif'
+				},
+				{
+					name: 'Steel Shield',
+					image: 'https://tibiopedia.pl/images/static/items/steel_shield.gif'
 				}
 			]
 		},
@@ -345,6 +349,29 @@ export const bossesData = () => {
 				{
 					name: 'Crystal ring',
 					image: 'https://tibiopedia.pl/images/static/items/crystal_ring.gif'
+				}
+			],
+			veryRare: [
+				{
+					name: '?',
+					image: undefined
+				}
+			]
+		},
+		{
+			name: 'Moodrake',
+			image: 'https://tibiopedia.pl/images/static/monsters/minotaur_guard.gif',
+			location: t('moodrake'),
+			common: [
+				{
+					name: 'Meat',
+					image: 'https://tibiopedia.pl/images/static/items/meat.gif'
+				}
+			],
+			rare: [
+				{
+					name: '?',
+					image: undefined
 				}
 			],
 			veryRare: [

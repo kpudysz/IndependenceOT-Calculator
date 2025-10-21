@@ -151,7 +151,7 @@
     },
     "bosses": {
       "ben": "Beary obok wasp tower, nad NPC Stephan",
-      "risenGhoul": "Katana Quest",
+      "risenGhoul": "Cmentarz obok NPC Carlos",
       "teleskor": "Teleskor Crypt, obok coal basina",
       "munster": "Kanały pod miastem",
       "apprenticeSheng": "Minotaur Hell",
@@ -164,10 +164,11 @@
       "rottietheRotworm": "Na końcu poison spider cave / W mieście na końcu jaskini pająków nad polem zboza",
       "rotwormQueen": "Tunnele Rotwormów",
       "elyanGlar": "Powierzchnia lodowej wyspy",
-      "yeti": "Nieznane, najprawdopdoobniej lodowa wyspa",
+      "moodrake": "Wolf Den",
+      "yeti": "Lodowa Wyspa, podziemia",
       "bosses": "Bossowie",
       "bossesDescription": "Na początku każdego zapisu serwera, skrypt decyduje, którzy bossowie pojawią się tego dnia i o której godzinie. Proces jest losowy i istnieje duża szansa, że niektóre bossy w ogóle się nie pojawią. Zazwyczaj pojawia się tylko jeden boss na zapis serwera, ale jest niewielka szansa, że ten sam boss pojawi się dwa razy w jednym zapisie.",
-      "bossesCount": "Łącznie jest 17 bossów. Niektóre z nich pozostają nieznane do dziś.",
+      "bossesCount": "Łącznie jest 18 bossów. Niektóre z nich pozostają nieznane do dziś.",
       "name": "Nazwa",
       "location": "Lokalizacja",
       "common": "Częste",
@@ -205,7 +206,7 @@
         "firstAddon": "Przynieś piece of royal steel do Obi. Można go zdobyć losowo podczas przerabiania przedmiotów na steel ingot w jego kuźni."
       },
       "druid": {
-        "firstAddon": "Przynieś 50 wolf paw Tomowi",
+        "firstAddon": "Przynieś 50 wolf paw i 50 bear paw do Toma",
         "secondAddon": "Przynieś 50 winter wolf fur i 50 polar bear paw Stephanowi"
       },
       "afflicted": {
@@ -214,7 +215,7 @@
         "secondAddon": "Przynieś 100 sack of herbs do Zirelli w zamian za plague mask. Sack of herbs można znaleźć za wirem w jaskini bagiennych trolli."
       },
       "lupine": {
-        "description": "Oswój wilka (Zephyra) za pomocą fleshy bone. Fleshy bone można kupić od Stephana za 2000 złota. Może być użyta tylko podczas wolf world change lub gdy masz charm wolf whispering.",
+        "description": "Oswój wilka (Zephyra) za pomocą fleshy bone. Fleshy bone można kupić od Stephana za 5000 sztuk złota. Może być użyta tylko podczas wolf world change lub gdy masz charm wolf whispering.",
         "firstAddon": "Oswój wilka (Spectera) za pomocą fleshy bone. Dostępne po zdobyciu 100 000 exp dla Zephyra.",
         "secondAddon": "Oswój wilka (Dystera) za pomocą fleshy bone. Dostępne po zdobyciu 1 000 000 exp dla Spectera."
       },
@@ -310,7 +311,7 @@
       "doubleLootThree": "Działa, po prostu trudno zauważyć kiedy.",
       "wolfWhisperingOne": "Charm Wolf Whispering zapewnia możliwość oswojenia wilków niezależnie od ich liczby na świecie.",
       "wolfWhisperingTwo": "Po zdobyciu tego charma nie musisz już aktywować wolf world change, by je oswajać.",
-      "wolfWhisperingThree": "Możesz oswajać wilki używając fleshy bone, którą można kupić u Stephana za 2k złota.",
+      "wolfWhisperingThree": "Możesz oswajać wilki używając fleshy bone, którą można kupić u Stephana za 5000 sztuk złota.",
       "wolfWhisperingFour": "Oswajanie wilka często wymaga kilku prób i możesz stracić fleshy bone w procesie oswajania.",
       "wolfWhisperingDescription": "Po oswojeniu wilk teleportuje się do ciebie, jeśli się oddalisz lub zmienisz piętro. Z czasem staje się potężnym towarzyszem, zdobywając doświadczenie razem z tobą. Oto tabela wymagań do ewolucji:",
       "looks": "Wygląd",
@@ -448,7 +449,7 @@
       "bestiaryThree": "Za zabicie 1000 potworów otrzymujesz 2 punkty charm.",
       "bestiaryFour": "Za zabicie 10 000 potworów otrzymujesz 3 punkty charm, i tak dalej.",
       "bestiaryDescription": "Punkty się sumują, więc za np. 1000 trolli otrzymujesz 3 punkty (1 + 2). Po zdobyciu 50 punktów możesz odebrać jeden z siedmiu charmów u Stephana.",
-      "bestiaryFive": "Obecnie w bestiariuszu jest 49 potworów, niektóre są nadal nieznane.",
+      "bestiaryFive": "W bestiariuszu są 52 potwory.",
       "bestiarySix": "Oto znana lista potworów podzielona według trudności zdobycia dużej ilości zabójstw:",
       "bestiarySeven": "Jeśli potrzebujesz pomocy w wyborze potwora, by zdobyć najwięcej punktów, wklej cały Bestiariusz poniżej.",
       "bestiaryEight": "Powinno zaczynać się od „You have gathered X charm points”. I kończyć „Your pet is XXX. (1234 XP)” lub jednym z bossów.",
@@ -462,6 +463,7 @@
       "medium": "Średni",
       "hard": "Trudny",
       "extreme": "Ekstremalny",
+      "nightmare": "Koszmar",
       "image": "Obraz",
       "name": "Nazwa",
       "points": "Punkty",
