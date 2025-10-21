@@ -5,9 +5,9 @@ import { useToast } from 'lib/hooks'
 import { Toastify } from 'lib/types'
 import Quill from 'quill'
 import 'quill/dist/quill.snow.css'
-import React, { useEffect, useRef, useState } from 'react'
-import 'styles/quill.css'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import 'styles/quill.css'
 import { WikiMenu } from '../types'
 
 type SuggestChangesProps = {
@@ -74,35 +74,40 @@ export const SuggestChanges: React.FC<SuggestChangesProps> = ({ source, isLoadin
       onSend(content, source, author)
     }
   }
+  // disable temporarily due to SMTP port issues
 
   return (
-    <Box mt={4} w="100%">
-      <Flex align="center" cursor="pointer" onClick={() => setIsOpen(prevState => !prevState)}>
-        <Text fontWeight="semibold" fontSize="lg" userSelect="none" mb="15px">
-          {t('common.suggestChanges')}
-        </Text>
-        <Flex ml="auto" transform={isOpen ? 'rotate(270deg)' : 'rotate(90deg)'}>
-          ▶
-        </Flex>
-      </Flex>
-      <Collapse in={isOpen} animateOpacity>
-        <Divider my={2} mb="15px" />
-        <Input onChange={value => setAuthor(value)} controlledValue={author} label={t('common.yourNickname')} isClearable={false} />
-        <Divider my={2} margin="15px 0 15px" />
-        <Box
-          ref={quillRef}
-          id="suggest-changes-quill"
-          bg={colors.background}
-          color={colors.text}
-          borderRadius="md"
-          border={`1px solid ${colors.gray}`}
-          minH="120px"
-          mb={2}
-        />
-        <Button colorScheme="orange" size="md" onClick={handleSend} mt={2} isLoading={isLoading}>
-          {t('common.send')}
-        </Button>
-      </Collapse>
-    </Box>
+    <Fragment>
+      {false && (
+        <Box mt={4} w="100%">
+          <Flex align="center" cursor="pointer" onClick={() => setIsOpen(prevState => !prevState)}>
+            <Text fontWeight="semibold" fontSize="lg" userSelect="none" mb="15px">
+              {t('common.suggestChanges')}
+            </Text>
+            <Flex ml="auto" transform={isOpen ? 'rotate(270deg)' : 'rotate(90deg)'}>
+              ▶
+            </Flex>
+          </Flex>
+          <Collapse in={isOpen} animateOpacity>
+            <Divider my={2} mb="15px" />
+            <Input onChange={value => setAuthor(value)} controlledValue={author} label={t('common.yourNickname')} isClearable={false} />
+            <Divider my={2} margin="15px 0 15px" />
+            <Box
+              ref={quillRef}
+              id="suggest-changes-quill"
+              bg={colors.background}
+              color={colors.text}
+              borderRadius="md"
+              border={`1px solid ${colors.gray}`}
+              minH="120px"
+              mb={2}
+            />
+            <Button colorScheme="orange" size="md" onClick={handleSend} mt={2} isLoading={isLoading}>
+              {t('common.send')}
+            </Button>
+          </Collapse>
+        </Box>
+      )}
+    </Fragment>
   )
 }
