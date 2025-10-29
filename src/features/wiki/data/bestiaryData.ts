@@ -222,12 +222,12 @@ export const bestiaryData = [
 	{
 		name: 'Black Sheep',
 		image: 'https://tibiopedia.pl/images/static/monsters/black_sheep.gif',
-		difficulty: 100
+		difficulty: 50
 	},
 	{
 		name: 'Insect Swarm',
 		image: 'https://tibiopedia.pl/images/static/monsters/insect_swarm.gif',
-		difficulty: 6666
+		difficulty: 100
 	},
 	{
 		name: 'Crab',
